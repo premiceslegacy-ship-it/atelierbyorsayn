@@ -1,0 +1,6 @@
+{
+  "name": "Atelier by Orsayn",
+  "description": "Outil métier mobile-first pour artisans BTP : centralisation des devis, factures, chantiers et équipes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

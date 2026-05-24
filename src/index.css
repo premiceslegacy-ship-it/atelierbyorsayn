@@ -1,0 +1,46 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "General Sans", sans-serif;
+
+  /* Colors */
+  --color-bg-base: #050505;
+  --color-bg-surface: #1a1a1a;
+  --color-bg-interactive: #262626;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-inverse: #050505;
+  --color-accent: #ff9f1c; /* Amber */
+  --color-accent-secondary: #6366f1; /* Indigo */
+  --color-accent-navy: #ffffff;
+  --color-success: #b4f481;
+  --color-danger: #ef4444;
+  --color-warning: #ff9f1c;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg-base text-text-primary font-body antialiased;
+  }
+}

@@ -117,7 +117,7 @@ export default function Comparison() {
   ];
 
   return (
-    <section id="preuve-sociale" className="px-6 py-24 md:py-32 bg-[#050505] relative overflow-hidden scroll-mt-20">
+    <section id="change" className="px-6 py-24 md:py-32 bg-[#050505] relative overflow-hidden scroll-mt-20">
       
       {/* Structural high-end Blueprint Mesh Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] select-none z-0">

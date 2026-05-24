@@ -6,24 +6,32 @@ export default function FAQ() {
 
   const faqs = [
     {
-      q: "En combien de temps mon compte Atelier est-il opérationnel ?",
-      a: "En moins de 48 heures. Notre équipe Orsayn se charge de configurer votre interface selon votre métier (gros œuvre, électricité, plomberie, menuiserie, etc.) et importe vos premiers fichiers d'anciens devis ou listes de tarifs matériaux pour que tout soit prêt dès le premier jour.",
+      q: "Atelier fonctionne pour quel type d’artisan ?",
+      a: "Atelier est conçu pour les artisans du second œuvre BTP qui dirigent une structure de 1 à 15 personnes : électricité, plomberie, CVC, menuiserie, tôlerie, peinture, plâtrerie, plaquiste, maçonnerie et paysagisme.",
     },
     {
-      q: "Dois-je installer un logiciel complexe sur mon ordinateur ?",
-      a: "Aucun logiciel à installer ni à mettre à jour. Atelier est une application métier mobile-first accessible instantanément via un simple navigateur web sécurisé sur votre téléphone, votre tablette ou votre ordinateur. L'interface se comporte comme une application native fluide.",
+      q: "Est-ce que je dois installer quelque chose sur mon téléphone ?",
+      a: "Non. Atelier fonctionne depuis votre navigateur sur téléphone, tablette ou ordinateur. Pas d’application à télécharger, pas de logiciel à installer.",
     },
     {
-      q: "Est-ce difficile d'importer mes catalogues ou anciens clients ?",
-      a: "C’est l'avantage de la configuration clé en main par Orsayn. Vous nous envoyez vos fichiers Excel, PDF ou extraits comptables existants, et notre équipe technique les nettoie et les organise pour les intégrer directement dans votre cockpit Atelier sans action complexe de votre part.",
+      q: "Combien de temps pour être opérationnel ?",
+      a: "48 heures en moyenne. On démarre par un appel de setup, on installe votre environnement. Vous vous connectez et vous prenez la main.",
     },
     {
-      q: "Comment fonctionne la relance automatique des factures en retard ?",
-      a: "Une facture dépasse la date d'échéance définie ? Atelier prépare automatiquement un pack de relance poli par SMS ou email de rappel. Vous visualisez la relance dans votre espace de suivi prioritaire et déterminez si vous souhaitez l'ajuster ou la faire partir automatiquement. Pas de coups de fil embarrassants nécessaires.",
+      q: "La facturation électronique est-elle obligatoire pour les artisans en 2026 ?",
+      a: "Oui. À partir du 1er septembre 2026, toutes les entreprises françaises, y compris les artisans et micro-entrepreneurs, doivent pouvoir recevoir des factures électroniques au format structuré. Atelier génère nativement le format Factur-X requis.",
     },
     {
-      q: "Puis-je suivre mes ouvriers ou collègues sur les chantiers ?",
-      a: "Absolument. Atelier intègre un module de pointage et de feuilles d'heures mobiles ultra-épuré. Vos techniciens ou ouvriers sur le terrain peuvent saisir leurs heures et leurs notes de chantier en 3 secondes depuis leur mobile. Vous centralisez tout instantanément pour valider les fiches de paye.",
+      q: "En quoi Atelier est différent des autres logiciels de gestion pour artisans ?",
+      a: "La plupart des logiciels du marché résolvent soit la facturation, soit la gestion de chantier, mais rarement les deux, et encore moins depuis un téléphone. Atelier combine ces usages en un seul outil, pilotable en mobilité, avec un agent WhatsApp intégré pour les mises à jour terrain en temps réel. C'est aussi la seule solution qui propose une offre sans abonnement donnant accès à toutes les fonctionnalités de l'application.",
+    },
+    {
+      q: "Comment fonctionnent les relances automatiques ?",
+      a: "Chaque matin, Atelier identifie les factures en retard et les devis sans réponse. Les relances sont rédigées automatiquement et envoyées par email selon les échéances définies.",
+    },
+    {
+      q: "Que se passe-t-il si je dépasse mon quota mensuel ?",
+      a: "La fonctionnalité est mise en pause jusqu’au renouvellement du quota le 1er du mois suivant, avec un message clair dans l’application. Le passage à l’offre supérieure se fait en 24h.",
     },
   ];
 

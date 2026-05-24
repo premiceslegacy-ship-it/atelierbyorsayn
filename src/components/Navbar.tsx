@@ -1,19 +1,18 @@
-import { ShieldCheck, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   return (
-    <nav className="w-full max-w-7xl mx-auto flex items-center justify-between py-5 px-4 md:px-12 bg-transparent relative z-50">
+    <nav className="w-full max-w-7xl mx-auto flex items-center justify-between py-5 px-6 md:px-12 bg-transparent relative z-50">
       {/* Brand Logo with a clean custom minimal icon */}
       <div className="flex items-center gap-2.5 md:gap-3 select-none">
-        <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-accent flex items-center justify-center shadow-glow-accent-soft shrink-0">
-          <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-bg-base stroke-[2.5]" />
-        </div>
-        <div className="font-display text-lg md:text-xl font-bold tracking-tight text-white flex items-center">
-          Atelier
-        </div>
+        <img
+          src="/logo-atelier-blanc.png"
+          alt="Atelier — logiciel de gestion artisans BTP"
+          className="h-6 w-auto"
+        />
       </div>
 
       {/* Navigation Links centered */}

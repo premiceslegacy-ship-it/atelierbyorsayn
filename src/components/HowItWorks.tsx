@@ -2,9 +2,10 @@ import { useState, useRef, CSSProperties } from "react";
 import { Laptop, Smartphone, Bot, ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function HowItWorks() {
-  const [activeIndex, setActiveIndex] = useState<number>(1); // Default to the middle step (Step 2)
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isProgrammaticScroll = useRef(false);
 
   const steps = [
     {
@@ -12,6 +13,7 @@ export default function HowItWorks() {
       title: "On installe Atelier sur votre infrastructure en 48h.",
       desc: "Un appel de démarrage, on met en place votre environnement. Vous recevez votre accès, vous prenez la main.",
       glowColor: "rgba(255, 159, 28, 0.15)",
+      ledGlowColor: "rgba(255, 159, 28, 0.9)",
       badgeGlow: "rgba(255, 159, 28, 0.2)",
       iconColor: "text-accent",
       ledColor: "bg-accent",
@@ -22,6 +24,7 @@ export default function HowItWorks() {
       title: "Vous gérez depuis n'importe quel appareil.",
       desc: "Devis, factures, chantiers, équipes, pointage, dépenses. Tout au même endroit, accessible depuis le terrain.",
       glowColor: "rgba(99, 102, 241, 0.15)",
+      ledGlowColor: "rgba(99, 102, 241, 0.9)",
       badgeGlow: "rgba(99, 102, 241, 0.2)",
       iconColor: "text-accent-secondary",
       ledColor: "bg-accent-secondary",
@@ -32,6 +35,7 @@ export default function HowItWorks() {
       title: "Le système gère le reste automatiquement.",
       desc: "Les relances partent seules selon vos échéances. Pour le reste, l'assistant intégré gère vos marges et plannings sur WhatsApp.",
       glowColor: "rgba(16, 185, 129, 0.15)",
+      ledGlowColor: "rgba(16, 185, 129, 0.9)",
       badgeGlow: "rgba(16, 185, 129, 0.25)",
       iconColor: "text-emerald-500",
       ledColor: "bg-emerald-500",
@@ -39,33 +43,52 @@ export default function HowItWorks() {
     },
   ];
 
-  const handleScroll = () => {
-    if (scrollRef.current && globalThis.innerWidth < 1024) {
-      const scrollPos = scrollRef.current.scrollLeft;
-      const cardWidth = 320;
-      const newIndex = Math.round(scrollPos / cardWidth);
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
+  const getNearestMobileStepIndex = () => {
+    const el = scrollRef.current;
+    if (!el) return activeIndex;
+
+    const cards: HTMLElement[] = [];
+    el.querySelectorAll(':scope > div').forEach((card) => {
+      if (card instanceof HTMLElement) cards.push(card);
+    });
+    const containerRect = el.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardDistance = Math.abs(cardRect.left + cardRect.width / 2 - containerCenter);
+      if (cardDistance < nearestDistance) {
+        nearestIndex = index;
+        nearestDistance = cardDistance;
       }
-    }
+    });
+
+    return nearestIndex;
+  };
+
+  const handleScroll = () => {
+    if (isProgrammaticScroll.current) return;
+    if (!scrollRef.current || globalThis.innerWidth >= 1024) return;
+    const newIndex = getNearestMobileStepIndex();
+    if (newIndex !== activeIndex) setActiveIndex(newIndex);
   };
 
   const jumpTo = (index: number) => {
     setActiveIndex(index);
-    if (scrollRef.current && globalThis.innerWidth < 1024) {
-      scrollRef.current.scrollTo({ left: index * 320, behavior: 'smooth' });
-    }
-  }
-
-  const handleNext = () => {
-    const newIdx = (activeIndex + 1) % steps.length;
-    jumpTo(newIdx);
+    if (!scrollRef.current || globalThis.innerWidth >= 1024) return;
+    const el = scrollRef.current;
+    const targetCard = el.querySelectorAll<HTMLElement>(':scope > div')[index];
+    if (!targetCard) return;
+    isProgrammaticScroll.current = true;
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    setTimeout(() => { isProgrammaticScroll.current = false; }, 600);
   };
 
-  const handlePrev = () => {
-    const newIdx = (activeIndex - 1 + steps.length) % steps.length;
-    jumpTo(newIdx);
-  };
+  const handleNext = () => jumpTo((activeIndex + 1) % steps.length);
+  const handlePrev = () => jumpTo((activeIndex - 1 + steps.length) % steps.length);
 
   return (
     <section id="fonctionnement" className="px-6 py-24 md:py-32 bg-[#050505] relative overflow-hidden scroll-mt-20">
@@ -132,19 +155,22 @@ export default function HowItWorks() {
             </button>
             
             <div className="flex items-center gap-3 px-2">
-              {steps.map((_, dotIdx) => (
+              {steps.map((step, dotIdx) => (
                 <button
                   key={dotIdx}
                   onClick={() => jumpTo(dotIdx)}
                   aria-label={`Aller à l'étape ${dotIdx + 1}`}
                   className="p-1 cursor-pointer flex items-center justify-center group"
                 >
-                  <span className={`w-2 h-2 rounded-full transition-all duration-300
-                    ${activeIndex === dotIdx 
-                      ? `${steps[dotIdx].ledColor} shadow-[0_0_10px_currentColor] scale-125` 
-                      : "bg-[#2b2b36] shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)] group-hover:bg-[#3b3b4d] scale-100"
-                    }
-                  `} />
+                  <span
+                    className={`block w-2 h-2 rounded-full transition-all duration-300
+                      ${activeIndex === dotIdx
+                        ? `${step.ledColor} scale-125`
+                        : "bg-[#2b2b36] shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)] group-hover:bg-[#3b3b4d] scale-100"
+                      }
+                    `}
+                    style={activeIndex === dotIdx ? { boxShadow: `0 0 10px ${step.ledGlowColor}` } : undefined}
+                  />
                 </button>
               ))}
             </div>
@@ -174,7 +200,8 @@ export default function HowItWorks() {
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex w-full lg:hidden overflow-x-auto scroll-smooth snap-x snap-mandatory gap-5 pb-12 pt-4 px-6 md:px-12 [&::-webkit-scrollbar]:hidden"
+            className="flex w-full lg:hidden overflow-x-auto scroll-smooth snap-x snap-mandatory gap-5 pb-12 pt-4 [&::-webkit-scrollbar]:hidden"
+            style={{ paddingInline: "max(0px, calc((100% - 300px) / 2))" }}
           >
             {steps.map((step, i) => {
               const IconComponent = step.icon;
@@ -258,8 +285,10 @@ export default function HowItWorks() {
 
                   {/* ABSOLUTE FLOATING LED STATUS INDICATOR */}
                   <div className="absolute top-8 right-8 z-10">
-                    <span className={`w-2 h-2 rounded-full ring-2 ring-black/40 ${step.ledColor} 
-                      ${isHighlighted ? "animate-pulse opacity-100 shadow-[0_0_8px_currentColor]" : "opacity-30"}`} 
+                    <span
+                      className={`block w-2 h-2 rounded-full ring-2 ring-black/40 ${step.ledColor}
+                        ${isHighlighted ? "animate-pulse opacity-100" : "opacity-30"}`}
+                      style={isHighlighted ? { boxShadow: `0 0 8px ${step.ledGlowColor}` } : undefined}
                     />
                   </div>
 

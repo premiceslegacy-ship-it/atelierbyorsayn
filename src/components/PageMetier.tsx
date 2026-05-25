@@ -58,6 +58,8 @@ export default function PageMetier({ slug }: PageMetierProps) {
   const scrollToPricing = () =>
     document.getElementById("tarifs")?.scrollIntoView({ behavior: "smooth" });
 
+  const { heroMockup } = data;
+
   return (
     <div className="bg-bg-base min-h-screen text-white selection:bg-accent selection:text-bg-base overflow-x-hidden">
       <Navbar />
@@ -186,36 +188,36 @@ export default function PageMetier({ slug }: PageMetierProps) {
                         <div className="w-7 h-7 rounded-lg bg-gradient-to-b from-accent to-[#d97706] flex items-center justify-center text-black border border-accent border-b-[3px] border-b-[#92400e] shadow-[0_2px_5px_rgba(245,158,11,0.35)]">
                           <TrendingUp className="w-3.5 h-3.5 stroke-[2.5]" />
                         </div>
-                        <span className="text-[11px] font-display font-extrabold text-accent uppercase tracking-wider">Marge chantier</span>
+                        <span className="text-[11px] font-display font-extrabold text-accent uppercase tracking-wider">{heroMockup.primaryMetric.label}</span>
                       </div>
-                      <span className="text-[9px] bg-emerald-500/15 text-[#b4f481] px-2 py-0.5 rounded font-display font-black border border-emerald-500/30 uppercase tracking-wider">En cours</span>
+                      <span className="text-[9px] bg-emerald-500/15 text-[#b4f481] px-2 py-0.5 rounded font-display font-black border border-emerald-500/30 uppercase tracking-wider">{heroMockup.primaryMetric.status}</span>
                     </div>
                     <div className="flex justify-between items-end mb-2">
-                      <span className="font-display font-black text-white text-2xl">28%</span>
-                      <span className="text-[11px] text-text-secondary font-body">Budget cible : 25%</span>
+                      <span className="font-display font-black text-white text-2xl">{heroMockup.primaryMetric.value}</span>
+                      <span className="text-[11px] text-text-secondary font-body">{heroMockup.primaryMetric.target}</span>
                     </div>
                     <div className="w-full bg-[#101015] rounded-full h-2.5 border border-white/5 overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]">
-                      <div className="bg-gradient-to-r from-emerald-500 to-emerald-400 h-full rounded-full" style={{ width: "28%" }} />
+                      <div className="bg-gradient-to-r from-emerald-500 to-emerald-400 h-full rounded-full" style={{ width: heroMockup.primaryMetric.progress }} />
                     </div>
-                    <p className="text-[10px] text-text-secondary mt-2 font-body">CA facturé vs heures + matières + dépenses terrain</p>
+                    <p className="text-[10px] text-text-secondary mt-2 font-body">{heroMockup.primaryMetric.detail}</p>
                   </div>
 
                   {/* Card 2 — Relance auto */}
                   <div className="bg-gradient-to-b from-[#14141a] to-[#0d0d10] border border-white/10 rounded-2xl p-5 shadow-[0_8px_0_0_#030305,0_8px_0_1.5px_rgba(255,255,255,0.05),0_20px_40px_rgba(0,0,0,0.6)] relative overflow-hidden">
                     <div className="absolute top-3 right-3 bg-gradient-to-b from-emerald-500/90 to-emerald-600/90 text-white shadow-[0_2px_0_0_rgba(4,120,87,1),0_4px_8px_rgba(16,185,129,0.4)] px-2.5 py-0.5 rounded-full text-[10px] font-display font-black tracking-wider uppercase border border-emerald-400/50">
-                      Ce matin
+                      {heroMockup.highlight.badge}
                     </div>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-7 h-7 rounded-lg bg-gradient-to-b from-emerald-500 to-emerald-700 flex items-center justify-center text-black border border-emerald-400 border-b-[3px] border-b-emerald-900 shadow-[0_2px_5px_rgba(16,185,129,0.35)]">
                         <Bell className="w-3.5 h-3.5 stroke-[2.5]" />
                       </div>
-                      <span className="text-[11px] font-display font-extrabold text-[#b4f481] uppercase tracking-wider">Relance automatique</span>
+                      <span className="text-[11px] font-display font-extrabold text-[#b4f481] uppercase tracking-wider">{heroMockup.highlight.label}</span>
                     </div>
                     <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3">
                       <Check className="w-4 h-4 text-emerald-400 stroke-[3] shrink-0" />
                       <div>
-                        <span className="text-[12px] font-display font-bold text-white block">FAC-2026-031 · M. Durand</span>
-                        <span className="text-[10px] text-text-secondary">2 850€ encaissés suite à la relance</span>
+                        <span className="text-[12px] font-display font-bold text-white block">{heroMockup.highlight.reference}</span>
+                        <span className="text-[10px] text-text-secondary">{heroMockup.highlight.detail}</span>
                       </div>
                     </div>
                   </div>
@@ -227,16 +229,16 @@ export default function PageMetier({ slug }: PageMetierProps) {
                         <div className="w-7 h-7 rounded-lg bg-gradient-to-b from-[#2d2d3a] to-[#181822] flex items-center justify-center text-white border border-white/15 border-b-[3px] border-b-black/50 shadow-[0_2px_5px_rgba(0,0,0,0.5)]">
                           <FileText className="w-3.5 h-3.5 stroke-[2]" />
                         </div>
-                        <span className="text-[11px] font-display font-extrabold text-white/70 uppercase tracking-wider">Dernier devis</span>
+                        <span className="text-[11px] font-display font-extrabold text-white/70 uppercase tracking-wider">{heroMockup.latest.label}</span>
                       </div>
-                      <span className="text-[10px] text-text-secondary font-body">Il y a 4 min</span>
+                      <span className="text-[10px] text-text-secondary font-body">{heroMockup.latest.time}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <div>
-                        <span className="font-display font-black text-white text-sm block">DEV-2026-089</span>
-                        <span className="text-[10px] text-text-secondary">Envoyé depuis le terrain via WhatsApp</span>
+                        <span className="font-display font-black text-white text-sm block">{heroMockup.latest.reference}</span>
+                        <span className="text-[10px] text-text-secondary">{heroMockup.latest.detail}</span>
                       </div>
-                      <span className="font-display font-black text-accent text-base">4 560€</span>
+                      <span className="font-display font-black text-accent text-base">{heroMockup.latest.amount}</span>
                     </div>
                   </div>
 

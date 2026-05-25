@@ -5,6 +5,29 @@ export interface MetierData {
     headline: string;
     subheadline: string;
   };
+  heroMockup: {
+    primaryMetric: {
+      label: string;
+      status: string;
+      value: string;
+      target: string;
+      progress: string;
+      detail: string;
+    };
+    highlight: {
+      badge: string;
+      label: string;
+      reference: string;
+      detail: string;
+    };
+    latest: {
+      label: string;
+      time: string;
+      reference: string;
+      detail: string;
+      amount: string;
+    };
+  };
   problems: {
     title: string;
     items: string[];
@@ -38,6 +61,29 @@ export const metiers: MetierData[] = [
       headline: "Devis envoyé avant de quitter le client.",
       subheadline:
         "TVA rénovation automatique, marge chantier en temps réel. Depuis votre téléphone, sans formation.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge chantier élec",
+        status: "En cours",
+        value: "31%",
+        target: "Budget cible : 27%",
+        progress: "31%",
+        detail: "Tableau + prises : CA facturé vs heures et matériel",
+      },
+      highlight: {
+        badge: "Ce matin",
+        label: "Relance automatique",
+        reference: "FAC-2026-041 · Mme Bernard",
+        detail: "1 940€ encaissés sur rénovation électrique",
+      },
+      latest: {
+        label: "Dernier devis",
+        time: "Il y a 5 min",
+        reference: "DEV-2026-112",
+        detail: "Tableau + 12 prises envoyé depuis le chantier",
+        amount: "3 780€",
+      },
     },
     problems: {
       title: "Ce que vous vivez chaque semaine",
@@ -118,6 +164,29 @@ export const metiers: MetierData[] = [
       subheadline:
         "Devis dépannage en 2 minutes, maintenances PAC facturées automatiquement, marge chantier CVC visible en temps réel.",
     },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge chantier CVC",
+        status: "Pose PAC",
+        value: "26%",
+        target: "Budget cible : 24%",
+        progress: "26%",
+        detail: "PAC air/eau : heures techniciens + fourniture + déplacement",
+      },
+      highlight: {
+        badge: "Aujourd'hui",
+        label: "Facture maintenance",
+        reference: "CTR-PAC-018 · Copropriété Valmont",
+        detail: "840€ facturés automatiquement sur contrat annuel",
+      },
+      latest: {
+        label: "Devis dépannage",
+        time: "Il y a 7 min",
+        reference: "DEV-2026-074",
+        detail: "Remplacement ballon envoyé depuis le camion",
+        amount: "1 280€",
+      },
+    },
     problems: {
       title: "Ce que vous vivez chaque semaine",
       items: [
@@ -196,6 +265,29 @@ export const metiers: MetierData[] = [
       headline: "Fenêtres, portes, escaliers chiffrés en 2 minutes.",
       subheadline:
         "Catalogue au m² avec variantes matière, MaPrimeRénov automatique, marge réelle par ouvrage.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge ouvrage",
+        status: "Pose en cours",
+        value: "34%",
+        target: "Budget cible : 30%",
+        progress: "34%",
+        detail: "Fenêtres PVC : pose + quincaillerie + finitions",
+      },
+      highlight: {
+        badge: "Validé",
+        label: "Aide affichée",
+        reference: "MaPrimeRénov · Dossier MARTIN",
+        detail: "1 200€ déduits du reste à charge client",
+      },
+      latest: {
+        label: "Dernier devis",
+        time: "Il y a 3 min",
+        reference: "DEV-2026-098",
+        detail: "Variante chêne / MDF laqué prête à signer",
+        amount: "6 740€",
+      },
     },
     problems: {
       title: "Ce que vous vivez chaque semaine",
@@ -276,6 +368,29 @@ export const metiers: MetierData[] = [
       subheadline:
         "Surfaces calculées sur place, MaPrimeRénov affiché, relances impayées automatiques. Avant que le concurrent envoie le sien.",
     },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge surfaces",
+        status: "Appartement T3",
+        value: "29%",
+        target: "Budget cible : 26%",
+        progress: "29%",
+        detail: "Peinture murs/plafonds : m² calculés + matières",
+      },
+      highlight: {
+        badge: "Ce matin",
+        label: "Relance automatique",
+        reference: "FAC-2026-027 · M. Lefèvre",
+        detail: "1 680€ encaissés sur solde de chantier",
+      },
+      latest: {
+        label: "Devis au m²",
+        time: "Il y a 6 min",
+        reference: "DEV-2026-121",
+        detail: "72 m² murs + plafonds, TVA rénovation appliquée",
+        amount: "2 960€",
+      },
+    },
     problems: {
       title: "Ce que vous vivez chaque semaine",
       items: [
@@ -354,6 +469,29 @@ export const metiers: MetierData[] = [
       headline: "Un devis garde-corps en 10 minutes. Avec les bons prix.",
       subheadline:
         "Catalogue au ml et au m², une mise à jour suffit quand les prix bougent. Marge par ouvrage visible pendant la fabrication.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge garde-corps",
+        status: "Atelier",
+        value: "23%",
+        target: "Budget cible : 22%",
+        progress: "23%",
+        detail: "Acier + thermolaquage + heures atelier et pose",
+      },
+      highlight: {
+        badge: "Mis à jour",
+        label: "Prix matière",
+        reference: "Acier S235 · +4,2%",
+        detail: "Catalogue au ml recalculé sur les nouveaux coûts",
+      },
+      latest: {
+        label: "Devis B2B",
+        time: "Il y a 9 min",
+        reference: "DEV-2026-056",
+        detail: "Garde-corps 18 ml avec option inox brossé",
+        amount: "8 920€",
+      },
     },
     problems: {
       title: "Ce que vous vivez chaque semaine",
@@ -434,6 +572,29 @@ export const metiers: MetierData[] = [
       subheadline:
         "Factures récurrentes automatiques, devis de création au m² depuis le terrain, planning équipe multi-sites.",
     },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge création",
+        status: "Jardin privé",
+        value: "32%",
+        target: "Budget cible : 28%",
+        progress: "32%",
+        detail: "Gazon + clôture : végétaux, matériaux et main d'oeuvre",
+      },
+      highlight: {
+        badge: "Mensuel",
+        label: "Contrat facturé",
+        reference: "ENT-2026-014 · Résidence Érables",
+        detail: "1 150€ envoyés automatiquement pour l'entretien",
+      },
+      latest: {
+        label: "Devis création",
+        time: "Il y a 8 min",
+        reference: "DEV-2026-083",
+        detail: "48 m² gazon + 22 ml clôture depuis le terrain",
+        amount: "5 430€",
+      },
+    },
     problems: {
       title: "Ce que vous vivez chaque semaine",
       items: [
@@ -511,7 +672,30 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Sachez si vous gagnez sur chaque chantier.",
       subheadline:
-        "Marge visible pendant les travaux, TVA 5,5%/10%/20% automatique, situations de travaux générées en un clic.",
+        "Marge visible pendant les travaux, dépenses terrain centralisées, situations de travaux générées en un clic.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge rénovation",
+        status: "Phase 2/4",
+        value: "21%",
+        target: "Budget cible : 20%",
+        progress: "21%",
+        detail: "Heures + matériaux + sous-traitants consolidés",
+      },
+      highlight: {
+        badge: "À facturer",
+        label: "Situation travaux",
+        reference: "SIT-2026-006 · Maison Moreau",
+        detail: "12 400€ générés à 45% d'avancement",
+      },
+      latest: {
+        label: "Dépense terrain",
+        time: "Il y a 4 min",
+        reference: "ACH-2026-219",
+        detail: "Location mini-pelle rattachée au bon chantier",
+        amount: "690€",
+      },
     },
     problems: {
       title: "Ce que vous vivez chaque semaine",

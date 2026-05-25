@@ -270,7 +270,7 @@ export default function Hero() {
             </div>
 
             <div className="mt-10 grid w-full max-w-xl grid-cols-2 gap-x-3 gap-y-3.5 border-t border-white/5 pt-6 font-display text-[10px] font-bold uppercase tracking-[0.06em] text-text-secondary md:mt-12 md:gap-x-6 md:text-[11px]">
-              {["Jusqu'à 15h gagnées / sem.", "Factures relancées seules", "Marge chantier visible", "Prêt Factur-X"].map((proof) => (
+              {["Jusqu'à 15h gagnées / sem.", "Factures relancées seules", "Marge chantier visible", "Conformité sans stress"].map((proof) => (
                 <div key={proof} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-accent stroke-[2.5]" />
                   <span>{proof}</span>

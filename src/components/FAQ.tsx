@@ -22,8 +22,8 @@ export default function FAQ() {
       a: "Oui. À partir du 1er septembre 2026, toutes les entreprises françaises, y compris les artisans et micro-entrepreneurs, doivent pouvoir recevoir des factures électroniques au format structuré. Atelier génère nativement le format Factur-X requis.",
     },
     {
-      q: "En quoi Atelier est différent des autres logiciels de gestion pour artisans ?",
-      a: "La plupart des logiciels du marché résolvent soit la facturation, soit la gestion de chantier, mais rarement les deux, et encore moins depuis un téléphone. Atelier combine ces usages en un seul outil, pilotable en mobilité, avec un agent WhatsApp intégré pour les mises à jour terrain en temps réel. C'est aussi la seule solution qui propose une offre sans abonnement donnant accès à toutes les fonctionnalités de l'application.",
+      q: "Atelier est-il une alternative à Obat, Tolteck ou Batigest ?",
+      a: "Oui. Si vous cherchez une alternative à Obat, Tolteck, Batappli ou Sage Batigest, Atelier couvre les mêmes usages (devis, factures, chantiers) mais avec l'IA embarquée au cœur de l'outil pour automatiser votre quotidien. Contrairement à ces solutions, Atelier propose aussi une offre sans abonnement donnant accès à toutes les fonctionnalités de l'application, et une infrastructure dédiée, isolée, qui vous appartient.",
     },
     {
       q: "Comment fonctionnent les relances automatiques ?",

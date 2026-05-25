@@ -124,20 +124,32 @@ export default function Comparison() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12">
-          {stats.map((stat) => {
+          {stats.map((stat, i) => {
             const Icon = stat.icon;
+            // Determine 3D Keycap styles based on stat index
+            const get3DKeycapStyles = () => {
+              if (i === 0) {
+                return "border-accent border-b-[3px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_2.5px_6px_rgba(255,159,28,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)]";
+              }
+              if (i === 1) {
+                return "border-red-500 border-b-[3px] border-b-[#7f1d1d] bg-gradient-to-b from-red-500 to-[#b91c1c] text-white shadow-[0_2.5px_6px_rgba(239,68,68,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.3)]";
+              }
+              return "border-[#b4f481] border-b-[3px] border-b-[#3f6212] bg-gradient-to-b from-[#b4f481] to-[#65a30d] text-black shadow-[0_2.5px_6px_rgba(180,244,129,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)]";
+            };
+            
             return (
               <div
                 key={stat.id}
-                className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#14141a] to-[#0d0d10] p-5 shadow-[0_6px_0_0_#000,0_6px_0_1px_rgba(255,255,255,0.05),0_18px_34px_rgba(0,0,0,0.65),inset_0_1.5px_0_rgba(255,255,255,0.06)]"
+                className="rounded-2xl border border-white/10 bg-gradient-to-b from-[#14141a] to-[#0d0d10] p-5 shadow-[0_6px_0_0_#000,0_6px_0_1px_rgba(255,255,255,0.05),0_18px_34px_rgba(0,0,0,0.65),inset_0_1.5px_0_rgba(255,255,255,0.06)] hover:-translate-y-1.5 hover:shadow-[0_10px_0_0_#000,0_10px_0_1.5px_rgba(255,255,255,0.08),0_24px_44px_rgba(0,0,0,0.85)] active:translate-y-0.5 active:shadow-[0_2px_0_0_#000] transition-all duration-300"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="font-display text-3xl font-black tracking-tight text-white">{stat.metric}</p>
                     <p className="mt-1 font-display text-xs font-bold uppercase tracking-[0.12em] text-accent">{stat.label}</p>
                   </div>
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 shadow-[0_3px_0_0_#000]">
-                    <Icon className={`h-5 w-5 stroke-[2.5] ${stat.color}`} />
+                  {/* Solid 3D Relief Keycap Icon Stamp */}
+                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${get3DKeycapStyles()}`}>
+                    <Icon className="h-5.5 w-5.5 stroke-[2.5]" />
                   </div>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-text-secondary">{stat.desc}</p>
@@ -151,7 +163,7 @@ export default function Comparison() {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
             <article
               key={`${testimonial.id}-${index}`}
-              className="w-[315px] md:w-[365px] shrink-0 rounded-[1.65rem] border border-white/10 bg-gradient-to-b from-[#14141a] to-[#0d0d10] p-5 shadow-[0_7px_0_0_#000,0_7px_0_1px_rgba(255,255,255,0.05),0_18px_34px_rgba(0,0,0,0.65),inset_0_1.5px_0_rgba(255,255,255,0.06)]"
+              className="w-[315px] md:w-[365px] shrink-0 rounded-[1.65rem] border border-white/10 bg-gradient-to-b from-[#14141a] to-[#0d0d10] p-5 shadow-[0_7px_0_0_#000,0_7px_0_1px_rgba(255,255,255,0.05),0_18px_34px_rgba(0,0,0,0.65),inset_0_1.5px_0_rgba(255,255,255,0.06)] hover:-translate-y-1.5 hover:shadow-[0_12px_0_0_#000,0_12px_0_1px_rgba(255,255,255,0.08),0_24px_44px_rgba(0,0,0,0.85)] active:translate-y-0 active:shadow-[0_2px_0_0_#000] transition-all duration-300"
             >
               <div className="flex items-center justify-between gap-4 mb-4">
                 <div className="flex gap-1">
@@ -167,24 +179,34 @@ export default function Comparison() {
 
               <div className="mt-5 border-t border-white/6 pt-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-gradient-to-b from-[#2e2e3a] to-[#16161d] font-display text-sm font-black text-white">
+                  {/* Avatar styled as a round mechanical 3D keycap */}
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 border-b-[3px] border-b-black bg-gradient-to-b from-[#2e2e3a] to-[#16161d] font-display text-sm font-black text-white shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.08)]">
                     {testimonial.initial}
                   </div>
                   <div className="min-w-0">
                     <p className="font-display text-sm font-extrabold text-white">{testimonial.name}</p>
                     <p className="mt-0.5 flex items-center gap-1.5 text-xs text-text-secondary">
-                      <Wrench className="h-3 w-3 shrink-0 text-accent" />
+                      {/* Mini 3D keycap badge for wrench icon */}
+                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1px_2px_rgba(255,159,28,0.2),inset_0_0.5px_0.5px_rgba(255,255,255,0.4)] mr-0.5">
+                        <Wrench className="h-3 w-3 stroke-[2.5]" />
+                      </span>
                       <span className="truncate">{testimonial.profession}</span>
                     </p>
                   </div>
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2">
-                  <div className="rounded-xl border border-white/6 bg-black/20 p-2 text-xs text-text-secondary">
-                    <Users className="mb-1 h-3.5 w-3.5 text-white/40" />
+                  <div className="rounded-xl border border-white/6 bg-black/20 p-2 text-xs text-text-secondary flex items-center gap-2">
+                    {/* Mini 3D keycap badge for users icon */}
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-white/15 border-b-[2px] border-b-black bg-gradient-to-b from-[#2a2a35] to-[#141419] text-white shadow-[0_1.5px_3px_rgba(0,0,0,0.4),inset_0_0.75px_0.75px_rgba(255,255,255,0.08)]">
+                      <Users className="h-3.5 w-3.5 text-white/80" />
+                    </span>
                     {testimonial.effectif}
                   </div>
-                  <div className="rounded-xl border border-white/6 bg-black/20 p-2 text-xs text-text-secondary">
-                    <MapPin className="mb-1 h-3.5 w-3.5 text-white/40" />
+                  <div className="rounded-xl border border-white/6 bg-black/20 p-2 text-xs text-text-secondary flex items-center gap-2">
+                    {/* Mini 3D keycap badge for map-pin icon */}
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-white/15 border-b-[2px] border-b-black bg-gradient-to-b from-[#2a2a35] to-[#141419] text-white shadow-[0_1.5px_3px_rgba(0,0,0,0.4),inset_0_0.75px_0.75px_rgba(255,255,255,0.08)]">
+                      <MapPin className="h-3.5 w-3.5 text-white/80" />
+                    </span>
                     {testimonial.location}
                   </div>
                 </div>

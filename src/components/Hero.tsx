@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   ArrowRight,
+  Check,
   CheckCircle2,
   Clock,
   Euro,
@@ -145,8 +146,9 @@ function HeroComparisonMockup() {
                   className="rounded-2xl border border-white/8 bg-black/30 p-3 transition-all duration-200 shadow-[0_4px_0_0_#030303,0_4px_0_1px_rgba(255,255,255,0.04)] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#030303,0_6px_0_1px_rgba(255,255,255,0.07)]"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-red-400/20 bg-red-500/10 text-red-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)]">
-                      <Icon className="h-4 w-4 stroke-[2.5]" />
+                    {/* Solid 3D Relief Keycap Badge (Red) */}
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-red-500 border-b-[3px] border-b-[#7f1d1d] bg-gradient-to-b from-red-500 to-[#b91c1c] text-white shadow-[0_2.5px_6px_rgba(239,68,68,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                      <Icon className="h-4.5 w-4.5 stroke-[2.5]" />
                     </div>
                     <div>
                       <p className="font-display text-sm font-black text-white">{item.label}</p>
@@ -182,8 +184,9 @@ function HeroComparisonMockup() {
                   className="rounded-2xl border border-[#b4f481]/18 bg-[#b4f481]/[0.035] p-3 transition-all duration-200 shadow-[0_4px_0_0_#030303,0_4px_0_1px_rgba(180,244,129,0.1)] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#030303,0_6px_0_1px_rgba(180,244,129,0.16)]"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#b4f481]/30 bg-[#b4f481]/10 text-[#b4f481] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
-                      <Icon className="h-4 w-4 stroke-[2.5]" />
+                    {/* Solid 3D Relief Keycap Badge (Atelier Green) */}
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#b4f481] border-b-[3px] border-b-[#3f6212] bg-gradient-to-b from-[#b4f481] to-[#65a30d] text-black shadow-[0_2.5px_6px_rgba(180,244,129,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)]">
+                      <Icon className="h-4.5 w-4.5 stroke-[2.5]" />
                     </div>
                     <div>
                       <p className="font-display text-sm font-black text-white">{item.label}</p>
@@ -252,7 +255,8 @@ export default function Hero() {
                 className="group flex w-full flex-1 items-center justify-center gap-4 rounded-xl border border-white border-b-[3px] border-b-neutral-300 bg-white px-4 py-3 pr-2 font-display text-sm font-extrabold text-bg-base shadow-md transition-all duration-100 hover:bg-neutral-50 active:translate-y-[3px] active:border-b-[1px] md:gap-6 md:border-b-[4px] md:px-6 md:text-[15px]"
               >
                 <span>Récupérer mes 15h</span>
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent text-bg-base md:h-9 md:w-9">
+                {/* 3D Tactile Keycap Arrow Badge matching brand's design direction */}
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-b from-accent to-[#d97706] text-bg-base border border-accent border-b-[3px] border-b-[#92400e] shadow-[0_2.5px_6px_rgba(255,159,28,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)] transition-all md:h-9 md:w-9">
                   <ArrowRight className="h-4 w-4 stroke-[2.5] md:h-5 md:w-5" />
                 </div>
               </button>
@@ -262,7 +266,8 @@ export default function Hero() {
                 id="cta-demo-secondary"
                 className="group flex w-full flex-1 items-center justify-center gap-3 rounded-xl border border-white/10 border-b-[3px] border-b-white/20 bg-white/5 px-4 py-3.5 font-display text-[13px] font-extrabold text-white transition-all duration-100 hover:bg-white/10 active:translate-y-[3px] active:border-b-[1px] md:border-b-[4px] md:px-6 md:text-[14px]"
               >
-                <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#25D366]/20 text-[#25D366]">
+                {/* 3D Tactile WhatsApp Stamp Badge */}
+                <div className="flex h-7 w-7.5 items-center justify-center rounded-lg bg-gradient-to-b from-[#25D366] to-[#128C7E] text-white border border-[#25D366] border-b-[3px] border-b-[#075E54] shadow-[0_2.5px_6px_rgba(37,211,102,0.3),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)] shrink-0">
                   <WhatsAppIcon />
                 </div>
                 <span>Parler à Samuel</span>
@@ -271,8 +276,11 @@ export default function Hero() {
 
             <div className="mt-10 grid w-full max-w-xl grid-cols-2 gap-x-3 gap-y-3.5 border-t border-white/5 pt-6 font-display text-[10px] font-bold uppercase tracking-[0.06em] text-text-secondary md:mt-12 md:gap-x-6 md:text-[11px]">
               {["Jusqu'à 15h gagnées / sem.", "Factures relancées seules", "Marge chantier visible", "Conformité sans stress"].map((proof) => (
-                <div key={proof} className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-accent stroke-[2.5]" />
+                <div key={proof} className="flex items-center gap-2.5">
+                  {/* 3D Tactile Check Stamp Badge (Atelier Green) */}
+                  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-gradient-to-b from-[#b4f481] to-[#65a30d] text-black border border-[#b4f481] border-b-[2.5px] border-b-[#3f6212] shadow-[0_1.5px_4px_rgba(180,244,129,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)]">
+                    <Check className="h-3 w-3 stroke-[3]" />
+                  </div>
                   <span>{proof}</span>
                 </div>
               ))}

@@ -126,10 +126,10 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
                   <button
                     key={tier.id}
                     onClick={() => selectTier(tier.id)}
-                    className={`group text-left rounded-[1.5rem] border p-5 transition-all duration-200 shadow-[0_6px_0_0_#000,0_6px_0_1px_rgba(255,255,255,0.05),0_18px_34px_rgba(0,0,0,0.65),inset_0_1.5px_0_rgba(255,255,255,0.06)] ${
+                    className={`group text-left rounded-[1.5rem] border p-5 transition-all duration-300 cursor-pointer ${
                       isSelected
-                        ? "bg-gradient-to-b from-[#1b1d28] to-[#12131a] border-accent/60 ring-1 ring-accent/30"
-                        : "bg-gradient-to-b from-[#12131a] to-[#0a0a0f] border-white/10 hover:border-white/20"
+                        ? "bg-gradient-to-b from-[#1c1f2e] to-[#111219] border-accent border-b-[5px] border-b-[#92400e] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(255,159,28,0.15)] ring-1 ring-accent/30 active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
+                        : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
@@ -137,7 +137,12 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
                         <p className="font-display text-xl font-black text-white">{tier.name}</p>
                         <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-accent">{tier.bestFor}</p>
                       </div>
-                      <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border ${isSelected ? "border-accent bg-accent text-black" : "border-white/10 bg-black/30 text-transparent"}`}>
+                      {/* 3D Tactile Keycap Checkbox Stamp */}
+                      <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
+                        isSelected 
+                          ? "border-accent border-b-[3px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_2.5px_5px_rgba(255,159,28,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]" 
+                          : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[3px] border-b-black/60 shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.05)] text-transparent"
+                      }`}>
                         <Check className="h-4 w-4 stroke-[3]" />
                       </span>
                     </div>
@@ -158,8 +163,15 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
 
                     <ul className="mt-4 space-y-2.5">
                       {tier.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2 text-xs leading-relaxed text-white/82">
-                          <CheckCircle2 className={`mt-0.5 h-3.5 w-3.5 shrink-0 stroke-[2.8] ${isSelected ? "text-accent" : "text-white/28"}`} />
+                        <li key={feature} className="flex items-start gap-2.5 text-xs leading-relaxed text-white/82">
+                          {/* 3D Tactile check stamp badge matching the other checklists */}
+                          <div className={`flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
+                            isSelected 
+                              ? "border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1.5px_3px_rgba(255,159,28,0.2),inset_0_0.75px_0.75px_rgba(255,255,255,0.4)]" 
+                              : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[2px] border-b-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.5)] text-transparent"
+                          }`}>
+                            <Check className="h-3 w-3 stroke-[3]" />
+                          </div>
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -171,23 +183,44 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
 
             <button
               onClick={() => selectTier("none")}
-              className={`mt-4 w-full rounded-[1.35rem] border p-4 md:p-5 text-left transition-all duration-200 shadow-[0_6px_0_0_#000,0_6px_0_1px_rgba(255,255,255,0.05),0_18px_34px_rgba(0,0,0,0.55),inset_0_1.5px_0_rgba(255,255,255,0.06)] ${
+              className={`mt-4 w-full rounded-[1.35rem] border p-4 md:p-5 text-left transition-all duration-300 cursor-pointer ${
                 selectedTier === "none"
-                  ? "bg-gradient-to-b from-[#1b1d28] to-[#12131a] border-accent/60 ring-1 ring-accent/30"
-                  : "bg-gradient-to-b from-[#12131a] to-[#0a0a0f] border-white/10 hover:border-white/20"
+                  ? "bg-gradient-to-b from-[#1c1f2e] to-[#111219] border-accent border-b-[5px] border-b-[#92400e] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(255,159,28,0.15)] ring-1 ring-accent/30 active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
+                  : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
               }`}
             >
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div>
+                <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border ${selectedTier === "none" ? "border-accent bg-accent text-black" : "border-white/10 bg-black/30 text-transparent"}`}>
+                    {/* 3D Tactile Checkbox Stamp */}
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
+                      selectedTier === "none" 
+                        ? "border-accent border-b-[3px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_2.5px_5px_rgba(255,159,28,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]" 
+                        : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[3px] border-b-black/60 shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.05)] text-transparent"
+                    }`}>
                       <Check className="h-4 w-4 stroke-[3]" />
                     </span>
                     <p className="font-display text-lg md:text-xl font-black text-white">{noAiTier.name}</p>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-text-secondary">{noAiTier.desc}</p>
+                  
+                  {/* Features list for No-AI tier with 3D checkmarks */}
+                  <ul className="mt-3.5 flex flex-wrap gap-x-4 gap-y-2">
+                    {noAiTier.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-xs leading-relaxed text-white/82">
+                        <div className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
+                          selectedTier === "none" 
+                            ? "border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1.5px_3px_rgba(255,159,28,0.2),inset_0_0.75px_0.75px_rgba(255,255,255,0.4)]" 
+                            : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[2px] border-b-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.5)] text-transparent"
+                        }`}>
+                          <Check className="h-2.5 w-2.5 stroke-[3]" />
+                        </div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="shrink-0 text-left md:text-right">
+                <div className="shrink-0 text-left md:text-right mt-3 md:mt-0">
                   <p className="font-display text-3xl font-black text-white">0€</p>
                   <p className="text-xs text-text-secondary">HT / mois</p>
                 </div>
@@ -213,14 +246,19 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
 
               <button
                 onClick={() => setHasEinvoicing((value) => !value)}
-                className={`w-full rounded-2xl border p-5 text-left transition-all duration-200 ${
+                className={`w-full rounded-2xl border p-5 text-left transition-all duration-300 cursor-pointer ${
                   hasEinvoicing
-                    ? "bg-gradient-to-b from-[#211f18] to-[#14120a] border-amber-500/50 shadow-[0_8px_30px_rgba(245,158,11,0.12),inset_0_2px_4px_rgba(255,255,255,0.1)]"
-                    : "bg-gradient-to-b from-[#12131a] to-[#0a0a0f] border-white/10 hover:border-white/20"
+                    ? "bg-gradient-to-b from-[#252219] to-[#15130b] border-amber-500 border-b-[5px] border-b-[#b45309] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(245,158,11,0.15)] active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
+                    : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
                 }`}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] ${hasEinvoicing ? "bg-amber-500 border-amber-500 text-black" : "bg-black/40 border-white/10 text-transparent"}`}>
+                  {/* 3D Tactile Keycap Checkbox Stamp (Amber) */}
+                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
+                    hasEinvoicing 
+                      ? "bg-gradient-to-b from-amber-400 to-[#d97706] text-black border-amber-400 border-b-[3.5px] border-b-[#92400e] shadow-[0_3px_6px_rgba(245,158,11,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)]" 
+                      : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[3px] border-b-black/60 shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.05)] text-transparent"
+                  }`}>
                     <Check className="h-5 w-5 stroke-[3]" />
                   </div>
                   <div className="flex-1">

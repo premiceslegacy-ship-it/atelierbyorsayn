@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProblemSection from './components/ProblemSection';
 import HowItWorks from './components/HowItWorks';
 import Features from './components/Features';
 import Comparison from './components/Comparison';
@@ -33,7 +32,6 @@ function LandingPage() {
       <Navbar />
       <main className="w-full">
         <Hero />
-        <ProblemSection />
         <HowItWorks />
         <Features />
         <Comparison />

@@ -10,8 +10,8 @@ export default function HowItWorks() {
   const steps = [
     {
       num: "01.",
-      title: "On installe Atelier sur votre infrastructure en 48h.",
-      desc: "Un appel de démarrage, on met en place votre environnement. Vous recevez votre accès, vous prenez la main.",
+      title: "On installe votre environnement en 48h.",
+      desc: "Un appel, vos accès, vos bases métier. Vous démarrez avec un outil prêt à servir.",
       glowColor: "rgba(255, 159, 28, 0.15)",
       ledGlowColor: "rgba(255, 159, 28, 0.9)",
       badgeGlow: "rgba(255, 159, 28, 0.2)",
@@ -21,8 +21,8 @@ export default function HowItWorks() {
     },
     {
       num: "02.",
-      title: "Vous gérez depuis n'importe quel appareil.",
-      desc: "Devis, factures, chantiers, équipes, pointage, dépenses. Tout au même endroit, accessible depuis le terrain.",
+      title: "Vous pilotez depuis le terrain.",
+      desc: "Devis, factures, chantiers, équipes et dépenses restent au même endroit, sur téléphone ou ordinateur.",
       glowColor: "rgba(99, 102, 241, 0.15)",
       ledGlowColor: "rgba(99, 102, 241, 0.9)",
       badgeGlow: "rgba(99, 102, 241, 0.2)",
@@ -32,8 +32,8 @@ export default function HowItWorks() {
     },
     {
       num: "03.",
-      title: "Le système gère le reste automatiquement.",
-      desc: "Les relances partent seules selon vos échéances. Pour le reste, l'assistant intégré gère vos marges et plannings sur WhatsApp.",
+      title: "Atelier automatise ce qui vous ralentit.",
+      desc: "Relances, marges, suivis et alertes se mettent à jour pour vous rendre du temps chaque semaine.",
       glowColor: "rgba(16, 185, 129, 0.15)",
       ledGlowColor: "rgba(16, 185, 129, 0.9)",
       badgeGlow: "rgba(16, 185, 129, 0.25)",
@@ -134,10 +134,10 @@ export default function HowItWorks() {
               Comment ça marche
             </span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] mb-5">
-              Un logiciel de gestion pour artisans BTP, opérationnel en 48h
+              48h pour arrêter de courir après l'administratif
             </h2>
             <p className="font-body text-base sm:text-lg text-text-secondary leading-relaxed">
-              Pas de formation, pas d'ordinateur obligatoire. On s'occupe de tout.
+              Vous gardez vos habitudes. Atelier remet vos devis, factures et marges dans le bon ordre.
             </p>
           </div>
 

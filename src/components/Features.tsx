@@ -114,101 +114,86 @@ export default function Features() {
     {
       id: "devis",
       label: "Devis",
-      h2: "Créer un devis de chantier en 5 minutes sur votre téléphone",
+      h2: "Envoyez le devis avant de quitter le client",
       body: (
         <>
-          Votre catalogue se construit à votre rythme dans l'application avec vos tarifs matériaux, vos prestations habituelles et votre tarification au mètre carré ou au mètre linéaire selon votre métier. Une fois enregistré, vous sélectionnez la tâche, vous renseignez les valeurs, et le calcul se fait automatiquement pour votre <span className="text-white font-medium">devis au mètre carré</span>. Vous envoyez le document via votre <span className="text-white font-medium">devis chantier téléphone</span> directement depuis le terrain, avant même d'avoir démarré votre camion.
-          <span className="hidden md:inline"><br /><br />
-          Un devis envoyé dans l'heure qui suit la visite client multiplie vos chances de le voir signé. Atelier se comporte comme le meilleur <span className="text-white font-medium">logiciel devis artisan</span> de votre quotidien pour vous donner cet avantage compétitif sans effort administratif.</span>
+          Vos prestations types et vos tarifs sont déjà prêts. Vous entrez les mesures, Atelier calcule, génère le devis et vous permet de l'envoyer pendant que le client a encore le chantier en tête.
         </>
       ),
       bullets: [
-        "Dictée vocale intelligente ou sélection de vos prestations types depuis le chantier",
-        "Tarification modulaire au m², au ml ou au forfait selon votre métier",
-        "Signature électronique intégrée directement accessible pour vos clients"
+        "Chiffrage guidé au m², au ml ou au forfait",
+        "Catalogue métier réutilisable à chaque devis",
+        "Signature électronique accessible au client"
       ]
     },
     {
       id: "relances",
       label: "Relances & trésorerie",
-      h2: "Relances automatiques de vos factures impayées",
+      h2: "Relancez sans y penser, encaissez plus vite",
       body: (
         <>
-          Savoir <span className="text-white font-medium">comment relancer un client qui ne paie pas</span> est un combat quotidien pour les artisans. Chaque matin, Atelier identifie vos factures en retard et vos devis restés sans réponse. Grâce au module de <span className="text-white font-medium">relance facture impayée automatique</span>, des relances cordiales et professionnelles sont rédigées et expédiées de manière autonome. Vous gagnez du temps sans passer les appels gênants.
-          <span className="hidden md:inline"><br /><br />
-          En France, une facture sur quatre est réglée en retard, avec un délai moyen dépassant 46 jours. Pour un artisan réalisant 500 000 euros de chiffre d'affaires, cela représente un poids considérable sur la trésorerie. Notre outil apporte un <span className="text-white font-medium">suivi factures impayées artisan</span> hautement performant.</span>
+          Atelier repère les factures en retard et les devis sans réponse. Les rappels partent avec un ton propre, sans vous obliger à passer l'appel gênant entre deux chantiers.
         </>
       ),
       bullets: [
-        "Relances intelligentes par e-mail adaptées à l'échéance et de ton respectueux",
-        "Tableau de bord de trésorerie simplifié : payé, en attente et restant dû",
-        "Gestion automatique des acomptes initiaux, des états d'avancement et du solde"
+        "Factures en retard visibles immédiatement",
+        "Relances professionnelles par email",
+        "Acomptes, situations et solde suivis au même endroit"
       ]
     },
     {
       id: "rentabilite",
       label: "Chantiers & rentabilité",
-      h2: "Suivre la rentabilité réelle de vos chantiers en temps réel",
+      h2: "Voyez la marge avant la mauvaise surprise",
       body: (
         <>
-          Atelier consolide pour chaque projet vos heures pointées, vos achats de matériaux, vos sous-traitants et l'ensemble des dépenses annexes. Avec un authentique <span className="text-white font-medium">suivi coûts chantier artisan</span>, vous pilotez votre <span className="text-white font-medium">marge chantier réelle main d'oeuvre matériaux</span> en continu, sans mauvaise surprise finale.
-          <span className="hidden md:inline"><br /><br />
-          Si un projet commence à s'éloigner du budget prévisionnel fixé, une alerte intelligente vous prévient immédiatement. Réaliser le <span className="text-white font-medium">calcul rentabilité chantier BTP</span> n'a jamais été aussi simple et accessible.</span>
+          Heures, achats, sous-traitance et dépenses remontent dans le chantier. Vous savez si le projet tient sa marge pendant qu'il est encore possible d'agir.
         </>
       ),
-      h3: "Le calcul de marge que votre comptable ne peut pas faire en cours de route",
-      body2: "Votre expert-comptable dresse le bilan de l'année passée mais Atelier vous donne la vision en temps réel de votre rentabilité, chaque jour, directement sur vos chantiers.",
+      h3: "La marge utile se regarde pendant le chantier",
+      body2: "Votre comptable constate l'année passée. Atelier vous montre ce qui se passe maintenant.",
       bullets: [
-        "Marge brute et nette actualisées après déduction de la main-d'œuvre et de la matière",
-        "Alerte de sécurité visuelle automatique en cas de déviation budgétaire",
-        "Gestion des facturations à l'avancement avec recalcul automatique du restant dû"
+        "Marge actualisée avec heures et matériaux",
+        "Alerte si le budget commence à déraper",
+        "Facturation à l'avancement suivie proprement"
       ]
     },
     {
       id: "pointage",
       label: "Équipes & pointage",
-      h2: "Vos ouvriers pointent leurs heures sans installer d'application",
+      h2: "Vos équipes pointent sans nouvelle application",
       body: (
         <>
-          Chaque compagnon accède directement à son espace via un message ou un lien sécurisé unique envoyé par SMS. Il peut consulter son <span className="text-white font-medium">planning équipe artisan</span>, découvrir l'adresse de ses chantiers, et assurer son <span className="text-white font-medium">pointage heures chantier téléphone</span> en deux clics, sans mot de passe à retenir.
-          <span className="hidden md:inline"><br /><br />
-          Vous n'avez plus à courir après les justificatifs papier ou les messages le vendredi soir. Le service de <span className="text-white font-medium">suivi heures ouvriers BTP</span> s'organise seul et alimente instantanément vos indicateurs mensuels.</span>
+          Chaque compagnon accède à son planning et pointe ses heures depuis un lien sécurisé. Vous arrêtez de reconstituer la semaine le vendredi soir.
         </>
       ),
       bullets: [
-        "Accès instantané par mobile sans mot de passe ni téléchargement requis",
-        "Pointage horaire détaillé par chantier et par tâche spécifique en cours",
-        "Export et centralisation des grilles d'heures mensuelles en un clic pour la paie"
+        "Accès mobile simple par lien sécurisé",
+        "Heures rattachées au bon chantier",
+        "Exports prêts pour la paie"
       ]
     },
     {
       id: "facturation2026",
       label: "Facturation 2026",
-      h2: "Facturation électronique : Atelier est prêt pour la réforme de 2026",
+      h2: "Soyez prêt pour Factur-X sans vous perdre dans la réforme",
       body: (
         <>
-          À compter du 1er septembre 2026, l'obligation d'accepter la réception de factures électroniques structurées concernera absolument toutes les structures, y compris les petits entrepreneurs et artisans du bâtiment.
-          L'émission obligatoire entrera ensuite en vigueur. Un simple fichier PDF au format d'origine perdra sa conformité légale.
-          <span className="hidden md:inline"><br /><br />
-          Notre <span className="text-white font-medium">logiciel facture électronique BTP</span> produit nativement vos factures selon le standard international PDF/A-3 avec métadonnées Factur-X intégrées. Vous êtes assuré de respecter la législation sur la <span className="text-white font-medium">facturation électronique artisan 2026</span> et la conformité de la <span className="text-white font-medium">facturation électronique obligatoire TPE</span> en toute sérénité.</span>
+          Atelier génère vos factures au format Factur-X. Vous gardez un PDF lisible pour le client et les données structurées nécessaires pour avancer vers la conformité.
         </>
       ),
-      h3: "Qu'est-ce que le format réglementaire Factur-X ?",
-      body2: "La norme hybride Factur-X associe un rendu PDF clair et lisible par vos clients, doublé d'un document XML structuré invisible mais nécessaire aux systèmes de l'administration fiscale. C'est le précieux sésame légal que l'État s'apprête à exiger pour le standard Factur-X artisan obligatoire. Atelier s'en charge en toute transparence.",
+      h3: "Une conformité lisible",
+      body2: "Factur-X combine un PDF clair et un fichier XML structuré. Atelier s'occupe de cette partie technique.",
       bullets: []
     },
     {
       id: "agent",
       label: "Assistant WhatsApp",
       isComingSoon: true,
-      h2: "Mathieu, votre assistant de terrain intelligent par WhatsApp",
+      h2: "Demandez à Atelier comme à un assistant",
       body: (
         <>
-          Atelier intègre Mathieu, un interlocuteur virtuel que vous contactez directement par message à n'importe quel moment de la journée. Vous communiquez de façon tout à fait naturelle en français, comme avec un secrétaire de confiance.
-          <span className="hidden md:inline"><br /><br />
-          Il accède instantanément à vos prestations types, vos chantiers du jour, l'état de vos règlements ou de vos factures de situation. Dictez-lui un devis de pliage ou de bardage à la fin de vos métrés, confirmez d'un mot et le devis est expédié.
-          <br /><br />
-          Pas de menu compliqué, pas de formulaire à remplir. Un simple message sur votre messagerie habituelle suffit.</span>
+          L'assistant WhatsApp permet de piloter des actions simples avec un message : pointage, devis, facture de solde, relance ou état d'un chantier.
         </>
       ),
       chatExample: [
@@ -682,7 +667,7 @@ export default function Features() {
           <span>Divisez votre temps administratif par 2</span>
         </button>
         <p className="mt-5 text-text-secondary text-[12px] md:text-[13px] font-body text-center">
-          Configurez votre environnement personnalisé en 2 minutes.
+          Voyez l'offre qui vous fait gagner du temps dès cette semaine.
         </p>
       </div>
 

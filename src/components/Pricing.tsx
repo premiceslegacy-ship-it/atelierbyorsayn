@@ -1,7 +1,11 @@
 import { useState, useRef } from "react";
 import { Check, MessageCircle, FileText, Cpu, CheckCircle2, HelpCircle, ChevronRight, ChevronLeft } from "lucide-react";
 
-export default function Pricing() {
+interface PricingProps {
+  metierContext?: string;
+}
+
+export default function Pricing({ metierContext }: PricingProps = {}) {
   const [selectedTier, setSelectedTier] = useState<"none" | "starter" | "pro" | "expert">("none");
   const [hasEinvoicing, setHasEinvoicing] = useState<boolean>(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -153,7 +157,8 @@ export default function Pricing() {
   const selectedTierData = mrrTiers.find(t => t.id === selectedTier)!;
 
   const generateWhatsAppMessage = () => {
-    let msg = `Bonjour Samuel, je souhaite configurer mon environnement Atelier :\n\n`;
+    const context = metierContext ? ` pour mon activité de ${metierContext}` : "";
+    let msg = `Bonjour Samuel, je souhaite configurer mon environnement Atelier${context} :\n\n`;
     msg += `- Configuration initiale : ${setupName} (${setupPrice}€ HT)\n`;
     if (isMrr) {
       msg += `- Abonnement mensuel : Pack ${selectedTierData.name} (${selectedTierData.price}€ HT/mois)\n`;

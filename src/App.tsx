@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import MentionsLegales from './pages/MentionsLegales';
 import Confidentialite from './pages/Confidentialite';
 import CGV from './pages/CGV';
+import PageMetier from './components/PageMetier';
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation();
@@ -53,6 +54,13 @@ export default function App() {
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/confidentialite" element={<Confidentialite />} />
         <Route path="/cgv" element={<CGV />} />
+        <Route path="/electricien" element={<PageMetier slug="electricien" />} />
+        <Route path="/plombier" element={<PageMetier slug="plombier" />} />
+        <Route path="/menuisier" element={<PageMetier slug="menuisier" />} />
+        <Route path="/peintre" element={<PageMetier slug="peintre" />} />
+        <Route path="/tolier" element={<PageMetier slug="tolier" />} />
+        <Route path="/paysagiste" element={<PageMetier slug="paysagiste" />} />
+        <Route path="/macon" element={<PageMetier slug="macon" />} />
       </Routes>
     </BrowserRouter>
   );

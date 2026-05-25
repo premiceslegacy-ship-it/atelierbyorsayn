@@ -15,7 +15,7 @@ export default function FAQ() {
     },
     {
       q: "Combien de temps pour être opérationnel ?",
-      a: "48 heures en moyenne. On démarre par un appel de setup, on installe votre environnement. Vous vous connectez et vous prenez la main.",
+      a: "48 heures en moyenne. On démarre par un appel de setup, on configure votre instance. Vous vous connectez et vous prenez la main.",
     },
     {
       q: "La facturation électronique est-elle obligatoire pour les artisans en 2026 ?",

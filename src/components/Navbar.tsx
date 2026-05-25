@@ -3,11 +3,16 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
+  const scrollTo = (id: string) => {
+    setIsMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav className="w-full max-w-7xl mx-auto flex items-center justify-between py-5 px-6 md:px-12 bg-transparent relative z-50">
       {/* Brand Logo with a clean custom minimal icon */}
-      <a href="#hero" className="flex items-center gap-2.5 md:gap-3 select-none">
+      <a href="/" className="flex items-center gap-2.5 md:gap-3 select-none">
         <img
           src="/logo-atelier-blanc.png"
           alt="Atelier — logiciel de gestion artisans BTP"
@@ -17,34 +22,30 @@ export default function Navbar() {
 
       {/* Navigation Links centered */}
       <div className={`${isMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row absolute lg:relative top-full left-0 lg:top-auto lg:left-auto w-full lg:w-auto bg-[#0a0a0f]/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-5 lg:p-0 border-b border-white/10 lg:border-none items-center gap-6 lg:gap-10 shadow-2xl lg:shadow-none`}>
-        <a 
-          href="#fonctionnement" 
-          onClick={() => setIsMenuOpen(false)}
-          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide"
+        <button
+          onClick={() => scrollTo("fonctionnement")}
+          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide cursor-pointer"
         >
           Fonctionnement
-        </a>
-        <a 
-          href="#change" 
-          onClick={() => setIsMenuOpen(false)}
-          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide"
+        </button>
+        <button
+          onClick={() => scrollTo("change")}
+          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide cursor-pointer"
         >
           Ce que ça change
-        </a>
-        <a 
-          href="#tarifs" 
-          onClick={() => setIsMenuOpen(false)}
-          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide"
+        </button>
+        <button
+          onClick={() => scrollTo("tarifs")}
+          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide cursor-pointer"
         >
           Tarifs
-        </a>
-        <a 
-          href="#faq" 
-          onClick={() => setIsMenuOpen(false)}
-          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide"
+        </button>
+        <button
+          onClick={() => scrollTo("faq")}
+          className="font-body text-[14px] font-medium text-text-secondary hover:text-white transition-colors duration-200 tracking-wide cursor-pointer"
         >
           FAQ
-        </a>
+        </button>
         <button 
           onClick={() => {
             setIsMenuOpen(false);

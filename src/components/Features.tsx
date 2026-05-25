@@ -229,11 +229,12 @@ export default function Features() {
             
             {/* Header of Devis panel */}
             <div className="flex items-center justify-between px-1 mb-1">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-accent/20 flex items-center justify-center text-accent border border-accent/30 shadow-[inset_0_1px_2px_rgba(255,255,255,0.1)]">
-                  <FileText className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-2.5">
+                {/* 3D Tactile Keycap Icon Badge matching the brand's relief design direction */}
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-b from-accent to-[#d97706] flex items-center justify-center text-black border border-accent border-b-[3px] border-b-[#92400e] shadow-[0_2.5px_6px_rgba(245,158,11,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)] relative">
+                  <FileText className="w-4 h-4 stroke-[2.5]" style={{ filter: "drop-shadow(0px 1px 0px rgba(255,255,255,0.2))" }} />
                 </div>
-                <span className="text-xs font-display font-bold text-accent tracking-wider uppercase">Nouveau devis</span>
+                <span className="text-xs font-display font-extrabold text-accent tracking-wider uppercase drop-shadow-[0_0_10px_rgba(255,159,28,0.25)]">Nouveau devis</span>
               </div>
               <span className="text-[10px] font-sans text-white/40">DEV-2026-042</span>
             </div>

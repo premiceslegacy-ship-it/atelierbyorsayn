@@ -7,13 +7,13 @@ export default function Navbar() {
   return (
     <nav className="w-full max-w-7xl mx-auto flex items-center justify-between py-5 px-6 md:px-12 bg-transparent relative z-50">
       {/* Brand Logo with a clean custom minimal icon */}
-      <div className="flex items-center gap-2.5 md:gap-3 select-none">
+      <a href="#hero" className="flex items-center gap-2.5 md:gap-3 select-none">
         <img
           src="/logo-atelier-blanc.png"
           alt="Atelier — logiciel de gestion artisans BTP"
           className="h-6 w-auto"
         />
-      </div>
+      </a>
 
       {/* Navigation Links centered */}
       <div className={`${isMenuOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row absolute lg:relative top-full left-0 lg:top-auto lg:left-auto w-full lg:w-auto bg-[#0a0a0f]/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-5 lg:p-0 border-b border-white/10 lg:border-none items-center gap-6 lg:gap-10 shadow-2xl lg:shadow-none`}>
@@ -48,7 +48,7 @@ export default function Navbar() {
         <button 
           onClick={() => {
             setIsMenuOpen(false);
-            window.open("https://wa.me/33651664068?text=Bonjour%20Samuel", "_blank");
+            window.open("https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20j%27ai%20vu%20Atelier%20et%20je%20voudrais%20en%20savoir%20plus%20pour%20mon%20activit%C3%A9.", "_blank");
           }}
           className="lg:hidden mt-2 bg-white text-bg-base font-display text-[14px] font-extrabold tracking-wide px-6 py-2.5 rounded-xl border border-white border-b-[4px] border-b-neutral-300 hover:bg-neutral-50 active:translate-y-[4px] active:border-b-0 transition-all duration-100 cursor-pointer shadow-md w-full max-w-[280px]"
         >
@@ -59,7 +59,7 @@ export default function Navbar() {
       {/* Right side Parler à Samuel action button styled in tactical keyboard mechanical key-press design */}
       <div className="flex items-center gap-3">
         <button 
-          onClick={() => window.open("https://wa.me/33651664068?text=Bonjour%20Samuel", "_blank")}
+          onClick={() => window.open("https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20j%27ai%20vu%20Atelier%20et%20je%20voudrais%20en%20savoir%20plus%20pour%20mon%20activit%C3%A9.", "_blank")}
           id="btn-nav-demo"
           className="hidden lg:block bg-white text-bg-base font-display text-[11px] md:text-sm font-extrabold tracking-wide px-4 py-2 md:px-6 md:py-2.5 rounded-xl border border-white border-b-[3px] md:border-b-[4px] border-b-neutral-300 hover:bg-neutral-50 active:translate-y-[4px] active:border-b-0 transition-all duration-100 cursor-pointer shadow-md whitespace-nowrap"
         >

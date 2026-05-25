@@ -19,7 +19,14 @@ export default function Footer() {
             </p>
           </div>
           <p className="mt-4 text-[11px] font-display font-medium text-text-secondary">
-            © 2026 Orsayn
+            © <a
+              href="https://orsayn.fr"
+              target="_blank"
+              rel="noopener"
+              className="text-text-secondary hover:text-white transition-colors"
+            >
+              Atelier by Orsayn
+            </a>
           </p>
         </div>
 

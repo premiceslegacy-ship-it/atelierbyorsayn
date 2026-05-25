@@ -2,21 +2,11 @@ import { useState, useRef } from "react";
 import { Check, MessageCircle, FileText, Cpu, CheckCircle2, HelpCircle, ChevronRight, ChevronLeft } from "lucide-react";
 
 export default function Pricing() {
-  const [selectedTier, setSelectedTier] = useState<"none" | "starter" | "pro" | "expert">("expert");
+  const [selectedTier, setSelectedTier] = useState<"none" | "starter" | "pro" | "expert">("none");
   const [hasEinvoicing, setHasEinvoicing] = useState<boolean>(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
-  };
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const isProgrammaticScroll = useRef(false);
 
   const mrrTiers = [
     {
@@ -64,6 +54,65 @@ export default function Pricing() {
       ]
     }
   ];
+
+  const activeIndex = mrrTiers.findIndex(t => t.id === selectedTier);
+
+  const getNearestMobileStepIndex = () => {
+    const el = scrollRef.current;
+    if (!el) return activeIndex;
+
+    const cards: HTMLElement[] = [];
+    el.querySelectorAll(':scope > div').forEach((card) => {
+      if (card instanceof HTMLElement) cards.push(card);
+    });
+    const containerRect = el.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardDistance = Math.abs(cardRect.left + cardRect.width / 2 - containerCenter);
+      if (cardDistance < nearestDistance) {
+        nearestIndex = index;
+        nearestDistance = cardDistance;
+      }
+    });
+
+    return nearestIndex;
+  };
+
+  const handleScroll = () => {
+    if (isProgrammaticScroll.current) return;
+    if (!scrollRef.current || globalThis.innerWidth >= 1024) return;
+    const newIndex = getNearestMobileStepIndex();
+    if (newIndex !== activeIndex) {
+      setSelectedTier(mrrTiers[newIndex].id as any);
+    }
+  };
+
+  const jumpTo = (index: number) => {
+    if (index < 0 || index >= mrrTiers.length) return;
+    setSelectedTier(mrrTiers[index].id as any);
+    if (!scrollRef.current || globalThis.innerWidth >= 1024) return;
+    const el = scrollRef.current;
+    const targetCard = el.querySelectorAll<HTMLElement>(':scope > div')[index];
+    if (!targetCard) return;
+    isProgrammaticScroll.current = true;
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    setTimeout(() => { isProgrammaticScroll.current = false; }, 600);
+  };
+
+  const handlePrev = () => {
+    const prevIndex = (activeIndex - 1 + mrrTiers.length) % mrrTiers.length;
+    jumpTo(prevIndex);
+  };
+
+  const handleNext = () => {
+    const nextIndex = (activeIndex + 1) % mrrTiers.length;
+    jumpTo(nextIndex);
+  };
 
   // Pricing calculation based on user requested pricing matrix:
   // Setup (one-shot, livraison complète en production):
@@ -152,8 +201,41 @@ export default function Pricing() {
         <div className="space-y-8 md:space-y-12">
           
           {/* STEP 1: AI Subscription selection */}
-          <div className="bg-white/[0.01] border border-white/10 p-5 md:p-8 rounded-[2rem] shadow-[inset_0_0_20px_rgba(255,255,255,0.01)] backdrop-blur-md">
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4 mb-8 text-center md:text-left">
+          <div className="bg-white/[0.01] border border-white/10 p-5 md:p-8 rounded-[2rem] shadow-[inset_0_0_20px_rgba(255,255,255,0.01)] backdrop-blur-md overflow-hidden relative">
+            
+            {/* Custom CSS variables and masking for responsive pricing carousel */}
+            <style>{`
+              :root {
+                --pricing-card-width: 280px;
+                --pricing-gap: 16px;
+              }
+              @media (min-width: 640px) {
+                :root {
+                  --pricing-card-width: 320px;
+                  --pricing-gap: 20px;
+                }
+              }
+              @media (min-width: 1024px) {
+                :root {
+                  --pricing-card-width: 350px;
+                  --pricing-gap: 24px;
+                }
+              }
+              .pricing-carousel-mask-desktop {
+                overflow: hidden;
+                width: 100%;
+                mask-image: linear-gradient(to right, transparent 0%, black 120px, black calc(100% - 120px), transparent 100%);
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 120px, black calc(100% - 120px), transparent 100%);
+              }
+              .pricing-carousel-mask-mobile {
+                overflow-x: auto;
+                width: 100%;
+                mask-image: linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
+              }
+            `}</style>
+
+            <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-4 mb-8 text-center md:text-left">
               <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
                 <div className="w-10 h-10 md:w-11 md:h-11 shrink-0 rounded-xl bg-accent flex items-center justify-center text-black font-display font-black text-lg border border-accent border-b-[4px] border-b-[#15803d] shadow-[0_4px_12px_rgba(74,222,128,0.4)]">
                   1
@@ -168,36 +250,75 @@ export default function Pricing() {
                 </div>
               </div>
               
-              {/* Mobile scroll hints */}
-              <div className="flex md:hidden items-center gap-2 mt-2">
-                <button onClick={scrollLeft} className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 active:bg-white/10">
-                  <ChevronLeft className="w-4 h-4" />
+              {/* Solid 3D tactile carousel controllers matching HowItWorks */}
+              <div className="flex items-center gap-4 bg-[#141419] p-2.5 px-3.5 rounded-[1.25rem] border border-white/10 shadow-[0_6px_0_0_#000,0_6px_0_1.5px_rgba(255,255,255,0.1),0_12px_24px_rgba(0,0,0,0.8)]">
+                <button 
+                  onClick={handlePrev}
+                  className="group p-2 rounded-lg bg-gradient-to-b from-[#2d2d3a] to-[#181822] text-white/80 hover:text-white border border-white/15 active:translate-y-[3px] shadow-[0_3px_0_0_#000,0_3px_0_1px_rgba(255,255,255,0.15),0_6px_12px_rgba(0,0,0,0.6)] active:shadow-[0_1px_0_0_#000,0_1px_0_1px_rgba(255,255,255,0.1),0_3px_6px_rgba(0,0,0,0.6)] transition-all cursor-pointer"
+                  aria-label="Formule précédente"
+                >
+                  <ChevronLeft 
+                    className="w-4 h-4 stroke-[2.5] transition-transform duration-300 group-hover:-translate-x-0.5" 
+                    style={{ filter: "drop-shadow(0px 1px 0px #000) drop-shadow(0px 2px 6px rgba(0,0,0,0.8))" }}
+                  />
                 </button>
-                <button onClick={scrollRight} className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 active:bg-white/10">
-                  <ChevronRight className="w-4 h-4" />
+                
+                {/* Dots indicator */}
+                <div className="flex items-center gap-2.5 px-1">
+                  {mrrTiers.map((tier, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      onClick={() => jumpTo(dotIdx)}
+                      className="p-1 cursor-pointer flex items-center justify-center group"
+                      aria-label={`Aller à la formule ${tier.name}`}
+                    >
+                      <span
+                        className={`block w-2 h-2 rounded-full transition-all duration-300
+                          ${activeIndex === dotIdx
+                            ? "bg-accent scale-125 shadow-[0_0_8px_rgba(255,159,28,0.8)] animate-pulse"
+                            : "bg-[#2b2b36] group-hover:bg-[#3b3b4d] scale-100"
+                          }
+                        `}
+                      />
+                    </button>
+                  ))}
+                </div>
+
+                <button 
+                  onClick={handleNext}
+                  className="group p-2 rounded-lg bg-gradient-to-b from-[#2d2d3a] to-[#181822] text-white/80 hover:text-white border border-white/15 active:translate-y-[3px] shadow-[0_3px_0_0_#000,0_3px_0_1px_rgba(255,255,255,0.15),0_6px_12px_rgba(0,0,0,0.6)] active:shadow-[0_1px_0_0_#000,0_1px_0_1px_rgba(255,255,255,0.1),0_3px_6px_rgba(0,0,0,0.6)] transition-all cursor-pointer"
+                  aria-label="Formule suivante"
+                >
+                  <ChevronRight 
+                    className="w-4 h-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-0.5" 
+                    style={{ filter: "drop-shadow(0px 1px 0px #000) drop-shadow(0px 2px 6px rgba(0,0,0,0.8))" }}
+                  />
                 </button>
               </div>
             </div>
 
+            {/* MOBILE VIEW: Horizontal scroll snap container with elegant side masks */}
             <div 
               ref={scrollRef}
-              className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] gap-4 pt-4 pb-6 md:pb-0 md:pt-4 -mx-5 px-5 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-5"
+              onScroll={handleScroll}
+              className="flex w-full lg:hidden overflow-x-auto scroll-smooth snap-x snap-mandatory gap-5 pb-8 pt-4 [&::-webkit-scrollbar]:hidden pricing-carousel-mask-mobile"
+              style={{ paddingInline: "max(0px, calc((100% - var(--pricing-card-width)) / 2))" }}
             >
-              {mrrTiers.map((tier) => {
+              {mrrTiers.map((tier, i) => {
                 const isSelected = selectedTier === tier.id;
                 return (
                   <div
                     key={tier.id}
-                    onClick={() => setSelectedTier(tier.id as any)}
-                    className={`cursor-pointer text-left py-6 px-5 rounded-2xl border transition-all duration-300 flex flex-col w-[85vw] max-w-[320px] md:w-auto shrink-0 snap-center relative group ${
+                    onClick={() => jumpTo(i)}
+                    className={`cursor-pointer text-left py-6 px-5 rounded-2xl border transition-all duration-300 flex flex-col w-[var(--pricing-card-width)] min-w-[var(--pricing-card-width)] h-[400px] shrink-0 snap-center relative group ${
                       isSelected
                         ? "bg-gradient-to-b from-[#1b1d28] to-[#12131a] border-accent/60 shadow-[0_8px_30px_rgba(180,244,129,0.12),inset_0_2px_4px_rgba(255,255,255,0.1)] ring-1 ring-accent/30"
-                        : "bg-gradient-to-b from-[#12131a] to-[#0a0a0f] border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] hover:border-white/20 hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.1)]"
+                        : "bg-gradient-to-b from-[#12131a] to-[#0a0a0f] border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] hover:border-white/20"
                     }`}
                   >
                     {/* Selected state indicator badge */}
                     {isSelected && (
-                      <span className="absolute top-3 right-3 text-[10px] font-display font-semibold select-none bg-accent/10 border border-accent/30 text-accent px-2 py-0.5 rounded-full">
+                      <span className="absolute top-4 right-4 text-[10px] font-display font-semibold select-none bg-accent/10 border border-accent/30 text-accent px-2 py-0.5 rounded-full">
                         Actif
                       </span>
                     )}
@@ -214,20 +335,93 @@ export default function Pricing() {
                     <div className="mb-4 pt-1 flex items-end gap-2">
                       <div>
                         {tier.originalPrice && (
-                          <span className="font-display text-base md:text-lg font-bold text-white/30 line-through block -mb-1">{tier.originalPrice}€</span>
+                          <span className="font-display text-base font-bold text-white/30 line-through block -mb-1">{tier.originalPrice}€</span>
                         )}
                         <span className="font-display text-3xl font-black text-white">{tier.price}€</span>
                         <span className="text-[11px] text-text-secondary"> / mois HT</span>
                       </div>
                     </div>
 
-                    <p className="text-xs md:text-[12.5px] text-text-secondary leading-relaxed mb-6 border-b border-white/5 pb-4 min-h-[40px] md:min-h-[50px]">
+                    <p className="text-xs text-text-secondary leading-relaxed mb-6 border-b border-white/5 pb-4 min-h-[48px]">
                       {tier.desc}
                     </p>
 
                     <ul className="space-y-2.5 mt-auto">
                       {tier.features.map((feature, idx) => (
-                        <li key={idx} className="text-xs md:text-[11.5px] text-white/80 flex items-start gap-2 leading-relaxed">
+                        <li key={idx} className="text-xs text-white/80 flex items-start gap-2 leading-relaxed">
+                          <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${isSelected ? "text-accent stroke-[3]" : "text-white/20"}`} />
+                          <span className="flex-1">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* DESKTOP VIEW: Cinematic card roulette stack with dynamic dissolve mask */}
+            <div className="hidden lg:flex relative w-full h-[460px] items-center justify-center py-4 pricing-carousel-mask-desktop">
+              {mrrTiers.map((tier, i) => {
+                const isSelected = selectedTier === tier.id;
+                const diff = i - activeIndex;
+                const isActive = diff === 0;
+                const isHoveredLocal = hoveredIndex === i;
+
+                return (
+                  <div
+                    key={tier.id}
+                    onClick={() => jumpTo(i)}
+                    onMouseEnter={() => setHoveredIndex(i)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    style={{
+                      transform: `translateX(calc(${diff} * (var(--pricing-card-width) + var(--pricing-gap)))) scale(${isActive ? 1.05 : 0.92}) translateY(${isActive ? -12 : 0}px)`,
+                      opacity: isActive ? 1 : isHoveredLocal ? 0.7 : 0.35,
+                      zIndex: isActive ? 30 : 10 - Math.abs(diff),
+                      boxShadow: isActive 
+                        ? `0 12px 30px rgba(0, 0, 0, 0.8), 0 4px 20px rgba(255, 159, 28, 0.15), inset 0 1.5px 0px rgba(255, 255, 255, 0.15)` 
+                        : `0 6px 0 0 #000, 0 6px 0 1px rgba(255, 255, 255, 0.06), 0 12px 30px rgba(0, 0, 0, 0.8), inset 0 1px 0px rgba(255, 255, 255, 0.05)`
+                    }}
+                    className={`absolute w-[var(--pricing-card-width)] h-[400px] select-none group text-left py-6 px-5 rounded-[2rem] border transition-all duration-500 ease-out flex flex-col justify-between cursor-pointer ${
+                      isSelected
+                        ? "bg-gradient-to-b from-[#1b1d28] to-[#12131a] border-accent/60 ring-1 ring-accent/30"
+                        : "bg-gradient-to-b from-[#12131a] to-[#0a0a0f] border-white/10 blur-[0.5px]"
+                    } ${isHoveredLocal && !isActive ? "blur-0 border-white/15" : ""}`}
+                  >
+                    {/* Selected state indicator badge */}
+                    {isSelected && (
+                      <span className="absolute top-4 right-4 text-[10px] font-display font-semibold select-none bg-accent/10 border border-accent/30 text-accent px-2 py-0.5 rounded-full">
+                        Actif
+                      </span>
+                    )}
+
+                    <div>
+                      <div className="mb-4">
+                        <div className="font-display font-medium text-xs text-text-secondary uppercase tracking-wider mb-1">
+                          Formule
+                        </div>
+                        <h4 className="font-display font-bold text-xl text-white group-hover:text-accent transition-colors leading-tight">
+                          {tier.name}
+                        </h4>
+                      </div>
+
+                      <div className="mb-4 pt-1 flex items-end gap-2">
+                        <div>
+                          {tier.originalPrice && (
+                            <span className="font-display text-base font-bold text-white/30 line-through block -mb-1">{tier.originalPrice}€</span>
+                          )}
+                          <span className="font-display text-3xl font-black text-white">{tier.price}€</span>
+                          <span className="text-[11px] text-text-secondary"> / mois HT</span>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-text-secondary leading-relaxed mb-6 border-b border-white/5 pb-4 min-h-[48px]">
+                        {tier.desc}
+                      </p>
+                    </div>
+
+                    <ul className="space-y-2.5 mt-auto">
+                      {tier.features.map((feature, idx) => (
+                        <li key={idx} className="text-xs text-white/80 flex items-start gap-2 leading-relaxed">
                           <Check className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${isSelected ? "text-accent stroke-[3]" : "text-white/20"}`} />
                           <span className="flex-1">{feature}</span>
                         </li>

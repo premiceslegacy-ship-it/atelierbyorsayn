@@ -71,7 +71,7 @@ export default function Hero() {
  
               {/* Secondary CTA: Tactical tactile WhatsApp action */}
               <button 
-                onClick={() => window.open("https://wa.me/33651664068?text=Bonjour%20Samuel", "_blank")}
+                onClick={() => window.open("https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20j%27ai%20vu%20Atelier%20et%20je%20voudrais%20en%20savoir%20plus%20pour%20mon%20activit%C3%A9.", "_blank")}
                 id="cta-demo-secondary"
                 className="group flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white font-display font-extrabold text-[13px] md:text-[14px] px-4 md:px-6 py-3.5 rounded-xl border border-white/10 border-b-[3px] md:border-b-[4px] border-b-white/20 active:translate-y-[3px] active:border-b-[1px] transition-all duration-100 cursor-pointer w-full sm:w-auto flex-1"
               >

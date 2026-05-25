@@ -1,0 +1,37 @@
+# Atelier
+
+> Logiciel de gestion pour artisans du bâtiment : devis, facturation, suivi de chantier et relances automatiques depuis le téléphone.
+
+Atelier est un outil SaaS conçu pour les artisans du bâtiment (électriciens, plombiers, menuisiers, peintres, maçons, paysagistes, tôliers) qui veulent gérer leur entreprise depuis le terrain sans formation ni comptable.
+
+## Ce qu'Atelier permet
+
+- Créer et envoyer un devis en moins de 5 minutes depuis un smartphone, avant de quitter le client
+- Appliquer automatiquement les bons taux de TVA (5,5%, 10%, 20%) selon le type de travaux
+- Relancer automatiquement les devis sans réponse et les factures impayées
+- Suivre la marge réelle d'un chantier en temps réel (heures, matériel, déplacements)
+- Permettre aux ouvriers de pointer leurs heures depuis le chantier sans application à installer
+- Générer des factures conformes et des avoirs en quelques secondes
+
+## Pour qui
+
+Artisans indépendants et petites entreprises du bâtiment : électriciens, plombiers, menuisiers, peintres, maçons, paysagistes, tôliers. Idéal pour ceux qui travaillent seuls ou avec une petite équipe et qui veulent éviter les tâches administratives chronophages.
+
+## Problèmes résolus
+
+- Devis envoyés trop tard (le client signe ailleurs)
+- Factures impayées non relancées
+- Calcul de TVA incorrect sur les devis de rénovation
+- Impossibilité de savoir si un chantier est rentable avant la facture de solde
+- Pointage des heures difficile à suivre sur plusieurs chantiers simultanés
+
+## Pages disponibles
+
+- https://www.atelier-btp.fr/ — Page d'accueil
+- https://www.atelier-btp.fr/electricien — Atelier pour électriciens
+- https://www.atelier-btp.fr/plombier — Atelier pour plombiers
+- https://www.atelier-btp.fr/menuisier — Atelier pour menuisiers
+- https://www.atelier-btp.fr/peintre — Atelier pour peintres
+- https://www.atelier-btp.fr/macon — Atelier pour maçons
+- https://www.atelier-btp.fr/paysagiste — Atelier pour paysagistes
+- https://www.atelier-btp.fr/tolier — Atelier pour tôliers

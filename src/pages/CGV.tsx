@@ -51,12 +51,12 @@ export default function CGV() {
             </SubSection>
             <SubSection title="3.2 Abonnement MRR — modules IA">
               <p>
-                Abonnement mensuel donnant accès aux modules d'intelligence artificielle de l'application selon le tier souscrit (Starter 39 € HT/mois, Pro 89 € HT/mois, Expert 149 € HT/mois). Les fonctionnalités non-IA de l'application (devis, factures, chantiers, catalogue, exports, signatures) fonctionnent sans abonnement MRR.
+                Abonnement mensuel donnant accès aux modules d'intelligence artificielle de l'application selon le tier souscrit (Starter 39 € HT/mois, Pro 69 € HT/mois, Expert 119 € HT/mois). Les fonctionnalités non-IA de l'application (devis, factures, chantiers, catalogue, exports, signatures) fonctionnent sans abonnement MRR.
               </p>
             </SubSection>
             <SubSection title="3.3 Prestations annexes">
               <ul className="list-disc list-inside space-y-1 text-neutral-400">
-                <li>Activation B2Brouter (facturation électronique) : prestation annuelle séparée selon le volume de transactions, hors MRR mensuel.</li>
+                <li>Conformité facturation électronique (connexion au réseau légal via partenaire PDP) : 450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon le volume d'activité.</li>
                 <li>Migration depuis un ancien logiciel : sur devis, 150 € HT/heure.</li>
                 <li>Formation et accompagnement : 150 € HT/heure ou forfait 3 heures à 350 € HT.</li>
               </ul>
@@ -77,19 +77,14 @@ export default function CGV() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {[
-                    ["Setup — app seule", "1 500 € (sans MRR) / 800 € (avec MRR)"],
-                    ["Setup — app + WhatsApp agent", "2 200 € (sans MRR) / 1 200 € (avec MRR)"],
-                    ["Setup — app + B2Brouter", "1 900 € (sans MRR) / 1 000 € (avec MRR)"],
-                    ["Setup — app + WhatsApp + B2Brouter", "2 800 € (sans MRR) / 1 500 € (avec MRR)"],
+                    ["Setup — app seule (sans abonnement IA)", "2 000 € HT"],
+                    ["Setup — app seule (avec abonnement IA)", "800 € HT"],
+                    ["Setup — app + conformité facturation électronique (sans abonnement IA)", "2 450 € HT"],
+                    ["Setup — app + conformité facturation électronique (avec abonnement IA)", "1 250 € HT"],
                     ["MRR IA Starter", "39 € HT/mois"],
-                    ["MRR IA Pro", "89 € HT/mois"],
-                    ["MRR IA Expert", "149 € HT/mois"],
-                    ["Activation B2Brouter (an 1)", "200 € HT one-shot"],
-                    ["B2Brouter M0 (1–50 tx/mois)", "250 € HT/an"],
-                    ["B2Brouter M1 (51–100 tx/mois)", "450 € HT/an"],
-                    ["B2Brouter M2 (101–300 tx/mois)", "900 € HT/an"],
-                    ["B2Brouter M3 (301–600 tx/mois)", "1 350 € HT/an"],
-                    ["Messages WhatsApp hors quota Expert", "0,50 € HT / tranche de 50 messages"],
+                    ["MRR IA Pro", "69 € HT/mois"],
+                    ["MRR IA Expert", "119 € HT/mois"],
+                    ["Conformité facturation électronique (PDP partenaire)", "450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon volume"],
                     ["Migration données", "150 € HT/heure"],
                     ["Formation / accompagnement", "150 € HT/heure — forfait 3h : 350 € HT"],
                   ].map(([label, price]) => (

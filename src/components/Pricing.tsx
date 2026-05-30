@@ -61,7 +61,7 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
   const selectedTierData = allTiers.find((tier) => tier.id === selectedTier)!;
   const isMrr = selectedTier !== "none";
 
-  const setupPrice = (isMrr ? 800 : 1500) + (hasEinvoicing ? 450 : 0);
+  const setupPrice = (isMrr ? 800 : 2000) + (hasEinvoicing ? 450 : 0);
   const setupName = hasEinvoicing ? "App + conformité facturation électronique" : "App seule";
 
   const selectTier = (tier: TierId) => {

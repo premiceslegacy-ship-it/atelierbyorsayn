@@ -102,6 +102,9 @@ export default function Confidentialite() {
             </p>
           </section>
 
+          <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
+            Samuel Mbeboura EI — SIRET 98920815200011
+          </p>
         </div>
       </div>
     </div>

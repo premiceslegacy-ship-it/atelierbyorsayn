@@ -233,8 +233,8 @@ export default function CGV() {
             </dl>
           </Section>
 
-          <p className="text-xs text-text-secondary/50 border-t border-white/5 pt-6">
-            CGV Orsayn — Version 1.0 — mai 2026
+          <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
+            CGV Orsayn — Version 1.0 — mai 2026 · Samuel Mbeboura EI — SIRET 98920815200011
           </p>
 
         </div>

@@ -46,6 +46,9 @@ export default function MentionsLegales() {
               Les données présentées sur ce site et collectées via les formulaires sont hébergées sur l'infrastructure de Cloudflare, Inc. (exécution applicative) et Supabase, Inc. (données, région EU West — Frankfurt, Allemagne).
             </p>
           </section>
+          <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
+            Samuel Mbeboura EI — SIRET 98920815200011
+          </p>
         </div>
       </div>
     </div>

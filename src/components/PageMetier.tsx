@@ -292,7 +292,7 @@ export default function PageMetier({ slug }: PageMetierProps) {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className={`grid grid-cols-1 gap-5 ${data.features.items.length === 4 ? "md:grid-cols-2" : "md:grid-cols-3"}`}>
               {data.features.items.map((feat, i) => {
                 const Icon = FEATURE_ICONS[i % FEATURE_ICONS.length];
                 return (
@@ -319,7 +319,7 @@ export default function PageMetier({ slug }: PageMetierProps) {
         </section>
 
         {/* ── PRICING ───────────────────────────────────────────────── */}
-        <Pricing metierContext={data.metier} />
+        <Pricing metierContext={data.metier} metierSlug={data.slug} />
 
         {/* ── FAQ ───────────────────────────────────────────────────── */}
         <section id="faq" className="py-20 md:py-28 border-t border-white/5 bg-white/[0.01]">

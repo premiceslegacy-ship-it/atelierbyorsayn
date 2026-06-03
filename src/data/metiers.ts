@@ -520,6 +520,11 @@ export const metiers: MetierData[] = [
           description:
             "Atelier calcule votre marge sur chaque chantier : matières, heures passées en atelier et sur site, sous-traitance. Vous savez ce qu'un garde-corps sur-mesure vous rapporte vraiment.",
         },
+        {
+          titre: "Cours LME aluminium, cuivre et zinc dans vos devis",
+          description:
+            "Vous avez perdu une marge sur le dernier chantier parce que le cuivre avait pris 6% entre le devis et la commande. Le Module Prix Matières pré-remplit vos lignes avec les cours LME du jour, mis à jour toutes les 10 min. Vous appliquez votre coefficient fournisseur, vous validez. Le cours est enregistré sur chaque devis : vous avez une traçabilité complète si un client conteste.",
+        },
       ],
     },
     faq: [

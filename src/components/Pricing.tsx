@@ -29,9 +29,9 @@ const aiTiers: Array<{
     name: "Pro",
     price: 69,
     originalPrice: 89,
-    desc: "Plus de volume, plus d'automatisation et l'agent WhatsApp dès disponibilité.",
+    desc: "Plus de volume, plus d'automatisation et l'assistant IA intégré dès disponibilité.",
     bestFor: "Artisan actif ou petite équipe",
-    features: ["Quotas doublés à triplés", "Assistant WhatsApp prévu", "Suivi trésorerie et chantier renforcé"],
+    features: ["Quotas doublés à triplés", "Assistant Atelier IA prévu", "Suivi trésorerie et chantier renforcé"],
   },
   {
     id: "expert",
@@ -61,8 +61,8 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
   const selectedTierData = allTiers.find((tier) => tier.id === selectedTier)!;
   const isMrr = selectedTier !== "none";
 
-  const setupPrice = (isMrr ? 800 : 2000) + (hasEinvoicing ? 450 : 0);
-  const setupName = hasEinvoicing ? "App + conformité facturation électronique" : "App seule";
+  const setupPrice = (isMrr ? 1200 : 2500) + (hasEinvoicing ? 450 : 0);
+  const setupName = hasEinvoicing ? "App + facturation électronique" : "App seule";
 
   const selectTier = (tier: TierId) => {
     setSelectedTier(tier);
@@ -78,13 +78,13 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
     if (isMrr) {
       msg += `Abonnement mensuel : Pack ${selectedTierData.name} (${selectedTierData.price}€ HT/mois)\n`;
       if (selectedTier === "pro" || selectedTier === "expert") {
-        msg += `Assistant WhatsApp inclus dès disponibilité\n`;
+        msg += `Assistant Atelier IA inclus dès disponibilité\n`;
       }
     } else {
       msg += `Abonnement mensuel : Aucun\n`;
     }
     if (hasEinvoicing) {
-      msg += `Option conformité : connexion au réseau légal via partenaire PDP (450€ HT/an la 1ère année, puis à partir de 250€ HT/an dès la 2e année selon le volume d'activité)\n`;
+      msg += `Option conformité : connexion au réseau légal via partenaire PDP (à partir de 450€ HT/an, puis à partir de 250€ HT/an dès la 2e année, montant exact selon volume)\n`;
     }
     msg += `\nPouvons-nous planifier un appel de démarrage ?`;
     return encodeURIComponent(msg);
@@ -267,11 +267,11 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
                         Oui, je veux être prêt pour la facturation électronique
                       </p>
                       <span className="w-fit rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 font-display text-xs font-bold text-amber-400">
-                        +450€ HT/an la 1ère année
+                        à partir de 450€ HT/an
                       </span>
                     </div>
                     <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                      Atelier génère déjà vos factures Factur-X. L'option connecte vos flux au réseau légal via partenaire PDP. Puis à partir de 250€ HT/an dès la 2e année selon votre volume d'activité.
+                      Atelier génère déjà vos factures Factur-X. L'option connecte vos flux au réseau légal via partenaire PDP. Tarif annuel selon votre volume d'activité, à partir de 250€ HT/an dès la 2e année.
                     </p>
                   </div>
                 </div>
@@ -300,13 +300,13 @@ export default function Pricing({ metierContext }: PricingProps = {}) {
                 </div>
                 <div className="flex items-center justify-between gap-4 rounded-xl border border-white/6 bg-black/20 p-3">
                   <span className="text-sm text-text-secondary">Conformité</span>
-                  <span className="font-display text-sm font-black text-white">{hasEinvoicing ? "450€ HT/an" : "Non sélectionnée"}</span>
+                  <span className="font-display text-sm font-black text-white">{hasEinvoicing ? "à partir de 450€ HT/an" : "Non sélectionnée"}</span>
                 </div>
               </div>
 
               {hasEinvoicing && (
                 <p className="mt-3 text-center text-[11px] leading-relaxed text-amber-300/80">
-                  Facturation électronique : 450€ HT/an la 1ère année, puis à partir de 250€ HT/an dès la 2e année selon votre volume d'activité.
+                  Facturation électronique : à partir de 450€ HT/an (an 1), puis à partir de 250€ HT/an, montant exact selon votre volume d'activité.
                 </p>
               )}
 

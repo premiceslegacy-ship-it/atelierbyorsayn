@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { 
-  Check, 
-  ArrowRight, 
-  FileText, 
-  Clock, 
-  Send, 
-  FileCheck2, 
-  Mic, 
-  Phone, 
-  Video, 
-  MoreVertical, 
-  Paperclip, 
-  Camera, 
+import {
+  Check,
+  ArrowRight,
+  FileText,
+  Clock,
+  Send,
+  FileCheck2,
+  Mic,
+  Phone,
+  Video,
+  MoreVertical,
+  Paperclip,
+  Camera,
   CheckCheck,
   TrendingUp,
   Sparkles,
   RefreshCw,
-  Share2
+  Share2,
+  Bot,
+  ShieldCheck,
+  ChevronRight
 } from "lucide-react";
 
 interface FeatureItem {
@@ -188,17 +191,20 @@ export default function Features() {
     },
     {
       id: "agent",
-      label: "Assistant WhatsApp",
+      label: "Atelier IA",
       isComingSoon: true,
-      h2: "Demandez à Atelier comme à un assistant",
+      h2: "Le secrétaire IA qui connaît vos chantiers",
       body: (
         <>
-          L'assistant WhatsApp permet de piloter des actions simples avec un message : pointage, devis, facture de solde, relance ou état d'un chantier.
+          Parlez à Atelier comme à un assistant. Il prépare vos devis, classe vos documents, suit vos relances et vous aide à piloter l'activité. Vous gardez toujours le dernier mot.
         </>
       ),
-      chatExample: [
-        { role: "user", text: "Pointe 4h sur Martin et envoie la facture de solde." },
-        { role: "bot", text: "4h pointées sur chantier Martin. FAC-2026-031 générée et envoyée à pierre.martin@gmail.com. Relance automatique programmée dans 30 jours." }
+      h3: "L'IA propose. Vous validez. Atelier exécute.",
+      body2: "Contrairement à un simple chatbot, Atelier IA est connecté à votre vraie activité : vos clients, vos documents, vos devis et vos chantiers. Rien n'est envoyé, modifié ou facturé sans votre accord.",
+      bullets: [
+        "Il comprend votre activité : chantiers, clients, devis, factures",
+        "Proactif : il vous alerte quand une facture tarde ou un devis doit être relancé",
+        "Validation obligatoire avant tout envoi ou modification"
       ]
     }
   ];
@@ -420,100 +426,86 @@ export default function Features() {
           </div>
         );
 
-      case 5: // Real French WhatsApp Screen Interface
+      case 5: // Atelier IA — assistant intégré à l'app, triptyque Demandez / Prépare / Validez
         return (
-          <div className="flex flex-col w-full h-full bg-[#0b141a] rounded-xl relative overflow-hidden text-left border border-emerald-500/10">
-            
-            {/* Real WhatsApp Header Bar */}
-            <div className="bg-[#1f2c34] px-3 py-2.5 flex items-center justify-between border-b border-white/5 relative z-10">
+          <div className="flex flex-col w-full h-full bg-[#07070a] rounded-xl relative overflow-hidden text-left">
+
+            {/* Header bar */}
+            <div className="bg-gradient-to-b from-[#141419] to-[#0f0f13] px-3 py-2.5 flex items-center justify-between border-b border-white/5">
               <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none" className="text-emerald-500 shrink-0">
-                  <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.065-.301-.15-1.265-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.065-.17-.295-.017-.454.131-.603.134-.135.301-.35.451-.523.15-.181.201-.3.301-.502.1-.2.05-.38-.025-.521-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.301-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.195 2.105 3.195 5.1 4.485.714.3 1.27.48 1.704.629.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.36z" fill="currentColor" stroke="none"></path>
-                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.846.5 3.584 1.38 5.071L2 22l5.044-1.3A9.957 9.957 0 0012 22z"></path>
-                </svg>
-                <div className="relative ml-1">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-b from-[#128c7e] to-[#075e54] flex items-center justify-center text-white text-xs font-display font-black shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)]">
-                    M
-                  </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-[#1f2c34]" />
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-b from-accent to-[#d97706] flex items-center justify-center border border-accent/60 border-b-[2px] border-b-[#92400e] shadow-[0_2px_5px_rgba(245,158,11,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                  <Bot className="w-3.5 h-3.5 text-black stroke-[2.5]" />
                 </div>
-                <div className="ml-1">
-                  <div className="flex items-center gap-1">
-                    <span className="text-white text-xs font-display font-bold tracking-wide">Mathieu</span>
-                    <span className="text-[9px] bg-emerald-500/20 text-[#b4f481] px-1 py-0.1 select-none rounded text-center scale-90 font-bold border border-emerald-500/30">Bot</span>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-white text-[11px] font-display font-black tracking-wide">Atelier IA</span>
+                    <span className="text-[8px] bg-accent/15 text-accent px-1.5 py-0.5 rounded font-bold border border-accent/25 uppercase tracking-wider">Bientôt</span>
                   </div>
-                  <span className="text-[10px] text-emerald-400 font-body -mt-0.5 block">en ligne</span>
+                  <span className="text-[9px] text-emerald-400 font-body block -mt-0.5">Connecté à votre activité</span>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-3.5 text-white/70">
-                <Video className="w-4.5 h-4.5 cursor-pointer hover:text-white" />
-                <Phone className="w-3.5 h-3.5 cursor-pointer hover:text-white" />
-                <MoreVertical className="w-4 h-4 cursor-pointer hover:text-white" />
-              </div>
+              <ShieldCheck className="w-4 h-4 text-white/30" />
             </div>
 
-            {/* Conversation Grid with Authentic WhatsApp background */}
-            <div className="flex-1 p-3.5 flex flex-col justify-end gap-3.5 relative">
-              
-              {/* WhatsApp background pattern opacity simulator */}
-              <div className="absolute inset-0 opacity-[0.06] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] z-0 pointer-events-none" />
-              <div className="absolute inset-0 bg-[#0b141a]/60 z-0 pointer-events-none" />
+            {/* Steps triptyque */}
+            <div className="flex-1 flex flex-col gap-2.5 p-3 justify-center">
 
-              {/* Day Badge */}
-              <div className="self-center bg-[#121b22] border border-white/5 px-3 py-1 rounded-lg text-[9px] font-sans font-bold text-text-secondary/80 shadow-[0_1px_2px_rgba(0,0,0,0.5)] z-10 uppercase tracking-widest select-none">
-                Aujourd'hui
-              </div>
-
-              {/* User message sent on WhatsApp (Green-ish bubble) */}
-              <div className="self-end max-w-[85%] relative z-10 flex flex-col items-end">
-                <div className="bg-[#005c4b]/95 text-white p-3 rounded-2xl rounded-tr-none shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.1)] border border-[#005c4b]/50 text-[12.5px] font-body leading-relaxed">
-                  Pointe 4h sur Martin et envoie la facture de solde pour la charpente.
-                </div>
-                <div className="flex items-center gap-1.5 mt-1 pr-1 text-[9px] text-text-secondary font-sans select-none">
-                  <span>14:26</span>
-                  <CheckCheck className="w-3.5 h-3.5 text-[#53bdeb] stroke-[2.5]" />
-                </div>
-              </div>
-
-              {/* Bot response message (Grey bubble) */}
-              <div className="self-start max-w-[90%] relative z-10">
-                <div className="bg-[#202c33]/95 text-[#e9edef] p-3 rounded-2xl rounded-tl-none shadow-[0_2px_4px_rgba(0,0,0,0.4),inset_0_1.5px_1.5px_rgba(255,255,255,0.05)] border border-white/5 text-[12.5px] font-body leading-relaxed flex flex-col gap-2">
-                  <p>4h pointées avec succès sur le chantier <strong>Martin</strong>.</p>
-                  
-                  <div className="bg-black/25 p-2 rounded-lg border border-white/5 text-[11px] text-text-secondary flex items-start gap-2 leading-snug">
-                    <FileText className="w-3.5 h-3.5 shrink-0 mt-0.5 text-accent" />
-                    <div>
-                      <span className="block font-bold text-white/95">FAC-2026-031_solde.pdf</span>
-                      <span>Montant : 1 650,00 € TTC générée et expédiée au client.</span>
-                    </div>
+              {/* Step 1 — Demandez */}
+              <div className="bg-gradient-to-b from-[#1a1b24] to-[#111218] border border-white/8 rounded-xl p-3 shadow-[0_3px_0_0_#000,0_6px_10px_rgba(0,0,0,0.4)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-5 h-5 rounded-md bg-gradient-to-b from-accent to-[#d97706] flex items-center justify-center border border-accent/50 border-b-[2px] border-b-[#92400e] shadow-[0_1.5px_3px_rgba(245,158,11,0.3)] shrink-0">
+                    <span className="text-black text-[9px] font-black">1</span>
                   </div>
-
-                  <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1 mt-0.5">
-                    <Clock className="w-3 h-3" /> Relance automatique programmée (30j)
-                  </span>
+                  <span className="text-[10px] font-display font-black text-accent uppercase tracking-wider">Demandez</span>
                 </div>
-                <div className="text-[9px] text-text-secondary font-sans mt-1 pl-1 select-none">
-                  <span>14:26</span>
+                <div className="bg-[#0d0d10] border border-white/6 rounded-lg px-3 py-2 text-[12px] font-body text-white/85 leading-snug flex items-center gap-2">
+                  <Mic className="w-3 h-3 text-accent shrink-0 animate-pulse" />
+                  <span>"Prépare un devis pour le chantier Leclerc Rénovation."</span>
                 </div>
               </div>
 
-            </div>
-
-            {/* Bottom Input dock simulation */}
-            <div className="bg-[#1f2c34] px-3 py-2 flex items-center justify-between gap-2.5 border-t border-white/5 relative z-10">
-              <div className="flex items-center gap-2 text-white/60">
-                <Paperclip className="w-4.5 h-4.5 cursor-pointer hover:text-white" />
+              {/* Step 2 — L'assistant prépare */}
+              <div className="bg-gradient-to-b from-[#1a1b24] to-[#111218] border border-white/8 rounded-xl p-3 shadow-[0_3px_0_0_#000,0_6px_10px_rgba(0,0,0,0.4)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-5 h-5 rounded-md bg-gradient-to-b from-[#2d2d3a] to-[#181822] flex items-center justify-center border border-white/15 border-b-[2px] border-b-black/60 shadow-[0_1.5px_3px_rgba(0,0,0,0.4)] shrink-0">
+                    <span className="text-white/70 text-[9px] font-black">2</span>
+                  </div>
+                  <span className="text-[10px] font-display font-black text-white/60 uppercase tracking-wider">L'assistant prépare</span>
+                </div>
+                <div className="flex flex-col gap-1.5 text-[10px] font-body text-text-secondary">
+                  <div className="flex items-center gap-2">
+                    <Check className="w-3 h-3 text-emerald-400 stroke-[3] shrink-0" />
+                    <span>Client Leclerc Rénovation trouvé · 3 chantiers actifs</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-3 h-3 text-emerald-400 stroke-[3] shrink-0" />
+                    <span>Lignes de devis ajoutées · Prix estimé</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <RefreshCw className="w-3 h-3 text-accent stroke-[2.5] shrink-0 animate-spin" />
+                    <span className="text-accent">Document en cours de génération…</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex-1 bg-[#2a3942] rounded-full px-3.5 py-1.5 border border-white/5 text-[11px] text-white/30 truncate flex items-center justify-between">
-                <span>Écrire à Mathieu...</span>
-                <Camera className="w-4 h-4 text-white/50 cursor-pointer hover:text-white" />
+              {/* Step 3 — Vous validez */}
+              <div className="bg-gradient-to-b from-[#1a1b24] to-[#111218] border border-emerald-500/25 rounded-xl p-3 shadow-[0_3px_0_0_#000,0_6px_10px_rgba(0,0,0,0.4),0_0_12px_rgba(16,185,129,0.06)]">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-5 h-5 rounded-md bg-gradient-to-b from-emerald-500 to-emerald-600 flex items-center justify-center border border-emerald-400/60 border-b-[2px] border-b-[#064e3b] shadow-[0_1.5px_3px_rgba(16,185,129,0.3)] shrink-0">
+                    <span className="text-black text-[9px] font-black">3</span>
+                  </div>
+                  <span className="text-[10px] font-display font-black text-[#b4f481] uppercase tracking-wider">Vous validez</span>
+                </div>
+                <div className="flex items-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-lg px-3 py-2">
+                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-black shrink-0 shadow-[0_1.5px_3px_rgba(16,185,129,0.4)]">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
+                  <span className="text-[11px] font-display font-bold text-[#b4f481]">Envoyer le devis</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#b4f481]/60 ml-auto" />
+                </div>
+                <p className="mt-1.5 text-[9.5px] text-text-secondary/60 text-center">Rien n'est envoyé sans votre accord.</p>
               </div>
 
-              <div className="w-7 h-7 rounded-full bg-emerald-500 hover:bg-emerald-400 flex items-center justify-center text-black shrink-0 cursor-pointer transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-                <Mic className="w-3.5 h-3.5 stroke-[2.5]" style={{ transform: "rotate(0deg)" }} />
-              </div>
             </div>
 
           </div>

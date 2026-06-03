@@ -200,11 +200,11 @@ export default function Features() {
         </>
       ),
       h3: "L'IA propose. Vous validez. Atelier exécute.",
-      body2: "Contrairement à un simple chatbot, Atelier IA est connecté à votre vraie activité : vos clients, vos documents, vos devis et vos chantiers. Rien n'est envoyé, modifié ou facturé sans votre accord.",
+      body2: "Contrairement à un simple chatbot, Atelier IA est connecté à votre vraie activité : vos clients, vos documents, vos devis, vos factures et vos chantiers. Rien n'est envoyé, modifié ou facturé sans votre accord.",
       bullets: [
-        "Il comprend votre activité : chantiers, clients, devis, factures",
-        "Proactif : il vous alerte quand une facture tarde ou un devis doit être relancé",
-        "Validation obligatoire avant tout envoi ou modification"
+        "Il comprend votre activité : chantiers, clients, devis, factures, documents et priorités.",
+        "Il vous alerte au bon moment : facture en retard, devis à relancer, chantier incomplet, action urgente.",
+        "Vous gardez le contrôle : Atelier prépare les actions importantes. Vous validez avant tout envoi ou modification."
       ]
     }
   ];

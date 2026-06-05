@@ -34,11 +34,11 @@ export default function Footer() {
         <div className="md:col-span-3 flex flex-col gap-4">
           <h4 className="text-[11px] font-display text-accent uppercase tracking-[0.08em] font-extrabold">Nos métiers</h4>
           <ul className="space-y-3.5 text-xs text-neutral-300">
+            <li><Link to="/tolier" className="hover:text-white transition-colors">Tôlier / Métallier</Link></li>
             <li><Link to="/electricien" className="hover:text-white transition-colors">Électricien</Link></li>
             <li><Link to="/plombier" className="hover:text-white transition-colors">Plombier / CVC</Link></li>
             <li><Link to="/menuisier" className="hover:text-white transition-colors">Menuisier</Link></li>
             <li><Link to="/peintre" className="hover:text-white transition-colors">Peintre / Plâtrier</Link></li>
-            <li><Link to="/tolier" className="hover:text-white transition-colors">Tôlier / Métallier</Link></li>
             <li><Link to="/paysagiste" className="hover:text-white transition-colors">Paysagiste</Link></li>
             <li><Link to="/macon" className="hover:text-white transition-colors">Maçon / Rénovation</Link></li>
           </ul>

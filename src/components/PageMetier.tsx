@@ -51,7 +51,13 @@ export default function PageMetier({ slug }: PageMetierProps) {
 
   const openWhatsApp = () =>
     window.open(
-      "https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20j%27ai%20vu%20Atelier%20et%20je%20voudrais%20en%20savoir%20plus%20pour%20mon%20activit%C3%A9.",
+      `https://wa.me/33651664068?text=${encodeURIComponent(`Bonjour Samuel, j'ai vu Atelier pour ${data.metier}. Je voudrais en savoir plus.`)}`,
+      "_blank"
+    );
+
+  const openWhatsAppDevisTest = () =>
+    window.open(
+      `https://wa.me/33651664068?text=${encodeURIComponent(`Bonjour Samuel, je voudrais voir comment Atelier préparerait un devis sur un cas concret.`)}`,
       "_blank"
     );
 
@@ -128,12 +134,12 @@ export default function PageMetier({ slug }: PageMetierProps) {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:max-w-[585px]">
-                  {/* CTA primaire → pricing */}
+                  {/* CTA primaire → pricing (ou devis test pour tôlier) */}
                   <button
-                    onClick={scrollToPricing}
+                    onClick={slug === "tolier" ? openWhatsAppDevisTest : scrollToPricing}
                     className="group flex items-center justify-center md:justify-between gap-4 md:gap-6 bg-white text-bg-base font-display font-extrabold text-sm md:text-[15px] px-4 md:px-6 py-2.5 md:py-3 pr-2 rounded-xl border border-white border-b-[3px] md:border-b-[4px] border-b-neutral-300 hover:bg-neutral-50 active:translate-y-[3px] active:border-b-[1px] transition-all duration-100 cursor-pointer shadow-md w-full sm:w-auto flex-1"
                   >
-                    <span>Récupérer mes soirées</span>
+                    <span>{slug === "tolier" ? "Recevoir un exemple de devis" : "Récupérer mes soirées"}</span>
                     <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-accent flex items-center justify-center text-bg-base shrink-0">
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 stroke-[2.5]" />
                     </div>

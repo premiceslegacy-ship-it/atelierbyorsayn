@@ -466,9 +466,9 @@ export const metiers: MetierData[] = [
     slug: "tolier",
     metier: "Tôlier / Métallier",
     hero: {
-      headline: "Un devis garde-corps en 10 minutes. Avec les bons prix.",
+      headline: "Un devis garde-corps en 10 minutes. Vos prix, vos marges, votre validation.",
       subheadline:
-        "Catalogue au ml et au m², une mise à jour suffit quand les prix bougent. Marge par ouvrage visible pendant la fabrication.",
+        "Vos coefficients matière appliqués automatiquement. La marge estimée visible avant envoi. Vous gardez la main sur le prix final.",
     },
     heroMockup: {
       primaryMetric: {
@@ -523,7 +523,7 @@ export const metiers: MetierData[] = [
         {
           titre: "Cours LME aluminium, cuivre et zinc dans vos devis",
           description:
-            "Vous avez perdu une marge sur le dernier chantier parce que le cuivre avait pris 6% entre le devis et la commande. Le Module Prix Matières pré-remplit vos lignes avec les cours LME du jour, mis à jour toutes les 10 min. Vous appliquez votre coefficient fournisseur, vous validez. Le cours est enregistré sur chaque devis : vous avez une traçabilité complète si un client conteste.",
+            "Vous avez perdu une marge sur le dernier chantier parce que le cuivre avait pris 6% entre le devis et la commande. Atelier calcule automatiquement le prix de vos lignes matière avec les cours du jour, mis à jour toutes les 10 min, en appliquant votre coefficient fournisseur configuré une fois en paramètres. À la validation, le cours est figé sur le devis : traçabilité complète si un client conteste.",
         },
       ],
     },

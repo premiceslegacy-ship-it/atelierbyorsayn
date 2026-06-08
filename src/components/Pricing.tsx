@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Check, CheckCircle2, MessageCircle, ShieldCheck } from "lucide-react";
+import { Check, CheckCircle2, MessageCircle, ShieldCheck, TrendingUp } from "lucide-react";
 
 interface PricingProps {
   metierContext?: string;
@@ -56,10 +56,9 @@ const noAiTier = {
 export default function Pricing({ metierContext, metierSlug }: PricingProps = {}) {
   const [selectedTier, setSelectedTier] = useState<TierId>("starter");
   const [hasEinvoicing, setHasEinvoicing] = useState(false);
-  const [hasMetalPricing, setHasMetalPricing] = useState(false);
   const complianceRef = useRef<HTMLDivElement>(null);
 
-  const showMetalPricing = metierSlug === "tolier";
+  const isMetalMetier = metierSlug === "tolier" || (!!metierContext && /tôlier|métallier/i.test(metierContext));
 
   const allTiers = [...aiTiers, noAiTier];
   const selectedTierData = allTiers.find((tier) => tier.id === selectedTier)!;
@@ -67,7 +66,6 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
 
   const setupPrice = (isMrr ? 1200 : 2500) + (hasEinvoicing ? 450 : 0);
   const setupName = hasEinvoicing ? "App + facturation électronique" : "App seule";
-  const metalPricingMonthly = 19;
 
   const selectTier = (tier: TierId) => {
     setSelectedTier(tier);
@@ -77,24 +75,15 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
   };
 
   const generateWhatsAppMessage = () => {
-    const context = metierContext ? ` pour mon activité de ${metierContext}` : "";
-    let msg = `Bonjour Samuel, je souhaite valider mon choix Atelier${context} :\n\n`;
-    msg += `Configuration initiale : ${setupName} (${setupPrice}€ HT)\n`;
+    const context = metierContext ? ` (${metierContext})` : "";
+    const baseSetup = isMrr ? 1200 : 2500;
+    let msg = `Bonjour Samuel, je veux démarrer Atelier${context}.\n\n`;
+    msg += `Setup : ${baseSetup}€ HT\n`;
+    if (hasEinvoicing) msg += `Facturation électronique : à partir de 450€ HT/an la 1re année, puis à partir de 250€/an selon le volume de factures\n`;
     if (isMrr) {
-      msg += `Abonnement mensuel : Pack ${selectedTierData.name} (${selectedTierData.price}€ HT/mois)\n`;
-      if (selectedTier === "pro" || selectedTier === "expert") {
-        msg += `Assistant Atelier IA inclus dès disponibilité\n`;
-      }
-    } else {
-      msg += `Abonnement mensuel : Aucun\n`;
+      msg += `Abonnement : ${selectedTierData.name}, ${selectedTierData.price}€/mois\n`;
     }
-    if (hasEinvoicing) {
-      msg += `Option conformité : connexion au réseau légal via partenaire PDP (à partir de 450€ HT/an, puis à partir de 250€ HT/an dès la 2e année, montant exact selon volume)\n`;
-    }
-    if (hasMetalPricing) {
-      msg += `Module Prix Matières : +${metalPricingMonthly}€ HT/mois (cours alu, cuivre, zinc avec coefficients fournisseur)\n`;
-    }
-    msg += `\nPouvons-nous planifier un appel de démarrage ?`;
+    msg += `\nOn peut caler un appel ?`;
     return encodeURIComponent(msg);
   };
 
@@ -134,7 +123,7 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
                   <button
                     key={tier.id}
                     onClick={() => selectTier(tier.id)}
-                    className={`group text-left rounded-[1.5rem] border p-5 transition-all duration-300 cursor-pointer ${
+                    className={`group text-left rounded-[1.5rem] border p-5 transition-all duration-300 cursor-pointer flex flex-col ${
                       isSelected
                         ? "bg-gradient-to-b from-[#1c1f2e] to-[#111219] border-accent border-b-[5px] border-b-[#92400e] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(255,159,28,0.15)] ring-1 ring-accent/30 active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
                         : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
@@ -174,8 +163,8 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
                         <li key={feature} className="flex items-start gap-2.5 text-xs leading-relaxed text-white/82">
                           {/* 3D Tactile check stamp badge matching the other checklists */}
                           <div className={`flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
-                            isSelected 
-                              ? "border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1.5px_3px_rgba(255,159,28,0.2),inset_0_0.75px_0.75px_rgba(255,255,255,0.4)]" 
+                            isSelected
+                              ? "border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1.5px_3px_rgba(255,159,28,0.2),inset_0_0.75px_0.75px_rgba(255,255,255,0.4)]"
                               : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[2px] border-b-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.5)] text-transparent"
                           }`}>
                             <Check className="h-3 w-3 stroke-[3]" />
@@ -183,8 +172,39 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
                           <span>{feature}</span>
                         </li>
                       ))}
+                      {isMetalMetier && (tier.id === "pro" || tier.id === "expert") && (
+                        <li className="flex items-start gap-2.5 text-xs leading-relaxed">
+                          <div className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-md border border-accent/60 bg-accent/15 text-accent shadow-[0_1px_3px_rgba(255,159,28,0.2)]">
+                            <TrendingUp className="h-3 w-3 stroke-[2.5]" />
+                          </div>
+                          <span className="text-accent font-semibold">Module prix matières inclus</span>
+                        </li>
+                      )}
                     </ul>
-                  </button>
+
+                    {isMetalMetier && (tier.id === "pro" || tier.id === "expert") && (
+                      <div className="mt-auto pt-4">
+                        <div className="rounded-xl border border-white/8 bg-black/30 px-3 py-2.5">
+                          <p className="text-[10px] uppercase tracking-wide text-accent/70 mb-2">Cours de référence · aujourd'hui</p>
+                          <div className="space-y-1">
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] text-white/60">Aluminium</span>
+                              <span className="text-[11px] font-bold text-white/80 tabular-nums">2,41 €/kg</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] text-white/60">Cuivre</span>
+                              <span className="text-[11px] font-bold text-white/80 tabular-nums">8,73 €/kg</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <span className="text-[11px] text-white/60">Zinc</span>
+                              <span className="text-[11px] font-bold text-white/80 tabular-nums">2,89 €/kg</span>
+                            </div>
+                          </div>
+                          <p className="mt-2 text-[10px] text-white/40 italic">Coefficient fournisseur × validation artisan</p>
+                        </div>
+                      </div>
+                    )}
+</button>
                 );
               })}
             </div>
@@ -283,64 +303,13 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
                         </span>
                       </div>
                       <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                        Atelier génère déjà vos factures Factur-X. L'option connecte vos flux au réseau légal via partenaire PDP. Tarif annuel selon votre volume d'activité, à partir de 250€ HT/an dès la 2e année.
+                        Atelier génère déjà vos factures Factur-X. L'option connecte vos flux au réseau légal via partenaire PDP. Tarif ANNUEL selon votre volume de factures, à partir de 250€ HT/AN dès la 2e année.
                       </p>
                     </div>
                   </div>
                 </button>
               </div>
 
-              {/* Bloc 3 — Module Prix Matières (tôlier / métallier uniquement) */}
-              {showMetalPricing && (
-                <div className="rounded-[2rem] border border-white/10 bg-white/[0.01] p-5 md:p-7 shadow-[inset_0_0_20px_rgba(255,255,255,0.01)]">
-                  <div className="mb-5 flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent border-b-[4px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] font-display text-lg font-black text-black shadow-[0_4px_12px_rgba(255,159,28,0.35)]">
-                      3
-                    </div>
-                    <div>
-                      <span className="font-display text-[11px] font-black uppercase tracking-[0.18em] text-accent">
-                        Module Prix Matières
-                      </span>
-                      <h3 className="mt-1 font-display text-xl md:text-2xl font-black text-white">
-                        Voulez-vous des cours de référence métaux dans vos devis ?
-                      </h3>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => setHasMetalPricing((value) => !value)}
-                    className={`w-full rounded-2xl border p-5 text-left transition-all duration-300 cursor-pointer ${
-                      hasMetalPricing
-                        ? "bg-gradient-to-b from-[#1c1f2e] to-[#111219] border-accent border-b-[5px] border-b-[#92400e] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(255,159,28,0.15)] active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
-                        : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      {/* 3D Tactile Keycap Checkbox Stamp (Accent) */}
-                      <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
-                        hasMetalPricing
-                          ? "bg-gradient-to-b from-accent to-[#d97706] text-black border-accent border-b-[3.5px] border-b-[#92400e] shadow-[0_3px_6px_rgba(255,159,28,0.35),inset_0_1.5px_1.5px_rgba(255,255,255,0.4)]"
-                          : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[3px] border-b-black/60 shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.05)] text-transparent"
-                      }`}>
-                        <Check className="h-5 w-5 stroke-[3]" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                          <p className="font-display text-base font-black text-white">
-                            Oui, je veux pré-remplir mes lignes matière avec les cours aluminium, cuivre et zinc, ajustés par mes coefficients fournisseur.
-                          </p>
-                          <span className="w-fit rounded-full border border-accent/20 bg-accent/10 px-3 py-1 font-display text-xs font-bold text-accent shrink-0">
-                            +{metalPricingMonthly}€ HT/mois
-                          </span>
-                        </div>
-                        <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                          Cours indicatif LME mis à jour toutes les 10 min. Vous appliquez vos coefficients fournisseur, vous validez le prix final. Le cours utilisé est enregistré à chaque devis pour traçabilité.
-                        </p>
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              )}
             </div>
 
             {/* Right column: recap */}
@@ -368,17 +337,17 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
                   <span className="text-sm text-text-secondary">Conformité</span>
                   <span className="font-display text-sm font-black text-white">{hasEinvoicing ? "à partir de 450€ HT/an" : "Non sélectionnée"}</span>
                 </div>
-                {showMetalPricing && (
-                  <div className="flex items-center justify-between gap-4 rounded-xl border border-white/6 bg-black/20 p-3">
+                {isMetalMetier && (selectedTier === "pro" || selectedTier === "expert") && (
+                  <div className="flex items-center justify-between gap-4 rounded-xl border border-accent/20 bg-accent/5 p-3">
                     <span className="text-sm text-text-secondary">Prix matières</span>
-                    <span className="font-display text-sm font-black text-white">{hasMetalPricing ? `+${metalPricingMonthly}€ HT/mois` : "Non sélectionné"}</span>
+                    <span className="font-display text-sm font-black text-accent">Inclus</span>
                   </div>
                 )}
               </div>
 
               {hasEinvoicing && (
                 <p className="mt-3 text-center text-[11px] leading-relaxed text-amber-300/80">
-                  Facturation électronique : à partir de 450€ HT/an (an 1), puis à partir de 250€ HT/an, montant exact selon votre volume d'activité.
+                  Facturation électronique : à partir de 450€ HT la première ANNÉE, puis à partir de 250€ HT/AN, montant exact selon votre volume de factures.
                 </p>
               )}
 

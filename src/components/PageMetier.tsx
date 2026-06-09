@@ -32,6 +32,7 @@ export default function PageMetier({ slug }: PageMetierProps) {
   useEffect(() => {
     if (!data) return;
     document.title = data.seo.title;
+
     let meta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
@@ -39,6 +40,18 @@ export default function PageMetier({ slug }: PageMetierProps) {
       document.head.appendChild(meta);
     }
     meta.content = data.seo.description;
+
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `https://www.atelier-btp.fr/${data.slug}`;
+
+    return () => {
+      canonical!.href = "https://www.atelier-btp.fr/";
+    };
   }, [data]);
 
   if (!data) {

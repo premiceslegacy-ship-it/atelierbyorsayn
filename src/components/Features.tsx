@@ -17,7 +17,6 @@ import {
   Sparkles,
   RefreshCw,
   Share2,
-  Bot,
   ShieldCheck,
   ChevronRight
 } from "lucide-react";
@@ -191,20 +190,20 @@ export default function Features() {
     },
     {
       id: "agent",
-      label: "Atelier IA",
-      isComingSoon: true,
+      label: "Sarah",
+      isComingSoon: false,
       h2: "Le secrétaire IA qui connaît vos chantiers",
       body: (
         <>
-          Parlez à Atelier comme à un assistant. Il prépare vos devis, classe vos documents, suit vos relances et vous aide à piloter l'activité. Vous gardez toujours le dernier mot.
+          Parlez à Sarah comme à un assistant. Elle prépare vos devis, classe vos documents, suit vos relances et vous aide à piloter l'activité. Vous gardez toujours le dernier mot.
         </>
       ),
-      h3: "L'IA propose. Vous validez. Atelier exécute.",
-      body2: "Contrairement à un simple chatbot, Atelier IA est connecté à votre vraie activité : vos clients, vos documents, vos devis, vos factures et vos chantiers. Rien n'est envoyé, modifié ou facturé sans votre accord.",
+      h3: "Sarah propose. Vous validez. Atelier exécute.",
+      body2: "Contrairement à un simple chatbot, Sarah est connectée à votre vraie activité : vos clients, vos documents, vos devis, vos factures et vos chantiers. Rien n'est envoyé, modifié ou facturé sans votre accord.",
       bullets: [
-        "Il comprend votre activité : chantiers, clients, devis, factures, documents et priorités.",
-        "Il vous alerte au bon moment : facture en retard, devis à relancer, chantier incomplet, action urgente.",
-        "Vous gardez le contrôle : Atelier prépare les actions importantes. Vous validez avant tout envoi ou modification."
+        "Elle comprend votre activité : chantiers, clients, devis, factures, documents et priorités.",
+        "Elle vous alerte au bon moment : facture en retard, devis à relancer, chantier incomplet, action urgente.",
+        "Vous gardez le contrôle : Sarah prépare les actions importantes. Vous validez avant tout envoi ou modification."
       ]
     }
   ];
@@ -426,86 +425,154 @@ export default function Features() {
           </div>
         );
 
-      case 5: // Atelier IA — assistant intégré à l'app, triptyque Demandez / Prépare / Validez
+      case 5: // Sarah — assistante IA, UI DA complète
         return (
-          <div className="flex flex-col w-full h-full bg-[#07070a] rounded-xl relative overflow-hidden text-left">
+          <div
+            className="flex flex-col w-full h-full rounded-xl relative overflow-hidden text-left"
+            style={{ background: "linear-gradient(to bottom, rgba(26,26,32,0.96), rgba(14,14,18,0.96))", backdropFilter: "blur(40px) saturate(1.4)" }}
+          >
 
-            {/* Header bar */}
-            <div className="bg-gradient-to-b from-[#141419] to-[#0f0f13] px-3 py-2.5 flex items-center justify-between border-b border-white/5">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-b from-accent to-[#d97706] flex items-center justify-center border border-accent/60 border-b-[2px] border-b-[#92400e] shadow-[0_2px_5px_rgba(245,158,11,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                  <Bot className="w-3.5 h-3.5 text-black stroke-[2.5]" />
+            {/* ── Header : avatar Sarah + statut ── */}
+            <div className="px-3 py-2.5 flex items-center justify-between border-b border-white/[0.07]" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="flex items-center gap-2.5">
+                {/* Avatar 38px avec halo ambre ping */}
+                <div className="relative shrink-0">
+                  <span className="absolute inset-0 rounded-full animate-ping" style={{ background: "rgba(255,159,28,0.35)", animationDuration: "1.4s" }} />
+                  <img
+                    src="/sarah-avatar.webp"
+                    alt="Sarah"
+                    width={38}
+                    height={38}
+                    className="relative w-[38px] h-[38px] rounded-full object-cover"
+                    style={{
+                      background: "#1a1008",
+                      boxShadow: "0 0 0 2px rgba(255,159,28,0.45), inset 0 1.5px 0 rgba(255,255,255,0.35)"
+                    }}
+                  />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#0e0e12]" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-white text-[11px] font-display font-black tracking-wide">Atelier IA</span>
-                    <span className="text-[8px] bg-accent/15 text-accent px-1.5 py-0.5 rounded font-bold border border-accent/25 uppercase tracking-wider">Bientôt</span>
+                    <span className="text-white text-[12px] font-display font-black tracking-wide">Sarah</span>
                   </div>
-                  <span className="text-[9px] text-emerald-400 font-body block -mt-0.5">Connecté à votre activité</span>
+                  <span className="text-[9px] text-emerald-400 font-body">Connectée à votre activité</span>
                 </div>
               </div>
               <ShieldCheck className="w-4 h-4 text-white/30" />
             </div>
 
-            {/* Steps triptyque */}
-            <div className="flex-1 flex flex-col gap-2.5 p-3 justify-center">
+            {/* ── Conversation ── */}
+            <div className="flex-1 flex flex-col gap-2.5 px-3 pt-3 pb-2 overflow-hidden">
 
-              {/* Step 1 — Demandez */}
-              <div className="bg-gradient-to-b from-[#1a1b24] to-[#111218] border border-white/8 rounded-xl p-3 shadow-[0_3px_0_0_#000,0_6px_10px_rgba(0,0,0,0.4)]">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-5 h-5 rounded-md bg-gradient-to-b from-accent to-[#d97706] flex items-center justify-center border border-accent/50 border-b-[2px] border-b-[#92400e] shadow-[0_1.5px_3px_rgba(245,158,11,0.3)] shrink-0">
-                    <span className="text-black text-[9px] font-black">1</span>
-                  </div>
-                  <span className="text-[10px] font-display font-black text-accent uppercase tracking-wider">Demandez</span>
-                </div>
-                <div className="bg-[#0d0d10] border border-white/6 rounded-lg px-3 py-2 text-[12px] font-body text-white/85 leading-snug flex items-center gap-2">
-                  <Mic className="w-3 h-3 text-accent shrink-0 animate-pulse" />
-                  <span>"Prépare un devis pour le chantier Leclerc Rénovation."</span>
+              {/* Bulle utilisateur (ambre, coin cassé à droite) */}
+              <div className="flex justify-end">
+                <div
+                  className="max-w-[78%] px-3 py-2 text-[11px] font-body leading-snug text-[#050505] font-medium flex items-center gap-1.5"
+                  style={{
+                    background: "linear-gradient(to bottom, #FFB84D, #FF9F1C)",
+                    borderRadius: "18px 4px 18px 18px",
+                    boxShadow: "inset 0 1.5px 0 rgba(255,255,255,0.45), 0 4px 0 0 #B45309, 0 6px 16px rgba(180,83,9,0.18)"
+                  }}
+                >
+                  <Mic className="w-3 h-3 shrink-0 opacity-70" />
+                  <span>"Prépare un devis pour Leclerc Rénovation."</span>
                 </div>
               </div>
 
-              {/* Step 2 — L'assistant prépare */}
-              <div className="bg-gradient-to-b from-[#1a1b24] to-[#111218] border border-white/8 rounded-xl p-3 shadow-[0_3px_0_0_#000,0_6px_10px_rgba(0,0,0,0.4)]">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-5 h-5 rounded-md bg-gradient-to-b from-[#2d2d3a] to-[#181822] flex items-center justify-center border border-white/15 border-b-[2px] border-b-black/60 shadow-[0_1.5px_3px_rgba(0,0,0,0.4)] shrink-0">
-                    <span className="text-white/70 text-[9px] font-black">2</span>
-                  </div>
-                  <span className="text-[10px] font-display font-black text-white/60 uppercase tracking-wider">L'assistant prépare</span>
-                </div>
-                <div className="flex flex-col gap-1.5 text-[10px] font-body text-text-secondary">
-                  <div className="flex items-center gap-2">
-                    <Check className="w-3 h-3 text-emerald-400 stroke-[3] shrink-0" />
-                    <span>Client Leclerc Rénovation trouvé · 3 chantiers actifs</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-3 h-3 text-emerald-400 stroke-[3] shrink-0" />
-                    <span>Lignes de devis ajoutées · Prix estimé</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <RefreshCw className="w-3 h-3 text-accent stroke-[2.5] shrink-0 animate-spin" />
-                    <span className="text-accent">Document en cours de génération…</span>
+              {/* Bulle Sarah — processing */}
+              <div className="flex items-end gap-2">
+                <img
+                  src="/sarah-avatar.webp"
+                  alt=""
+                  width={26}
+                  height={26}
+                  className="w-[26px] h-[26px] rounded-full object-cover shrink-0 mb-0.5"
+                  style={{ background: "#1a1008", boxShadow: "0 0 0 1.5px rgba(255,159,28,0.4)" }}
+                />
+                <div
+                  className="flex-1 px-3 py-2.5 text-[10px] font-body leading-relaxed"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.07)",
+                    borderRadius: "4px 18px 18px 18px"
+                  }}
+                >
+                  <div className="flex flex-col gap-1 text-white/80">
+                    <div className="flex items-center gap-1.5">
+                      <Check className="w-3 h-3 text-emerald-400 stroke-[3] shrink-0" />
+                      <span>Client Leclerc Rénovation · <span className="text-white/50">3 chantiers actifs</span></span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Check className="w-3 h-3 text-emerald-400 stroke-[3] shrink-0" />
+                      <span>Lignes de devis ajoutées · <span className="text-white/50">Prix estimé</span></span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <RefreshCw className="w-3 h-3 text-accent stroke-[2.5] shrink-0 animate-spin" />
+                      <span className="text-accent">Document en cours de génération…</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Step 3 — Vous validez */}
-              <div className="bg-gradient-to-b from-[#1a1b24] to-[#111218] border border-emerald-500/25 rounded-xl p-3 shadow-[0_3px_0_0_#000,0_6px_10px_rgba(0,0,0,0.4),0_0_12px_rgba(16,185,129,0.06)]">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-5 h-5 rounded-md bg-gradient-to-b from-emerald-500 to-emerald-600 flex items-center justify-center border border-emerald-400/60 border-b-[2px] border-b-[#064e3b] shadow-[0_1.5px_3px_rgba(16,185,129,0.3)] shrink-0">
-                    <span className="text-black text-[9px] font-black">3</span>
-                  </div>
-                  <span className="text-[10px] font-display font-black text-[#b4f481] uppercase tracking-wider">Vous validez</span>
+              {/* Carte d'action — badge risque "Confirmation" (orange) */}
+              <div
+                className="rounded-xl p-2.5 mt-0.5"
+                style={{
+                  background: "rgba(249,115,22,0.06)",
+                  border: "1px solid rgba(249,115,22,0.30)"
+                }}
+              >
+                {/* Badge risque */}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[9px] font-display font-black text-white/70 uppercase tracking-wider">Action à valider</span>
+                  <span
+                    className="text-[8px] font-display font-black uppercase tracking-wider px-2 py-0.5 rounded-full"
+                    style={{
+                      color: "#F97316",
+                      background: "rgba(249,115,22,0.15)",
+                      border: "1px solid rgba(249,115,22,0.35)"
+                    }}
+                  >
+                    Confirmation
+                  </span>
                 </div>
-                <div className="flex items-center gap-2 bg-emerald-500/8 border border-emerald-500/20 rounded-lg px-3 py-2">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-black shrink-0 shadow-[0_1.5px_3px_rgba(16,185,129,0.4)]">
-                    <Check className="w-3 h-3 stroke-[3]" />
-                  </div>
-                  <span className="text-[11px] font-display font-bold text-[#b4f481]">Envoyer le devis</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#b4f481]/60 ml-auto" />
+                <p className="text-[10px] text-white/60 font-body mb-2.5 leading-snug">
+                  Envoyer le devis DEV-2026-043 à <span className="text-white/90">Leclerc Rénovation</span> — <span className="text-white/90">4 560 €</span>
+                </p>
+                {/* Boutons : ambre relief 3D + neutre */}
+                <div className="flex gap-2">
+                  <button
+                    className="flex-1 py-2 rounded-xl text-[10px] font-display font-black text-[#050505] transition-all active:translate-y-[2px]"
+                    style={{
+                      background: "linear-gradient(to bottom, #FFB84D, #FF9F1C)",
+                      boxShadow: "inset 0 1.5px 0 rgba(255,255,255,0.45), 0 4px 0 0 #B45309, 0 6px 16px rgba(180,83,9,0.18)"
+                    }}
+                  >
+                    Confirmer
+                  </button>
+                  <button
+                    className="flex-1 py-2 rounded-xl text-[10px] font-display font-bold text-white/50 transition-all"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)"
+                    }}
+                  >
+                    Annuler
+                  </button>
                 </div>
-                <p className="mt-1.5 text-[9.5px] text-text-secondary/60 text-center">Rien n'est envoyé sans votre accord.</p>
               </div>
 
+            </div>
+
+            {/* ── Saisie bas ── */}
+            <div className="px-3 pb-3 pt-1.5 border-t border-white/[0.05]">
+              <div
+                className="flex items-center gap-2 px-3 py-2 rounded-xl text-[10px] text-white/25 font-body"
+                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+              >
+                <Mic className="w-3.5 h-3.5 text-white/20 shrink-0" />
+                <span>Parlez à Sarah ou tapez votre demande…</span>
+              </div>
             </div>
 
           </div>

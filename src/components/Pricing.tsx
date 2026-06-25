@@ -23,33 +23,45 @@ const aiTiers: Array<{
     price: 39,
     desc: "L'IA vous aide dans l'application pour les devis, relances et tâches répétitives.",
     bestFor: "Solo qui veut gagner du temps vite",
-    features: ["Relances et aide au chiffrage", "Quotas adaptés à 1 personne active", "Application complète incluse"],
+    features: [
+      "Devis générés depuis vos prestations types, envoyés avant de quitter le client",
+      "Relances automatiques sur factures impayées, sans passer l'appel vous-même",
+      "Tableau de bord : CA encaissé, devis en attente, chantiers ouverts",
+    ],
   },
   {
     id: "pro",
     name: "Pro",
     price: 69,
     originalPrice: 89,
-    desc: "Plus de volume, plus d'automatisation et l'assistant IA intégré dès disponibilité.",
+    desc: "Plus de volume, plus d'automatisation et l'assistante Sarah intégrée à votre activité.",
     bestFor: "Artisan actif ou petite équipe",
-    features: ["Quotas doublés à triplés", "Assistant Atelier IA prévu", "Suivi trésorerie et chantier renforcé"],
+    features: [
+      "Tout le Starter, sans limite de volume sur devis, factures et chantiers",
+      "Marge chantier en temps réel : heures, achats et sous-traitance remontent automatiquement",
+      "Sarah, votre assistante IA, prépare les actions — vous validez avant envoi",
+    ],
   },
   {
     id: "expert",
     name: "Expert",
-    price: 119,
-    originalPrice: 149,
+    price: 139,
+    originalPrice: 169,
     desc: "Le maximum d'IA pour suivre urgences, trésorerie et rentabilité sans limite.",
     bestFor: "Équipe qui veut tout déléguer à l'IA",
-    features: ["Toutes les fonctions sans limite", "Priorités chantier et trésorerie", "Assistant analytique complet"],
+    features: [
+      "Tout le Pro, plus alertes proactives de Sarah sur urgences trésorerie et chantiers à risque",
+      "Pointage équipe intégré : chaque compagnon pointe depuis un lien, les heures tombent sur le bon chantier",
+      "Exports comptables, rapports de rentabilité et suivi de marge prêts à l'emploi",
+    ],
   },
 ];
 
 const noAiTier = {
   id: "none" as const,
-  name: "Sans abonnement IA",
+  name: "À l'usage",
   price: 0,
-  desc: "Vous gardez l'application métier complète, votre base privée, vos devis, factures, chantiers, pointages et Factur-X, sans abonnement mensuel IA.",
+  desc: "Aucun abonnement mensuel. Vous payez uniquement ce que vous consommez.",
   features: ["Application complète", "Base dédiée et isolée", "Factur-X inclus"],
 };
 
@@ -64,7 +76,7 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
   const selectedTierData = allTiers.find((tier) => tier.id === selectedTier)!;
   const isMrr = selectedTier !== "none";
 
-  const setupPrice = (isMrr ? 1200 : 2500) + (hasEinvoicing ? 450 : 0);
+  const setupPrice = (isMrr ? 1500 : 3000) + (hasEinvoicing ? 450 : 0);
   const setupName = hasEinvoicing ? "App + facturation électronique" : "App seule";
 
   const selectTier = (tier: TierId) => {
@@ -76,7 +88,7 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
 
   const generateWhatsAppMessage = () => {
     const context = metierContext ? ` (${metierContext})` : "";
-    const baseSetup = isMrr ? 1200 : 2500;
+    const baseSetup = isMrr ? 1500 : 3000;
     let msg = `Bonjour Samuel, je veux démarrer Atelier${context}.\n\n`;
     msg += `Setup : ${baseSetup}€ HT\n`;
     if (hasEinvoicing) msg += `Facturation électronique : à partir de 450€ HT/an la 1re année, puis à partir de 250€/an selon le volume de factures\n`;
@@ -115,6 +127,49 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
               <span className="font-display text-[11px] font-black uppercase tracking-[0.18em] text-accent">1. Abonnement IA</span>
               <h3 className="font-display text-2xl font-black text-white">Quel niveau d'automatisation voulez-vous ?</h3>
             </div>
+
+            <button
+              onClick={() => selectTier("none")}
+              className={`mb-4 w-full rounded-[1.35rem] border p-4 md:p-5 text-left transition-all duration-300 cursor-pointer ${
+                selectedTier === "none"
+                  ? "bg-gradient-to-b from-[#1c1f2e] to-[#111219] border-accent border-b-[5px] border-b-[#92400e] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(255,159,28,0.15)] ring-1 ring-accent/30 active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
+                  : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+              }`}
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
+                      selectedTier === "none"
+                        ? "border-accent border-b-[3px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_2.5px_5px_rgba(255,159,28,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]"
+                        : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[3px] border-b-black/60 shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.05)] text-transparent"
+                    }`}>
+                      <Check className="h-4 w-4 stroke-[3]" />
+                    </span>
+                    <p className="font-display text-lg md:text-xl font-black text-white">{noAiTier.name}</p>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">{noAiTier.desc}</p>
+                  <ul className="mt-3.5 flex flex-wrap gap-x-4 gap-y-2">
+                    {noAiTier.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-xs leading-relaxed text-white/82">
+                        <div className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
+                          selectedTier === "none"
+                            ? "border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1.5px_3px_rgba(255,159,28,0.2),inset_0_0.75px_0.75px_rgba(255,255,255,0.4)]"
+                            : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[2px] border-b-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.5)] text-transparent"
+                        }`}>
+                          <Check className="h-2.5 w-2.5 stroke-[3]" />
+                        </div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="shrink-0 text-left md:text-right mt-3 md:mt-0">
+                  <p className="font-display text-3xl font-black text-white">0€</p>
+                  <p className="text-xs text-text-secondary">HT / mois</p>
+                </div>
+              </div>
+            </button>
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
               {aiTiers.map((tier) => {
@@ -209,51 +264,6 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
               })}
             </div>
 
-            <button
-              onClick={() => selectTier("none")}
-              className={`mt-4 w-full rounded-[1.35rem] border p-4 md:p-5 text-left transition-all duration-300 cursor-pointer ${
-                selectedTier === "none"
-                  ? "bg-gradient-to-b from-[#1c1f2e] to-[#111219] border-accent border-b-[5px] border-b-[#92400e] -translate-y-2 shadow-[0_12px_28px_rgba(0,0,0,0.85),inset_0_2px_0px_rgba(255,255,255,0.15),0_0_20px_rgba(255,159,28,0.15)] ring-1 ring-accent/30 active:-translate-y-0.5 active:border-b-[2px] active:shadow-[0_4px_10px_rgba(0,0,0,0.8)]"
-                  : "bg-gradient-to-b from-[#141419] to-[#0a0a0d] border-white/10 border-b-[4px] border-b-black/80 shadow-[0_8px_16px_rgba(0,0,0,0.65),inset_0_1.5px_0px_rgba(255,255,255,0.08)] hover:-translate-y-1 hover:border-b-[5px] hover:border-b-black/90 hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] active:translate-y-0 active:border-b-[2px] active:shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-              }`}
-            >
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3">
-                    {/* 3D Tactile Checkbox Stamp */}
-                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 ${
-                      selectedTier === "none" 
-                        ? "border-accent border-b-[3px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_2.5px_5px_rgba(255,159,28,0.35),inset_0_1px_1px_rgba(255,255,255,0.4)]" 
-                        : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[3px] border-b-black/60 shadow-[0_2px_4px_rgba(0,0,0,0.5),inset_0_1px_1.5px_rgba(255,255,255,0.05)] text-transparent"
-                    }`}>
-                      <Check className="h-4 w-4 stroke-[3]" />
-                    </span>
-                    <p className="font-display text-lg md:text-xl font-black text-white">{noAiTier.name}</p>
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">{noAiTier.desc}</p>
-                  
-                  {/* Features list for No-AI tier with 3D checkmarks */}
-                  <ul className="mt-3.5 flex flex-wrap gap-x-4 gap-y-2">
-                    {noAiTier.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-xs leading-relaxed text-white/82">
-                        <div className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
-                          selectedTier === "none" 
-                            ? "border-accent border-b-[2px] border-b-[#92400e] bg-gradient-to-b from-accent to-[#d97706] text-bg-base shadow-[0_1.5px_3px_rgba(255,159,28,0.2),inset_0_0.75px_0.75px_rgba(255,255,255,0.4)]" 
-                            : "border-white/15 bg-gradient-to-b from-[#1c1d24] to-[#121318] border-b-[2px] border-b-black/60 shadow-[0_1px_2px_rgba(0,0,0,0.5)] text-transparent"
-                        }`}>
-                          <Check className="h-2.5 w-2.5 stroke-[3]" />
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="shrink-0 text-left md:text-right mt-3 md:mt-0">
-                  <p className="font-display text-3xl font-black text-white">0€</p>
-                  <p className="text-xs text-text-secondary">HT / mois</p>
-                </div>
-              </div>
-            </button>
           </div>
 
           <div ref={complianceRef} className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
@@ -331,7 +341,7 @@ export default function Pricing({ metierContext, metierSlug }: PricingProps = {}
                 </div>
                 <div className="flex items-center justify-between gap-4 rounded-xl border border-white/6 bg-black/20 p-3">
                   <span className="text-sm text-text-secondary">{selectedTierData.name}</span>
-                  <span className="font-display text-sm font-black text-white">{selectedTierData.price}€ HT / mois</span>
+                  <span className="font-display text-sm font-black text-white">{selectedTier === "none" ? "0€ HT / mois" : `${selectedTierData.price}€ HT / mois`}</span>
                 </div>
                 <div className="flex items-center justify-between gap-4 rounded-xl border border-white/6 bg-black/20 p-3">
                   <span className="text-sm text-text-secondary">Conformité</span>

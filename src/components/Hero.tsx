@@ -212,7 +212,7 @@ function HeroComparisonMockup() {
 export default function Hero() {
   const openWhatsApp = () =>
     window.open(
-      "https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20j%27ai%20vu%20Atelier%20et%20je%20voudrais%20en%20savoir%20plus%20pour%20mon%20activit%C3%A9.",
+      `https://wa.me/33651664068?text=${encodeURIComponent("Bonjour Samuel, j'ai vu Atelier. Je voudrais en savoir plus.")}`,
       "_blank"
     );
 

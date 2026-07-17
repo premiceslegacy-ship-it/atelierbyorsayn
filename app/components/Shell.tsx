@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, MessageCircle, Play, X } from "lucide-react";
+import { metiers } from "@legacy/data/metiers";
 import { buildWhatsAppUrl } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
 
@@ -74,10 +75,7 @@ export function Footer() {
         </div>
         <div>
           <p className="footer-label">Métiers</p>
-          <Link to="/electricien">Électricien</Link>
-          <Link to="/plombier">Plombier</Link>
-          <Link to="/menuisier">Menuisier</Link>
-          <Link to="/macon">Maçon</Link>
+          {metiers.map((metier) => <Link key={metier.slug} to={`/${metier.slug}`}>{metier.metier}</Link>)}
         </div>
         <div>
           <p className="footer-label">Informations</p>

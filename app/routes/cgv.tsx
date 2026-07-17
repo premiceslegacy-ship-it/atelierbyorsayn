@@ -4,7 +4,7 @@ import CGV from "@legacy/pages/CGV";
 import { SITE_URL } from "../data/site";
 
 export const meta: MetaFunction = () => [
-  { title: "Conditions générales de vente — Atelier" },
+  { title: "Conditions générales de vente · Atelier" },
   { name: "robots", content: "index, follow" },
   { tagName: "link", rel: "canonical", href: `${SITE_URL}/cgv` },
 ];

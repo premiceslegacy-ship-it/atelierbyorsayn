@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import {
   ArrowRight,
@@ -6,12 +6,11 @@ import {
   CalendarDays,
   Check,
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   FileCheck2,
   FileText,
   MessageCircle,
   Mic,
+  Play,
   ReceiptText,
   RefreshCw,
   ShieldCheck,
@@ -21,6 +20,8 @@ import {
 import { getArticles } from "../lib/articles";
 import { buildWhatsAppUrl, CASE_STUDIES, FAQ_ITEMS, PRICING_TIERS, SETUP_PRICES } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
+import { CaseCarousel } from "./CaseCarousel";
+import { ProofStrip } from "./ProofStrip";
 
 const benefits = [
   {
@@ -69,42 +70,56 @@ const benefits = [
 ];
 
 const demoSteps = [
-  {
-    label: "Vous parlez",
-    prompt: "Sarah, prépare le devis de Mme Martin pour la PAC vue ce matin.",
-    note: "Depuis le chantier, sans formulaire à rallonge.",
-  },
-  {
-    label: "Sarah retrouve",
-    prompt: "Cliente, adresse, visite, catalogue PAC et conditions de règlement retrouvés.",
-    note: "Le contexte de votre entreprise, pas une réponse générique.",
-  },
-  {
-    label: "Elle prépare",
-    prompt: "Devis DEV-2026-081 prêt · 8 460 € HT · acompte 30 % · marge cible 31 %.",
-    note: "Les hypothèses restent visibles avant toute action.",
-  },
-  {
-    label: "Vous décidez",
-    prompt: "Vérifiez le prix, modifiez si besoin, puis validez l'envoi.",
-    note: "Sarah travaille. Le dernier mot reste le vôtre.",
-  },
+  { label: "Vous parlez", note: "Depuis le chantier, sans formulaire à rallonge.", duration: 5200 },
+  { label: "Sarah retrouve", note: "Le contexte de votre entreprise, pas une réponse générique.", duration: 6200 },
+  { label: "Elle chiffre", note: "Les hypothèses restent visibles avant toute action.", duration: 7200 },
+  { label: "Vous validez", note: "Sarah travaille. Le dernier mot reste le vôtre.", duration: 6800 },
+];
+
+const demoContext = [
+  { label: "Cliente", value: "Mme Martin", detail: "Cliente depuis 2023" },
+  { label: "Visite", value: "Ce matin", detail: "PAC air/eau repérée" },
+  { label: "Catalogue", value: "PAC 8,4 kW", detail: "Vos prix, votre TVA" },
+  { label: "Conditions", value: "Acompte 30 %", detail: "Vos règles habituelles" },
+];
+
+const demoLines = [
+  { label: "PAC air/eau 8,4 kW", amount: "5 990 €" },
+  { label: "Pose & raccordement", amount: "1 870 €" },
+  { label: "Mise en service & réglages", amount: "600 €" },
 ];
 
 function Demo() {
+  const [started, setStarted] = useState(false);
   const [active, setActive] = useState(0);
+  const [sent, setSent] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => setActive((value) => (value + 1) % demoSteps.length), 15000);
-    return () => window.clearInterval(timer);
-  }, []);
+    if (!started || !playing || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timers: number[] = [];
+    if (active < demoSteps.length - 1) {
+      timers.push(window.setTimeout(() => setActive(active + 1), demoSteps[active].duration));
+    } else {
+      timers.push(window.setTimeout(() => setSent(true), 2400));
+      timers.push(window.setTimeout(() => setPlaying(false), demoSteps[active].duration));
+    }
+    return () => timers.forEach((timer) => window.clearTimeout(timer));
+  }, [active, playing, started]);
+
+  const goTo = (index: number) => {
+    setStarted(true);
+    setActive(index);
+    setSent(false);
+    setPlaying(true);
+  };
 
   return (
     <section id="demo" className="section section--dark demo-section">
       <div className="section-heading section-heading--center">
         <p className="eyebrow">60 secondes avec Atelier</p>
-        <h2>Une demande. Le contexte. Une action prête.</h2>
-        <p>Suivez le parcours à votre rythme. Rien ne part sans vous.</p>
+        <h2>Regardez Sarah préparer un devis.</h2>
+        <p>De la demande vocale à votre validation. Rien ne part sans vous.</p>
       </div>
       <div className="demo-shell">
         <div className="demo-sidebar" role="tablist" aria-label="Étapes de la démonstration">
@@ -113,22 +128,84 @@ function Demo() {
               key={step.label}
               role="tab"
               aria-selected={active === index}
-              onClick={() => setActive(index)}
-              className={active === index ? "is-active" : ""}
+              onClick={() => goTo(index)}
+              className={active === index ? "is-active" : index < active ? "is-done" : ""}
             >
-              <span>{String(index + 1).padStart(2, "0")}</span>
+              <span className="demo-step-index">{index < active ? <Check aria-hidden="true" /> : String(index + 1).padStart(2, "0")}</span>
               {step.label}
+              {active === index && playing && <i className="demo-step-progress" style={{ animationDuration: `${step.duration}ms` }} aria-hidden="true" />}
             </button>
           ))}
         </div>
         <div className="demo-phone" role="tabpanel">
           <div className="demo-phone__top"><img src="/icon_meta.png" alt="" width="22" height="22" /> Atelier · Sarah <span className="status-dot" /></div>
-          <div className="demo-conversation" key={active}>
-            <div className="sarah-orb"><img src="/sarah-avatar.webp" alt="" width="512" height="512" /></div>
-            <p className="demo-label">{demoSteps[active].label}</p>
-            <p className="demo-prompt">{demoSteps[active].prompt}</p>
-            <p className="demo-note">{demoSteps[active].note}</p>
-            {active === 3 && <button className="demo-validate"><Check aria-hidden="true" /> Valider l'envoi</button>}
+          <div className="demo-conversation demo-conversation--sim" key={started ? active : "idle"}>
+            {!started && (
+              <div className="demo-idle">
+                <div className="sarah-orb"><img src="/sarah-avatar.webp" alt="" width="512" height="512" /></div>
+                <p className="demo-prompt">Une vraie demande, chiffrée sous vos yeux.</p>
+                <p className="demo-note">60 secondes, étape par étape. Rien ne part sans votre validation.</p>
+                <button className="demo-validate" type="button" onClick={() => goTo(0)}><Play aria-hidden="true" /> Lancer la démonstration</button>
+              </div>
+            )}
+            {started && active === 0 && (
+              <>
+                <div className="demo-bubble demo-bubble--user demo-stagger" style={{ animationDelay: "0.2s" }}>
+                  <div className="demo-wave" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ animationDelay: `${i * 0.08}s` }} />)}</div>
+                  <span>0:06</span>
+                </div>
+                <p className="demo-prompt demo-stagger" style={{ animationDelay: "0.9s" }}>« Sarah, prépare le devis de Mme Martin pour la PAC vue ce matin. »</p>
+              </>
+            )}
+            {started && active === 1 && (
+              <>
+                <div className="demo-sarah-line demo-stagger"><span className="sarah-orb sarah-orb--mini"><img src="/sarah-avatar.webp" alt="" width="512" height="512" /></span><p>Je retrouve le contexte de l'entreprise…</p></div>
+                <div className="demo-chips">
+                  {demoContext.map((chip, index) => (
+                    <div className="demo-chip demo-stagger" style={{ animationDelay: `${0.7 + index * 0.7}s` }} key={chip.label}>
+                      <span>{chip.label}</span><strong>{chip.value}</strong><small>{chip.detail}</small>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+            {started && active === 2 && (
+              <div className="demo-doc demo-stagger">
+                <div className="demo-doc__head"><strong>DEV-2026-081</strong><span>Brouillon · Mme Martin</span></div>
+                {demoLines.map((line, index) => (
+                  <div className="demo-doc__line demo-stagger" style={{ animationDelay: `${0.6 + index * 0.9}s` }} key={line.label}>
+                    <span>{line.label}</span><strong>{line.amount}</strong>
+                  </div>
+                ))}
+                <div className="demo-doc__total demo-stagger" style={{ animationDelay: "3.6s" }}>
+                  <span>Total HT</span><strong>8 460 €</strong>
+                </div>
+                <div className="demo-doc__badge demo-stagger" style={{ animationDelay: "4.4s" }}>Marge cible 31 % · Acompte 30 %</div>
+              </div>
+            )}
+            {started && active === 3 && !sent && (
+              <>
+                <div className="demo-doc demo-doc--compact demo-stagger">
+                  <div className="demo-doc__head"><strong>DEV-2026-081</strong><span>8 460 € HT · prêt à partir</span></div>
+                  <div className="demo-doc__line"><span>Relu par Sarah, rien d'envoyé</span><strong>✓</strong></div>
+                </div>
+                <button className="demo-validate demo-stagger" style={{ animationDelay: "0.8s" }} type="button" onClick={() => setSent(true)}><Check aria-hidden="true" /> Valider l'envoi</button>
+              </>
+            )}
+            {started && active === 3 && sent && (
+              <div className="demo-sent">
+                <div className="demo-sent__check"><Check aria-hidden="true" /></div>
+                <p className="demo-prompt">Devis envoyé à Mme Martin.</p>
+                <p className="demo-note">Sarah archive le devis et suivra la réponse. Vous n'avez rien tapé.</p>
+                <button className="demo-replay" type="button" onClick={() => goTo(0)}><RefreshCw aria-hidden="true" /> Revoir la démonstration</button>
+              </div>
+            )}
+            {started && !(active === 3 && sent) && (
+              <>
+                <p className="demo-label">{demoSteps[active].label}</p>
+                <p className="demo-note">{demoSteps[active].note}</p>
+              </>
+            )}
           </div>
         </div>
         <div className="demo-context">
@@ -136,46 +213,6 @@ function Demo() {
           <div><FileCheck2 /> <span><strong>Mme Martin</strong>Cliente depuis 2023</span></div>
           <div><ReceiptText /> <span><strong>DEV-2026-081</strong>Brouillon enregistré</span></div>
           <div><BarChart3 /> <span><strong>31 %</strong>Marge cible</span></div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CaseCarousel() {
-  const scroller = useRef<HTMLDivElement>(null);
-  const scroll = (direction: -1 | 1) => scroller.current?.scrollBy({ left: direction * 380, behavior: "smooth" });
-  return (
-    <section id="resultats" className="section section--results">
-      <div className="section-heading section-heading--split">
-        <div>
-          <p className="eyebrow">Cas clients réels</p>
-          <h2>Moins d'administratif.<br />Plus de maîtrise.</h2>
-        </div>
-        <div className="carousel-controls">
-          <button onClick={() => scroll(-1)} aria-label="Cas client précédent"><ChevronLeft /></button>
-          <button onClick={() => scroll(1)} aria-label="Cas client suivant"><ChevronRight /></button>
-        </div>
-      </div>
-      <div className="case-viewport" ref={scroller} tabIndex={0} aria-label="Témoignages clients">
-        <div className="case-track">
-          {[...CASE_STUDIES, ...CASE_STUDIES].map((item, index) => (
-            <article className="case-card" key={`${item.id}-${index}`}>
-              <picture>
-                <source srcSet={item.portrait.replace(".webp", ".avif")} type="image/avif" />
-                <img src={item.portrait} alt={`Portrait de ${item.name}, ${item.trade}`} width="720" height="900" loading="lazy" />
-              </picture>
-              <div className="case-card__overlay">
-                <p className="case-result">{item.result}</p>
-                <blockquote>« {item.quote} »</blockquote>
-                <div className="case-person">
-                  <strong>{item.name}</strong>
-                  <span>{item.trade}</span>
-                  <small>{item.team} · {item.region}</small>
-                </div>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>
@@ -227,7 +264,7 @@ function Pricing() {
                   <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
                 </details>
                 <ConversionLink
-                  className={`button ${tier.featured ? "button--primary" : "button--light"}`}
+                  className={`button ${tier.featured ? "button--primary" : "button--dark"}`}
                   href={buildWhatsAppUrl("les tarifs", tier)}
                   source="pricing"
                   tier={tier.id}
@@ -280,12 +317,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="Résultats clients">
-        <div><strong>12 500 €</strong><span>d'impayés récupérés</span></div>
-        <div><strong>45 → 12 jours</strong><span>de délai de paiement</span></div>
-        <div><strong>10 h / mois</strong><span>rendues à l'équipe</span></div>
-        <div><strong>×3</strong><span>sur le temps administratif</span></div>
-      </section>
+      <ProofStrip />
 
       <section className="section phrase-section">
         <div className="section-heading section-heading--center">
@@ -318,7 +350,6 @@ export default function HomePage() {
             const Icon = benefit.icon;
             return (
               <article className={`bento-card ${benefit.className ?? ""}`} key={benefit.label}>
-                <span className="bento-card__number" data-number={`${String(index + 1).padStart(2, "0")}.`} aria-hidden="true" />
                 <div className="bento-card__icon"><Icon /></div>
                 <p className="eyebrow">{benefit.label}</p>
                 <h3>{benefit.title}</h3>

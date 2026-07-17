@@ -5,10 +5,10 @@ import { StructuredData } from "../components/StructuredData";
 import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICES, SITE_URL } from "../data/site";
 
 export const meta: MetaFunction = () => [
-  { title: "Atelier — L'assistante de gestion des artisans du BTP" },
+  { title: "Atelier : L'assistante de gestion des artisans du BTP" },
   { name: "description", content: "Sarah prépare vos devis, relance les impayés et suit la marge de vos chantiers. Atelier est l'assistante de gestion conçue pour les artisans du BTP." },
   { name: "robots", content: "index, follow" },
-  { property: "og:title", content: "Atelier — Une secrétaire métier dans votre poche" },
+  { property: "og:title", content: "Atelier : Une secrétaire métier dans votre poche" },
   { property: "og:description", content: "Devis, relances, marge et planning. Sarah travaille, vous décidez." },
   { property: "og:type", content: "website" },
   { property: "og:url", content: `${SITE_URL}/` },

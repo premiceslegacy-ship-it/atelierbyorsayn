@@ -2,6 +2,7 @@ import type { Config } from "@react-router/dev/config";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
+import { metiers } from "./src/data/metiers";
 
 const CONTENT_DIR = join(process.cwd(), "content/blog");
 
@@ -29,13 +30,7 @@ export default {
       "/mentions-legales",
       "/confidentialite",
       "/cgv",
-      "/electricien",
-      "/plombier",
-      "/menuisier",
-      "/peintre",
-      "/tolier",
-      "/paysagiste",
-      "/macon",
+      ...metiers.map((metier) => `/${metier.slug}`),
       ...publishedArticlePaths(),
     ];
   },

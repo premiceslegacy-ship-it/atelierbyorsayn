@@ -11,11 +11,11 @@ primaryQuery: "calcul marge chantier BTP"
 tags: ["marge chantier", "rentabilité", "BTP", "coût de revient"]
 heroImage: "/images/blog/marge-chantier.webp"
 sources:
-  - title: "Fixer ses prix — Bpifrance Création"
+  - title: "Fixer ses prix, Bpifrance Création"
     url: "https://bpifrance-creation.fr/encyclopedie/gestion-lentreprise/gestion-tresorerie/fixer-ses-prix"
-  - title: "Indice du coût de la construction — INSEE"
+  - title: "Indice du coût de la construction, INSEE"
     url: "https://www.insee.fr/fr/statistiques/serie/telecharger/csv/000008630"
-  - title: "Référentiel produit Atelier — synthèse locale"
+  - title: "Référentiel produit Atelier, synthèse locale"
     url: "/llms.txt"
 draft: false
 ---
@@ -24,13 +24,14 @@ Un chantier peut remplir le planning et vider la trésorerie. Le chiffre d'affai
 
 ## Le calcul de base
 
-La formule la plus utile est :
+La formule la plus utile est courte.
 
-**Marge chantier = chiffre d'affaires du chantier − coûts directs du chantier.**
+> **Marge chantier = chiffre d'affaires du chantier − coûts directs du chantier.**
+> Le taux de marge se calcule ensuite ainsi : marge divisée par le chiffre d'affaires, multipliée par 100.
 
-Les coûts directs comprennent au minimum les matériaux, les heures réellement passées, la sous-traitance, les locations et les dépenses affectées au chantier. Le taux de marge se calcule ensuite ainsi : marge divisée par le chiffre d'affaires, multipliée par 100.
+Les coûts directs comprennent au minimum les matériaux, les heures réellement passées, la sous-traitance, les locations et les dépenses affectées au chantier.
 
-Exemple : pour 20 000 € facturés et 14 000 € de coûts directs, la marge est de 6 000 €, soit 30 % du chiffre d'affaires.
+Exemple concret : pour **20 000 € facturés** et **14 000 € de coûts directs**, la marge est de 6 000 €, soit **30 %** du chiffre d'affaires.
 
 ## Le coût oublié : votre propre temps
 
@@ -42,13 +43,13 @@ Fixez un coût horaire interne cohérent. Ce n'est pas votre tarif client : c'es
 
 Au démarrage, votre devis fixe une cible : nombre d'heures, budget matériaux, sous-traitance et marge attendue. Pendant le chantier, remplacez progressivement les hypothèses par le réel.
 
-Trois alertes méritent une réaction immédiate :
+Trois alertes méritent une réaction immédiate.
 
-- les heures consommées progressent plus vite que l'avancement ;
-- une hausse fournisseur n'a pas été absorbée dans le prix ;
-- les petits achats terrain s'accumulent sans être rattachés au chantier.
+- Les heures consommées progressent plus vite que l'avancement du chantier.
+- Une hausse fournisseur n'a pas été absorbée dans le prix de vente.
+- Les petits achats terrain s'accumulent sans être rattachés au chantier.
 
-À 80 % du budget d'heures pour 50 % d'avancement, le problème n'est pas comptable. Il est opérationnel, et vous pouvez encore agir.
+> **À retenir :** à 80 % du budget d'heures pour 50 % d'avancement, le problème n'est pas comptable. Il est opérationnel, et vous pouvez encore agir.
 
 ## Ne confondez pas marge et trésorerie
 

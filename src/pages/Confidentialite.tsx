@@ -67,9 +67,9 @@ export default function Confidentialite() {
             </h2>
             <p className="mb-3">Vos données peuvent être transmises aux prestataires techniques suivants dans le cadre de la fourniture du service :</p>
             <ul className="list-disc list-inside space-y-2 text-neutral-400">
-              <li><strong className="text-white">Cloudflare, Inc.</strong> (USA) — exécution applicative. Certifié Data Privacy Framework UE-USA.</li>
-              <li><strong className="text-white">Supabase, Inc.</strong> (USA, données stockées UE Frankfurt) — base de données. Certifié Data Privacy Framework UE-USA.</li>
-              <li><strong className="text-white">Resend, Inc.</strong> (USA) — emails transactionnels. DPA RGPD, clauses contractuelles types.</li>
+              <li><strong className="text-white">Cloudflare, Inc.</strong> (USA) - exécution applicative. Certifié Data Privacy Framework UE-USA.</li>
+              <li><strong className="text-white">Supabase, Inc.</strong> (USA, données stockées UE Frankfurt) - base de données. Certifié Data Privacy Framework UE-USA.</li>
+              <li><strong className="text-white">Resend, Inc.</strong> (USA) - emails transactionnels. DPA RGPD, clauses contractuelles types.</li>
             </ul>
             <p className="mt-3">Aucune vente de données à des tiers. Aucune utilisation à des fins publicitaires.</p>
           </section>
@@ -97,13 +97,13 @@ export default function Confidentialite() {
             </h2>
             <p>
               Commission Nationale de l'Informatique et des Libertés (CNIL)<br />
-              3 Place de Fontenoy — TSA 80715 — 75334 PARIS CEDEX 07<br />
+              3 Place de Fontenoy - TSA 80715 - 75334 PARIS CEDEX 07<br />
               <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">www.cnil.fr</a>
             </p>
           </section>
 
           <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
-            Samuel Mbeboura EI — SIRET 98920815200011
+            Samuel Mbeboura EI - SIRET 98920815200011
           </p>
         </div>
       </div>

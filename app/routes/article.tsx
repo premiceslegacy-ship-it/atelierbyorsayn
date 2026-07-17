@@ -13,11 +13,11 @@ export function loader({ params }: LoaderFunctionArgs) {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data: routeData }) => {
-  if (!routeData) return [{ title: "Article introuvable — Atelier" }];
+  if (!routeData) return [{ title: "Article introuvable · Atelier" }];
   const { article } = routeData;
   const url = `${SITE_URL}/blog/${article.slug}`;
   return [
-    { title: `${article.title} — Atelier` },
+    { title: `${article.title} · Atelier` },
     { name: "description", content: article.description },
     { name: "author", content: article.author },
     { name: "robots", content: "index, follow" },

@@ -1,5 +1,5 @@
 ---
-title: "Une secrétaire IA pour artisan : ce que Sarah peut préparer — et ce qu'elle ne décide jamais"
+title: "Une secrétaire IA pour artisan : ce que Sarah peut préparer, et ce qu'elle ne décide jamais"
 slug: "secretaire-ia-artisan-sarah"
 description: "Devis, relances, planning et suivi : découvrez ce que Sarah prépare pour un artisan et pourquoi la décision reste toujours humaine."
 publishedAt: "2026-07-15"
@@ -11,9 +11,9 @@ primaryQuery: "secrétaire IA artisan"
 tags: ["Sarah", "IA", "artisan", "gestion BTP"]
 heroImage: "/images/blog/sarah-secretaire-ia.webp"
 sources:
-  - title: "Référentiel produit Atelier — synthèse locale"
+  - title: "Référentiel produit Atelier, synthèse locale"
     url: "/llms.txt"
-  - title: "Règlement européen sur l'intelligence artificielle — Commission européenne"
+  - title: "Règlement européen sur l'intelligence artificielle, Commission européenne"
     url: "https://digital-strategy.ec.europa.eu/fr/policies/regulatory-framework-ai"
 draft: false
 ---
@@ -36,7 +36,10 @@ Elle réduit surtout les passages inutiles : reprendre une note, chercher une ad
 
 Sarah ne choisit pas votre prix à votre place. Elle n'envoie pas un devis sensible sans validation. Elle ne remplace ni votre jugement technique, ni votre responsabilité de dirigeant, ni le contrôle du professionnel qui connaît le chantier.
 
-Le principe est volontairement simple : **Sarah prépare. Vous vérifiez. Vous décidez.** L'historique permet ensuite de comprendre ce qui a été proposé et validé.
+Le principe est volontairement simple.
+
+> **Sarah prépare. Vous vérifiez. Vous décidez.**
+> L'historique permet ensuite de comprendre ce qui a été proposé et validé.
 
 ## Pourquoi ce n'est pas un salarié de plus
 

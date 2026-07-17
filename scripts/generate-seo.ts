@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
+import { metiers } from "../src/data/metiers";
 
 const SITE_URL = "https://www.atelier-btp.fr";
 const output = join(process.cwd(), "build/client");
@@ -11,13 +12,7 @@ const staticRoutes = [
   "mentions-legales",
   "confidentialite",
   "cgv",
-  "electricien",
-  "plombier",
-  "menuisier",
-  "peintre",
-  "tolier",
-  "paysagiste",
-  "macon",
+  ...metiers.map((metier) => metier.slug),
 ];
 const articles = readdirSync(contentDirectory)
   .filter((file) => file.endsWith(".md"))

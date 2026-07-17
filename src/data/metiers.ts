@@ -773,6 +773,312 @@ export const metiers: MetierData[] = [
         "Facturez à l'avancement, TVA auto 5,5%/10%/20%, suivez vos dépenses terrain et calculez votre rentabilité chantier en temps réel. Conçu pour les maçons et entreprises de rénovation.",
     },
   },
+  {
+    slug: "couvreur",
+    metier: "Couvreur / Zingueur",
+    hero: {
+      headline: "Le devis toiture part avant que l'échafaudage soit replié.",
+      subheadline:
+        "Surfaces, pentes, zinguerie : vos prix au m² s'appliquent tout seuls. Acomptes encaissés, relances envoyées, marge suivie chantier par chantier. Depuis le toit, sur votre téléphone.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge réfection toiture",
+        status: "En cours",
+        value: "26%",
+        target: "Budget cible : 24%",
+        progress: "26%",
+        detail: "Tuiles + zinguerie : CA facturé vs heures, échafaudage et fournitures",
+      },
+      highlight: {
+        badge: "Ce matin",
+        label: "Acompte encaissé",
+        reference: "FAC-2026-063 · M. Perrin",
+        detail: "5 590€ encaissés sur réfection 90 m²",
+      },
+      latest: {
+        label: "Dernier devis",
+        time: "Il y a 12 min",
+        reference: "DEV-2026-138",
+        detail: "Réfection 90 m² + gouttières envoyé depuis le toit",
+        amount: "18 640€",
+      },
+    },
+    problems: {
+      title: "Ce que vous vivez chaque semaine",
+      items: [
+        "Le client attend son devis toiture depuis une semaine parce qu'il faut tout remesurer, tout recalculer, tout remettre en page.",
+        "Une fuite en urgence chamboule le planning, et l'intervention dépannage n'est jamais facturée au bon prix.",
+        "Vous avancez l'échafaudage, les tuiles et le zinc, mais l'acompte n'est pas encaissé.",
+        "Entre location d'échafaudage, heures de pose et fournitures, impossible de dire combien la toiture vous a vraiment rapporté.",
+      ],
+    },
+    features: {
+      title: "Ce qu'Atelier change pour vous",
+      items: [
+        {
+          titre: "Devis toiture au m² depuis le terrain",
+          description:
+            "Couverture, zinguerie, isolation : vos ouvrages sont dans votre catalogue avec vos prix au m² et la bonne TVA. Vous saisissez la surface, ajustez, envoyez. Le client a son devis avant que vous soyez redescendu.",
+        },
+        {
+          titre: "Acomptes et relances qui partent sans vous",
+          description:
+            "Facture d'acompte générée à la signature, relances automatiques sur les impayés et les devis sans réponse. Vous ne financez plus l'échafaudage et les tuiles sur votre trésorerie.",
+        },
+        {
+          titre: "Marge réelle, échafaudage compris",
+          description:
+            "Heures pointées, fournitures, location de matériel, dépannages intercalés : Atelier croise tout et vous donne la marge réelle de chaque toiture, pendant le chantier. Pas six mois après.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Atelier gère les devis au m² avec mes propres prix ?",
+        answer:
+          "Oui. Votre catalogue est configuré avec vos ouvrages (couverture tuile, ardoise, bac acier, zinguerie, isolation) et vos prix au m² ou au mètre linéaire. Vous saisissez les quantités, le calcul et la mise en page sont faits.",
+      },
+      {
+        question: "Comment sont facturées les interventions d'urgence ?",
+        answer:
+          "Vous créez la facture de dépannage en quelques minutes depuis le chantier, avec vos forfaits urgence pré-enregistrés. L'intervention est facturée le jour même, plus jamais oubliée dans un coin de carnet.",
+      },
+      {
+        question: "Je peux facturer un acompte à la signature du devis ?",
+        answer:
+          "Oui. Le devis accepté génère la facture d'acompte au pourcentage que vous avez défini, avec le solde qui suit l'avancement. Vous n'avancez plus les fournitures sur votre trésorerie.",
+      },
+      {
+        question: "Mes gars peuvent pointer leurs heures depuis le toit ?",
+        answer:
+          "Oui. Chaque compagnon reçoit un lien personnel : il voit ses chantiers du jour et pointe ses heures depuis son téléphone. Sans application à installer, sans compte à créer.",
+      },
+      {
+        question: "La facturation électronique Factur-X 2026 est gérée ?",
+        answer:
+          "Oui. Atelier génère nativement vos factures au format Factur-X requis par la réforme obligatoire de septembre 2026. Vous êtes en conformité sans rien changer à votre façon de travailler.",
+      },
+      {
+        question: "Quel est le délai pour être opérationnel ?",
+        answer:
+          "48 heures en moyenne. Un appel de démarrage avec Samuel, votre catalogue couverture et vos tarifs sont installés. Vous prenez la main le lendemain.",
+      },
+    ],
+    cta: {
+      headline: "Opérationnel en 48h. Sans formation.",
+      subline: "Un appel de démarrage, on configure votre instance. Vous prenez la main.",
+    },
+    seo: {
+      title: "Logiciel devis couvreur | Chiffrage toiture au m² et rentabilité - Atelier",
+      description:
+        "Créez vos devis de couverture au m² depuis le terrain, encaissez vos acomptes, relancez les impayés automatiquement et suivez la marge réelle de chaque toiture. Opérationnel en 48h.",
+    },
+  },
+  {
+    slug: "charpentier",
+    metier: "Charpentier bois",
+    hero: {
+      headline: "Du plan de charpente au devis signé, sans repasser par le bureau.",
+      subheadline:
+        "Débits, coefficients matière et heures d'atelier chiffrés d'un coup. Acomptes, situations et marge fabrication + pose suivis en temps réel. Vous restez à l'établi, pas derrière un tableur.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge charpente + pose",
+        status: "Atelier",
+        value: "24%",
+        target: "Budget cible : 22%",
+        progress: "24%",
+        detail: "Fermettes + levage : CA facturé vs bois, heures atelier et pose",
+      },
+      highlight: {
+        badge: "Cette semaine",
+        label: "Situation validée",
+        reference: "SIT-2026-018 · Maison Roche",
+        detail: "12 400€ facturés à l'avancement sur extension bois",
+      },
+      latest: {
+        label: "Dernier devis",
+        time: "Il y a 20 min",
+        reference: "DEV-2026-141",
+        detail: "Charpente traditionnelle 110 m² envoyé depuis l'atelier",
+        amount: "27 900€",
+      },
+    },
+    problems: {
+      title: "Ce que vous vivez chaque semaine",
+      items: [
+        "Le chiffrage d'une charpente prend une soirée entière : débits, coefficients, heures d'atelier, pose. Le client, lui, attend.",
+        "Vous achetez le bois des semaines avant la pose, et la trésorerie encaisse le décalage.",
+        "Sur un chantier long, les situations de travaux partent en retard ou pas du tout.",
+        "Entre les heures d'atelier et les heures de pose, vous ne savez jamais ce qu'un ouvrage vous a vraiment rapporté.",
+      ],
+    },
+    features: {
+      title: "Ce qu'Atelier change pour vous",
+      items: [
+        {
+          titre: "Chiffrage charpente avec vos coefficients",
+          description:
+            "Vos essences, vos sections, vos coefficients matière et vos temps d'atelier sont dans votre catalogue. Vous composez l'ouvrage, Atelier calcule, le devis part le soir même. Plus de soirées tableur.",
+        },
+        {
+          titre: "Acomptes et situations à l'avancement",
+          description:
+            "Acompte à la commande pour couvrir le bois, situations intermédiaires sur les chantiers longs, relances automatiques sur les retards. Le décalage fournisseur ne pèse plus sur votre trésorerie.",
+        },
+        {
+          titre: "Marge atelier et pose, séparées et en temps réel",
+          description:
+            "Heures d'atelier, heures de pose, bois, quincaillerie, levage : Atelier croise tout par ouvrage. Vous voyez où vous gagnez de l'argent, fabrication comprise, pendant le chantier.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Atelier peut chiffrer la fabrication et la pose séparément ?",
+        answer:
+          "Oui. Vous structurez vos devis comme vous travaillez : lots fabrication, lots pose, levage, fournitures. Chaque ligne porte vos temps et vos coûts, et la marge se calcule sur l'ensemble comme sur chaque lot.",
+      },
+      {
+        question: "Je peux facturer à l'avancement sur un chantier de plusieurs mois ?",
+        answer:
+          "Oui. Atelier génère vos situations de travaux au pourcentage d'avancement, avec le récapitulatif de ce qui a déjà été facturé. Les chantiers longs ne creusent plus votre trésorerie.",
+      },
+      {
+        question: "Mes achats de bois sont pris en compte dans la marge ?",
+        answer:
+          "Oui. Vous enregistrez vos achats et vos factures fournisseurs sur le chantier concerné. Atelier les déduit de la marge en temps réel, avec les heures d'atelier et de pose.",
+      },
+      {
+        question: "L'équipe peut pointer atelier et chantier séparément ?",
+        answer:
+          "Oui. Chaque compagnon pointe ses heures sur l'ouvrage en cours, à l'atelier comme sur le chantier, depuis un simple lien sur son téléphone. Vous savez enfin où passent les heures.",
+      },
+      {
+        question: "La facturation électronique Factur-X 2026 est gérée ?",
+        answer:
+          "Oui. Atelier génère nativement vos factures et situations au format Factur-X requis par la réforme obligatoire de septembre 2026. Vous êtes en conformité sans rien changer.",
+      },
+      {
+        question: "Quel est le délai pour être opérationnel ?",
+        answer:
+          "48 heures en moyenne. Un appel de démarrage avec Samuel, votre catalogue charpente et vos coefficients sont installés. Vous prenez la main le lendemain.",
+      },
+    ],
+    cta: {
+      headline: "Opérationnel en 48h. Sans formation.",
+      subline: "Un appel de démarrage, on configure votre instance. Vous prenez la main.",
+    },
+    seo: {
+      title: "Logiciel devis charpentier | Chiffrage charpente bois et rentabilité - Atelier",
+      description:
+        "Chiffrez vos charpentes avec vos coefficients, facturez à l'avancement, suivez la marge atelier + pose en temps réel. Conçu pour les charpentiers bois. Opérationnel en 48h.",
+    },
+  },
+  {
+    slug: "carreleur",
+    metier: "Carreleur / Mosaïste",
+    hero: {
+      headline: "Le devis au m² prêt avant de quitter la salle de bain.",
+      subheadline:
+        "Surfaces, formats, préparation des supports : vos prix de pose s'appliquent tout seuls. TVA rénovation automatique, relances sans y penser, marge visible pendant le chantier.",
+    },
+    heroMockup: {
+      primaryMetric: {
+        label: "Marge salle de bain",
+        status: "En cours",
+        value: "29%",
+        target: "Budget cible : 26%",
+        progress: "29%",
+        detail: "60x60 + faïence : CA facturé vs heures, colle et carrelage",
+      },
+      highlight: {
+        badge: "Ce matin",
+        label: "Relance automatique",
+        reference: "FAC-2026-052 · Mme Diallo",
+        detail: "2 180€ encaissés sur pose séjour 42 m²",
+      },
+      latest: {
+        label: "Dernier devis",
+        time: "Il y a 8 min",
+        reference: "DEV-2026-129",
+        detail: "SDB complète : dépose, ragréage, pose 24 m² + plinthes",
+        amount: "4 860€",
+      },
+    },
+    problems: {
+      title: "Ce que vous vivez chaque semaine",
+      items: [
+        "Le devis attend le soir : remesurer les surfaces, compter les découpes, la préparation du support, remettre tout au propre.",
+        "Le client compare trois carreleurs. Le premier devis arrivé gagne, et ce n'est pas toujours le vôtre.",
+        "Les chutes, la colle, le ragréage : des coûts réels que votre prix au m² ne reflète plus depuis longtemps.",
+        "Vous finissez la pose sans savoir si le chantier vous a rapporté ou juste occupé.",
+      ],
+    },
+    features: {
+      title: "Ce qu'Atelier change pour vous",
+      items: [
+        {
+          titre: "Devis de pose au m² en quelques minutes",
+          description:
+            "Pose droite, diagonale, grands formats, faïence, préparation des supports : vos ouvrages sont dans votre catalogue avec vos prix et la bonne TVA (10% rénovation, 20% neuf). Vous saisissez les surfaces, le devis part.",
+        },
+        {
+          titre: "Relances automatiques, encaissements suivis",
+          description:
+            "Devis sans réponse et factures en retard sont relancés automatiquement, avec un ton adapté au client. Vous posez, Atelier encaisse.",
+        },
+        {
+          titre: "Marge au chantier, fournitures comprises",
+          description:
+            "Heures de pose, colle, ragréage, carrelage acheté pour le client : Atelier déduit tout et affiche la marge réelle par chantier. Vous ajustez vos prix au m² sur des chiffres, pas au feeling.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Atelier applique la bonne TVA sur la rénovation ?",
+        answer:
+          "Oui. 10% pour la rénovation de plus de deux ans, 20% pour le neuf, ligne par ligne selon votre catalogue. Le devis applique le bon taux sans que vous ayez à y penser.",
+      },
+      {
+        question: "Je peux inclure la fourniture du carrelage dans mes devis ?",
+        answer:
+          "Oui. Vous distinguez fourniture et pose sur le devis, avec vos coefficients sur la fourniture. Les achats passés pour le client sont rattachés au chantier et déduits de votre marge réelle.",
+      },
+      {
+        question: "Comment je gère les travaux supplémentaires découverts en cours de pose ?",
+        answer:
+          "Un support plus abîmé que prévu, un ragréage imprévu : vous créez l'avenant en quelques minutes depuis le chantier, le client valide, la facture suit. Plus de travaux offerts faute de papier.",
+      },
+      {
+        question: "Le formulaire public de demande de devis fonctionne comment ?",
+        answer:
+          "Vous obtenez une page partageable sur vos réseaux et votre carte de visite. Le client décrit sa pièce et ses surfaces, vous recevez la demande qualifiée. Zéro appel manqué.",
+      },
+      {
+        question: "La facturation électronique Factur-X 2026 est gérée ?",
+        answer:
+          "Oui. Atelier génère nativement vos factures au format Factur-X requis par la réforme obligatoire de septembre 2026. Vous êtes en conformité sans rien changer à votre façon de travailler.",
+      },
+      {
+        question: "Quel est le délai pour être opérationnel ?",
+        answer:
+          "48 heures en moyenne. Un appel de démarrage avec Samuel, votre catalogue de pose et vos tarifs sont installés. Vous prenez la main le lendemain.",
+      },
+    ],
+    cta: {
+      headline: "Opérationnel en 48h. Sans formation.",
+      subline: "Un appel de démarrage, on configure votre instance. Vous prenez la main.",
+    },
+    seo: {
+      title: "Logiciel devis carreleur | Chiffrage pose au m² et rentabilité - Atelier",
+      description:
+        "Créez vos devis de carrelage au m² depuis le chantier, TVA rénovation automatique, relances impayés et marge réelle fournitures comprises. Opérationnel en 48h.",
+    },
+  },
 ];
 
 export function getMetierBySlug(slug: string): MetierData | undefined {

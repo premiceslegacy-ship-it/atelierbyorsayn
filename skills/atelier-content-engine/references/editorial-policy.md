@@ -58,3 +58,17 @@ Sources de référence :
 - Préférer une précision utile à trois superlatifs.
 - Éviter « révolutionnaire », « magique », « sans effort », les fausses urgences et les statistiques sans source.
 - Ne jamais produire du contenu à l'échelle uniquement pour occuper une requête.
+- Ne jamais utiliser de tiret cadratin (—). Préférer les deux-points, la virgule ou une nouvelle phrase.
+
+## Structure visuelle du corps d'article
+
+Le rendu du site stylise le Markdown de façon précise. Écrire le corps en respectant ces conventions :
+
+- **Paragraphe d'ouverture** : il est affiché en grand (accroche). Une ou deux phrases fortes qui donnent la réponse ou la tension, avec la promesse en gras. Jamais de titre avant lui.
+- **`##` (H2)** : numérotés automatiquement à l'affichage (01, 02…) et repris dans le sommaire latéral. 4 à 7 sections par article, intitulés courts qui répondent à une question. Ne pas numéroter manuellement.
+- **`>` (blockquote)** : rendu comme un encadré premium « à retenir » (carte crème, filet orange). L'utiliser pour la formule, le chiffre clé, la date butoir ou le principe à mémoriser. Une seule idée par encadré, maximum un par section. Utiliser plusieurs lignes `>` consécutives pour un encadré multi-lignes.
+- **Listes `-`** : puces stylisées. Chaque item est une phrase complète, avec majuscule et point final. Jamais de point-virgule en fin d'item. 3 à 5 items maximum.
+- **Listes numérotées `1.`** : rendues avec des pastilles numérotées. Réserver aux procédures ordonnées.
+- **Gras `**`** : réservé aux chiffres, dates et termes décisifs. Deux ou trois par section, pas plus.
+- **Tableaux** : stylisés (en-tête contrasté). Uniquement pour comparer, jamais pour mettre en page.
+- **Dernier paragraphe** : le CTA WhatsApp en lien Markdown, précédé d'une phrase qui justifie le contact.

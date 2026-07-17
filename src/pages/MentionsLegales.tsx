@@ -22,7 +22,7 @@ export default function MentionsLegales() {
               SIRET : 98920815200011<br />
               Téléphone : 06 51 66 40 68<br />
               Email : <a href="mailto:contact@orsayn.fr" className="text-accent hover:underline">contact@orsayn.fr</a><br />
-              TVA non applicable — article 293 B du CGI
+              TVA non applicable - article 293 B du CGI
             </p>
           </section>
 
@@ -43,11 +43,11 @@ export default function MentionsLegales() {
               <a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">cloudflare.com</a>
             </p>
             <p className="mt-3">
-              Les données présentées sur ce site et collectées via les formulaires sont hébergées sur l'infrastructure de Cloudflare, Inc. (exécution applicative) et Supabase, Inc. (données, région EU West — Frankfurt, Allemagne).
+              Les données présentées sur ce site et collectées via les formulaires sont hébergées sur l'infrastructure de Cloudflare, Inc. (exécution applicative) et Supabase, Inc. (données, région EU West - Frankfurt, Allemagne).
             </p>
           </section>
           <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
-            Samuel Mbeboura EI — SIRET 98920815200011
+            Samuel Mbeboura EI - SIRET 98920815200011
           </p>
         </div>
       </div>

@@ -11,18 +11,21 @@ primaryQuery: "facturation électronique artisan BTP 2026"
 tags: ["facturation électronique", "BTP", "Factur-X", "trésorerie"]
 heroImage: "/images/blog/facturation-electronique.webp"
 sources:
-  - title: "Tout savoir sur la facturation électronique pour les entreprises — economie.gouv.fr"
+  - title: "Tout savoir sur la facturation électronique pour les entreprises, economie.gouv.fr"
     url: "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises"
-  - title: "Facturation électronique et plateformes agréées — impots.gouv.fr"
+  - title: "Facturation électronique et plateformes agréées, impots.gouv.fr"
     url: "https://www.impots.gouv.fr/facturation-electronique-et-plateformes-agreees"
-  - title: "À partir de quand suis-je concerné ? — impots.gouv.fr"
+  - title: "À partir de quand suis-je concerné ?, impots.gouv.fr"
     url: "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation"
 draft: false
 ---
 
 Vous n'avez pas besoin de devenir expert en formats de facture. Vous avez besoin de savoir **quand agir, avec qui et sur quoi vérifier votre logiciel**.
 
-Le calendrier tient en deux dates. Le **1er septembre 2026**, toutes les entreprises établies en France et concernées par la réforme doivent pouvoir recevoir une facture électronique. Le **1er septembre 2027**, les PME et micro-entreprises doivent aussi être capables d'en émettre et de transmettre les données attendues à l'administration.
+Le calendrier tient en deux dates.
+
+> **1er septembre 2026 :** toutes les entreprises établies en France et concernées par la réforme doivent pouvoir recevoir une facture électronique.
+> **1er septembre 2027 :** les PME et micro-entreprises doivent aussi être capables d'en émettre et de transmettre les données attendues à l'administration.
 
 ## 2026 : être capable de recevoir
 
@@ -30,11 +33,11 @@ Recevoir ne signifie pas récupérer un PDF dans une boîte mail. Une facture é
 
 Pour un artisan, la question concrète est simple : **où arriveront les factures de vos fournisseurs à partir de septembre 2026 ?** Votre fournisseur d'électricité, votre loueur de matériel ou votre négoce peuvent être concernés avant votre propre obligation d'émission.
 
-Avant l'échéance, vérifiez trois choses :
+Avant l'échéance, vérifiez trois choses.
 
-- la plateforme de réception choisie par l'entreprise ;
-- la correspondance entre votre SIREN, vos établissements et les adresses de facturation ;
-- la manière dont les factures reçues rejoignent votre suivi de dépenses et votre comptabilité.
+- La plateforme de réception choisie par l'entreprise.
+- La correspondance entre votre SIREN, vos établissements et les adresses de facturation.
+- La manière dont les factures reçues rejoignent votre suivi de dépenses et votre comptabilité.
 
 ## 2027 : émettre et transmettre les bonnes données
 

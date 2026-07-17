@@ -1,9 +1,11 @@
 import { data, Link, useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
-import { ArrowRight, Check, FileText, MessageCircle, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, ChevronDown, FileText, MessageCircle, RefreshCw, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 import { getMetierBySlug } from "@legacy/data/metiers";
 import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
-import { buildWhatsAppUrl, SITE_URL } from "../data/site";
+import { CaseCarousel } from "../components/CaseCarousel";
+import { ProofStrip } from "../components/ProofStrip";
+import { buildWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
 import { ConversionLink } from "../components/ConversionLink";
 
 export function loader({ params, request }: LoaderFunctionArgs) {
@@ -29,8 +31,11 @@ export const meta: MetaFunction<typeof loader> = ({ data: routeData }) => {
   ];
 };
 
+const featureIcons = [FileText, Sparkles, TrendingUp];
+
 export default function MetierRoute() {
   const { metier } = useLoaderData<typeof loader>();
+  const { primaryMetric, highlight, latest } = metier.heroMockup;
   const schema = [
     {
       "@context": "https://schema.org",
@@ -60,37 +65,87 @@ export default function MetierRoute() {
       <StructuredData data={schema} />
       <main className="trade-page">
         <section className="trade-hero">
-          <div>
+          <div className="trade-hero__copy">
             <p className="eyebrow">Atelier pour {metier.metier.toLowerCase()}</p>
             <h1>{metier.hero.headline}</h1>
             <p>{metier.hero.subheadline}</p>
             <div className="hero__actions">
               <ConversionLink className="button button--primary" href={buildWhatsAppUrl(`la page ${metier.metier}`)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer du temps</ConversionLink>
-              <Link className="button button--dark" to="/#demo">Voir la démo <ArrowRight /></Link>
+              <Link className="button button--dark" to="/#demo">Voir Atelier fonctionner <ArrowRight /></Link>
+            </div>
+            <div className="trade-hero__proof">
+              <div className="avatar-stack">
+                {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" />)}
+              </div>
+              <p><strong>Des artisans du bâtiment, comme vous.</strong><span>Temps, encours et marge mesurés sur le terrain.</span></p>
             </div>
           </div>
-          <div className="trade-dashboard">
-            <div className="trade-dashboard__top"><span>Atelier</span><span>{metier.metier}</span></div>
-            <p>{metier.heroMockup.primaryMetric.label}</p>
-            <strong>{metier.heroMockup.primaryMetric.value}</strong>
-            <div className="progress"><span style={{ width: metier.heroMockup.primaryMetric.progress }} /></div>
-            <small>{metier.heroMockup.primaryMetric.detail}</small>
-            <div className="trade-dashboard__card"><Sparkles /><span><b>{metier.heroMockup.highlight.label}</b>{metier.heroMockup.highlight.detail}</span></div>
+          <div className="trade-visual">
+            <div className="trade-dashboard">
+              <div className="trade-dashboard__top"><span>Atelier</span><span>{metier.metier}</span></div>
+              <p>{primaryMetric.label} <em>{primaryMetric.status}</em></p>
+              <strong>{primaryMetric.value}</strong>
+              <div className="progress"><span style={{ width: primaryMetric.progress }} /></div>
+              <div className="trade-dashboard__meta"><small>{primaryMetric.detail}</small><small>{primaryMetric.target}</small></div>
+              <div className="trade-dashboard__card"><Sparkles /><span><b>{highlight.label}</b>{highlight.detail}</span><i>{highlight.badge}</i></div>
+            </div>
+            <div className="trade-float">
+              <span>{latest.label} · {latest.time}</span>
+              <strong>{latest.reference} · {latest.amount}</strong>
+              <small>{latest.detail}</small>
+            </div>
           </div>
         </section>
 
+        <ProofStrip />
+
         <section className="section trade-problems">
-          <div className="section-heading section-heading--split"><div><p className="eyebrow">Le quotidien réel</p><h2>{metier.problems.title}</h2></div><p>Atelier part des frottements qui reviennent chaque semaine, pas d'une liste de fonctionnalités.</p></div>
-          <div className="problem-grid">{metier.problems.items.map((item, index) => <article key={item}><span>0{index + 1}</span><p>{item}</p></article>)}</div>
+          <div className="section-heading section-heading--split">
+            <div><p className="eyebrow">Le quotidien réel</p><h2>{metier.problems.title}</h2></div>
+            <p>Si vous vous reconnaissez dans deux de ces situations, Atelier a été construit pour vous.</p>
+          </div>
+          <div className="problem-grid">{metier.problems.items.map((item, index) => <article key={item}><span className="problem-num">{String(index + 1).padStart(2, "0")}</span><p>{item}</p></article>)}</div>
         </section>
 
         <section className="section trade-features">
-          <div className="section-heading"><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div>
-          <div className="feature-list">{metier.features.items.map((item, index) => <article key={item.titre}><div>{index === 0 ? <FileText /> : index === 1 ? <Sparkles /> : <TrendingUp />}</div><span>0{index + 1}</span><h3>{item.titre}</h3><p>{item.description}</p></article>)}</div>
+          <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, réglés sur votre métier pendant le setup. Pas une liste de fonctionnalités.</p></div>
+          <div className="feature-list">{metier.features.items.map((item, index) => {
+            const Icon = featureIcons[index] ?? Sparkles;
+            return <article key={item.titre}><div><Icon /></div><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.titre}</h3><p>{item.description}</p></article>;
+          })}</div>
         </section>
 
-        <section className="section trade-faq"><div className="section-heading"><p className="eyebrow">Questions {metier.metier.toLowerCase()}</p><h2>Avant de démarrer.</h2></div><div className="faq-list">{metier.faq.map((item) => <details key={item.question}><summary>{item.question}<span>+</span></summary><p>{item.answer}</p></details>)}</div></section>
-        <section className="trade-cta"><p className="eyebrow eyebrow--light">{metier.metier}</p><h2>{metier.cta.headline}</h2><p>{metier.cta.subline}</p><ConversionLink className="button button--primary" href={buildWhatsAppUrl(`la page ${metier.metier}`)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Vérifier si Atelier vous correspond <ArrowRight /></ConversionLink></section>
+        <section className="section trade-sarah">
+          <div className="trade-sarah__portrait">
+            <div className="sarah-orb"><img src="/sarah-avatar.webp" alt="Sarah, assistante IA Atelier" width="512" height="512" loading="lazy" /></div>
+          </div>
+          <div className="trade-sarah__copy">
+            <p className="eyebrow">Sarah, votre assistante métier</p>
+            <h2>Elle connaît vos clients, vos chantiers, vos prix.</h2>
+            <p>Vous lui parlez comme à une secrétaire qui connaît la maison : elle prépare le devis, la relance ou le point chantier. Rien ne part sans votre validation.</p>
+            <ul>
+              <li><Sparkles />Propose l'action et explique pourquoi.</li>
+              <li><RefreshCw />Apprend du contexte validé dans Atelier.</li>
+              <li><ShieldCheck />Attend votre accord avant les actions sensibles.</li>
+            </ul>
+            <Link className="text-link" to="/#demo">Voir Sarah préparer un devis <ArrowRight /></Link>
+          </div>
+        </section>
+
+        <CaseCarousel title={<>Des artisans qui ont<br />retrouvé leurs soirées.</>} />
+
+        <section className="section trade-faq">
+          <div className="section-heading"><p className="eyebrow">Questions {metier.metier.toLowerCase()}</p><h2>Les réponses franches, avant de démarrer.</h2></div>
+          <div className="faq-list">{metier.faq.map((item) => <details key={item.question}><summary>{item.question}<ChevronDown /></summary><p>{item.answer}</p></details>)}</div>
+        </section>
+
+        <section className="trade-cta">
+          <p className="eyebrow eyebrow--light">{metier.metier}</p>
+          <h2>{metier.cta.headline}</h2>
+          <p>{metier.cta.subline}</p>
+          <ConversionLink className="button button--primary" href={buildWhatsAppUrl(`la page ${metier.metier}`)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Récupérer du temps <ArrowRight /></ConversionLink>
+          <small>Réponse directe de Samuel, sans engagement.</small>
+        </section>
       </main>
     </SiteShell>
   );

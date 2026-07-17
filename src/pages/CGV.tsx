@@ -10,14 +10,14 @@ export default function CGV() {
         <h1 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">
           Conditions Générales de Vente
         </h1>
-        <p className="text-xs text-text-secondary mb-1">Version 1.0 — mai 2026</p>
+        <p className="text-xs text-text-secondary mb-1">Version 1.0 - mai 2026</p>
         <p className="text-xs text-text-secondary/60 mb-10">
           Ces CGV s'appliquent à toutes les prestations réalisées par Orsayn (Samuel Mbeboura, entrepreneur individuel, SIRET 98920815200011) au bénéfice de ses clients professionnels. Elles prévalent sur tout document d'achat du client, sauf accord écrit contraire.
         </p>
 
         <div className="space-y-10 text-sm text-neutral-300 leading-relaxed">
 
-          <Section title="Article 1 — Champ d'application">
+          <Section title="Article 1 - Champ d'application">
             <p>Les présentes CGV régissent :</p>
             <ul className="list-disc list-inside mt-2 space-y-1 text-neutral-400">
               <li>Les prestations de déploiement one-shot du logiciel Atelier (setup).</li>
@@ -29,7 +29,7 @@ export default function CGV() {
             </p>
           </Section>
 
-          <Section title="Article 2 — Prestataire">
+          <Section title="Article 2 - Prestataire">
             <p>
               Samuel Mbeboura<br />
               Entrepreneur individuel exerçant sous le nom commercial <strong className="text-white">Orsayn</strong><br />
@@ -38,18 +38,18 @@ export default function CGV() {
               <a href="mailto:contact@orsayn.fr" className="text-accent hover:underline">contact@orsayn.fr</a>
             </p>
             <p className="mt-3">
-              TVA non applicable — régime de franchise en base, article 293 B du CGI. Cette mention figure sur chaque facture émise par Orsayn.
+              TVA non applicable - régime de franchise en base, article 293 B du CGI. Cette mention figure sur chaque facture émise par Orsayn.
             </p>
           </Section>
 
-          <Section title="Article 3 — Description des prestations">
+          <Section title="Article 3 - Description des prestations">
             <SubSection title="3.1 Setup one-shot">
               <p>
                 Prestation de déploiement de l'application Atelier incluant : création et configuration de l'instance Supabase (base de données, authentification, stockage), déploiement sur Cloudflare Workers, configuration du domaine et des emails transactionnels, exécution des migrations SQL, initialisation du profil entreprise et du catalogue, onboarding du compte propriétaire, tests de mise en service, et 30 jours de support au démarrage.
               </p>
               <p className="mt-2">Le setup est une prestation de service unique, non un transfert de propriété du code source.</p>
             </SubSection>
-            <SubSection title="3.2 Abonnement MRR — modules IA">
+            <SubSection title="3.2 Abonnement MRR - modules IA">
               <p>
                 Abonnement mensuel donnant accès aux modules d'intelligence artificielle de l'application selon le tier souscrit (Starter 39 € HT/mois, Pro 79 € HT/mois, Expert 159 € HT/mois). Les fonctionnalités non-IA de l'application (devis, factures, chantiers, catalogue, exports, signatures) fonctionnent sans abonnement MRR, avec l'IA en veille.
               </p>
@@ -63,7 +63,7 @@ export default function CGV() {
             </SubSection>
           </Section>
 
-          <Section title="Article 4 — Tarifs">
+          <Section title="Article 4 - Tarifs">
             <p className="mb-4">
               Les tarifs sont exprimés hors taxes (HT). Orsayn étant en franchise de TVA (article 293 B du CGI), aucune TVA n'est collectée ni facturée à la date des présentes.
             </p>
@@ -77,16 +77,16 @@ export default function CGV() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {[
-                    ["Setup — app seule (sans abonnement IA)", "3 000 € HT"],
-                    ["Setup — app seule (avec abonnement IA)", "1 500 € HT"],
-                    ["Setup — app + conformité facturation électronique (sans abonnement IA)", "3 450 € HT"],
-                    ["Setup — app + conformité facturation électronique (avec abonnement IA)", "1 950 € HT"],
+                    ["Setup - app seule (sans abonnement IA)", "3 000 € HT"],
+                    ["Setup - app seule (avec abonnement IA)", "1 500 € HT"],
+                    ["Setup - app + conformité facturation électronique (sans abonnement IA)", "3 450 € HT"],
+                    ["Setup - app + conformité facturation électronique (avec abonnement IA)", "1 950 € HT"],
                     ["MRR IA Starter", "39 € HT/mois"],
                     ["MRR IA Pro", "79 € HT/mois"],
                     ["MRR IA Expert", "159 € HT/mois"],
                     ["Conformité facturation électronique (PDP partenaire)", "450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon volume"],
                     ["Migration données", "150 € HT/heure"],
-                    ["Formation / accompagnement", "150 € HT/heure — forfait 3h : 350 € HT"],
+                    ["Formation / accompagnement", "150 € HT/heure - forfait 3h : 350 € HT"],
                   ].map(([label, price]) => (
                     <tr key={label}>
                       <td className="py-2.5 pr-4 text-neutral-300">{label}</td>
@@ -101,7 +101,7 @@ export default function CGV() {
             </p>
           </Section>
 
-          <Section title="Article 5 — Conditions de paiement">
+          <Section title="Article 5 - Conditions de paiement">
             <SubSection title="5.1 Setup one-shot">
               <p>Paiement intégral à la commande, avant le début du déploiement, par virement bancaire ou tout autre moyen convenu par écrit.</p>
             </SubSection>
@@ -120,7 +120,7 @@ export default function CGV() {
             </SubSection>
           </Section>
 
-          <Section title="Article 6 — Durée et résiliation">
+          <Section title="Article 6 - Durée et résiliation">
             <SubSection title="6.1 Setup">
               <p>La prestation de setup est conclue pour une durée déterminée prenant fin à la livraison confirmée et à l'expiration des 30 jours de support au démarrage. Elle ne comporte pas d'engagement de durée postérieur.</p>
             </SubSection>
@@ -139,7 +139,7 @@ export default function CGV() {
             </SubSection>
           </Section>
 
-          <Section title="Article 7 — Propriété intellectuelle">
+          <Section title="Article 7 - Propriété intellectuelle">
             <p>
               Le code source du logiciel Atelier, son architecture, ses composants réutilisables et ses évolutions restent la propriété exclusive d'Orsayn. Le contrat confère au Client une <strong className="text-white">licence d'usage non exclusive, non cessible et non sous-licenciable</strong> pendant la durée du contrat.
             </p>
@@ -148,7 +148,7 @@ export default function CGV() {
             </p>
           </Section>
 
-          <Section title="Article 8 — Responsabilité et limitation">
+          <Section title="Article 8 - Responsabilité et limitation">
             <SubSection title="8.1 Obligations d'Orsayn">
               <p>Orsayn est soumis à une obligation de moyens dans la fourniture du service. Orsayn s'engage à maintenir le service en état de fonctionnement, à appliquer les correctifs de sécurité dans des délais raisonnables et à sauvegarder les données selon les modalités de l'Annexe RGPD / DPA.</p>
             </SubSection>
@@ -166,7 +166,7 @@ export default function CGV() {
             </SubSection>
           </Section>
 
-          <Section title="Article 9 — Force majeure">
+          <Section title="Article 9 - Force majeure">
             <p>
               Orsayn ne saurait être tenu responsable d'un manquement à ses obligations résultant d'un cas de force majeure au sens de l'article 1218 du Code civil, notamment : panne ou indisponibilité des infrastructures tierces (Supabase, Cloudflare, Twilio, OpenRouter), décisions de régulateurs, défaillances réseau généralisées, cyberattaques à grande échelle, pandémie ou catastrophe naturelle.
             </p>
@@ -175,20 +175,20 @@ export default function CGV() {
             </p>
           </Section>
 
-          <Section title="Article 10 — Disponibilité du service">
+          <Section title="Article 10 - Disponibilité du service">
             <p>
               Orsayn s'engage à maintenir le service disponible dans la mesure du possible (objectif best effort : 99 % hors maintenances planifiées). Les maintenances planifiées sont annoncées par email avec un préavis minimum de 24 heures sauf urgence de sécurité. Orsayn ne garantit pas un niveau de disponibilité contractuellement défini au-delà du présent article.
             </p>
           </Section>
 
-          <Section title="Article 11 — Données personnelles">
+          <Section title="Article 11 - Données personnelles">
             <p>
               Le traitement des données personnelles dans le cadre de l'utilisation d'Atelier est encadré par l'Annexe RGPD / DPA, remise au Client lors du déploiement et disponible sur demande à{" "}
               <a href="mailto:contact@orsayn.fr" className="text-accent hover:underline">contact@orsayn.fr</a>.
             </p>
           </Section>
 
-          <Section title="Article 12 — Facturation électronique — Statut d'Orsayn">
+          <Section title="Article 12 - Facturation électronique - Statut d'Orsayn">
             <p>
               Atelier génère des fichiers de facturation au format <strong className="text-white">Factur-X (XML EN 16931)</strong> conformes à la norme européenne, en complément du PDF habituel.
             </p>
@@ -203,7 +203,7 @@ export default function CGV() {
             </p>
           </Section>
 
-          <Section title="Article 13 — Loi applicable et juridiction compétente">
+          <Section title="Article 13 - Loi applicable et juridiction compétente">
             <p>
               Les présentes CGV et tous les contrats conclus sur leur base sont soumis au <strong className="text-white">droit français</strong>.
             </p>
@@ -212,7 +212,7 @@ export default function CGV() {
             </p>
           </Section>
 
-          <Section title="Article 14 — Dispositions diverses">
+          <Section title="Article 14 - Dispositions diverses">
             <dl className="space-y-3">
               <div>
                 <dt className="font-medium text-white">Intégralité du contrat.</dt>
@@ -234,7 +234,7 @@ export default function CGV() {
           </Section>
 
           <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
-            CGV Orsayn — Version 1.0 — mai 2026 · Samuel Mbeboura EI — SIRET 98920815200011
+            CGV Orsayn - Version 1.0 - mai 2026 · Samuel Mbeboura EI - SIRET 98920815200011
           </p>
 
         </div>

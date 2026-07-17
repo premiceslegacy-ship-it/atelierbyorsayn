@@ -6,7 +6,7 @@ import { getArticles } from "../lib/articles";
 import { SITE_URL } from "../data/site";
 
 export const meta: MetaFunction = () => [
-  { title: "Le journal Atelier — Gestion, marge et IA pour artisans du BTP" },
+  { title: "Le journal Atelier : Gestion, marge et IA pour artisans du BTP" },
   { name: "description", content: "Guides de terrain sur la facturation, la marge chantier, la trésorerie et l'IA métier pour les artisans du BTP." },
   { name: "robots", content: "index, follow" },
   { property: "og:title", content: "Le journal Atelier" },

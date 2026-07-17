@@ -11,13 +11,17 @@
     ],
     "skipLibCheck": true,
     "moduleResolution": "bundler",
+    "types": ["vite/client", "node"],
     "isolatedModules": true,
     "moduleDetection": "force",
     "allowJs": true,
     "jsx": "react-jsx",
     "paths": {
       "@/*": [
-        "./*"
+        "./app/*"
+      ],
+      "@legacy/*": [
+        "./src/*"
       ]
     },
     "allowImportingTsExtensions": true,

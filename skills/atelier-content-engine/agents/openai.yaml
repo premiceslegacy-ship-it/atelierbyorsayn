@@ -1,0 +1,4 @@
+interface:
+  display_name: "Atelier Content Engine"
+  short_description: "Publier des articles Atelier fiables"
+  default_prompt: "Utilise $atelier-content-engine pour préparer un article Atelier sourcé en brouillon."

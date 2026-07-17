@@ -2,6 +2,9 @@ node_modules/
 build/
 dist/
 coverage/
+artifacts/playwright/
+artifacts/lighthouse/
+.react-router/
 .DS_Store
 *.log
 .env*

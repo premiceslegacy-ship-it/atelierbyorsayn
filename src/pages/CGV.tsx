@@ -51,7 +51,7 @@ export default function CGV() {
             </SubSection>
             <SubSection title="3.2 Abonnement MRR — modules IA">
               <p>
-                Abonnement mensuel donnant accès aux modules d'intelligence artificielle de l'application selon le tier souscrit (Starter 39 € HT/mois, Pro 69 € HT/mois, Expert 119 € HT/mois). Les fonctionnalités non-IA de l'application (devis, factures, chantiers, catalogue, exports, signatures) fonctionnent sans abonnement MRR.
+                Abonnement mensuel donnant accès aux modules d'intelligence artificielle de l'application selon le tier souscrit (Starter 39 € HT/mois, Pro 79 € HT/mois, Expert 159 € HT/mois). Les fonctionnalités non-IA de l'application (devis, factures, chantiers, catalogue, exports, signatures) fonctionnent sans abonnement MRR, avec l'IA en veille.
               </p>
             </SubSection>
             <SubSection title="3.3 Prestations annexes">
@@ -77,13 +77,13 @@ export default function CGV() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {[
-                    ["Setup — app seule (sans abonnement IA)", "2 000 € HT"],
-                    ["Setup — app seule (avec abonnement IA)", "800 € HT"],
-                    ["Setup — app + conformité facturation électronique (sans abonnement IA)", "2 450 € HT"],
-                    ["Setup — app + conformité facturation électronique (avec abonnement IA)", "1 250 € HT"],
+                    ["Setup — app seule (sans abonnement IA)", "3 000 € HT"],
+                    ["Setup — app seule (avec abonnement IA)", "1 500 € HT"],
+                    ["Setup — app + conformité facturation électronique (sans abonnement IA)", "3 450 € HT"],
+                    ["Setup — app + conformité facturation électronique (avec abonnement IA)", "1 950 € HT"],
                     ["MRR IA Starter", "39 € HT/mois"],
-                    ["MRR IA Pro", "69 € HT/mois"],
-                    ["MRR IA Expert", "119 € HT/mois"],
+                    ["MRR IA Pro", "79 € HT/mois"],
+                    ["MRR IA Expert", "159 € HT/mois"],
                     ["Conformité facturation électronique (PDP partenaire)", "450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon volume"],
                     ["Migration données", "150 € HT/heure"],
                     ["Formation / accompagnement", "150 € HT/heure — forfait 3h : 350 € HT"],

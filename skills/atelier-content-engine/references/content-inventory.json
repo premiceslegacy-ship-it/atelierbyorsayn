@@ -1,0 +1,27 @@
+{
+  "cadence": "1 article/jour",
+  "updatedAt": "2026-07-17",
+  "articles": [
+    {
+      "slug": "facturation-electronique-artisans-btp-2026-2027",
+      "pillar": "Facturation et conformité",
+      "intent": "Comprendre la réforme et préparer son entreprise",
+      "primaryQuery": "facturation électronique artisan BTP 2026",
+      "internalLinks": ["calcul-marge-chantier-btp"]
+    },
+    {
+      "slug": "calcul-marge-chantier-btp",
+      "pillar": "Rentabilité chantier",
+      "intent": "Calculer et suivre la marge réelle d'un chantier",
+      "primaryQuery": "calcul marge chantier BTP",
+      "internalLinks": ["secretaire-ia-artisan-sarah"]
+    },
+    {
+      "slug": "secretaire-ia-artisan-sarah",
+      "pillar": "Sarah et l'IA métier",
+      "intent": "Comprendre l'usage concret d'une secrétaire IA pour artisan",
+      "primaryQuery": "secrétaire IA artisan",
+      "internalLinks": ["calcul-marge-chantier-btp"]
+    }
+  ]
+}

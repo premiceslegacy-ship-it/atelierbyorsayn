@@ -1,5 +1,6 @@
 export const SITE_URL = "https://www.atelier-btp.fr";
 export const WHATSAPP_NUMBER = "33651664068";
+export const META_PIXEL_ID = "1032268456078970";
 export const AUTHOR = {
   name: "Samuel Mbeboura",
   url: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293",

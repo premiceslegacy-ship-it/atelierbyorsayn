@@ -1,7 +1,14 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-07-17",
+  "updatedAt": "2026-07-18",
   "articles": [
+    {
+      "slug": "prix-logiciel-gestion-btp-comparatif",
+      "pillar": "Choisir son logiciel",
+      "intent": "Comparer le prix des logiciels de gestion BTP avant de choisir",
+      "primaryQuery": "prix logiciel gestion BTP",
+      "internalLinks": ["calcul-marge-chantier-btp", "secretaire-ia-artisan-sarah", "facturation-electronique-artisans-btp-2026-2027"]
+    },
     {
       "slug": "facturation-electronique-artisans-btp-2026-2027",
       "pillar": "Facturation et conformité",

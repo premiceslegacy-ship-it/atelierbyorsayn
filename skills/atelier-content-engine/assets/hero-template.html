@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @font-face {
+    font-family: "Geist";
+    src: url("file:///ABSOLUTE_PATH_TO_REPO/public/fonts/geist-variable.woff2") format("woff2");
+    font-weight: 100 900;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1200px;
+    height: 750px;
+    overflow: hidden;
+    background: #080807;
+    font-family: "Geist", sans-serif;
+  }
+  .stage {
+    position: relative;
+    width: 1200px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 68px 76px;
+    color: white;
+    background: #080807;
+  }
+  .logo {
+    position: relative;
+    z-index: 1;
+    width: 158px;
+    height: auto;
+    opacity: .95;
+  }
+  h1 {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    font-size: 66px;
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -.045em;
+    text-wrap: balance;
+  }
+  h1 em {
+    color: #ff9f1c;
+    font-style: normal;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <img class="logo" src="file:///ABSOLUTE_PATH_TO_REPO/public/logo-atelier-blanc.png" alt="" />
+    <h1 id="hook"></h1>
+  </div>
+</body>
+</html>

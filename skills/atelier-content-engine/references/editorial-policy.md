@@ -53,6 +53,16 @@ Sources de référence :
 - https://blogs.bing.com/webmaster/July-2025/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search
 - https://github.com/zubair-trabzada/geo-seo-claude
 
+## Image héro
+
+Toute image héro d'article suit le même gabarit de marque, généré (pas une photo de stock) : fond `#080807` uni, wordmark Atelier blanc en haut à gauche, un hook en bas à gauche en Geist (blanc, un ou deux mots clés en orange `#ff9f1c` via `<em>`), format 1200×750.
+
+- Générer avec `node skills/atelier-content-engine/scripts/generate-hero.mjs <slug> "<hook HTML>"`. Le script s'appuie sur `assets/hero-template.html`, capture avec Playwright et exporte directement en `.webp` dans `public/images/blog/<slug>.webp`.
+- Le hook est une phrase courte (2-3 lignes max à l'écran), jamais le titre complet de l'article ni le nom d'un métier ciblé : il doit parler au lecteur avant de le renseigner. S'appuyer sur la tension ou la promesse centrale de l'article, dans le ton de `product-truth.md` et sans superlatif interdit par la politique de style.
+- Rester sobre : pas de dégradé, pas de cartes, pas de chiffres empilés, pas de visuel décoratif. Le contraste texte blanc/orange sur fond noir porte tout le message.
+- Utiliser `'` (apostrophe droite) dans le hook, comme dans le corps de l'article, jamais `'` typographique.
+- Toujours passer par le script, jamais de capture manuelle ou de retouche à la main : la cohérence visuelle entre articles vient de la répétition exacte du même gabarit.
+
 ## Fil d'Ariane
 
 - Chaque page article et page métier doit exposer **deux formes** du fil d'Ariane : un `<nav aria-label="Fil d'Ariane">` visible dans le HTML rendu (`Accueil > Le journal > Titre`) et le JSON-LD `BreadcrumbList` correspondant. Les deux doivent lister exactement les mêmes étapes, dans le même ordre. Un `BreadcrumbList` sans nav visible est incomplet : Google Search Console peut le signaler.

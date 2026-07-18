@@ -24,20 +24,21 @@ description: Produire, vérifier et publier les articles du journal Atelier pour
 
 1. Créer le Markdown dans `content/blog/` avec le frontmatter défini dans `references/editorial-policy.md`.
 2. Régler `draft: true` par défaut.
-3. Écrire en français concret, phrasé, avec une idée par paragraphe et des intertitres qui répondent à une question.
-4. Donner la réponse principale tôt, puis détailler limites, méthode, exemples et action suivante.
-5. Distinguer clairement fait sourcé, expérience produit et recommandation.
-6. Ajouter des liens internes seulement lorsqu'ils aident la lecture, et les déclarer dans `content-inventory.json`.
-7. Ajouter un tableau comparatif uniquement s'il tranche une vraie comparaison (prix, seuils, avant/après), et une FAQ visible seulement à partir de 3 questions concrètes distinctes. Voir « Tableaux comparatifs et données chiffrées » et « FAQ visible » dans `references/editorial-policy.md`.
-8. Respecter la hiérarchie des titres : un seul H1 (généré par le gabarit), H2 pour les sections, H3 pour les sous-points et les questions de FAQ.
-9. Terminer par un CTA WhatsApp cohérent avec le sujet.
+3. Générer l'image héro avec `node skills/atelier-content-engine/scripts/generate-hero.mjs <slug> "<hook HTML>"` (template de marque : fond noir, logo Atelier, hook en Geist). Voir « Image héro » dans `references/editorial-policy.md`. Ne jamais utiliser de photo de stock.
+4. Écrire en français concret, phrasé, avec une idée par paragraphe et des intertitres qui répondent à une question.
+5. Donner la réponse principale tôt, puis détailler limites, méthode, exemples et action suivante.
+6. Distinguer clairement fait sourcé, expérience produit et recommandation.
+7. Ajouter des liens internes seulement lorsqu'ils aident la lecture, et les déclarer dans `content-inventory.json`.
+8. Ajouter un tableau comparatif uniquement s'il tranche une vraie comparaison (prix, seuils, avant/après), et une FAQ visible seulement à partir de 3 questions concrètes distinctes. Voir « Tableaux comparatifs et données chiffrées » et « FAQ visible » dans `references/editorial-policy.md`.
+9. Respecter la hiérarchie des titres : un seul H1 (généré par le gabarit), H2 pour les sections, H3 pour les sous-points et les questions de FAQ.
+10. Terminer par un CTA WhatsApp cohérent avec le sujet.
 
 ## Vérifier
 
 1. Exécuter `npm run validate:content`.
 2. Vérifier chaque claim, chaque date, chaque prix et chaque citation dans sa source.
 3. Vérifier l'absence de requête primaire en double et de date future.
-4. Vérifier que l'image ne contient ni texte, ni logo, ni filigrane et possède des dimensions déclarées dans l'interface.
+4. Vérifier que l'image héro a été générée par `generate-hero.mjs` (pas de photo de stock) et fait 1200x750.
 5. Construire le site et contrôler l'article pré-rendu, son canonical et son JSON-LD.
 6. Vérifier que le fil d'Ariane visuel (`<nav aria-label="Fil d'Ariane">`) est présent dans le HTML pré-rendu et correspond exactement au `BreadcrumbList` JSON-LD.
 7. Si un tableau ou une FAQ ont été ajoutés, relire qu'ils respectent `references/editorial-policy.md` et que tout chiffre cité est sourcé.

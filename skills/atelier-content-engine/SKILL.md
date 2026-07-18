@@ -38,7 +38,7 @@ description: Produire, vérifier et publier les articles du journal Atelier pour
 1. Exécuter `npm run validate:content`.
 2. Vérifier chaque claim, chaque date, chaque prix et chaque citation dans sa source.
 3. Vérifier l'absence de requête primaire en double et de date future.
-4. Vérifier que l'image héro a été générée par `generate-hero.mjs` (pas de photo de stock) et fait 1200x750.
+4. Vérifier que l'image héro a été générée par `generate-hero.mjs` (pas de photo de stock), fait 1200x750, et que le `.webp` ET le `.avif` existent tous les deux et sont à jour (le gabarit `<picture>` sert l'AVIF en priorité).
 5. Construire le site et contrôler l'article pré-rendu, son canonical et son JSON-LD.
 6. Vérifier que le fil d'Ariane visuel (`<nav aria-label="Fil d'Ariane">`) est présent dans le HTML pré-rendu et correspond exactement au `BreadcrumbList` JSON-LD.
 7. Si un tableau ou une FAQ ont été ajoutés, relire qu'ils respectent `references/editorial-policy.md` et que tout chiffre cité est sourcé.

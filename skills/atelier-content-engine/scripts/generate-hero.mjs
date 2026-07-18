@@ -1,6 +1,8 @@
 // Génère l'image héro d'un article depuis le template de marque (fond noir, logo Atelier, hook Geist).
 // Usage : node skills/atelier-content-engine/scripts/generate-hero.mjs <slug> "<hook HTML avec <br /> et <em>>"
-// Écrit directement dans public/images/blog/<slug>.webp au format 1200x750.
+// Écrit public/images/blog/<slug>.webp ET <slug>.avif (format 1200x750) : le gabarit <picture>
+// du site sert l'AVIF en priorité, un .webp seul sans .avif à jour laisse l'ancienne image visible
+// dans les navigateurs qui supportent AVIF (Chrome, Firefox récents).
 import { chromium } from "playwright";
 import { readFileSync, writeFileSync, unlinkSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -29,6 +31,9 @@ const pngBuffer = await page.screenshot();
 await browser.close();
 unlinkSync(tmpHtmlPath);
 
-const outPath = join(repoRoot, `public/images/blog/${slug}.webp`);
-await sharp(pngBuffer).resize(1200, 750).webp({ quality: 88 }).toFile(outPath);
-console.log(`Image héro générée : public/images/blog/${slug}.webp`);
+const resized = sharp(pngBuffer).resize(1200, 750);
+const webpPath = join(repoRoot, `public/images/blog/${slug}.webp`);
+const avifPath = join(repoRoot, `public/images/blog/${slug}.avif`);
+await resized.clone().webp({ quality: 88 }).toFile(webpPath);
+await resized.clone().avif({ quality: 60 }).toFile(avifPath);
+console.log(`Images héro générées : public/images/blog/${slug}.webp et .avif`);

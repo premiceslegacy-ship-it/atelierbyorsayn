@@ -50,7 +50,7 @@ const schemas = [
           name: "Application sans abonnement",
           price: SETUP_PRICES.withoutSubscription,
           priceCurrency: "EUR",
-          description: "Setup de l'application complète avec IA en veille.",
+          description: "Setup unique donnant accès à l'application complète à vie, avec IA en veille.",
         },
         ...PRICING_TIERS.map((tier) => ({
           "@type": "Offer",

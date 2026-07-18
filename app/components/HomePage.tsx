@@ -18,10 +18,11 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getArticles } from "../lib/articles";
-import { buildWhatsAppUrl, CASE_STUDIES, FAQ_ITEMS, PRICING_TIERS, SETUP_PRICES } from "../data/site";
+import { buildWhatsAppUrl, CASE_STUDIES, FAQ_ITEMS } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
 import { CaseCarousel } from "./CaseCarousel";
 import { ProofStrip } from "./ProofStrip";
+import { Pricing } from "./Pricing";
 
 const benefits = [
   {
@@ -119,7 +120,7 @@ function Demo() {
       <div className="section-heading section-heading--center">
         <p className="eyebrow">Sarah, assistante IA métier</p>
         <h2>Sarah travaille.<br />Vous décidez.</h2>
-        <p>Elle connaît vos clients, vos chantiers, vos prix. Regardez-la préparer un devis en 60 secondes.</p>
+        <p>Elle connaît vos clients, vos chantiers, vos prix.<br />Regardez-la préparer un devis en 60 secondes.</p>
       </div>
       <ul className="demo-sarah-strip">
         <li><Sparkles aria-hidden="true" />Propose l'action et explique pourquoi.</li>
@@ -233,74 +234,6 @@ function Demo() {
   );
 }
 
-function Pricing() {
-  const [model, setModel] = useState<"subscription" | "usage" | null>(null);
-  const [selected, setSelected] = useState("pro");
-  return (
-    <section id="tarifs" className="section section--pricing">
-      <div className="section-heading section-heading--center section-heading--light">
-        <p className="eyebrow">Commencez par un choix simple</p>
-        <h2>Avec Sarah tous les mois.<br />Ou seulement quand il faut.</h2>
-        <p>Choisissez d'abord votre modèle. Les formules détaillées apparaissent ensuite, uniquement si elles vous concernent.</p>
-      </div>
-      <div className="pricing-choice-grid" aria-label="Choisir un modèle tarifaire">
-        <button type="button" className={`pricing-choice ${model === "subscription" ? "is-selected" : ""}`} aria-pressed={model === "subscription"} onClick={() => setModel("subscription")}>
-          <span className="pricing-choice__label">Avec abonnement</span>
-          <div className="pricing-choice__price"><strong>{SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} €</strong><span>HT de setup</span></div>
-          <h3>Sarah travaille avec vous chaque mois.</h3>
-          <p>Application complète, IA incluse et abonnement à partir de 39 € HT/mois.</p>
-          <span className="pricing-choice__action">Voir les 3 formules <ArrowRight /></span>
-        </button>
-        <button type="button" className={`pricing-choice ${model === "usage" ? "is-selected" : ""}`} aria-pressed={model === "usage"} onClick={() => setModel("usage")}>
-          <span className="pricing-choice__label">Sans abonnement</span>
-          <div className="pricing-choice__price"><strong>{SETUP_PRICES.withoutSubscription.toLocaleString("fr-FR")} €</strong><span>HT de setup</span></div>
-          <h3>L'application complète, sans mensualité.</h3>
-          <p>Votre gestion reste disponible. Sarah reste en veille et peut être activée à l'usage.</p>
-          <span className="pricing-choice__action">Choisir sans abonnement <ArrowRight /></span>
-        </button>
-      </div>
-      {model === "subscription" && (
-        <div className="pricing-reveal" aria-live="polite">
-          <div className="pricing-reveal__heading"><p className="eyebrow">Étape 2 sur 2</p><h3>Choisissez le rythme de Sarah.</h3></div>
-          <div className="pricing-grid">
-            {PRICING_TIERS.map((tier) => (
-              <article className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`} key={tier.id}>
-                {tier.featured && <span className="pricing-badge">Le plus choisi</span>}
-                <div className="pricing-card__top">
-                  <p>{tier.name}</p>
-                  <div><strong>{tier.price} €</strong><span>HT / mois</span></div>
-                  <h3>{tier.promise}</h3>
-                  <p>{tier.audience}</p>
-                </div>
-                <ul>{tier.benefits.map((item) => <li key={item}><Check />{item}</li>)}</ul>
-                <details open={selected === tier.id} onToggle={(event) => event.currentTarget.open && setSelected(tier.id)}>
-                  <summary>Voir les quotas <ChevronDown /></summary>
-                  <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
-                </details>
-                <ConversionLink
-                  className={`button ${tier.featured ? "button--primary" : "button--dark"}`}
-                  href={buildWhatsAppUrl("les tarifs", tier)}
-                  source="pricing"
-                  tier={tier.id}
-                  target="_blank"
-                  rel="noreferrer"
-                >Choisir {tier.name}<ArrowRight /></ConversionLink>
-              </article>
-            ))}
-          </div>
-        </div>
-      )}
-      {model === "usage" && (
-        <div className="pricing-usage" aria-live="polite">
-          <div><p className="eyebrow">Sans mensualité</p><h3>Atelier reste votre bureau métier.</h3><p>Devis, factures, clients, chantiers et planning restent disponibles. Vous activez Sarah seulement lorsque vous en avez besoin.</p></div>
-          <ConversionLink className="button button--primary" href={buildWhatsAppUrl("l'offre sans abonnement")} source="pricing-usage" target="_blank" rel="noreferrer">Choisir ce modèle <ArrowRight /></ConversionLink>
-        </div>
-      )}
-      <p className="pricing-note">Connexion facturation électronique : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.</p>
-    </section>
-  );
-}
-
 export default function HomePage() {
   const articles = getArticles().slice(0, 3);
   return (
@@ -391,7 +324,7 @@ export default function HomePage() {
       <CaseCarousel />
       <div className="section belonging-cta">
         <div className="section-cta">
-          <p><strong>Eux aussi hésitaient.</strong> Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
+          <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
           <div>
             <ConversionLink className="button button--primary" href={buildWhatsAppUrl("les témoignages clients")} source="cases" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
@@ -404,7 +337,7 @@ export default function HomePage() {
       <section className="section faq-section">
         <div className="section-heading section-heading--split">
           <div><p className="eyebrow">Les questions franches</p><h2>Avant de confier une partie du bureau à Sarah.</h2></div>
-          <p>Pas de jargon, pas de ligne cachée. Si votre cas est particulier, Samuel vous répond directement.</p>
+          <p>Pas de jargon, pas de ligne cachée.<br />Si votre cas est particulier, Samuel vous répond directement.</p>
         </div>
         <div className="faq-list">
           {FAQ_ITEMS.map((item) => (

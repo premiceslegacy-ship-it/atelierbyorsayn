@@ -43,7 +43,7 @@ export function ProofStrip() {
           <ConversionLink className="button button--primary" href={buildWhatsAppUrl("les résultats clients")} source="proof-band" target="_blank" rel="noreferrer">
             <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
           </ConversionLink>
-          <Link className="button button--dark" to="/#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
+          <Link className="button button--dark" to="#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ export function CaseCarousel({ title }: { title?: React.ReactNode }) {
     <section id="resultats" className="section section--results">
       <div className="section-heading section-heading--split">
         <div>
-          <p className="eyebrow">Cas clients réels</p>
+          <p className="eyebrow">Ils sont satisfaits</p>
           <h2>{title ?? <>Moins d'administratif.<br />Plus de maîtrise.</>}</h2>
         </div>
         <div className="carousel-controls">

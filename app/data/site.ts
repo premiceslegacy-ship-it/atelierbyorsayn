@@ -14,11 +14,18 @@ export type PricingTier = {
   featured?: boolean;
   benefits: string[];
   quotas: string[];
+  adoptedBy: number;
 };
 
 export const SETUP_PRICES = {
   withoutSubscription: 3000,
   withSubscription: 1500,
+} as const;
+
+/** Nombre d'artisans ayant choisi chaque modèle de setup, pour la réassurance social proof sur le pricing. */
+export const SETUP_ADOPTION = {
+  withSubscription: 14,
+  withoutSubscription: 9,
 } as const;
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -34,6 +41,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Vue claire sur l'activité du jour",
     ],
     quotas: ["60 actions IA / mois", "Application métier complète", "Support de démarrage inclus"],
+    adoptedBy: 5,
   },
   {
     id: "pro",
@@ -48,6 +56,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Actions préparées, toujours validées par vous",
     ],
     quotas: ["120 échanges Sarah / mois", "60 minutes de live IA / mois", "Devis, factures et chantiers illimités"],
+    adoptedBy: 7,
   },
   {
     id: "expert",
@@ -61,19 +70,23 @@ export const PRICING_TIERS: PricingTier[] = [
       "Rapports de marge et exports prêts à l'emploi",
     ],
     quotas: ["Échanges Sarah illimités", "300 minutes de live IA / mois", "Automatisations et rapports avancés"],
+    adoptedBy: 2,
   },
 ];
 
 export function buildWhatsAppUrl(source: string, tier?: PricingTier) {
   const details = tier
-    ? `\n\nOffre envisagée : ${tier.name}, ${tier.price} € HT/mois\nSetup avec abonnement : ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT`
+    ? `\n\nOffre envisagée : ${tier.name}, setup ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT (app à vie) + ${tier.price} € HT/mois d'abonnement`
     : "";
   const message = `Bonjour Samuel, je viens de consulter ${source} et je suis intéressé par Atelier pour mon entreprise.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export function buildTradeWhatsAppUrl(tradeLabel: string) {
-  const message = `Bonjour Samuel, je suis ${tradeLabel} et je viens de découvrir Atelier. J'aimerais voir ce que ça pourrait changer pour mon entreprise.\n\nOn peut en parler ?`;
+export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier) {
+  const details = tier
+    ? ` L'offre ${tier.name} m'intéresse : setup ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT (app à vie) + ${tier.price} € HT/mois d'abonnement.`
+    : "";
+  const message = `Bonjour Samuel, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
@@ -175,11 +188,11 @@ export const FAQ_ITEMS = [
     answer: "Oui. Atelier fonctionne dans le navigateur sur téléphone, tablette et ordinateur, sans logiciel lourd à installer.",
   },
   {
-    question: "Puis-je utiliser l'application sans abonnement IA ?",
-    answer: `Oui. Le setup est alors de ${SETUP_PRICES.withoutSubscription.toLocaleString("fr-FR")} € HT : l'application métier reste complète et l'IA est mise en veille. Avec abonnement, le setup est de ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT.`,
+    question: "Le setup, c'est quoi exactement ?",
+    answer: `C'est un paiement unique qui vous donne l'application à vie. Sans abonnement, le setup est de ${SETUP_PRICES.withoutSubscription.toLocaleString("fr-FR")} € HT : l'application métier reste complète et l'IA est mise en veille. Avec abonnement, le setup est de ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT, et l'abonnement mensuel s'ajoute pour que Sarah (l'IA) travaille avec vous.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",
-    answer: "Atelier prépare les formats et les flux nécessaires. La connexion réglementaire est proposée séparément, à partir de 450 € HT la première année puis 250 € HT/an, selon le volume.",
+    answer: "Atelier prépare les formats et les flux nécessaires. La connexion réglementaire est facultative et proposée séparément, à partir de 450 € HT la première année puis 250 € HT/an, selon le volume.",
   },
 ];

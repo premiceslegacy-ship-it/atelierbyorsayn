@@ -504,7 +504,7 @@ export const metiers: MetierData[] = [
       title: "Ce que vous vivez chaque semaine",
       items: [
         "Un devis garde-corps avec variantes de finition vous prend 2h, parfois plus.",
-        "Le prix de l'acier et de l'inox bouge et vous recalculez tout à la main à chaque devis.",
+        "Le prix de l'alu, du cuivre, du zinc ou de l'inox bouge et vous recalculez tout à la main à chaque devis.",
         "Vous ne savez pas toujours si un ouvrage sur-mesure est rentable avant d'avoir tout payé.",
         "Vos clients B2B vous demandent des devis précis rapidement : vous n'avez pas toujours le temps.",
       ],

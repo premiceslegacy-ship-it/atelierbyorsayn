@@ -7,6 +7,7 @@ import { CaseCarousel } from "../components/CaseCarousel";
 import { ProofStrip } from "../components/ProofStrip";
 import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
 import { ConversionLink } from "../components/ConversionLink";
+import { Pricing } from "../components/Pricing";
 
 export function loader({ params, request }: LoaderFunctionArgs) {
   const slug = params.slug ?? new URL(request.url).pathname.split("/").filter(Boolean)[0] ?? "";
@@ -76,8 +77,8 @@ export default function MetierRoute() {
             <h1>{metier.hero.headline}</h1>
             <p>{metier.hero.subheadline}</p>
             <div className="hero__actions">
-              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer du temps</ConversionLink>
-              <Link className="button button--dark" to="/#demo">Voir Atelier fonctionner <ArrowRight /></Link>
+              <Link className="button button--primary" to="#tarifs">Voir les tarifs <ArrowRight /></Link>
+              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Parler à Samuel</ConversionLink>
             </div>
             <div className="trade-hero__proof">
               <div className="avatar-stack">
@@ -122,21 +123,42 @@ export default function MetierRoute() {
           <div className="section-cta">
             <p><strong>Ce quotidien n'est pas une fatalité.</strong> Dans un mois, vos soirées peuvent ressembler à autre chose : des devis qui partent le jour même, des relances qui tournent sans vous.</p>
             <div>
-              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-problems-${metier.slug}`} target="_blank" rel="noreferrer">
+              <Link className="button button--primary" to="#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
+              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-problems-${metier.slug}`} target="_blank" rel="noreferrer">
                 <MessageCircle aria-hidden="true" /> Changer ce quotidien
               </ConversionLink>
-              <Link className="button button--dark" to="/#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
             </div>
           </div>
         </section>
 
         <section className="section trade-features">
-          <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, réglés sur votre métier pendant le setup. Pas une liste de fonctionnalités.</p></div>
+          <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, réglés sur votre métier pendant le setup.<br />Pas une liste de fonctionnalités.</p></div>
           <div className="feature-list">{metier.features.items.map((item, index) => {
             const Icon = featureIcons[index] ?? Sparkles;
             return <article key={item.titre}><div><Icon /></div><h3>{item.titre}</h3><p>{item.description}</p></article>;
           })}</div>
+          <div className="section-cta">
+            <p><strong>C'est exactement ce que fait Atelier pour {metier.metier.toLowerCase()}.</strong><br />Configuré sur votre catalogue et vos prix pendant le setup.</p>
+            <div>
+              <Link className="button button--dark" to="#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
+            </div>
+          </div>
         </section>
+
+        <Pricing tradeLabel={metier.whatsapp} sourceSuffix={metier.slug} />
+
+        <CaseCarousel title={<>Des artisans qui ont<br />retrouvé leurs soirées.</>} />
+        <div className="section belonging-cta">
+          <div className="section-cta">
+            <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
+            <div>
+              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-cases-${metier.slug}`} target="_blank" rel="noreferrer">
+                <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+              </ConversionLink>
+              <Link className="button button--dark" to="#tarifs">Revoir les tarifs <ArrowRight aria-hidden="true" /></Link>
+            </div>
+          </div>
+        </div>
 
         <section className="section trade-sarah">
           <div className="trade-sarah__portrait">
@@ -154,8 +176,6 @@ export default function MetierRoute() {
             <Link className="text-link" to="/#demo">Voir Sarah préparer un devis <ArrowRight /></Link>
           </div>
         </section>
-
-        <CaseCarousel title={<>Des artisans qui ont<br />retrouvé leurs soirées.</>} />
 
         <section className="section trade-faq">
           <div className="section-heading"><p className="eyebrow">Questions {metier.metier.toLowerCase()}</p><h2>Les réponses franches, avant de démarrer.</h2></div>

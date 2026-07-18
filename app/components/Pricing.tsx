@@ -65,7 +65,15 @@ export function Pricing({ tradeLabel, sourceSuffix }: PricingProps) {
           <div className="pricing-reveal__heading"><p className="eyebrow">Étape 2 sur 2</p><h3>Choisissez le rythme de Sarah.</h3><p>Le setup ({SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT, réglé une fois) vous donne l'application à vie. Le montant ci-dessous est l'abonnement mensuel pour Sarah, l'IA.</p></div>
           <div className="pricing-grid">
             {PRICING_TIERS.map((tier) => (
-              <article className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`} key={tier.id}>
+              <ConversionLink
+                className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`}
+                href={buildUrl("les tarifs", tier)}
+                source={source}
+                tier={tier.id}
+                target="_blank"
+                rel="noreferrer"
+                key={tier.id}
+              >
                 {tier.featured && <span className="pricing-badge">Le plus choisi</span>}
                 <div className="pricing-card__top">
                   <p>{tier.name}</p>
@@ -75,19 +83,16 @@ export function Pricing({ tradeLabel, sourceSuffix }: PricingProps) {
                   <AdoptionProof count={tier.adoptedBy} />
                 </div>
                 <ul>{tier.benefits.map((item) => <li key={item}><Check />{item}</li>)}</ul>
-                <details open={selected === tier.id} onToggle={(event) => event.currentTarget.open && setSelected(tier.id)}>
+                <details
+                  open={selected === tier.id}
+                  onClick={(event) => event.stopPropagation()}
+                  onToggle={(event) => event.currentTarget.open && setSelected(tier.id)}
+                >
                   <summary>Voir les quotas <ChevronDown /></summary>
                   <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
                 </details>
-                <ConversionLink
-                  className={`button ${tier.featured ? "button--primary" : "button--dark"}`}
-                  href={buildUrl("les tarifs", tier)}
-                  source={source}
-                  tier={tier.id}
-                  target="_blank"
-                  rel="noreferrer"
-                >Choisir {tier.name}<ArrowRight /></ConversionLink>
-              </article>
+                <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>Choisir {tier.name}<ArrowRight /></span>
+              </ConversionLink>
             ))}
           </div>
         </div>

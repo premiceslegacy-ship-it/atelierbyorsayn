@@ -1,6 +1,8 @@
 export interface MetierData {
   slug: string;
   metier: string;
+  /** Libellé métier en français naturel, utilisé dans le message WhatsApp ("je suis …"). */
+  whatsapp: string;
   hero: {
     headline: string;
     subheadline: string;
@@ -57,6 +59,7 @@ export const metiers: MetierData[] = [
   {
     slug: "electricien",
     metier: "Électricien",
+    whatsapp: "électricien",
     hero: {
       headline: "Devis envoyé avant de quitter le client.",
       subheadline:
@@ -159,6 +162,7 @@ export const metiers: MetierData[] = [
   {
     slug: "plombier",
     metier: "Plombier / CVC",
+    whatsapp: "plombier-chauffagiste",
     hero: {
       headline: "Devis PAC depuis le camion. Contrats facturés seuls.",
       subheadline:
@@ -261,6 +265,7 @@ export const metiers: MetierData[] = [
   {
     slug: "menuisier",
     metier: "Menuisier",
+    whatsapp: "menuisier",
     hero: {
       headline: "Fenêtres, portes, escaliers chiffrés en 2 minutes.",
       subheadline:
@@ -363,6 +368,7 @@ export const metiers: MetierData[] = [
   {
     slug: "peintre",
     metier: "Peintre / Plâtrier",
+    whatsapp: "peintre en bâtiment",
     hero: {
       headline: "Devis m² envoyé le soir de la visite.",
       subheadline:
@@ -465,6 +471,7 @@ export const metiers: MetierData[] = [
   {
     slug: "tolier",
     metier: "Tôlier / Métallier",
+    whatsapp: "métallier",
     hero: {
       headline: "Un devis garde-corps en 10 minutes. Vos prix, vos marges, votre validation.",
       subheadline:
@@ -572,6 +579,7 @@ export const metiers: MetierData[] = [
   {
     slug: "paysagiste",
     metier: "Paysagiste",
+    whatsapp: "paysagiste",
     hero: {
       headline: "Vos clients d'entretien facturés. Même quand vous êtes sur le terrain.",
       subheadline:
@@ -674,6 +682,7 @@ export const metiers: MetierData[] = [
   {
     slug: "macon",
     metier: "Maçon / Rénovation",
+    whatsapp: "maçon",
     hero: {
       headline: "Sachez si vous gagnez sur chaque chantier.",
       subheadline:
@@ -776,6 +785,7 @@ export const metiers: MetierData[] = [
   {
     slug: "couvreur",
     metier: "Couvreur / Zingueur",
+    whatsapp: "couvreur-zingueur",
     hero: {
       headline: "Le devis toiture part avant que l'échafaudage soit replié.",
       subheadline:
@@ -878,6 +888,7 @@ export const metiers: MetierData[] = [
   {
     slug: "charpentier",
     metier: "Charpentier bois",
+    whatsapp: "charpentier",
     hero: {
       headline: "Du plan de charpente au devis signé, sans repasser par le bureau.",
       subheadline:
@@ -980,6 +991,7 @@ export const metiers: MetierData[] = [
   {
     slug: "carreleur",
     metier: "Carreleur / Mosaïste",
+    whatsapp: "carreleur",
     hero: {
       headline: "Le devis au m² prêt avant de quitter la salle de bain.",
       subheadline:

@@ -5,7 +5,7 @@ import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
 import { CaseCarousel } from "../components/CaseCarousel";
 import { ProofStrip } from "../components/ProofStrip";
-import { buildWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
+import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
 import { ConversionLink } from "../components/ConversionLink";
 
 export function loader({ params, request }: LoaderFunctionArgs) {
@@ -66,11 +66,11 @@ export default function MetierRoute() {
       <main className="trade-page">
         <section className="trade-hero">
           <div className="trade-hero__copy">
-            <p className="eyebrow">Atelier pour {metier.metier.toLowerCase()}</p>
+            <p className="eyebrow">Logiciel de gestion & suivi de chantier · {metier.metier}</p>
             <h1>{metier.hero.headline}</h1>
             <p>{metier.hero.subheadline}</p>
             <div className="hero__actions">
-              <ConversionLink className="button button--primary" href={buildWhatsAppUrl(`la page ${metier.metier}`)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer du temps</ConversionLink>
+              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer du temps</ConversionLink>
               <Link className="button button--dark" to="/#demo">Voir Atelier fonctionner <ArrowRight /></Link>
             </div>
             <div className="trade-hero__proof">
@@ -81,13 +81,21 @@ export default function MetierRoute() {
             </div>
           </div>
           <div className="trade-visual">
-            <div className="trade-dashboard">
-              <div className="trade-dashboard__top"><span>Atelier</span><span>{metier.metier}</span></div>
-              <p>{primaryMetric.label} <em>{primaryMetric.status}</em></p>
-              <strong>{primaryMetric.value}</strong>
-              <div className="progress"><span style={{ width: primaryMetric.progress }} /></div>
-              <div className="trade-dashboard__meta"><small>{primaryMetric.detail}</small><small>{primaryMetric.target}</small></div>
-              <div className="trade-dashboard__card"><Sparkles /><span><b>{highlight.label}</b>{highlight.detail}</span><i>{highlight.badge}</i></div>
+            <div className="trade-visual__glow" aria-hidden="true" />
+            <div className="trade-app">
+              <div className="trade-app__bar">
+                <img src="/logo-atelier-blanc.png" alt="Atelier" width="706" height="80" />
+                <span className="trade-app__status"><i /> {metier.metier}</span>
+              </div>
+              <div className="trade-app__body">
+                <div className="trade-app__metric">
+                  <p>{primaryMetric.label} <em>{primaryMetric.status}</em></p>
+                  <strong>{primaryMetric.value}</strong>
+                  <div className="progress progress--light"><span style={{ width: primaryMetric.progress }} /></div>
+                  <div className="trade-app__meta"><small>{primaryMetric.detail}</small><small>{primaryMetric.target}</small></div>
+                </div>
+                <div className="trade-app__highlight"><Sparkles /><span><b>{highlight.label}</b>{highlight.detail}</span><i>{highlight.badge}</i></div>
+              </div>
             </div>
             <div className="trade-float">
               <span>{latest.label} · {latest.time}</span>
@@ -105,13 +113,22 @@ export default function MetierRoute() {
             <p>Si vous vous reconnaissez dans deux de ces situations, Atelier a été construit pour vous.</p>
           </div>
           <div className="problem-grid">{metier.problems.items.map((item, index) => <article key={item}><span className="problem-num">{String(index + 1).padStart(2, "0")}</span><p>{item}</p></article>)}</div>
+          <div className="section-cta">
+            <p><strong>Ce quotidien n'est pas une fatalité.</strong> Dans un mois, vos soirées peuvent ressembler à autre chose : des devis qui partent le jour même, des relances qui tournent sans vous.</p>
+            <div>
+              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-problems-${metier.slug}`} target="_blank" rel="noreferrer">
+                <MessageCircle aria-hidden="true" /> Changer ce quotidien
+              </ConversionLink>
+              <Link className="button button--dark" to="/#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
+            </div>
+          </div>
         </section>
 
         <section className="section trade-features">
           <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, réglés sur votre métier pendant le setup. Pas une liste de fonctionnalités.</p></div>
           <div className="feature-list">{metier.features.items.map((item, index) => {
             const Icon = featureIcons[index] ?? Sparkles;
-            return <article key={item.titre}><div><Icon /></div><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.titre}</h3><p>{item.description}</p></article>;
+            return <article key={item.titre}><div><Icon /></div><h3>{item.titre}</h3><p>{item.description}</p></article>;
           })}</div>
         </section>
 
@@ -143,7 +160,7 @@ export default function MetierRoute() {
           <p className="eyebrow eyebrow--light">{metier.metier}</p>
           <h2>{metier.cta.headline}</h2>
           <p>{metier.cta.subline}</p>
-          <ConversionLink className="button button--primary" href={buildWhatsAppUrl(`la page ${metier.metier}`)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Récupérer du temps <ArrowRight /></ConversionLink>
+          <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Récupérer du temps <ArrowRight /></ConversionLink>
           <small>Réponse directe de Samuel, sans engagement.</small>
         </section>
       </main>

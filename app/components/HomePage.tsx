@@ -77,16 +77,16 @@ const demoSteps = [
 ];
 
 const demoContext = [
-  { label: "Cliente", value: "Mme Martin", detail: "Cliente depuis 2023" },
-  { label: "Visite", value: "Ce matin", detail: "PAC air/eau repérée" },
-  { label: "Catalogue", value: "PAC 8,4 kW", detail: "Vos prix, votre TVA" },
-  { label: "Conditions", value: "Acompte 30 %", detail: "Vos règles habituelles" },
+  { label: "Client pro", value: "SCI du Parc", detail: "Compte client depuis 2022" },
+  { label: "Visite", value: "Ce matin", detail: "Plateau de bureaux · 260 m²" },
+  { label: "Catalogue", value: "Cloisons & finitions", detail: "Vos prix, votre TVA" },
+  { label: "Conditions", value: "Acompte 30 %", detail: "Règlement à 30 jours" },
 ];
 
 const demoLines = [
-  { label: "PAC air/eau 8,4 kW", amount: "5 990 €" },
-  { label: "Pose & raccordement", amount: "1 870 €" },
-  { label: "Mise en service & réglages", amount: "600 €" },
+  { label: "Dépose & préparation des locaux", amount: "2 400 €" },
+  { label: "Cloisons & doublages · 120 m²", amount: "6 830 €" },
+  { label: "Peinture & finitions", amount: "3 870 €" },
 ];
 
 function Demo() {
@@ -117,10 +117,15 @@ function Demo() {
   return (
     <section id="demo" className="section section--dark demo-section">
       <div className="section-heading section-heading--center">
-        <p className="eyebrow">60 secondes avec Atelier</p>
-        <h2>Regardez Sarah préparer un devis.</h2>
-        <p>De la demande vocale à votre validation. Rien ne part sans vous.</p>
+        <p className="eyebrow">Sarah, assistante IA métier</p>
+        <h2>Sarah travaille.<br />Vous décidez.</h2>
+        <p>Elle connaît vos clients, vos chantiers, vos prix. Regardez-la préparer un devis en 60 secondes.</p>
       </div>
+      <ul className="demo-sarah-strip">
+        <li><Sparkles aria-hidden="true" />Propose l'action et explique pourquoi.</li>
+        <li><RefreshCw aria-hidden="true" />Apprend du contexte validé dans Atelier.</li>
+        <li><ShieldCheck aria-hidden="true" />Attend votre accord avant les actions sensibles.</li>
+      </ul>
       <div className="demo-shell">
         <div className="demo-sidebar" role="tablist" aria-label="Étapes de la démonstration">
           {demoSteps.map((step, index) => (
@@ -154,7 +159,7 @@ function Demo() {
                   <div className="demo-wave" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ animationDelay: `${i * 0.08}s` }} />)}</div>
                   <span>0:06</span>
                 </div>
-                <p className="demo-prompt demo-stagger" style={{ animationDelay: "0.9s" }}>« Sarah, prépare le devis de Mme Martin pour la PAC vue ce matin. »</p>
+                <p className="demo-prompt demo-stagger" style={{ animationDelay: "0.9s" }}>« Sarah, prépare le devis de la SCI du Parc pour les bureaux visités ce matin. »</p>
               </>
             )}
             {started && active === 1 && (
@@ -171,22 +176,22 @@ function Demo() {
             )}
             {started && active === 2 && (
               <div className="demo-doc demo-stagger">
-                <div className="demo-doc__head"><strong>DEV-2026-081</strong><span>Brouillon · Mme Martin</span></div>
+                <div className="demo-doc__head"><strong>DEV-2026-114</strong><span>Brouillon · SCI du Parc</span></div>
                 {demoLines.map((line, index) => (
                   <div className="demo-doc__line demo-stagger" style={{ animationDelay: `${0.6 + index * 0.9}s` }} key={line.label}>
                     <span>{line.label}</span><strong>{line.amount}</strong>
                   </div>
                 ))}
                 <div className="demo-doc__total demo-stagger" style={{ animationDelay: "3.6s" }}>
-                  <span>Total HT</span><strong>8 460 €</strong>
+                  <span>Total HT</span><strong>13 100 €</strong>
                 </div>
-                <div className="demo-doc__badge demo-stagger" style={{ animationDelay: "4.4s" }}>Marge cible 31 % · Acompte 30 %</div>
+                <div className="demo-doc__badge demo-stagger" style={{ animationDelay: "4.4s" }}>Marge cible 28 % · Acompte 30 %</div>
               </div>
             )}
             {started && active === 3 && !sent && (
               <>
                 <div className="demo-doc demo-doc--compact demo-stagger">
-                  <div className="demo-doc__head"><strong>DEV-2026-081</strong><span>8 460 € HT · prêt à partir</span></div>
+                  <div className="demo-doc__head"><strong>DEV-2026-114</strong><span>13 100 € HT · prêt à partir</span></div>
                   <div className="demo-doc__line"><span>Relu par Sarah, rien d'envoyé</span><strong>✓</strong></div>
                 </div>
                 <button className="demo-validate demo-stagger" style={{ animationDelay: "0.8s" }} type="button" onClick={() => setSent(true)}><Check aria-hidden="true" /> Valider l'envoi</button>
@@ -195,7 +200,7 @@ function Demo() {
             {started && active === 3 && sent && (
               <div className="demo-sent">
                 <div className="demo-sent__check"><Check aria-hidden="true" /></div>
-                <p className="demo-prompt">Devis envoyé à Mme Martin.</p>
+                <p className="demo-prompt">Devis envoyé à la SCI du Parc.</p>
                 <p className="demo-note">Sarah archive le devis et suivra la réponse. Vous n'avez rien tapé.</p>
                 <button className="demo-replay" type="button" onClick={() => goTo(0)}><RefreshCw aria-hidden="true" /> Revoir la démonstration</button>
               </div>
@@ -210,9 +215,18 @@ function Demo() {
         </div>
         <div className="demo-context">
           <p className="eyebrow">Contexte actif</p>
-          <div><FileCheck2 /> <span><strong>Mme Martin</strong>Cliente depuis 2023</span></div>
-          <div><ReceiptText /> <span><strong>DEV-2026-081</strong>Brouillon enregistré</span></div>
-          <div><BarChart3 /> <span><strong>31 %</strong>Marge cible</span></div>
+          <div><FileCheck2 /> <span><strong>SCI du Parc</strong>Client pro depuis 2022</span></div>
+          <div><ReceiptText /> <span><strong>DEV-2026-114</strong>Brouillon enregistré</span></div>
+          <div><BarChart3 /> <span><strong>28 %</strong>Marge cible</span></div>
+        </div>
+      </div>
+      <div className="demo-cta">
+        <p>Sarah est prête. Il ne manque que votre entreprise.</p>
+        <div>
+          <a className="button button--primary" href="#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></a>
+          <ConversionLink className="button button--glass" href={buildWhatsAppUrl("la démonstration de Sarah")} source="demo" target="_blank" rel="noreferrer">
+            <MessageCircle aria-hidden="true" /> Poser une question
+          </ConversionLink>
         </div>
       </div>
     </section>
@@ -299,7 +313,7 @@ export default function HomePage() {
         </picture>
         <div className="hero__shade" />
         <div className="hero__content">
-          <p className="eyebrow eyebrow--light">L'assistante de gestion des artisans du BTP</p>
+          <p className="eyebrow eyebrow--light">Le logiciel de gestion des artisans du BTP</p>
           <h1>Une secrétaire métier<br />dans votre poche.<br /><em>Pas un salarié de plus.</em></h1>
           <p className="hero__lead">Sarah prépare vos devis, relance les impayés et repère les chantiers qui dérapent. Vous gardez la décision.</p>
           <div className="hero__actions">
@@ -318,27 +332,6 @@ export default function HomePage() {
       </section>
 
       <ProofStrip />
-
-      <section className="section phrase-section">
-        <div className="section-heading section-heading--center">
-          <p className="eyebrow">Ça commence par une phrase</p>
-          <h2>Parlez comme sur le chantier.<br />Sarah comprend l'entreprise.</h2>
-          <p>Elle ne part pas d'une page blanche : elle retrouve ce qui existe déjà dans Atelier.</p>
-        </div>
-        <div className="phrase-orbit">
-          <div className="orbit orbit--one" aria-hidden="true" />
-          <div className="orbit orbit--two" aria-hidden="true" />
-          <div className="context-chip context-chip--client"><span>Client</span>Mme Martin</div>
-          <div className="context-chip context-chip--catalogue"><span>Catalogue</span>PAC air/eau</div>
-          <div className="context-chip context-chip--planning"><span>Planning</span>Pose · jeudi</div>
-          <div className="context-chip context-chip--margin"><span>Marge cible</span>31 %</div>
-          <div className="phrase-core">
-            <div className="mic-button"><Mic /></div>
-            <p>« Sarah, prépare le devis de Mme Martin pour la PAC vue ce matin. »</p>
-            <span>Transcription terminée · 8 secondes</span>
-          </div>
-        </div>
-      </section>
 
       <section id="benefices" className="section bento-section">
         <div className="section-heading section-heading--split">
@@ -359,39 +352,54 @@ export default function HomePage() {
             );
           })}
         </div>
+        <div className="section-cta">
+          <p><strong>Cinq angles morts couverts, une seule mémoire.</strong><br />Voyez ce que ça coûte et ce que ça vous rend.</p>
+          <div>
+            <a className="button button--primary" href="#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></a>
+            <ConversionLink className="button button--dark" href={buildWhatsAppUrl("les bénéfices d'Atelier")} source="benefits" target="_blank" rel="noreferrer">
+              <MessageCircle aria-hidden="true" /> Parler à Samuel
+            </ConversionLink>
+          </div>
+        </div>
+      </section>
+
+      <section id="sarah" className="section phrase-section">
+        <div className="section-heading section-heading--center">
+          <p className="eyebrow">Ça commence par une phrase</p>
+          <h2>Parlez comme sur le chantier.<br />Sarah comprend l'entreprise.</h2>
+          <p>Elle ne part pas d'une page blanche : elle retrouve ce qui existe déjà dans Atelier. La preuve juste en dessous.</p>
+        </div>
+        <div className="phrase-orbit">
+          <div className="orbit orbit--one" aria-hidden="true" />
+          <div className="orbit orbit--two" aria-hidden="true" />
+          <div className="context-chip context-chip--client"><span>Client</span>SCI du Parc</div>
+          <div className="context-chip context-chip--catalogue"><span>Catalogue</span>Cloisons & finitions</div>
+          <div className="context-chip context-chip--planning"><span>Planning</span>Démarrage · jeudi</div>
+          <div className="context-chip context-chip--margin"><span>Marge cible</span>28 %</div>
+          <div className="phrase-core">
+            <div className="mic-button"><Mic /></div>
+            <p>« Sarah, prépare le devis de la SCI du Parc pour les bureaux visités ce matin. »</p>
+            <span>Transcription terminée · 8 secondes</span>
+          </div>
+        </div>
       </section>
 
       <Demo />
 
-      <section id="sarah" className="section sarah-section">
-        <div className="sarah-copy">
-          <p className="eyebrow">Sarah, assistante IA métier</p>
-          <h2>Sarah travaille.<br />Vous décidez.</h2>
-          <p>Elle connaît les clients, les chantiers, le planning et vos habitudes. Elle prépare la suite sans transformer votre entreprise en boîte noire.</p>
-          <ul>
-            <li><Sparkles />Propose l'action et explique pourquoi.</li>
-            <li><RefreshCw />Apprend du contexte validé dans Atelier.</li>
-            <li><ShieldCheck />Attend votre accord avant les actions sensibles.</li>
-          </ul>
-        </div>
-        <div className="sarah-visual">
-          <div className="sarah-console">
-            <div className="sarah-console__bar">
-              <img src="/logo-atelier-blanc.png" alt="Atelier" width="706" height="80" />
-              <span><i /> Sarah est active</span>
-            </div>
-            <div className="sarah-console__body">
-              <div className="sarah-halo" />
-              <img className="sarah-avatar" src="/sarah-avatar.webp" alt="Sarah, assistante IA Atelier" width="512" height="512" loading="lazy" />
-            </div>
-          </div>
-          <div className="sarah-card sarah-card--top"><span>Devis technique</span><strong>PAC air/eau · 8,4 kW</strong><small>Marge 31 % · acompte 30 %</small></div>
-          <div className="sarah-card sarah-card--bottom"><span>Prêt à vérifier</span><strong>DEV-2026-081</strong><small>8 460 € HT · 6 postes chiffrés</small></div>
-        </div>
-      </section>
+      <Pricing />
 
       <CaseCarousel />
-      <Pricing />
+      <div className="section belonging-cta">
+        <div className="section-cta">
+          <p><strong>Eux aussi hésitaient.</strong> Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
+          <div>
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("les témoignages clients")} source="cases" target="_blank" rel="noreferrer">
+              <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+            </ConversionLink>
+            <a className="button button--dark" href="#tarifs">Revoir les tarifs <ArrowRight aria-hidden="true" /></a>
+          </div>
+        </div>
+      </div>
 
       <section className="section faq-section">
         <div className="section-heading section-heading--split">
@@ -405,6 +413,15 @@ export default function HomePage() {
               <p>{item.answer}</p>
             </details>
           ))}
+        </div>
+        <div className="section-cta">
+          <p><strong>Une question qui n'est pas dans la liste ?</strong> Samuel répond directement, sans script ni engagement.</p>
+          <div>
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("une question avant de démarrer")} source="faq" target="_blank" rel="noreferrer">
+              <MessageCircle aria-hidden="true" /> Poser ma question
+            </ConversionLink>
+            <a className="button button--dark" href="#tarifs">Revoir les tarifs <ArrowRight aria-hidden="true" /></a>
+          </div>
         </div>
       </section>
 
@@ -428,9 +445,12 @@ export default function HomePage() {
           <p className="eyebrow eyebrow--light">Atelier par Orsayn</p>
           <h2>Votre entreprise ne manque pas de courage.<br /><em>Elle manque d'un bureau qui suit.</em></h2>
           <p>Montrez votre quotidien à Samuel. Il vous dira franchement où Atelier peut vous rendre du temps.</p>
-          <ConversionLink className="button button--primary" href={buildWhatsAppUrl("le bas de la page d'accueil")} source="closing" target="_blank" rel="noreferrer">
-            Récupérer du temps <ArrowRight />
-          </ConversionLink>
+          <div className="hero__actions">
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("le bas de la page d'accueil")} source="closing" target="_blank" rel="noreferrer">
+              Récupérer du temps <ArrowRight />
+            </ConversionLink>
+            <a className="button button--glass" href="#tarifs">Revoir les tarifs <ArrowRight aria-hidden="true" /></a>
+          </div>
         </div>
       </section>
     </main>

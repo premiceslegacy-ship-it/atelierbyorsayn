@@ -65,7 +65,7 @@ export function Footer() {
           <Link className="wordmark wordmark--footer" to="/" aria-label="Atelier, accueil">
             <img src="/logo-atelier-blanc.png" alt="" width="706" height="80" />
           </Link>
-          <p>L'assistante de gestion pensée pour les artisans du BTP.</p>
+          <p>Le logiciel de gestion pensé pour les artisans du BTP, avec Sarah, l'assistante IA intégrée.</p>
         </div>
         <div>
           <p className="footer-label">Découvrir</p>

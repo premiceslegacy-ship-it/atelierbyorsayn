@@ -72,6 +72,11 @@ export function buildWhatsAppUrl(source: string, tier?: PricingTier) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+export function buildTradeWhatsAppUrl(tradeLabel: string) {
+  const message = `Bonjour Samuel, je suis ${tradeLabel} et je viens de découvrir Atelier. J'aimerais voir ce que ça pourrait changer pour mon entreprise.\n\nOn peut en parler ?`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
 export type CaseStudy = {
   id: string;
   name: string;

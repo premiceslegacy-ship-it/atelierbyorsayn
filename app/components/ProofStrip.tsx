@@ -1,4 +1,7 @@
-import { CASE_STUDIES } from "../data/site";
+import { Link } from "react-router";
+import { ArrowRight, MessageCircle } from "lucide-react";
+import { buildWhatsAppUrl, CASE_STUDIES } from "../data/site";
+import { ConversionLink } from "./ConversionLink";
 
 const stats = [
   { value: "12 500 €", label: "d'impayés récupérés en moins d'un mois", caseId: "stephane" },
@@ -14,7 +17,7 @@ export function ProofStrip() {
         <div className="avatar-stack">
           {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" loading="lazy" />)}
         </div>
-        <p><strong>Mesuré chez les entreprises accompagnées.</strong><span>Des cas réels, anonymisés. Pas des promesses marketing.</span></p>
+        <p><strong>Mesuré chez les entreprises accompagnées.</strong></p>
       </div>
       <div className="proof-band__grid">
         {stats.map((stat) => {
@@ -30,6 +33,18 @@ export function ProofStrip() {
             </article>
           );
         })}
+      </div>
+      <div className="proof-band__cta">
+        <p>
+          <strong>Ils ont remis le bureau à sa place.</strong>
+          <span>Des artisans comme vous, qui ont décidé de ne plus perdre leurs soirées.</span>
+        </p>
+        <div>
+          <ConversionLink className="button button--primary" href={buildWhatsAppUrl("les résultats clients")} source="proof-band" target="_blank" rel="noreferrer">
+            <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+          </ConversionLink>
+          <Link className="button button--dark" to="/#tarifs">Voir les tarifs <ArrowRight aria-hidden="true" /></Link>
+        </div>
       </div>
     </section>
   );

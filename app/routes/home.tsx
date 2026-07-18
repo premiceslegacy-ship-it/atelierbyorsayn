@@ -5,8 +5,8 @@ import { StructuredData } from "../components/StructuredData";
 import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICES, SITE_URL } from "../data/site";
 
 export const meta: MetaFunction = () => [
-  { title: "Atelier : L'assistante de gestion des artisans du BTP" },
-  { name: "description", content: "Sarah prépare vos devis, relance les impayés et suit la marge de vos chantiers. Atelier est l'assistante de gestion conçue pour les artisans du BTP." },
+  { title: "Atelier : Le logiciel de gestion des artisans du BTP" },
+  { name: "description", content: "Devis, factures, relances d'impayés et marge chantier en temps réel. Atelier est le logiciel de gestion des artisans du BTP, avec Sarah, l'assistante IA intégrée." },
   { name: "robots", content: "index, follow" },
   { property: "og:title", content: "Atelier : Une secrétaire métier dans votre poche" },
   { property: "og:description", content: "Devis, relances, marge et planning. Sarah travaille, vous décidez." },
@@ -39,7 +39,7 @@ const schemas = [
     name: "Atelier",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    description: "Application de gestion et assistante IA métier pour artisans du BTP.",
+    description: "Logiciel de gestion et application métier avec assistante IA pour artisans du BTP : devis, factures, relances et suivi de chantier.",
     provider: { "@type": "Organization", name: "Orsayn" },
     offers: {
       "@type": "OfferCatalog",

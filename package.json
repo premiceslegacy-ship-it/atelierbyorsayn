@@ -10,7 +10,8 @@
     "lint": "tsc --noEmit",
     "validate:content": "tsx skills/atelier-content-engine/scripts/validate-content.ts",
     "test:static": "tsx scripts/assert-static-output.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "submit:indexnow": "tsx scripts/submit-indexnow.ts"
   },
   "dependencies": {
     "@react-router/node": "^7.18.1",

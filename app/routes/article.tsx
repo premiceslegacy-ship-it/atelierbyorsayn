@@ -1,5 +1,5 @@
 import { data, Link, useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
-import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, ChevronRight, Clock } from "lucide-react";
 import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
 import { getArticle, getRelatedArticles } from "../lib/articles";
@@ -63,7 +63,13 @@ export default function ArticleRoute() {
       <StructuredData data={[schema, breadcrumbs]} />
       <main className="article-page">
         <header className="article-hero">
-          <Link to="/blog" className="back-link"><ArrowLeft /> Le journal</Link>
+          <nav className="breadcrumbs" aria-label="Fil d'Ariane">
+            <ol>
+              <li><Link to="/">Accueil</Link></li>
+              <li><ChevronRight aria-hidden="true" /><Link to="/blog">Le journal</Link></li>
+              <li><ChevronRight aria-hidden="true" /><span aria-current="page">{article.title}</span></li>
+            </ol>
+          </nav>
           <p className="eyebrow">{article.pillar}</p>
           <h1>{article.title}</h1>
           <p className="article-deck">{article.description}</p>

@@ -363,8 +363,15 @@ button { color: inherit; }
 .article-card--featured h2 { font-size: clamp(25px,3vw,42px); }
 
 .article-hero { width: min(1100px,calc(100% - 48px)); margin: 0 auto; padding: 70px 0 0; text-align: center; }
-.back-link { margin-bottom: 55px; display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; }
-.back-link svg { width: 15px; }
+.breadcrumbs { margin-bottom: 55px; }
+.breadcrumbs ol { margin: 0; padding: 0; list-style: none; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; color: var(--muted); font-size: 11px; }
+.breadcrumbs li { display: flex; align-items: center; gap: 6px; max-width: 320px; }
+.breadcrumbs li span { overflow: hidden; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; }
+.breadcrumbs a { color: var(--muted); }
+.breadcrumbs a:hover { color: var(--ink); }
+.breadcrumbs svg { width: 12px; flex: 0 0 auto; color: rgba(8,8,7,.28); }
+.breadcrumbs--trade { width: min(1280px,calc(100% - 48px)); margin: 26px auto 0; }
+.breadcrumbs--trade ol { justify-content: flex-start; }
 .article-hero h1 { margin: 0 auto; max-width: 980px; font-family: "Geist",sans-serif; font-size: clamp(42px,6vw,76px); line-height: 1.1; letter-spacing: -.052em; text-wrap: balance; }
 .article-deck { max-width: 730px; margin: 26px auto 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
 .article-meta { margin: 27px 0 50px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }

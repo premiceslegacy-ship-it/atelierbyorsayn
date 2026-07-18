@@ -1,5 +1,5 @@
 import { data, Link, useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
-import { ArrowRight, ChevronDown, FileText, MessageCircle, RefreshCw, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight, FileText, MessageCircle, RefreshCw, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 import { getMetierBySlug } from "@legacy/data/metiers";
 import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
@@ -64,6 +64,12 @@ export default function MetierRoute() {
     <SiteShell>
       <StructuredData data={schema} />
       <main className="trade-page">
+        <nav className="breadcrumbs breadcrumbs--trade" aria-label="Fil d'Ariane">
+          <ol>
+            <li><Link to="/">Accueil</Link></li>
+            <li><ChevronRight aria-hidden="true" /><span aria-current="page">{metier.metier}</span></li>
+          </ol>
+        </nav>
         <section className="trade-hero">
           <div className="trade-hero__copy">
             <p className="eyebrow">Logiciel de gestion & suivi de chantier · {metier.metier}</p>

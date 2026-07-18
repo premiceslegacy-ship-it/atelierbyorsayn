@@ -47,9 +47,44 @@ Sources de référence :
 
 - https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
 - https://developers.google.com/search/docs/appearance/structured-data/article
+- https://developers.google.com/search/docs/appearance/structured-data/breadcrumb
+- https://developers.google.com/search/docs/appearance/structured-data/faqpage
 - https://blogs.bing.com/webmaster/February-2026/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview
 - https://blogs.bing.com/webmaster/July-2025/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search
 - https://github.com/zubair-trabzada/geo-seo-claude
+
+## Fil d'Ariane
+
+- Chaque page article et page métier doit exposer **deux formes** du fil d'Ariane : un `<nav aria-label="Fil d'Ariane">` visible dans le HTML rendu (`Accueil > Le journal > Titre`) et le JSON-LD `BreadcrumbList` correspondant. Les deux doivent lister exactement les mêmes étapes, dans le même ordre. Un `BreadcrumbList` sans nav visible est incomplet : Google Search Console peut le signaler.
+- Ne jamais inclure la page courante comme lien actif dans le fil visuel (dernier élément en `<span aria-current="page">`, pas de `<a>`).
+- Vérifier après tout ajout de route qu'un fil d'Ariane a été implémenté des deux côtés, pas seulement dans les données structurées.
+
+## Tableaux comparatifs et données chiffrées
+
+- Ajouter un tableau Markdown dès qu'il existe une vraie comparaison à trancher : formules de prix, seuils réglementaires par taille d'entreprise, avant/après une réforme, options avec compromis différents. Un tableau qui ne fait que reformuler une liste n'apporte rien : le supprimer.
+- Chaque tableau garde une colonne de référence claire (ex. seuil, date, montant) et cite sa source dans le paragraphe qui précède ou suit, jamais dans une cellule.
+- Toute donnée chiffrée (prix, pourcentage, délai, seuil) suit la hiérarchie des sources ci-dessus. Un chiffre produit Atelier (temps gagné, taux de conversion, résultat client) doit provenir de `product-truth.md` ou d'un cas client déjà approuvé, jamais d'une estimation inventée pour l'article.
+- Dater explicitement tout chiffre sensible à évoluer (barème, seuil, taux) dans la phrase même, pour que l'article reste vérifiable après une mise à jour réglementaire.
+- Un chiffre produit sans source vérifiable ne s'affiche pas en gras ni en encadré `>` : le retirer ou le reformuler en ordre de grandeur qualitatif.
+
+## FAQ visible
+
+- Ajouter une section FAQ en fin d'article seulement quand au moins 3 questions concrètes et distinctes se dégagent du sujet (pas de questions fabriquées pour occuper une requête).
+- La FAQ doit être visible dans le corps rendu (titres `###` en question, réponse en paragraphe juste en dessous), pas seulement injectée en JSON-LD `FAQPage`. Si un balisage `FAQPage` est ajouté, il doit refléter exactement le texte visible, question par question.
+- Une réponse de FAQ reste courte (2 à 4 phrases), répond directement, puis renvoie si utile vers la section de l'article qui détaille.
+
+## Hiérarchie des titres (Hn)
+
+- Un seul `H1` par page, déjà généré par le gabarit à partir de `title` : ne jamais écrire de `#` dans le corps Markdown.
+- Les `##` (H2) structurent les sections principales et alimentent le sommaire ; ne pas sauter de niveau (pas de `####` sans `###` parent).
+- Utiliser `###` (H3) pour des sous-points à l'intérieur d'une section H2 (dont les questions de FAQ), jamais pour créer une section de niveau supérieur.
+- Chaque titre reformule une question ou une action, jamais un simple mot-clé isolé.
+
+## Maillage interne et liens externes
+
+- Chaque article ajoute au moins un lien interne pertinent (article du journal ou page métier concernée) et le déclare dans `internalLinks` de `content-inventory.json`.
+- Un lien externe ne pointe que vers une source de la hiérarchie ci-dessus ou une page produit Atelier ; jamais vers un concurrent commercial ni un site sans rapport avec l'affirmation citée.
+- Ne jamais solliciter, acheter ou fabriquer un backlink entrant. La seule stratégie de liens entrants légitime est un contenu assez utile et précis pour être cité spontanément ; ne pas concevoir d'article dans le seul but de générer des backlinks.
 
 ## Style Samuel
 

@@ -12,6 +12,8 @@ const today = new Date().toISOString().slice(0, 10);
 for (const file of readdirSync(directory).filter((name) => name.endsWith(".md"))) {
   const { data, content } = matter(readFileSync(join(directory, file), "utf8"));
   for (const key of required) if (data[key] === undefined || data[key] === "") errors.push(`${file}: champ ${key} manquant`);
+  if (typeof data.title === "string" && data.title.length > 70) errors.push(`${file}: title trop long (${data.title.length} caractères, max 70)`);
+  if (typeof data.description === "string" && (data.description.length < 25 || data.description.length > 160)) errors.push(`${file}: description hors bornes (${data.description.length} caractères, attendu 25-160)`);
   if (data.author !== "Samuel Mbeboura") errors.push(`${file}: auteur attendu Samuel Mbeboura`);
   if (data.authorUrl !== "https://fr.linkedin.com/in/samuel-mbeboura-b28796293") errors.push(`${file}: authorUrl inattendue`);
   if (typeof data.draft !== "boolean") errors.push(`${file}: draft doit être booléen`);

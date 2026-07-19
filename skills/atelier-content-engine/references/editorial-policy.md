@@ -3,9 +3,9 @@
 ## Frontmatter obligatoire
 
 ```yaml
-title: ""
+title: "" # 50-60 caractères idéal, jamais plus de 70 : au-delà, tronqué ou ignoré en SERP
 slug: ""
-description: ""
+description: "" # 120-160 caractères idéal, entre 25 et 160 obligatoire
 publishedAt: "YYYY-MM-DD"
 updatedAt: "YYYY-MM-DD" # uniquement après modification substantielle
 author: "Samuel Mbeboura"
@@ -36,6 +36,9 @@ Vérifier la date, la portée et la définition exacte. Lier la page qui soutien
 
 - Appliquer d'abord les fondamentaux Google : contenu utile et original, expertise de première main, accessibilité au crawl, structure sémantique et performance.
 - Répondre clairement à l'intention dans les premières lignes.
+- `title` : 70 caractères maximum (idéal 50-60), unique par page, décrit précisément le contenu sans bourrage de mot-clé. Un titre tronqué en SERP ou ignoré par le moteur nuit au clic.
+- `description` : entre 25 et 160 caractères (idéal 120-160), résume la réponse ou la promesse de la page. En dessous de 25, le moteur réécrit la description lui-même depuis le contenu ; au-delà de 160, le texte est coupé dans les résultats de recherche.
+- Vérifier la longueur des deux champs avant publication (`npm run validate:content` doit les couvrir ; sinon compter les caractères manuellement).
 - Utiliser titres explicites, tableaux seulement lorsqu'ils clarifient une comparaison, listes pour une procédure et FAQ uniquement si elle est visible.
 - Ajouter preuves, sources, dates et limites afin de réduire l'ambiguïté et d'améliorer la citabilité.
 - Maintenir sitemap et dates réelles ; utiliser IndexNow comme accélérateur de découverte Bing, jamais comme garantie de classement.

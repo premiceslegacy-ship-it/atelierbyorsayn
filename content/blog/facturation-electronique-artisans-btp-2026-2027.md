@@ -1,5 +1,5 @@
 ---
-title: "Facturation électronique : ce qui change vraiment pour les artisans du BTP en 2026 et 2027"
+title: "Facturation électronique : ce qui change pour les artisans BTP"
 slug: "facturation-electronique-artisans-btp-2026-2027"
 description: "Réception en 2026, émission en 2027, plateforme agréée : le calendrier utile et les actions concrètes pour un artisan du BTP."
 publishedAt: "2026-07-17"

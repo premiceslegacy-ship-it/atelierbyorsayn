@@ -1,5 +1,5 @@
 ---
-title: "Une secrétaire IA pour artisan : ce que Sarah peut préparer, et ce qu'elle ne décide jamais"
+title: "Secrétaire IA pour artisan : ce que Sarah prépare vraiment"
 slug: "secretaire-ia-artisan-sarah"
 description: "Devis, relances, planning et suivi : découvrez ce que Sarah prépare pour un artisan et pourquoi la décision reste toujours humaine."
 publishedAt: "2026-07-15"

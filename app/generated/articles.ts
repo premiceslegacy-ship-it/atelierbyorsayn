@@ -1,9 +1,9 @@
 // Généré depuis content/blog. Ne pas modifier à la main.
 export default [
   {
-    "title": "Prix des logiciels de gestion BTP en 2026 : comparatif pour maçons, métalliers et rénovation",
+    "title": "Prix des logiciels de gestion BTP en 2026 : comparatif",
     "slug": "prix-logiciel-gestion-btp-comparatif",
-    "description": "Batigest, Obat, Batappli, Sellsy, Atelier : ce que ces logiciels coûtent vraiment, avec ou sans abonnement, avec ou sans IA, et ce qui compte pour un maçon ou un métallier.",
+    "description": "Batigest, Obat, Batappli, Sellsy, Atelier : ce que ces logiciels coûtent vraiment et ce qui compte pour un maçon ou un métallier.",
     "publishedAt": "2026-07-18",
     "author": "Samuel Mbeboura",
     "authorUrl": "https://fr.linkedin.com/in/samuel-mbeboura-b28796293",
@@ -68,7 +68,7 @@ export default [
     "readingMinutes": 6
   },
   {
-    "title": "Facturation électronique : ce qui change vraiment pour les artisans du BTP en 2026 et 2027",
+    "title": "Facturation électronique : ce qui change pour les artisans BTP",
     "slug": "facturation-electronique-artisans-btp-2026-2027",
     "description": "Réception en 2026, émission en 2027, plateforme agréée : le calendrier utile et les actions concrètes pour un artisan du BTP.",
     "publishedAt": "2026-07-17",
@@ -184,7 +184,7 @@ export default [
     "readingMinutes": 3
   },
   {
-    "title": "Une secrétaire IA pour artisan : ce que Sarah peut préparer, et ce qu'elle ne décide jamais",
+    "title": "Secrétaire IA pour artisan : ce que Sarah prépare vraiment",
     "slug": "secretaire-ia-artisan-sarah",
     "description": "Devis, relances, planning et suivi : découvrez ce que Sarah prépare pour un artisan et pourquoi la décision reste toujours humaine.",
     "publishedAt": "2026-07-15",

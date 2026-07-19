@@ -1,7 +1,7 @@
 ---
-title: "Prix des logiciels de gestion BTP en 2026 : comparatif pour maçons, métalliers et rénovation"
+title: "Prix des logiciels de gestion BTP en 2026 : comparatif"
 slug: "prix-logiciel-gestion-btp-comparatif"
-description: "Batigest, Obat, Batappli, Sellsy, Atelier : ce que ces logiciels coûtent vraiment, avec ou sans abonnement, avec ou sans IA, et ce qui compte pour un maçon ou un métallier."
+description: "Batigest, Obat, Batappli, Sellsy, Atelier : ce que ces logiciels coûtent vraiment et ce qui compte pour un maçon ou un métallier."
 publishedAt: "2026-07-18"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"

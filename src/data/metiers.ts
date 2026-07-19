@@ -473,9 +473,9 @@ export const metiers: MetierData[] = [
     metier: "Tôlier / Métallier",
     whatsapp: "métallier",
     hero: {
-      headline: "Un devis garde-corps en 10 minutes. Vos prix, vos marges, votre validation.",
+      headline: "Le cours de l'aluminium a bougé. Votre devis, aussi ?",
       subheadline:
-        "Vos coefficients matière appliqués automatiquement. La marge estimée visible avant envoi. Vous gardez la main sur le prix final.",
+        "Atelier suit vos prix matière (alu, inox, acier) et recalcule votre marge en continu. Vous voyez l'impact avant d'envoyer le devis, pas après.",
     },
     heroMockup: {
       primaryMetric: {
@@ -487,10 +487,10 @@ export const metiers: MetierData[] = [
         detail: "Acier + thermolaquage + heures atelier et pose",
       },
       highlight: {
-        badge: "Mis à jour",
-        label: "Prix matière",
-        reference: "Acier S235 · +4,2%",
-        detail: "Catalogue au ml recalculé sur les nouveaux coûts",
+        badge: "Alu +4,2%",
+        label: "Prix matière suivi",
+        reference: "Aluminium · cours du jour",
+        detail: "Catalogue au ml recalculé avant l'envoi du devis",
       },
       latest: {
         label: "Devis B2B",

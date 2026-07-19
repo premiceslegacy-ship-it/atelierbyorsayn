@@ -54,3 +54,9 @@ Ne passer `draft` à `false` que si l'utilisateur demande explicitement de publi
 5. Ne jamais automatiser la mise en ligne quotidienne sans autorisation distincte.
 
 Cadence initiale : `1 article/jour`. La cadence est une limite de planification, pas une autorisation de publication autonome.
+
+## Indexation après publication
+
+Le push sur `main` déclenche automatiquement le workflow `.github/workflows/indexnow.yml` : il attend que le déploiement Vercel du commit soit `READY`, rebuild pour régénérer `sitemap.xml` avec la nouvelle URL, puis soumet toutes les URLs du sitemap à l'API IndexNow (`scripts/submit-indexnow.ts`), ce qui notifie Bing et les moteurs partenaires du protocole. Aucune action manuelle n'est requise après un `git push` sur `main` — ne pas relancer `npm run submit:indexnow` à la main sauf si le workflow a échoué (voir onglet Actions du repo GitHub).
+
+Ne couvre pas Google (IndexNow n'y est pas adopté) : l'indexation Google reste soumise au crawl normal via le sitemap déclaré dans `robots.txt` et Google Search Console.

@@ -1,0 +1,31 @@
+name: Submit to IndexNow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  submit-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Attendre que le déploiement Vercel soit prêt
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: npx tsx scripts/wait-for-vercel-deploy.ts
+
+      - name: Build (génère le sitemap à jour)
+        run: npm run build
+
+      - name: Soumettre les URLs à IndexNow
+        run: npx tsx scripts/submit-indexnow.ts

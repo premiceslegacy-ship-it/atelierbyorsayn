@@ -75,7 +75,7 @@ export default function MetierRoute() {
           <div className="trade-hero__copy">
             <p className="eyebrow">Logiciel de gestion & suivi de chantier · {metier.metier}</p>
             <h1>{metier.hero.headline}</h1>
-            <p>{metier.hero.subheadline}</p>
+            <p>{metier.hero.subheadline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
             <div className="hero__actions">
               <Link className="button button--primary" to="#tarifs">Protéger ma marge <ArrowRight /></Link>
               <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer mes soirées</ConversionLink>

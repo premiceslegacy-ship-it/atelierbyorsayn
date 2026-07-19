@@ -475,7 +475,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Le cours de l'aluminium a bougé. Votre devis, aussi ?",
       subheadline:
-        "Atelier suit vos prix matière (alu, inox, acier) et recalcule votre marge en continu. Vous voyez l'impact avant d'envoyer le devis, pas après.",
+        "Alu, cuivre, inox : le prix bouge entre le devis et la commande, et c'est votre marge qui trinque.\nAtelier recalcule vos lignes matière avec votre coefficient fournisseur, la marge affichée reste juste avant l'envoi.",
     },
     heroMockup: {
       primaryMetric: {

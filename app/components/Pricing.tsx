@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ArrowRight, Check, ChevronDown, Star } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowRight, Check, ChevronDown, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { buildTradeWhatsAppUrl, buildWhatsAppUrl, PRICING_TIERS, SETUP_ADOPTION, SETUP_PRICES, type PricingTier } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
 
@@ -8,6 +8,8 @@ type PricingProps = {
   tradeLabel?: string;
   /** Suffixe ajouté au source de tracking pour distinguer l'origine (ex: slug du métier). */
   sourceSuffix?: string;
+  /** Précision métier affichée sous les formules (ex: module prix matières métal). Absent = rien d'affiché. */
+  note?: string;
 };
 
 function AdoptionProof({ count }: { count: number }) {
@@ -21,13 +23,22 @@ function AdoptionProof({ count }: { count: number }) {
   );
 }
 
-export function Pricing({ tradeLabel, sourceSuffix }: PricingProps) {
+export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
   const [model, setModel] = useState<"subscription" | null>(null);
   const [selected, setSelected] = useState("pro");
+  const [activeTier, setActiveTier] = useState(0);
+  const revealRef = useRef<HTMLDivElement>(null);
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
 
   const buildUrl = (contextSource: string, tier?: PricingTier) =>
     tradeLabel ? buildTradeWhatsAppUrl(tradeLabel, tier) : buildWhatsAppUrl(contextSource, tier);
+
+  const showFormulas = () => {
+    setModel("subscription");
+    requestAnimationFrame(() => revealRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
+
+  const goToTier = (direction: -1 | 1) => setActiveTier((current) => (current + direction + PRICING_TIERS.length) % PRICING_TIERS.length);
 
   return (
     <section id="tarifs" className="section section--pricing">
@@ -37,7 +48,7 @@ export function Pricing({ tradeLabel, sourceSuffix }: PricingProps) {
         <p>Choisissez d'abord votre modèle. Les formules détaillées apparaissent ensuite, uniquement si elles vous concernent.</p>
       </div>
       <div className="pricing-choice-grid" aria-label="Choisir un modèle tarifaire">
-        <button type="button" className={`pricing-choice ${model === "subscription" ? "is-selected" : ""}`} aria-pressed={model === "subscription"} onClick={() => setModel("subscription")}>
+        <button type="button" className={`pricing-choice ${model === "subscription" ? "is-selected" : ""}`} aria-pressed={model === "subscription"} onClick={showFormulas}>
           <span className="pricing-choice__label">Avec abonnement</span>
           <div className="pricing-choice__price"><strong>{SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} €</strong><span>HT de setup, app à vie</span></div>
           <h3>Sarah travaille avec vous chaque mois.</h3>
@@ -61,40 +72,63 @@ export function Pricing({ tradeLabel, sourceSuffix }: PricingProps) {
         </ConversionLink>
       </div>
       {model === "subscription" && (
-        <div className="pricing-reveal" aria-live="polite">
+        <div className="pricing-reveal" ref={revealRef} aria-live="polite">
           <div className="pricing-reveal__heading"><p className="eyebrow">Étape 2 sur 2</p><h3>Choisissez le rythme de Sarah.</h3><p>Le setup ({SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT, réglé une fois) vous donne l'application à vie. Le montant ci-dessous est l'abonnement mensuel pour Sarah, l'IA.</p></div>
-          <div className="pricing-grid">
-            {PRICING_TIERS.map((tier) => (
-              <ConversionLink
-                className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`}
-                href={buildUrl("les tarifs", tier)}
-                source={source}
-                tier={tier.id}
-                target="_blank"
-                rel="noreferrer"
-                key={tier.id}
-              >
-                {tier.featured && <span className="pricing-badge">Le plus choisi</span>}
-                <div className="pricing-card__top">
-                  <p>{tier.name}</p>
-                  <div><strong>{tier.price} €</strong><span>HT / mois</span></div>
-                  <h3>{tier.promise}</h3>
-                  <p>{tier.audience}</p>
-                  <AdoptionProof count={tier.adoptedBy} />
-                </div>
-                <ul>{tier.benefits.map((item) => <li key={item}><Check />{item}</li>)}</ul>
-                <details
-                  open={selected === tier.id}
-                  onClick={(event) => event.stopPropagation()}
-                  onToggle={(event) => event.currentTarget.open && setSelected(tier.id)}
-                >
-                  <summary>Voir les quotas <ChevronDown /></summary>
-                  <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
-                </details>
-                <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>Choisir {tier.name}<ArrowRight /></span>
-              </ConversionLink>
-            ))}
+          <div className="pricing-carousel">
+            <div className="pricing-carousel__controls">
+              <button type="button" onClick={() => goToTier(-1)} aria-label="Formule précédente"><ChevronLeft /></button>
+              <div className="pricing-carousel__dots" role="tablist" aria-label="Choisir une formule">
+                {PRICING_TIERS.map((tier, index) => (
+                  <button
+                    key={tier.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeTier === index}
+                    aria-label={tier.name}
+                    className={activeTier === index ? "is-active" : ""}
+                    onClick={() => setActiveTier(index)}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={() => goToTier(1)} aria-label="Formule suivante"><ChevronRight /></button>
+            </div>
+            <div className="pricing-carousel__viewport">
+              <div className="pricing-carousel__track" style={{ transform: `translateX(-${activeTier * 100}%)` }}>
+                {PRICING_TIERS.map((tier) => (
+                  <div className="pricing-carousel__slide" key={tier.id}>
+                    <ConversionLink
+                      className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`}
+                      href={buildUrl("les tarifs", tier)}
+                      source={source}
+                      tier={tier.id}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {tier.featured && <span className="pricing-badge">Le plus choisi</span>}
+                      <div className="pricing-card__top">
+                        <p>{tier.name}</p>
+                        <div><strong>{tier.price} €</strong><span>HT / mois</span></div>
+                        <h3>{tier.promise}</h3>
+                        <p>{tier.audience}</p>
+                        <AdoptionProof count={tier.adoptedBy} />
+                      </div>
+                      <ul>{tier.benefits.map((item) => <li key={item}><Check />{item}</li>)}</ul>
+                      <details
+                        open={selected === tier.id}
+                        onClick={(event) => event.stopPropagation()}
+                        onToggle={(event) => event.currentTarget.open && setSelected(tier.id)}
+                      >
+                        <summary>Voir les quotas <ChevronDown /></summary>
+                        <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
+                      </details>
+                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>Choisir {tier.name}<ArrowRight /></span>
+                    </ConversionLink>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+          {note && <p className="pricing-note pricing-note--trade">{note}</p>}
         </div>
       )}
       <p className="pricing-note">Connexion facturation électronique (facultative) : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.</p>

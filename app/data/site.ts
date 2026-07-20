@@ -31,20 +31,6 @@ export const SETUP_ADOPTION = {
 
 export const PRICING_TIERS: PricingTier[] = [
   {
-    id: "starter",
-    name: "Starter",
-    price: 39,
-    promise: "Les bons automatismes, sans complexité.",
-    audience: "Pour l'artisan solo qui veut souffler vite.",
-    benefits: [
-      "Devis et factures préparés plus rapidement",
-      "Relances d'impayés sans oubli",
-      "Vue claire sur l'activité du jour",
-    ],
-    quotas: ["60 actions IA / mois", "Application métier complète", "Support de démarrage inclus"],
-    adoptedBy: 5,
-  },
-  {
     id: "pro",
     name: "Pro",
     price: 79,
@@ -56,13 +42,13 @@ export const PRICING_TIERS: PricingTier[] = [
       "Marge chantier suivie pendant les travaux",
       "Actions préparées, toujours validées par vous",
     ],
-    quotas: ["120 échanges Sarah / mois", "60 minutes de live IA / mois", "Devis, factures et chantiers illimités"],
+    quotas: ["120 échanges Sarah + Marco / mois", "60 analyses de devis / mois", "60 min de vocal live Sarah / mois"],
     adoptedBy: 7,
   },
   {
     id: "expert",
     name: "Expert",
-    price: 159,
+    price: 169,
     promise: "L'entreprise sous contrôle, même quand tout accélère.",
     audience: "Pour les équipes qui veulent piloter sans angle mort.",
     benefits: [
@@ -70,8 +56,22 @@ export const PRICING_TIERS: PricingTier[] = [
       "Pointage et coordination de l'équipe",
       "Rapports de marge et exports prêts à l'emploi",
     ],
-    quotas: ["Échanges Sarah illimités", "300 minutes de live IA / mois", "Automatisations et rapports avancés"],
+    quotas: ["Échanges Sarah et analyses illimités", "300 min de vocal live Sarah / mois", "Automatisations et rapports avancés"],
     adoptedBy: 2,
+  },
+  {
+    id: "starter",
+    name: "Starter",
+    price: 39,
+    promise: "Les bons automatismes, sans complexité.",
+    audience: "Pour l'artisan solo qui veut souffler vite.",
+    benefits: [
+      "Devis et factures préparés plus rapidement",
+      "Relances d'impayés sans oubli",
+      "Vue claire sur l'activité du jour",
+    ],
+    quotas: ["20 relances IA / mois", "15 analyses de devis / mois", "Application métier complète"],
+    adoptedBy: 5,
   },
 ];
 

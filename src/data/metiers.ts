@@ -53,6 +53,8 @@ export interface MetierData {
     title: string;
     description: string;
   };
+  /** Précision affichée sous les formules d'abonnement, propre à certains métiers (ex: module prix matières métal). Absent = rien d'affiché. */
+  pricingNote?: string;
 }
 
 export const metiers: MetierData[] = [
@@ -575,6 +577,7 @@ export const metiers: MetierData[] = [
       description:
         "Devis métallerie au ml et au m² calculés automatiquement, mise à jour prix acier en un clic, marge réelle par ouvrage. Conçu pour les tôliers et serruriers-métalliers. Opérationnel en 48h.",
     },
+    pricingNote: "Suivi des prix matière (alu, cuivre, zinc) inclus à partir de la formule Pro.",
   },
   {
     slug: "paysagiste",

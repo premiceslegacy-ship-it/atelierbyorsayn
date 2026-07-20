@@ -41,7 +41,7 @@ Les logiciels de gestion BTP se rangent dans deux familles de prix.
 | Sellsy | 99 à 199 €/mois | Abonnement mensuel, CRM généraliste | Non |
 | Batigest | 150 à 300 €/mois | Abonnement + déploiement ERP | Non |
 | Atelier, sans abonnement | 3 000 € HT de setup, puis 0 €/mois | Setup unique, application complète, IA en veille | Activable à l'usage |
-| Atelier, avec abonnement | 1 500 € HT de setup, puis 39 à 159 € HT/mois | Setup réduit + abonnement mensuel | Oui, incluse dès le palier Pro |
+| Atelier, avec abonnement | 1 500 € HT de setup, puis 39 à 169 € HT/mois | Setup réduit + abonnement mensuel | Oui, incluse dès le palier Pro |
 
 Les prix des concurrents varient selon le nombre d'utilisateurs et les modules activés : ce sont des fourchettes publiques, à vérifier au moment du devis. Les prix Atelier sont ceux publiés sur cette page.
 

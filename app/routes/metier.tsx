@@ -145,7 +145,7 @@ export default function MetierRoute() {
           </div>
         </section>
 
-        <Pricing tradeLabel={metier.whatsapp} sourceSuffix={metier.slug} />
+        <Pricing tradeLabel={metier.whatsapp} sourceSuffix={metier.slug} note={metier.pricingNote} />
 
         <CaseCarousel title={<>Des artisans qui ont<br />retrouvé leurs soirées.</>} />
         <div className="section belonging-cta">

@@ -247,7 +247,7 @@ export default function HomePage() {
         <div className="hero__shade" />
         <div className="hero__content">
           <p className="eyebrow eyebrow--light">Le logiciel de gestion des artisans du BTP</p>
-          <h1>Une secrétaire métier<br />dans votre poche.<br /><em>Pas un salarié de plus.</em></h1>
+          <h1>Vos devis partis, vos impayés relancés.<br /><em>Sans embaucher, sans y passer vos soirées.</em></h1>
           <p className="hero__lead">Sarah prépare vos devis, relance les impayés et repère les chantiers qui dérapent. Vous gardez la décision.</p>
           <div className="hero__actions">
             <ConversionLink className="button button--primary" href={buildWhatsAppUrl("la page d'accueil")} source="hero" target="_blank" rel="noreferrer">
@@ -260,7 +260,7 @@ export default function HomePage() {
           <div className="avatar-stack">
             {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" />)}
           </div>
-          <p><strong>Des cas réels, pas des promesses.</strong><span>Temps, encours et marge mesurés sur le terrain.</span></p>
+          <p><strong>Rejoignez les artisans qui ont repris la main.</strong><span>Temps, encours et marge mesurés sur le terrain, ensemble.</span></p>
         </div>
       </section>
 

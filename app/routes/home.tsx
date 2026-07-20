@@ -12,7 +12,9 @@ export const meta: MetaFunction = () => [
   { property: "og:description", content: "Devis, relances, marge et planning. Sarah travaille, vous décidez." },
   { property: "og:type", content: "website" },
   { property: "og:url", content: `${SITE_URL}/` },
-  { property: "og:image", content: `${SITE_URL}/images/hero-atelier.webp` },
+  { property: "og:image", content: `${SITE_URL}/og-image-home.jpg` },
+  { property: "og:image:width", content: "1200" },
+  { property: "og:image:height", content: "630" },
   { name: "twitter:card", content: "summary_large_image" },
   { tagName: "link", rel: "canonical", href: `${SITE_URL}/` },
 ];

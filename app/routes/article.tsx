@@ -95,7 +95,7 @@ export default function ArticleRoute() {
         <section className="article-cta">
           <p className="eyebrow">Votre cas est toujours plus précis qu'un article</p>
           <h2>Expliquez-le à Samuel en deux messages.</h2>
-          <ConversionLink className="button button--primary" href={buildWhatsAppUrl(`l'article « ${article.title} »`)} source={`article-${article.slug}`} target="_blank" rel="noreferrer">
+          <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source={`article-${article.slug}`} target="_blank" rel="noreferrer">
             Récupérer du temps <ArrowRight />
           </ConversionLink>
         </section>

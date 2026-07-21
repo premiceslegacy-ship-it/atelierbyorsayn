@@ -96,7 +96,7 @@ export function ProofStrip() {
           <span>Des artisans comme vous, qui ont décidé de ne plus perdre leurs soirées.</span>
         </p>
         <div>
-          <ConversionLink className="button button--primary" href={buildWhatsAppUrl("les résultats clients")} source="proof-band" target="_blank" rel="noreferrer">
+          <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="proof-band" target="_blank" rel="noreferrer">
             <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
           </ConversionLink>
           <Link className="button button--dark" to="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>

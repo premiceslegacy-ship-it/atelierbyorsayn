@@ -30,8 +30,8 @@ export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
   const revealRef = useRef<HTMLDivElement>(null);
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
 
-  const buildUrl = (contextSource: string, tier?: PricingTier) =>
-    tradeLabel ? buildTradeWhatsAppUrl(tradeLabel, tier) : buildWhatsAppUrl(contextSource, tier);
+  const buildUrl = (tier?: PricingTier) =>
+    tradeLabel ? buildTradeWhatsAppUrl(tradeLabel, tier) : buildWhatsAppUrl(tier);
 
   const showFormulas = () => {
     setModel("subscription");
@@ -58,7 +58,7 @@ export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
         </button>
         <ConversionLink
           className="pricing-choice"
-          href={buildUrl("l'offre sans abonnement")}
+          href={buildUrl()}
           source={`${source}-usage`}
           target="_blank"
           rel="noreferrer"
@@ -98,7 +98,7 @@ export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
                   <div className="pricing-carousel__slide" key={tier.id}>
                     <ConversionLink
                       className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`}
-                      href={buildUrl("les tarifs", tier)}
+                      href={buildUrl(tier)}
                       source={source}
                       tier={tier.id}
                       target="_blank"

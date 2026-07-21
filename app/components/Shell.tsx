@@ -38,7 +38,7 @@ export function Navbar() {
           <Link className="button button--ghost button--small" to="/#demo"><Play aria-hidden="true" /> Voir la démo</Link>
           <ConversionLink
             className="button button--primary button--small"
-            href={buildWhatsAppUrl("la navigation")}
+            href={buildWhatsAppUrl()}
             source="navbar"
             target="_blank"
             rel="noreferrer"
@@ -114,7 +114,7 @@ export function SiteShell({ children, darkHeader = false }: { children: React.Re
       <Footer />
       <ConversionLink
         className={`mobile-whatsapp ${showMobileCta ? "is-visible" : ""}`}
-        href={buildWhatsAppUrl("le site")}
+        href={buildWhatsAppUrl()}
         source="mobile-sticky"
         target="_blank"
         rel="noreferrer"

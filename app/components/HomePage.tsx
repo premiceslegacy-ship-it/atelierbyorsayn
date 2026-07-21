@@ -225,7 +225,7 @@ function Demo() {
         <p>Sarah est prête. Il ne manque que votre entreprise.</p>
         <div>
           <a className="button button--primary" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
-          <ConversionLink className="button button--glass" href={buildWhatsAppUrl("la démonstration de Sarah")} source="demo" target="_blank" rel="noreferrer">
+          <ConversionLink className="button button--glass" href={buildWhatsAppUrl()} source="demo" target="_blank" rel="noreferrer">
             <MessageCircle aria-hidden="true" /> Poser une question
           </ConversionLink>
         </div>
@@ -250,7 +250,7 @@ export default function HomePage() {
           <h1>Retrouvez 10h et <em>18 % de marge</em> par mois.<br />Sans embaucher, sans y passer vos soirées.</h1>
           <p className="hero__lead">Sarah prépare vos devis, relance les impayés et repère les chantiers qui dérapent. Vous gardez la décision.</p>
           <div className="hero__actions">
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("la page d'accueil")} source="hero" target="_blank" rel="noreferrer">
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="hero" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Récupérer mes soirées
             </ConversionLink>
             <a className="button button--glass" href="#demo">Voir Atelier fonctionner <ArrowRight /></a>
@@ -289,7 +289,7 @@ export default function HomePage() {
           <p><strong>Cinq angles morts couverts, une seule mémoire.</strong><br />Voyez ce que ça coûte et ce que ça vous rend.</p>
           <div>
             <a className="button button--primary" href="#tarifs">Reprendre mes soirées <ArrowRight aria-hidden="true" /></a>
-            <ConversionLink className="button button--dark" href={buildWhatsAppUrl("les bénéfices d'Atelier")} source="benefits" target="_blank" rel="noreferrer">
+            <ConversionLink className="button button--dark" href={buildWhatsAppUrl()} source="benefits" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Gagner du temps
             </ConversionLink>
           </div>
@@ -326,7 +326,7 @@ export default function HomePage() {
         <div className="section-cta">
           <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
           <div>
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("les témoignages clients")} source="cases" target="_blank" rel="noreferrer">
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="cases" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
             </ConversionLink>
             <a className="button button--dark" href="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></a>
@@ -350,7 +350,7 @@ export default function HomePage() {
         <div className="section-cta">
           <p><strong>Une question qui n'est pas dans la liste ?</strong> Samuel répond directement, sans script ni engagement.</p>
           <div>
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("une question avant de démarrer")} source="faq" target="_blank" rel="noreferrer">
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="faq" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Poser ma question
             </ConversionLink>
             <a className="button button--dark" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
@@ -379,7 +379,7 @@ export default function HomePage() {
           <h2>Votre entreprise ne manque pas de courage.<br /><em>Elle manque d'un bureau qui suit.</em></h2>
           <p>Montrez votre quotidien à Samuel. Il vous dira franchement où Atelier peut vous rendre du temps.</p>
           <div className="hero__actions">
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl("le bas de la page d'accueil")} source="closing" target="_blank" rel="noreferrer">
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="closing" target="_blank" rel="noreferrer">
               Récupérer mes soirées <ArrowRight />
             </ConversionLink>
             <a className="button button--glass" href="#tarifs">Protéger ma marge <ArrowRight aria-hidden="true" /></a>

@@ -75,11 +75,11 @@ export const PRICING_TIERS: PricingTier[] = [
   },
 ];
 
-export function buildWhatsAppUrl(source: string, tier?: PricingTier) {
+export function buildWhatsAppUrl(tier?: PricingTier) {
   const details = tier
     ? `\n\nOffre envisagée : ${tier.name}, setup ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT (app à vie) + ${tier.price} € HT/mois d'abonnement`
     : "";
-  const message = `Bonjour Samuel, je viens de consulter ${source} et je suis intéressé par Atelier pour mon entreprise.${details}\n\nOn peut en parler ?`;
+  const message = `Bonjour Samuel, je suis intéressé par Atelier pour mon entreprise.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 

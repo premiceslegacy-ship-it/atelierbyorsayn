@@ -78,7 +78,7 @@ export default function MetierRoute() {
             <p>{metier.hero.subheadline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
             <div className="hero__actions">
               <Link className="button button--primary" to="#tarifs">Protéger ma marge <ArrowRight /></Link>
-              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer mes soirées</ConversionLink>
+              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Récupérer mes soirées</ConversionLink>
             </div>
             <div className="trade-hero__proof">
               <div className="avatar-stack">
@@ -124,7 +124,7 @@ export default function MetierRoute() {
             <p><strong>Ce quotidien n'est pas une fatalité.</strong> Dans un mois, vos soirées peuvent ressembler à autre chose : des devis qui partent le jour même, des relances qui tournent sans vous.</p>
             <div>
               <Link className="button button--primary" to="#tarifs">Arrêter les recalculs <ArrowRight aria-hidden="true" /></Link>
-              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-problems-${metier.slug}`} target="_blank" rel="noreferrer">
+              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-problems-${metier.slug}`} target="_blank" rel="noreferrer">
                 <MessageCircle aria-hidden="true" /> Changer ce quotidien
               </ConversionLink>
             </div>
@@ -152,7 +152,7 @@ export default function MetierRoute() {
           <div className="section-cta">
             <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
             <div>
-              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-cases-${metier.slug}`} target="_blank" rel="noreferrer">
+              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-cases-${metier.slug}`} target="_blank" rel="noreferrer">
                 <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
               </ConversionLink>
               <Link className="button button--dark" to="#tarifs">Sécuriser ma marge <ArrowRight aria-hidden="true" /></Link>
@@ -186,7 +186,7 @@ export default function MetierRoute() {
           <p className="eyebrow eyebrow--light">{metier.metier}</p>
           <h2>{metier.cta.headline}</h2>
           <p>{metier.cta.subline}</p>
-          <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Récupérer mes soirées <ArrowRight /></ConversionLink>
+          <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Récupérer mes soirées <ArrowRight /></ConversionLink>
           <small>Réponse directe de Samuel, sans engagement.</small>
         </section>
       </main>

@@ -83,11 +83,13 @@ export function buildWhatsAppUrl(source: string, tier?: PricingTier) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier) {
+export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, hook?: string) {
   const details = tier
     ? ` L'offre ${tier.name} m'intéresse : setup ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT (app à vie) + ${tier.price} € HT/mois d'abonnement.`
     : "";
-  const message = `Bonjour Samuel, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
+  const message = hook
+    ? `${hook}${details}`
+    : `Bonjour Samuel, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 

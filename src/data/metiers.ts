@@ -3,6 +3,8 @@ export interface MetierData {
   metier: string;
   /** Libellé métier en français naturel, utilisé dans le message WhatsApp ("je suis …"). */
   whatsapp: string;
+  /** Message WhatsApp pré-rempli aligné sur l'angle pub de ce métier. Si absent, message générique via `whatsapp`. */
+  whatsappHook?: string;
   hero: {
     headline: string;
     subheadline: string;
@@ -474,6 +476,7 @@ export const metiers: MetierData[] = [
     slug: "tolier",
     metier: "Tôlier / Métallier",
     whatsapp: "métallier",
+    whatsappHook: "Bonjour Samuel, j'ai vu votre pub sur les prix matière. On peut en parler ?",
     hero: {
       headline: "Le cours de l'aluminium a bougé. Votre devis, aussi ?",
       subheadline:

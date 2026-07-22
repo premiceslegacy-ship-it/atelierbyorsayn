@@ -520,12 +520,12 @@ export const metiers: MetierData[] = [
         {
           titre: "Catalogue dimensionnel au ml et au m²",
           description:
-            "Votre catalogue intègre vos tarifs au mètre linéaire et au mètre carré. Vous entrez les dimensions dans le devis, le calcul se fait seul. Vous changez le prix matière une fois dans le catalogue : tous vos devis suivent.",
+            "Votre catalogue intègre vos tarifs au mètre linéaire et au mètre carré. Vous entrez les dimensions dans le devis, le calcul se fait seul. Vous changez le prix matière une fois dans le catalogue : tous vos prochains devis en tiennent compte.",
         },
         {
           titre: "Devis multi-lignes avec variantes de finition",
           description:
-            "Garde-corps, portails, pergolas : vous créez des devis complexes avec plusieurs options de finition, de matière et de dimensions. Le client choisit, le prix s'ajuste automatiquement.",
+            "Garde-corps, portails, pergolas : vous créez des devis complexes avec plusieurs options de finition, de matière et de dimensions. Le client compare les versions que vous lui préparez, et choisit.",
         },
         {
           titre: "Marge réelle par ouvrage",

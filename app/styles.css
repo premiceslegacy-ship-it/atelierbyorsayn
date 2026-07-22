@@ -623,10 +623,7 @@ button { color: inherit; }
   .trade-hero { width: calc(100% - 30px); min-height: 0; padding: 75px 0; display: block; }
   .trade-hero .hero__actions { margin-inline: 0; }
   .trade-hero__proof { margin-top: 32px; }
-  .trade-visual { margin-top: 55px; padding-bottom: 50px; }
-  .trade-app__body { padding: 22px 18px 20px; }
-  .trade-app__bar { padding: 14px 18px; }
-  .trade-float { right: 0; bottom: 0; }
+  .trade-visual { display: none; }
   .problem-grid, .feature-list { display: block; }
   .problem-grid article, .feature-list article { min-height: 0; margin-bottom: 14px; }
   .problem-grid p { margin-top: 45px; }

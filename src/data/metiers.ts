@@ -8,6 +8,8 @@ export interface MetierData {
   hero: {
     headline: string;
     subheadline: string;
+    /** Libellé du CTA primaire de la hero (bouton blanc), 4 mots max, orienté bénéfice concret pour ce métier. */
+    ctaPrimary: string;
   };
   heroMockup: {
     primaryMetric: {
@@ -68,6 +70,7 @@ export const metiers: MetierData[] = [
       headline: "Devis envoyé avant de quitter le client.",
       subheadline:
         "TVA rénovation automatique, marge chantier en temps réel. Depuis votre téléphone, sans formation.",
+      ctaPrimary: "Devis envoyé en 5 min",
     },
     heroMockup: {
       primaryMetric: {
@@ -171,6 +174,7 @@ export const metiers: MetierData[] = [
       headline: "Devis PAC depuis le camion. Contrats facturés seuls.",
       subheadline:
         "Devis dépannage en 2 minutes, maintenances PAC facturées automatiquement, marge chantier CVC visible en temps réel.",
+      ctaPrimary: "Ne plus oublier un contrat",
     },
     heroMockup: {
       primaryMetric: {
@@ -274,6 +278,7 @@ export const metiers: MetierData[] = [
       headline: "Fenêtres, portes, escaliers chiffrés en 2 minutes.",
       subheadline:
         "Catalogue au m² avec variantes matière, MaPrimeRénov automatique, marge réelle par ouvrage.",
+      ctaPrimary: "Ouvrage chiffré en 2 min",
     },
     heroMockup: {
       primaryMetric: {
@@ -377,6 +382,7 @@ export const metiers: MetierData[] = [
       headline: "Devis m² envoyé le soir de la visite.",
       subheadline:
         "Surfaces calculées sur place, MaPrimeRénov affiché, relances impayées automatiques. Avant que le concurrent envoie le sien.",
+      ctaPrimary: "Devis avant le concurrent",
     },
     heroMockup: {
       primaryMetric: {
@@ -481,6 +487,7 @@ export const metiers: MetierData[] = [
       headline: "Le cours de l'aluminium a bougé. Votre devis, aussi ?",
       subheadline:
         "Alu, cuivre, inox : le prix bouge entre le devis et la commande, et c'est votre marge qui trinque.\nAtelier recalcule vos lignes matière avec votre coefficient fournisseur, la marge affichée reste juste avant l'envoi.",
+      ctaPrimary: "Chiffrer au m² en 2 min",
     },
     heroMockup: {
       primaryMetric: {
@@ -590,6 +597,7 @@ export const metiers: MetierData[] = [
       headline: "Vos clients d'entretien facturés. Même quand vous êtes sur le terrain.",
       subheadline:
         "Factures récurrentes automatiques, devis de création au m² depuis le terrain, planning équipe multi-sites.",
+      ctaPrimary: "Facturer sans y penser",
     },
     heroMockup: {
       primaryMetric: {
@@ -693,6 +701,7 @@ export const metiers: MetierData[] = [
       headline: "Sachez si vous gagnez sur chaque chantier.",
       subheadline:
         "Marge visible pendant les travaux, dépenses terrain centralisées, situations de travaux générées en un clic.",
+      ctaPrimary: "Savoir si je gagne",
     },
     heroMockup: {
       primaryMetric: {
@@ -796,6 +805,7 @@ export const metiers: MetierData[] = [
       headline: "Le devis toiture part avant que l'échafaudage soit replié.",
       subheadline:
         "Surfaces, pentes, zinguerie : vos prix au m² s'appliquent tout seuls. Acomptes encaissés, relances envoyées, marge suivie chantier par chantier. Depuis le toit, sur votre téléphone.",
+      ctaPrimary: "Encaisser dès la signature",
     },
     heroMockup: {
       primaryMetric: {
@@ -899,6 +909,7 @@ export const metiers: MetierData[] = [
       headline: "Du plan de charpente au devis signé, sans repasser par le bureau.",
       subheadline:
         "Débits, coefficients matière et heures d'atelier chiffrés d'un coup. Acomptes, situations et marge fabrication + pose suivis en temps réel. Vous restez à l'établi, pas derrière un tableur.",
+      ctaPrimary: "Rester à l'établi",
     },
     heroMockup: {
       primaryMetric: {
@@ -1002,6 +1013,7 @@ export const metiers: MetierData[] = [
       headline: "Le devis au m² prêt avant de quitter la salle de bain.",
       subheadline:
         "Surfaces, formats, préparation des supports : vos prix de pose s'appliquent tout seuls. TVA rénovation automatique, relances sans y penser, marge visible pendant le chantier.",
+      ctaPrimary: "Premier devis envoyé",
     },
     heroMockup: {
       primaryMetric: {

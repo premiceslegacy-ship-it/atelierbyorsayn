@@ -13,7 +13,7 @@ const links = [
   ["Le journal", "/blog"],
 ] as const;
 
-export function Navbar() {
+export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {}) {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   useEffect(() => setOpen(false), [location.pathname, location.hash]);
@@ -36,15 +36,21 @@ export function Navbar() {
         </div>
         <div className="nav-actions">
           <Link className="button button--ghost button--small" to="/#demo"><Play aria-hidden="true" /> Voir la démo</Link>
-          <ConversionLink
-            className="button button--primary button--small"
-            href={buildWhatsAppUrl()}
-            source="navbar"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <MessageCircle aria-hidden="true" /> Récupérer du temps
-          </ConversionLink>
+          {onWhatsAppClick ? (
+            <button type="button" className="button button--primary button--small" onClick={onWhatsAppClick}>
+              <MessageCircle aria-hidden="true" /> Récupérer du temps
+            </button>
+          ) : (
+            <ConversionLink
+              className="button button--primary button--small"
+              href={buildWhatsAppUrl()}
+              source="navbar"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle aria-hidden="true" /> Récupérer du temps
+            </ConversionLink>
+          )}
         </div>
       </nav>
       {open && (
@@ -92,7 +98,15 @@ export function Footer() {
   );
 }
 
-export function SiteShell({ children, darkHeader = false }: { children: React.ReactNode; darkHeader?: boolean }) {
+export function SiteShell({
+  children,
+  darkHeader = false,
+  onWhatsAppClick,
+}: {
+  children: React.ReactNode;
+  darkHeader?: boolean;
+  onWhatsAppClick?: () => void;
+}) {
   const location = useLocation();
   const [showMobileCta, setShowMobileCta] = useState(false);
 
@@ -109,20 +123,32 @@ export function SiteShell({ children, darkHeader = false }: { children: React.Re
 
   return (
     <div className={darkHeader ? "site-shell site-shell--dark" : "site-shell"}>
-      <Navbar />
+      <Navbar onWhatsAppClick={onWhatsAppClick} />
       {children}
       <Footer />
-      <ConversionLink
-        className={`mobile-whatsapp ${showMobileCta ? "is-visible" : ""}`}
-        href={buildWhatsAppUrl()}
-        source="mobile-sticky"
-        target="_blank"
-        rel="noreferrer"
-        tabIndex={showMobileCta ? undefined : -1}
-        aria-hidden={!showMobileCta}
-      >
-        <MessageCircle aria-hidden="true" /> Récupérer du temps
-      </ConversionLink>
+      {onWhatsAppClick ? (
+        <button
+          type="button"
+          className={`mobile-whatsapp ${showMobileCta ? "is-visible" : ""}`}
+          onClick={onWhatsAppClick}
+          tabIndex={showMobileCta ? undefined : -1}
+          aria-hidden={!showMobileCta}
+        >
+          <MessageCircle aria-hidden="true" /> Récupérer du temps
+        </button>
+      ) : (
+        <ConversionLink
+          className={`mobile-whatsapp ${showMobileCta ? "is-visible" : ""}`}
+          href={buildWhatsAppUrl()}
+          source="mobile-sticky"
+          target="_blank"
+          rel="noreferrer"
+          tabIndex={showMobileCta ? undefined : -1}
+          aria-hidden={!showMobileCta}
+        >
+          <MessageCircle aria-hidden="true" /> Récupérer du temps
+        </ConversionLink>
+      )}
     </div>
   );
 }

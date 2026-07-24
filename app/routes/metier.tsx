@@ -78,7 +78,7 @@ export default function MetierRoute() {
     },
   ];
   return (
-    <SiteShell>
+    <SiteShell onWhatsAppClick={captureLeadBeforeWhatsApp ? () => setLeadModalSource("navbar") : undefined}>
       <StructuredData data={schema} />
       <main className="trade-page">
         <nav className="breadcrumbs breadcrumbs--trade" aria-label="Fil d'Ariane">

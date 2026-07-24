@@ -69,7 +69,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Devis envoyé avant de quitter le client.",
       subheadline:
-        "TVA rénovation automatique, marge chantier en temps réel. Depuis votre téléphone, sans formation.",
+        "TVA rénovation automatique, marge chantier en temps réel, depuis votre téléphone, sans formation. Le devis part, vous êtes déjà sur le chantier suivant.",
       ctaPrimary: "Devis envoyé en 5 min",
     },
     heroMockup: {
@@ -173,7 +173,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Devis PAC depuis le camion. Contrats facturés seuls.",
       subheadline:
-        "Devis dépannage en 2 minutes, maintenances PAC facturées automatiquement, marge chantier CVC visible en temps réel.",
+        "Devis dépannage en 2 minutes, maintenances PAC facturées automatiquement, marge chantier CVC visible en temps réel. Le contrat facture, vous n'y pensez plus.",
       ctaPrimary: "Ne plus oublier un contrat",
     },
     heroMockup: {
@@ -277,7 +277,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Fenêtres, portes, escaliers chiffrés en 2 minutes.",
       subheadline:
-        "Catalogue au m² avec variantes matière, MaPrimeRénov automatique, marge réelle par ouvrage.",
+        "Catalogue au m² avec variantes matière, MaPrimeRénov automatique, marge réelle par ouvrage. Vous savez ce que chaque chantier vous rapporte, avant la dernière pose.",
       ctaPrimary: "Ouvrage chiffré en 2 min",
     },
     heroMockup: {
@@ -484,9 +484,9 @@ export const metiers: MetierData[] = [
     whatsapp: "métallier",
     whatsappHook: "Bonjour Samuel, j'ai vu votre pub sur les prix matière. On peut en parler ?",
     hero: {
-      headline: "Le cours de l'aluminium a bougé. Votre devis, aussi ?",
+      headline: "Un devis garde-corps chiffré en 2 minutes. Pas 2 heures.",
       subheadline:
-        "Alu, cuivre, inox : le prix bouge entre le devis et la commande, et c'est votre marge qui trinque.\nAtelier recalcule vos lignes matière avec votre coefficient fournisseur, la marge affichée reste juste avant l'envoi.",
+        "Plus de recalcul à la main à chaque variante de finition ou changement de prix matière.\nVous entrez les dimensions, Atelier chiffre — et la marge affichée reste juste même si l'alu a bougé entre le devis et la commande.",
       ctaPrimary: "Chiffrer au m² en 2 min",
     },
     heroMockup: {
@@ -596,7 +596,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Vos clients d'entretien facturés. Même quand vous êtes sur le terrain.",
       subheadline:
-        "Factures récurrentes automatiques, devis de création au m² depuis le terrain, planning équipe multi-sites.",
+        "Factures récurrentes automatiques, devis de création au m² depuis le terrain, planning équipe multi-sites. Le lundi matin, tout le monde sait où aller.",
       ctaPrimary: "Facturer sans y penser",
     },
     heroMockup: {
@@ -700,7 +700,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Sachez si vous gagnez sur chaque chantier.",
       subheadline:
-        "Marge visible pendant les travaux, dépenses terrain centralisées, situations de travaux générées en un clic.",
+        "Marge visible pendant les travaux, dépenses terrain centralisées, situations de travaux générées en un clic. Vous savez si vous gagnez, sans attendre la dernière facture fournisseur.",
       ctaPrimary: "Savoir si je gagne",
     },
     heroMockup: {
@@ -1012,7 +1012,7 @@ export const metiers: MetierData[] = [
     hero: {
       headline: "Le devis au m² prêt avant de quitter la salle de bain.",
       subheadline:
-        "Surfaces, formats, préparation des supports : vos prix de pose s'appliquent tout seuls. TVA rénovation automatique, relances sans y penser, marge visible pendant le chantier.",
+        "Surfaces, formats, préparation des supports : vos prix de pose s'appliquent tout seuls. TVA rénovation automatique, relances sans y penser, marge visible pendant le chantier. Vous posez, Atelier calcule ce qu'il vous reste.",
       ctaPrimary: "Premier devis envoyé",
     },
     heroMockup: {

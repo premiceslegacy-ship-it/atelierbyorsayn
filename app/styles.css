@@ -512,6 +512,34 @@ button { color: inherit; }
 .trade-cta .button { margin-top: 32px; }
 .trade-cta > small { margin-top: 16px; color: rgba(255,255,255,.45); font-size: 10px; }
 
+/* Lead capture (modale pré-WhatsApp) */
+.lead-modal-overlay { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; background: rgba(8,8,7,.6); backdrop-filter: blur(6px); animation: fade-up .18s ease both; }
+.lead-modal { position: relative; width: min(440px, 100%); max-height: 90svh; overflow-y: auto; padding: 36px 32px; border: 1px solid var(--line); border-radius: 28px; background: #fffdf9; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 3px 0 rgba(131,116,91,.1), 0 40px 100px rgba(0,0,0,.35); }
+.lead-modal h3 { margin: 0 0 22px; font-family: "Geist", sans-serif; font-size: clamp(21px, 2.2vw, 26px); line-height: 1.2; letter-spacing: -.03em; text-wrap: balance; }
+.lead-modal__close { position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: linear-gradient(145deg,#fff,#e5ded4); box-shadow: inset 0 1px 0 white, 0 3px 0 #c6bdb1; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.lead-modal__close:active { transform: translateY(2px); box-shadow: inset 0 1px 0 white, 0 1px 0 #c6bdb1; }
+.lead-modal__close svg { width: 15px; height: 15px; }
+.lead-modal__done { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 30px 10px; text-align: center; }
+.lead-modal__done svg { width: 46px; height: 46px; padding: 10px; color: #3d6b14; border: 1px solid rgba(127,174,75,.45); border-radius: 50%; background: linear-gradient(180deg, rgba(217,255,174,.85), rgba(180,244,129,.5)); box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+.lead-modal__done p { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+.lead-modal__done small { color: var(--muted); font-size: 12px; }
+
+.lead-form { display: flex; flex-direction: column; gap: 18px; }
+.lead-form__field { display: flex; flex-direction: column; gap: 8px; }
+.lead-form__field label, .lead-form__label { font-size: 11px; font-weight: 800; letter-spacing: .04em; color: var(--muted); }
+.lead-form input[type="text"], .lead-form input[type="tel"], .lead-form select { min-height: 46px; padding: 0 16px; border: 1px solid var(--line); border-radius: 14px; background: white; color: var(--ink); font-size: 14px; font-family: "Geist", sans-serif; transition: border-color .15s, box-shadow .15s; }
+.lead-form input[type="text"]:focus, .lead-form input[type="tel"]:focus, .lead-form select:focus { outline: none; border-color: #d57806; box-shadow: 0 0 0 3px rgba(255,159,28,.18); }
+.lead-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236E6A62' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+.lead-form__error { color: #b3261e; font-size: 11px; }
+.lead-form__checks { display: flex; flex-wrap: wrap; gap: 8px; }
+.lead-form__check { display: inline-flex; align-items: center; gap: 7px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: linear-gradient(180deg,#fff,#f6f1e9); font-size: 12px; font-weight: 600; cursor: pointer; transition: border-color .15s, background .15s; }
+.lead-form__check:has(input:checked) { border-color: #d57806; background: linear-gradient(180deg,#fff8ec,#f3e5cd); color: #8f4600; }
+.lead-form__check input { accent-color: var(--orange); }
+.lead-form__submit { width: 100%; margin-top: 4px; }
+.lead-form__submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.lead-form__spinner { width: 15px; height: 15px; animation: lead-spin .8s linear infinite; }
+@keyframes lead-spin { to { transform: rotate(360deg); } }
+
 .legal-shell { padding-top: 100px; background: var(--ink); }
 .error-page { min-height: 100vh; padding: 15vh 8vw; background: var(--paper); }
 .error-page h1 { font-family: "Geist",sans-serif; font-size: clamp(45px,8vw,100px); letter-spacing: -.07em; }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { data, Link, useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
 import { ArrowRight, ChevronDown, ChevronRight, FileText, MessageCircle, RefreshCw, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 import { getMetierBySlug } from "@legacy/data/metiers";
@@ -8,6 +9,7 @@ import { ProofStrip } from "../components/ProofStrip";
 import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
 import { ConversionLink } from "../components/ConversionLink";
 import { Pricing } from "../components/Pricing";
+import { LeadCaptureModal } from "../components/LeadCaptureModal";
 
 export function loader({ params, request }: LoaderFunctionArgs) {
   const slug = params.slug ?? new URL(request.url).pathname.split("/").filter(Boolean)[0] ?? "";
@@ -37,6 +39,20 @@ const featureIcons = [FileText, Sparkles, TrendingUp];
 export default function MetierRoute() {
   const { metier } = useLoaderData<typeof loader>();
   const { primaryMetric, highlight, latest } = metier.heroMockup;
+  const captureLeadBeforeWhatsApp = metier.slug === "tolier";
+  const [leadModalSource, setLeadModalSource] = useState<string | null>(null);
+  const whatsappUrl = buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook);
+
+  const whatsAppCta = (source: string, className: string, children: React.ReactNode) =>
+    captureLeadBeforeWhatsApp ? (
+      <button type="button" className={className} onClick={() => setLeadModalSource(source)}>
+        {children}
+      </button>
+    ) : (
+      <ConversionLink className={className} href={whatsappUrl} source={source} target="_blank" rel="noreferrer">
+        {children}
+      </ConversionLink>
+    );
   const schema = [
     {
       "@context": "https://schema.org",
@@ -78,7 +94,7 @@ export default function MetierRoute() {
             <p>{metier.hero.subheadline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
             <div className="hero__actions">
               <Link className="button button--primary" to="#tarifs">{metier.hero.ctaPrimary} <ArrowRight /></Link>
-              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-${metier.slug}`} target="_blank" rel="noreferrer"><MessageCircle /> Voir Atelier en action</ConversionLink>
+              {whatsAppCta(`metier-${metier.slug}`, "button button--dark", <><MessageCircle /> Voir Atelier en action</>)}
             </div>
             <div className="trade-hero__proof">
               <div className="avatar-stack">
@@ -112,7 +128,7 @@ export default function MetierRoute() {
           </div>
         </section>
 
-        <ProofStrip />
+        <ProofStrip onWhatsAppClick={captureLeadBeforeWhatsApp ? () => setLeadModalSource("proof-band") : undefined} />
 
         <section className="section trade-problems">
           <div className="section-heading section-heading--split">
@@ -124,9 +140,7 @@ export default function MetierRoute() {
             <p><strong>Ce quotidien n'est pas une fatalité.</strong> Dans un mois, vos soirées peuvent ressembler à autre chose : des devis qui partent le jour même, des relances qui tournent sans vous.</p>
             <div>
               <Link className="button button--primary" to="#tarifs">Arrêter les recalculs <ArrowRight aria-hidden="true" /></Link>
-              <ConversionLink className="button button--dark" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-problems-${metier.slug}`} target="_blank" rel="noreferrer">
-                <MessageCircle aria-hidden="true" /> Changer ce quotidien
-              </ConversionLink>
+              {whatsAppCta(`metier-problems-${metier.slug}`, "button button--dark", <><MessageCircle aria-hidden="true" /> Changer ce quotidien</>)}
             </div>
           </div>
         </section>
@@ -152,9 +166,7 @@ export default function MetierRoute() {
           <div className="section-cta">
             <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
             <div>
-              <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-cases-${metier.slug}`} target="_blank" rel="noreferrer">
-                <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
-              </ConversionLink>
+              {whatsAppCta(`metier-cases-${metier.slug}`, "button button--primary", <><MessageCircle aria-hidden="true" /> Rejoindre ces artisans</>)}
               <Link className="button button--dark" to="#tarifs">Sécuriser ma marge <ArrowRight aria-hidden="true" /></Link>
             </div>
           </div>
@@ -186,10 +198,18 @@ export default function MetierRoute() {
           <p className="eyebrow eyebrow--light">{metier.metier}</p>
           <h2>{metier.cta.headline}</h2>
           <p>{metier.cta.subline}</p>
-          <ConversionLink className="button button--primary" href={buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook)} source={`metier-closing-${metier.slug}`} target="_blank" rel="noreferrer">Récupérer mes soirées <ArrowRight /></ConversionLink>
+          {whatsAppCta(`metier-closing-${metier.slug}`, "button button--primary", <>Récupérer mes soirées <ArrowRight /></>)}
           <small>Réponse directe de Samuel, sans engagement.</small>
         </section>
       </main>
+      {captureLeadBeforeWhatsApp && (
+        <LeadCaptureModal
+          open={leadModalSource !== null}
+          onClose={() => setLeadModalSource(null)}
+          whatsappUrl={whatsappUrl}
+          source={leadModalSource ?? ""}
+        />
+      )}
     </SiteShell>
   );
 }

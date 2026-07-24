@@ -78,7 +78,7 @@ function ProofCard({ stat }: { stat: Stat }) {
   );
 }
 
-export function ProofStrip() {
+export function ProofStrip({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {}) {
   return (
     <section className="proof-band" aria-label="Résultats clients mesurés">
       <div className="proof-band__intro">
@@ -96,9 +96,15 @@ export function ProofStrip() {
           <span>Des artisans comme vous, qui ont décidé de ne plus perdre leurs soirées.</span>
         </p>
         <div>
-          <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="proof-band" target="_blank" rel="noreferrer">
-            <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
-          </ConversionLink>
+          {onWhatsAppClick ? (
+            <button type="button" className="button button--primary" onClick={onWhatsAppClick}>
+              <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+            </button>
+          ) : (
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="proof-band" target="_blank" rel="noreferrer">
+              <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+            </ConversionLink>
+          )}
           <Link className="button button--dark" to="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>
         </div>
       </div>

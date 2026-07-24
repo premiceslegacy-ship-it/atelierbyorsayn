@@ -7,11 +7,11 @@ declare global {
   }
 }
 
-export function trackConversion(event: Record<string, string>) {
+export function trackConversion(event: Record<string, string>, options: { skipPixel?: boolean } = {}) {
   if (typeof window === "undefined") return;
   window.atelierEvents = window.atelierEvents ?? [];
   window.atelierEvents.push({ type: "conversion", ...event });
-  if (typeof window.fbq === "function") {
+  if (!options.skipPixel && typeof window.fbq === "function") {
     window.fbq("track", "Contact");
   }
 }

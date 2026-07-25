@@ -248,7 +248,7 @@ export default function HomePage() {
         <div className="hero__content">
           <p className="eyebrow eyebrow--light">Le logiciel de gestion des artisans du BTP</p>
           <h1>Retrouvez 10h et <em>18 % de marge</em> par mois.</h1>
-          <p className="hero__lead">Sarah prépare vos devis, relance les impayés et repère les chantiers qui dérapent. Vous gardez la décision.</p>
+          <p className="hero__lead">Devis, relances et suivi de marge tournent en automatique, pendant que vous êtes sur le chantier. Vous gardez la décision, plus la paperasse.</p>
           <div className="hero__actions">
             <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="hero" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Récupérer mes soirées

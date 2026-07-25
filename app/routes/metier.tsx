@@ -7,9 +7,9 @@ import { StructuredData } from "../components/StructuredData";
 import { CaseCarousel } from "../components/CaseCarousel";
 import { ProofStrip } from "../components/ProofStrip";
 import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
-import { ConversionLink } from "../components/ConversionLink";
 import { Pricing } from "../components/Pricing";
 import { LeadCaptureModal } from "../components/LeadCaptureModal";
+import { getMetierLeadConfig } from "../data/leadForms";
 
 export function loader({ params, request }: LoaderFunctionArgs) {
   const slug = params.slug ?? new URL(request.url).pathname.split("/").filter(Boolean)[0] ?? "";
@@ -39,20 +39,15 @@ const featureIcons = [FileText, Sparkles, TrendingUp];
 export default function MetierRoute() {
   const { metier } = useLoaderData<typeof loader>();
   const { primaryMetric, highlight, latest } = metier.heroMockup;
-  const captureLeadBeforeWhatsApp = metier.slug === "tolier";
+  const leadConfig = getMetierLeadConfig(metier.slug, metier.metier);
   const [leadModalSource, setLeadModalSource] = useState<string | null>(null);
   const whatsappUrl = buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook);
 
-  const whatsAppCta = (source: string, className: string, children: React.ReactNode) =>
-    captureLeadBeforeWhatsApp ? (
-      <button type="button" className={className} onClick={() => setLeadModalSource(source)}>
-        {children}
-      </button>
-    ) : (
-      <ConversionLink className={className} href={whatsappUrl} source={source} target="_blank" rel="noreferrer">
-        {children}
-      </ConversionLink>
-    );
+  const whatsAppCta = (source: string, className: string, children: React.ReactNode) => (
+    <button type="button" className={className} onClick={() => setLeadModalSource(source)}>
+      {children}
+    </button>
+  );
   const schema = [
     {
       "@context": "https://schema.org",
@@ -78,7 +73,7 @@ export default function MetierRoute() {
     },
   ];
   return (
-    <SiteShell onWhatsAppClick={captureLeadBeforeWhatsApp ? () => setLeadModalSource("navbar") : undefined}>
+    <SiteShell onWhatsAppClick={() => setLeadModalSource("navbar")}>
       <StructuredData data={schema} />
       <main className="trade-page">
         <nav className="breadcrumbs breadcrumbs--trade" aria-label="Fil d'Ariane">
@@ -128,7 +123,7 @@ export default function MetierRoute() {
           </div>
         </section>
 
-        <ProofStrip onWhatsAppClick={captureLeadBeforeWhatsApp ? () => setLeadModalSource("proof-band") : undefined} />
+        <ProofStrip onWhatsAppClick={() => setLeadModalSource("proof-band")} />
 
         <section className="section trade-problems">
           <div className="section-heading section-heading--split">
@@ -202,14 +197,13 @@ export default function MetierRoute() {
           <small>Réponse directe de Samuel, sans engagement.</small>
         </section>
       </main>
-      {captureLeadBeforeWhatsApp && (
-        <LeadCaptureModal
-          open={leadModalSource !== null}
-          onClose={() => setLeadModalSource(null)}
-          whatsappUrl={whatsappUrl}
-          source={leadModalSource ?? ""}
-        />
-      )}
+      <LeadCaptureModal
+        open={leadModalSource !== null}
+        onClose={() => setLeadModalSource(null)}
+        whatsappUrl={whatsappUrl}
+        config={leadConfig}
+        trackingSource={leadModalSource ? `metier-${leadModalSource}-${metier.slug}` : ""}
+      />
     </SiteShell>
   );
 }

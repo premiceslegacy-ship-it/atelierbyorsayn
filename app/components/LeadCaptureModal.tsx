@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { CheckCircle2, X } from "lucide-react";
-import { LeadCaptureForm, type LeadFormValues } from "./LeadCaptureForm";
+import { LeadCaptureForm, type LeadSubmission } from "./LeadCaptureForm";
 import { trackConversion } from "./ConversionLink";
+import type { LeadFormConfig } from "../data/leadForms";
 
 type LeadCaptureModalProps = {
   open: boolean;
   onClose: () => void;
   whatsappUrl: string;
-  source: string;
+  /** Config de capture (base Notion, variante de champs, source Notion). */
+  config: LeadFormConfig;
+  /** Origine du clic pour le tracking interne (ex: "metier-hero-tolier", "navbar"). */
+  trackingSource: string;
 };
 
-async function submitLead(values: LeadFormValues, source: string) {
+async function submitLead(submission: LeadSubmission) {
   const response = await fetch("/api/lead", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...values, source }),
+    body: JSON.stringify(submission),
   });
   if (!response.ok) throw new Error(`Lead API responded with ${response.status}`);
 }
 
-export function LeadCaptureModal({ open, onClose, whatsappUrl, source }: LeadCaptureModalProps) {
+export function LeadCaptureModal({ open, onClose, whatsappUrl, config, trackingSource }: LeadCaptureModalProps) {
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
@@ -43,15 +47,15 @@ export function LeadCaptureModal({ open, onClose, whatsappUrl, source }: LeadCap
 
   const proceedToWhatsApp = () => {
     // skipPixel: on envoie 'Lead' ci-dessous, pas 'Contact' — éviter de compter le même lead deux fois côté Meta.
-    trackConversion({ source, page: window.location.pathname, tier: "none" }, { skipPixel: true });
+    trackConversion({ source: trackingSource, page: window.location.pathname, tier: "none" }, { skipPixel: true });
     if (typeof window.fbq === "function") window.fbq("track", "Lead");
     window.open(whatsappUrl, "_blank", "noreferrer");
   };
 
-  const handleSubmit = async (values: LeadFormValues) => {
+  const handleSubmit = async (submission: LeadSubmission) => {
     setSubmitting(true);
     try {
-      await submitLead(values, source);
+      await submitLead(submission);
       setStatus("success");
     } catch {
       // On ne bloque jamais le contact WhatsApp pour un souci de capture côté Notion.
@@ -85,7 +89,7 @@ export function LeadCaptureModal({ open, onClose, whatsappUrl, source }: LeadCap
           <>
             <p className="eyebrow">Avant de continuer</p>
             <h3 id="lead-modal-title">Quelques infos, et on vous répond directement.</h3>
-            <LeadCaptureForm onSubmit={handleSubmit} submitting={submitting} submitLabel="Continuer sur WhatsApp" />
+            <LeadCaptureForm config={config} onSubmit={handleSubmit} submitting={submitting} submitLabel="Continuer sur WhatsApp" />
           </>
         )}
       </div>

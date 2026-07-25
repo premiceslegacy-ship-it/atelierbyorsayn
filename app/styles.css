@@ -532,6 +532,8 @@ button { color: inherit; }
 .lead-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236E6A62' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
 .lead-form__error { color: #b3261e; font-size: 11px; }
 .lead-form__checks { display: flex; flex-wrap: wrap; gap: 8px; }
+.lead-form__checks--stack { flex-direction: column; flex-wrap: nowrap; }
+.lead-form__checks--stack .lead-form__check { width: 100%; border-radius: 12px; }
 .lead-form__check { display: inline-flex; align-items: center; gap: 7px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: linear-gradient(180deg,#fff,#f6f1e9); font-size: 12px; font-weight: 600; cursor: pointer; transition: border-color .15s, background .15s; }
 .lead-form__check:has(input:checked) { border-color: #d57806; background: linear-gradient(180deg,#fff8ec,#f3e5cd); color: #8f4600; }
 .lead-form__check input { accent-color: var(--orange); }

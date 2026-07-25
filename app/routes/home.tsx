@@ -1,6 +1,5 @@
 import type { MetaFunction } from "react-router";
 import HomePage from "../components/HomePage";
-import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
 import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICES, SITE_URL } from "../data/site";
 
@@ -76,5 +75,5 @@ const schemas = [
 ];
 
 export default function HomeRoute() {
-  return <SiteShell darkHeader><StructuredData data={schemas} /><HomePage /></SiteShell>;
+  return <HomePage structuredData={<StructuredData data={schemas} />} />;
 }

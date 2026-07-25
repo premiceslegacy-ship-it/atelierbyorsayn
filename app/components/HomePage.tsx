@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import {
   ArrowRight,
@@ -19,10 +19,25 @@ import {
 } from "lucide-react";
 import { getArticles } from "../lib/articles";
 import { buildWhatsAppUrl, CASE_STUDIES, FAQ_ITEMS } from "../data/site";
-import { ConversionLink } from "./ConversionLink";
 import { CaseCarousel } from "./CaseCarousel";
 import { ProofStrip } from "./ProofStrip";
 import { Pricing } from "./Pricing";
+import { SiteShell } from "./Shell";
+import { LeadCaptureModal } from "./LeadCaptureModal";
+import { HOME_LEAD_CONFIG } from "../data/leadForms";
+
+/** Déclenche l'ouverture de la modale de capture depuis n'importe quel CTA WhatsApp de la home. */
+const OpenLeadModalContext = createContext<(source: string) => void>(() => {});
+
+/** Bouton CTA WhatsApp de la home : ouvre la modale de capture au lieu d'un lien direct. */
+function WhatsAppCta({ className, source, children }: { className: string; source: string; children: ReactNode }) {
+  const openModal = useContext(OpenLeadModalContext);
+  return (
+    <button type="button" className={className} onClick={() => openModal(source)}>
+      {children}
+    </button>
+  );
+}
 
 const benefits = [
   {
@@ -225,17 +240,38 @@ function Demo() {
         <p>Sarah est prête. Il ne manque que votre entreprise.</p>
         <div>
           <a className="button button--primary" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
-          <ConversionLink className="button button--glass" href={buildWhatsAppUrl()} source="demo" target="_blank" rel="noreferrer">
+          <WhatsAppCta className="button button--glass" source="demo">
             <MessageCircle aria-hidden="true" /> Poser une question
-          </ConversionLink>
+          </WhatsAppCta>
         </div>
       </div>
     </section>
   );
 }
 
-export default function HomePage() {
+export default function HomePage({ structuredData }: { structuredData?: ReactNode }) {
   const articles = getArticles().slice(0, 3);
+  const [leadModalSource, setLeadModalSource] = useState<string | null>(null);
+  const whatsappUrl = buildWhatsAppUrl();
+
+  return (
+    <OpenLeadModalContext.Provider value={setLeadModalSource}>
+      <SiteShell darkHeader onWhatsAppClick={() => setLeadModalSource("navbar")}>
+        {structuredData}
+        <HomeContent articles={articles} />
+        <LeadCaptureModal
+          open={leadModalSource !== null}
+          onClose={() => setLeadModalSource(null)}
+          whatsappUrl={whatsappUrl}
+          config={HOME_LEAD_CONFIG}
+          trackingSource={leadModalSource ? `home-${leadModalSource}` : ""}
+        />
+      </SiteShell>
+    </OpenLeadModalContext.Provider>
+  );
+}
+
+function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> }) {
   return (
     <main>
       <section className="hero">
@@ -250,9 +286,9 @@ export default function HomePage() {
           <h1>Retrouvez 10h et <em>18 % de marge</em> par mois.</h1>
           <p className="hero__lead">Devis, relances et suivi de marge tournent en automatique, pendant que vous êtes sur le chantier. Vous gardez la décision, plus la paperasse.</p>
           <div className="hero__actions">
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="hero" target="_blank" rel="noreferrer">
+            <WhatsAppCta className="button button--primary" source="hero">
               <MessageCircle aria-hidden="true" /> Récupérer mes soirées
-            </ConversionLink>
+            </WhatsAppCta>
             <a className="button button--glass" href="#demo">Voir Atelier fonctionner <ArrowRight /></a>
           </div>
         </div>
@@ -289,9 +325,9 @@ export default function HomePage() {
           <p><strong>Cinq angles morts couverts, une seule mémoire.</strong><br />Voyez ce que ça coûte et ce que ça vous rend.</p>
           <div>
             <a className="button button--primary" href="#tarifs">Reprendre mes soirées <ArrowRight aria-hidden="true" /></a>
-            <ConversionLink className="button button--dark" href={buildWhatsAppUrl()} source="benefits" target="_blank" rel="noreferrer">
+            <WhatsAppCta className="button button--dark" source="benefits">
               <MessageCircle aria-hidden="true" /> Gagner du temps
-            </ConversionLink>
+            </WhatsAppCta>
           </div>
         </div>
       </section>
@@ -326,9 +362,9 @@ export default function HomePage() {
         <div className="section-cta">
           <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
           <div>
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="cases" target="_blank" rel="noreferrer">
+            <WhatsAppCta className="button button--primary" source="cases">
               <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
-            </ConversionLink>
+            </WhatsAppCta>
             <a className="button button--dark" href="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
@@ -350,9 +386,9 @@ export default function HomePage() {
         <div className="section-cta">
           <p><strong>Une question qui n'est pas dans la liste ?</strong> Samuel répond directement, sans script ni engagement.</p>
           <div>
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="faq" target="_blank" rel="noreferrer">
+            <WhatsAppCta className="button button--primary" source="faq">
               <MessageCircle aria-hidden="true" /> Poser ma question
-            </ConversionLink>
+            </WhatsAppCta>
             <a className="button button--dark" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
@@ -379,9 +415,9 @@ export default function HomePage() {
           <h2>Votre entreprise ne manque pas de courage.<br /><em>Elle manque d'un bureau qui suit.</em></h2>
           <p>Montrez votre quotidien à Samuel. Il vous dira franchement où Atelier peut vous rendre du temps.</p>
           <div className="hero__actions">
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="closing" target="_blank" rel="noreferrer">
+            <WhatsAppCta className="button button--primary" source="closing">
               Récupérer mes soirées <ArrowRight />
-            </ConversionLink>
+            </WhatsAppCta>
             <a className="button button--glass" href="#tarifs">Protéger ma marge <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>

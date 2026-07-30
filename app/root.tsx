@@ -47,22 +47,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Charge le SDK Meta Pixel en différé, hors du chemin critique LCP/TBT mobile. */
+/** Charge le SDK Meta Pixel en différé (snippet officiel), hors du chemin critique LCP/TBT mobile. */
 function loadMetaPixel() {
   if (window.fbq) return;
-  const queue: unknown[][] = [];
-  const fbq = (...args: unknown[]) => queue.push(args);
-  window.fbq = fbq;
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = "https://connect.facebook.net/en_US/fbevents.js";
-  script.onload = () => {
-    window.fbq!("init", META_PIXEL_ID);
-    for (const args of queue) window.fbq!(...args);
-  };
-  document.head.appendChild(script);
-  window.fbq("track", "PageView");
+  /* eslint-disable */
+  (function (f: any, b: Document, e: string, v: string, n: any, t: any, s: any) {
+    if (f.fbq) return;
+    n = f.fbq = function (...args: unknown[]) {
+      n.callMethod ? n.callMethod.apply(n, args) : n.queue.push(args);
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = true;
+    n.version = "2.0";
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = true;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js", undefined, undefined, undefined);
+  /* eslint-enable */
+  window.fbq!("init", META_PIXEL_ID);
+  window.fbq!("track", "PageView");
 }
 
 function usePixelPageView() {

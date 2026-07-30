@@ -21,6 +21,7 @@ import { getArticles } from "../lib/articles";
 import { buildWhatsAppUrl, CASE_STUDIES, FAQ_ITEMS } from "../data/site";
 import { CaseCarousel } from "./CaseCarousel";
 import { ProofStrip } from "./ProofStrip";
+import { Avatar } from "./Avatar";
 import { Pricing } from "./Pricing";
 import { SiteShell } from "./Shell";
 import { LeadCaptureModal } from "./LeadCaptureModal";
@@ -159,11 +160,16 @@ function Demo() {
           ))}
         </div>
         <div className="demo-phone" role="tabpanel">
-          <div className="demo-phone__top"><img src="/icon_meta.png" alt="" width="22" height="22" /> Atelier · Sarah <span className="status-dot" /></div>
+          <div className="demo-phone__top"><img src="/icon_meta-48.png" alt="" width="22" height="22" /> Atelier · Sarah <span className="status-dot" /></div>
           <div className="demo-conversation demo-conversation--sim" key={started ? active : "idle"}>
             {!started && (
               <div className="demo-idle">
-                <div className="sarah-orb"><img src="/sarah-avatar.webp" alt="" width="512" height="512" /></div>
+                <div className="sarah-orb">
+                  <picture>
+                    <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
+                    <img src="/sarah-avatar-144.webp" alt="" width="144" height="144" />
+                  </picture>
+                </div>
                 <p className="demo-prompt">Une vraie demande, chiffrée sous vos yeux.</p>
                 <p className="demo-note">60 secondes, étape par étape. Rien ne part sans votre validation.</p>
                 <button className="demo-validate" type="button" onClick={() => goTo(0)}><Play aria-hidden="true" /> Lancer la démonstration</button>
@@ -180,7 +186,12 @@ function Demo() {
             )}
             {started && active === 1 && (
               <>
-                <div className="demo-sarah-line demo-stagger"><span className="sarah-orb sarah-orb--mini"><img src="/sarah-avatar.webp" alt="" width="512" height="512" /></span><p>Je retrouve le contexte de l'entreprise…</p></div>
+                <div className="demo-sarah-line demo-stagger"><span className="sarah-orb sarah-orb--mini">
+                  <picture>
+                    <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
+                    <img src="/sarah-avatar-144.webp" alt="" width="144" height="144" />
+                  </picture>
+                </span><p>Je retrouve le contexte de l'entreprise…</p></div>
                 <div className="demo-chips">
                   {demoContext.map((chip, index) => (
                     <div className="demo-chip demo-stagger" style={{ animationDelay: `${0.7 + index * 0.7}s` }} key={chip.label}>
@@ -294,7 +305,7 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
         </div>
         <div className="hero__proof">
           <div className="avatar-stack">
-            {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" />)}
+            {CASE_STUDIES.slice(0, 4).map((item) => <Avatar key={item.id} src={item.portrait} alt="" loading="eager" />)}
           </div>
           <p><strong>Rejoignez les artisans qui ont repris la main.</strong><span>Temps, encours et marge mesurés sur le terrain, ensemble.</span></p>
         </div>

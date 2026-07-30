@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { buildWhatsAppUrl, CASE_STUDIES } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
+import { Avatar } from "./Avatar";
 
 type Stat = {
   caseId: string;
@@ -71,7 +72,7 @@ function ProofCard({ stat }: { stat: Stat }) {
       <strong>{stat.countTo !== undefined ? <CountUp to={stat.countTo} prefix={stat.prefix} suffix={stat.suffix} active={inView} /> : stat.staticValue}</strong>
       <span>{stat.label}</span>
       <footer>
-        {caseStudy ? <img src={caseStudy.portrait} alt="" width="48" height="48" loading="lazy" /> : <span className="proof-card__initial" aria-hidden="true">{person.name.charAt(0)}</span>}
+        {caseStudy ? <Avatar src={caseStudy.portrait} alt="" /> : <span className="proof-card__initial" aria-hidden="true">{person.name.charAt(0)}</span>}
         <small><b>{person.name}</b>{person.trade} · {person.team}</small>
       </footer>
     </article>
@@ -83,7 +84,7 @@ export function ProofStrip({ onWhatsAppClick }: { onWhatsAppClick?: () => void }
     <section className="proof-band" aria-label="Résultats clients mesurés">
       <div className="proof-band__intro">
         <div className="avatar-stack">
-          {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" loading="lazy" />)}
+          {CASE_STUDIES.slice(0, 4).map((item) => <Avatar key={item.id} src={item.portrait} alt="" />)}
         </div>
         <p><strong>Mesuré chez les entreprises accompagnées.</strong></p>
       </div>

@@ -1,9 +1,9 @@
 import type { AnchorHTMLAttributes, MouseEvent } from "react";
+import { trackMetaEvent } from "../lib/metaPixel";
 
 declare global {
   interface Window {
     atelierEvents?: Array<Record<string, string>>;
-    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -11,9 +11,7 @@ export function trackConversion(event: Record<string, string>, options: { skipPi
   if (typeof window === "undefined") return;
   window.atelierEvents = window.atelierEvents ?? [];
   window.atelierEvents.push({ type: "conversion", ...event });
-  if (!options.skipPixel && typeof window.fbq === "function") {
-    window.fbq("track", "Contact");
-  }
+  if (!options.skipPixel) trackMetaEvent("Contact");
 }
 
 export function ConversionLink({

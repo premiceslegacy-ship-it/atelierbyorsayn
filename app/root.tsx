@@ -10,6 +10,7 @@ import {
 import { useEffect, useRef } from "react";
 import stylesheet from "./styles.css?url";
 import { META_PIXEL_ID } from "./data/site";
+import { trackMetaEvent } from "./lib/metaPixel";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -27,7 +28,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
       </head>
       <body>
         {children}
@@ -47,44 +47,32 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Charge le SDK Meta Pixel en différé (snippet officiel), hors du chemin critique LCP/TBT mobile. */
-function loadMetaPixel() {
-  if (window.fbq) return;
-  /* eslint-disable */
-  (function (f: any, b: Document, e: string, v: string, n: any, t: any, s: any) {
-    if (f.fbq) return;
-    n = f.fbq = function (...args: unknown[]) {
-      n.callMethod ? n.callMethod.apply(n, args) : n.queue.push(args);
-    };
-    if (!f._fbq) f._fbq = n;
-    n.push = n;
-    n.loaded = true;
-    n.version = "2.0";
-    n.queue = [];
-    t = b.createElement(e);
-    t.async = true;
-    t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s);
-  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js", undefined, undefined, undefined);
-  /* eslint-enable */
-  window.fbq!("init", META_PIXEL_ID);
-  window.fbq!("track", "PageView");
-}
-
 function usePixelPageView() {
   const location = useLocation();
   const isFirstRender = useRef(true);
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
-      const schedule = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1));
-      schedule(loadMetaPixel);
-      return;
+      let activated = false;
+      const activate = () => {
+        if (activated) return;
+        activated = true;
+        trackMetaEvent("PageView");
+        cleanup();
+      };
+      const cleanup = () => {
+        window.clearTimeout(fallbackTimer);
+        window.removeEventListener("pointerdown", activate);
+        window.removeEventListener("keydown", activate);
+        window.removeEventListener("scroll", activate);
+      };
+      const fallbackTimer = window.setTimeout(activate, 15_000);
+      window.addEventListener("pointerdown", activate, { once: true, passive: true });
+      window.addEventListener("keydown", activate, { once: true });
+      window.addEventListener("scroll", activate, { once: true, passive: true });
+      return cleanup;
     }
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "PageView");
-    }
+    trackMetaEvent("PageView");
   }, [location.pathname]);
 }
 

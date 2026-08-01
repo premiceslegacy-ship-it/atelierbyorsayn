@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, X } from "lucide-react";
 import { LeadCaptureForm, type LeadSubmission } from "./LeadCaptureForm";
 import { trackConversion } from "./ConversionLink";
+import { trackMetaEvent } from "../lib/metaPixel";
 import type { LeadFormConfig } from "../data/leadForms";
 
 type LeadCaptureModalProps = {
@@ -48,7 +49,7 @@ export function LeadCaptureModal({ open, onClose, whatsappUrl, config, trackingS
   const proceedToWhatsApp = () => {
     // skipPixel: on envoie 'Lead' ci-dessous, pas 'Contact' — éviter de compter le même lead deux fois côté Meta.
     trackConversion({ source: trackingSource, page: window.location.pathname, tier: "none" }, { skipPixel: true });
-    if (typeof window.fbq === "function") window.fbq("track", "Lead");
+    trackMetaEvent("Lead");
     window.open(whatsappUrl, "_blank", "noreferrer");
   };
 

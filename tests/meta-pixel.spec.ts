@@ -1,11 +1,13 @@
 import { test, expect } from "@playwright/test";
 
-test("meta pixel: PageView on load, PageView on client nav, Contact on WhatsApp CTA", async ({ page }) => {
+test("meta pixel: no critical request, PageView after interaction/nav, Contact on CTA", async ({ page }) => {
   const fbEvents: { event: string; url: string }[] = [];
+  let pixelScriptRequests = 0;
 
-  await page.route("**://connect.facebook.net/**", (route) =>
-    route.fulfill({ status: 200, contentType: "application/javascript", body: "" }),
-  );
+  await page.route("**://connect.facebook.net/**", (route) => {
+    pixelScriptRequests += 1;
+    return route.fulfill({ status: 200, contentType: "application/javascript", body: "" });
+  });
   await page.route("**://www.facebook.com/tr*", (route) => {
     const url = new URL(route.request().url());
     fbEvents.push({ event: url.searchParams.get("ev") ?? "", url: url.toString() });
@@ -40,9 +42,12 @@ test("meta pixel: PageView on load, PageView on client nav, Contact on WhatsApp 
     });
   });
 
-  // 1. Initial load on the home page (LP principale) -> expect one PageView
+  // 1. Aucun tracker tiers pendant le rendu critique, puis PageView au premier geste.
   await page.goto("/");
+  expect(pixelScriptRequests).toBe(0);
+  await page.keyboard.press("Tab");
   await expect.poll(() => fbEvents.filter((e) => e.event === "PageView").length).toBe(1);
+  expect(pixelScriptRequests).toBe(1);
 
   // 2. Client-side navigation to a métier page -> expect a second PageView (not a third)
   await page.getByRole("link", { name: /électricien/i }).first().click({ trial: false }).catch(async () => {

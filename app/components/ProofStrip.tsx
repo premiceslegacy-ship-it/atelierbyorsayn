@@ -5,6 +5,11 @@ import { buildWhatsAppUrl, CASE_STUDIES } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
 import { Avatar } from "./Avatar";
 
+/** "Stéphane M." -> "Stéphane" : on n'affiche que le prénom sur les proof-cards. */
+function firstName(fullName: string) {
+  return fullName.split(" ")[0];
+}
+
 type Stat = {
   caseId: string;
   label: string;
@@ -14,13 +19,15 @@ type Stat = {
   suffix?: string;
   /** Valeur affichée telle quelle si countTo est absent. */
   staticValue?: string;
+  /** Variante de couleur de la carte, alignée sur la palette des bento-cards. */
+  tone: "orange" | "green" | "indigo" | "dark";
 };
 
 const stats: Stat[] = [
-  { caseId: "stephane", countTo: 12500, suffix: " €", label: "d'impayés récupérés en moins d'un mois" },
-  { caseId: "marc", staticValue: "45 → 12 j", label: "de délai de paiement moyen" },
-  { caseId: "sophie", countTo: 10, suffix: " h / mois", label: "rendues à l'équipe" },
-  { caseId: "sebastien", staticValue: "Devis envoyé", label: "avant que le client ne compare ailleurs" },
+  { caseId: "stephane", countTo: 12500, suffix: " €", label: "d'impayés récupérés en moins d'un mois", tone: "orange" },
+  { caseId: "marc", staticValue: "45 → 12 j", label: "de délai de paiement moyen", tone: "indigo" },
+  { caseId: "sophie", countTo: 10, suffix: " h / mois", label: "rendues à l'équipe", tone: "green" },
+  { caseId: "sebastien", staticValue: "Devis envoyé", label: "avant que le client ne compare ailleurs", tone: "dark" },
 ];
 
 /** Cas tôlerie/métallerie mis en avant sans portrait (pas de photo client disponible pour l'instant). */
@@ -63,17 +70,21 @@ function CountUp({ to, prefix = "", suffix = "", active }: { to: number; prefix?
   return <>{prefix}{value.toLocaleString("fr-FR")}{suffix}</>;
 }
 
-function ProofCard({ stat }: { stat: Stat }) {
+function ProofCard({ stat, index }: { stat: Stat; index: number }) {
   const { ref, inView } = useInView<HTMLElement>();
   const caseStudy = stat.caseId === "sebastien" ? null : CASE_STUDIES.find((item) => item.id === stat.caseId)!;
   const person = caseStudy ?? SEBASTIEN;
   return (
-    <article className={`proof-card ${inView ? "is-visible" : ""}`} ref={ref}>
+    <article
+      className={`proof-card proof-card--${stat.tone} ${inView ? "is-visible" : ""}`}
+      style={{ transitionDelay: inView ? `${index * 90}ms` : "0ms" }}
+      ref={ref}
+    >
       <strong>{stat.countTo !== undefined ? <CountUp to={stat.countTo} prefix={stat.prefix} suffix={stat.suffix} active={inView} /> : stat.staticValue}</strong>
       <span>{stat.label}</span>
       <footer>
-        {caseStudy ? <Avatar src={caseStudy.portrait} alt="" /> : <span className="proof-card__initial" aria-hidden="true">{person.name.charAt(0)}</span>}
-        <small><b>{person.name}</b>{person.trade} · {person.team}</small>
+        <b>{firstName(person.name)}</b>
+        <small>{person.trade} · {person.team}</small>
       </footer>
     </article>
   );
@@ -89,7 +100,7 @@ export function ProofStrip({ onWhatsAppClick }: { onWhatsAppClick?: () => void }
         <p><strong>Mesuré chez les entreprises accompagnées.</strong></p>
       </div>
       <div className="proof-band__grid">
-        {stats.map((stat) => <ProofCard stat={stat} key={stat.caseId} />)}
+        {stats.map((stat, index) => <ProofCard stat={stat} index={index} key={stat.caseId} />)}
       </div>
       <div className="proof-band__cta">
         <p>

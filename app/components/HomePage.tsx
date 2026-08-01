@@ -18,10 +18,9 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getArticles } from "../lib/articles";
-import { buildWhatsAppUrl, CASE_STUDIES, FAQ_ITEMS } from "../data/site";
+import { buildWhatsAppUrl, FAQ_ITEMS } from "../data/site";
 import { CaseCarousel } from "./CaseCarousel";
 import { ProofStrip } from "./ProofStrip";
-import { Avatar } from "./Avatar";
 import { Pricing } from "./Pricing";
 import { SiteShell } from "./Shell";
 import { LeadCaptureModal } from "./LeadCaptureModal";
@@ -298,16 +297,10 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
           <p className="hero__lead">Devis, relances et suivi de marge tournent en automatique, pendant que vous êtes sur le chantier. Vous gardez la décision, plus la paperasse.</p>
           <div className="hero__actions">
             <WhatsAppCta className="button button--primary" source="hero">
-              <MessageCircle aria-hidden="true" /> Récupérer mes soirées
+              <MessageCircle aria-hidden="true" /> Voir ma marge gagnée
             </WhatsAppCta>
             <a className="button button--glass" href="#demo">Voir Atelier fonctionner <ArrowRight /></a>
           </div>
-        </div>
-        <div className="hero__proof">
-          <div className="avatar-stack">
-            {CASE_STUDIES.slice(0, 4).map((item) => <Avatar key={item.id} src={item.portrait} alt="" loading="eager" />)}
-          </div>
-          <p><strong>Rejoignez les artisans qui ont repris la main.</strong><span>Temps, encours et marge mesurés sur le terrain, ensemble.</span></p>
         </div>
       </section>
 

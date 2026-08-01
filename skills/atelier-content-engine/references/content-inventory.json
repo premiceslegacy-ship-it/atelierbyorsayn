@@ -1,7 +1,21 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-07-18",
+  "updatedAt": "2026-08-01",
   "articles": [
+    {
+      "slug": "relancer-client-impaye-artisan-btp",
+      "pillar": "Trésorerie et relances",
+      "intent": "Relancer un client qui ne paie pas sa facture BTP",
+      "primaryQuery": "relancer client impayé artisan BTP",
+      "internalLinks": ["calcul-marge-chantier-btp", "secretaire-ia-artisan-sarah"]
+    },
+    {
+      "slug": "pre-metre-plan-ia-artisan-btp",
+      "pillar": "Rentabilité chantier",
+      "intent": "Accélérer et fiabiliser le pré-métré avant un devis",
+      "primaryQuery": "pré-métré plan artisan BTP",
+      "internalLinks": ["calcul-marge-chantier-btp"]
+    },
     {
       "slug": "prix-logiciel-gestion-btp-comparatif",
       "pillar": "Choisir son logiciel",

@@ -81,7 +81,7 @@ export function Footer() {
         </div>
         <div>
           <p className="footer-label">Métiers</p>
-          {metiers.map((metier) => <Link key={metier.slug} to={`/${metier.slug}`}>{metier.metier}</Link>)}
+          {metiers.map((metier) => <Link key={metier.slug} to={`/${metier.slug}`}>Atelier pour {metier.metier}</Link>)}
         </div>
         <div>
           <p className="footer-label">Informations</p>

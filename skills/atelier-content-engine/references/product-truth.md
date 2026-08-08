@@ -12,10 +12,9 @@ Ne jamais présenter Sarah comme une salariée, une experte juridique, une compt
 
 ## Prix publics
 
-- Application sans abonnement : setup 3 000 € HT ; application complète ; IA en veille, activable à l'usage.
-- Application avec abonnement : setup 1 500 € HT.
-- Starter : 39 € HT/mois.
-- Pro : 79 € HT/mois ; Sarah ; 120 échanges ; 60 minutes de live IA.
+- Application sans abonnement : 3 000 € HT en une fois ; application complète ; IA en veille, activable à l'usage.
+- Application avec abonnement : aucun frais de setup ; 14 jours d'essai sans carte bancaire.
+- Pro : 69 € HT/mois ; Sarah ; 120 échanges ; 60 minutes de live IA.
 - Expert : 169 € HT/mois ; échanges Sarah illimités ; 300 minutes de live IA.
 - Connexion facturation électronique : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.
 

@@ -2,6 +2,7 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
 import { metiers } from "../src/data/metiers";
+import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS } from "../app/data/site";
 
 const SITE_URL = "https://www.atelier-btp.fr";
 const output = join(process.cwd(), "build/client");
@@ -41,7 +42,8 @@ writeFileSync(join(output, "rss.xml"), rss);
 
 writeFileSync(join(output, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /assets/*.map$\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
-const llms = `# Atelier\n\n> Application de gestion et assistante IA métier pour les artisans du BTP, conçue par Orsayn.\n\n## Pages principales\n\n- [Accueil](${SITE_URL}/) : proposition de valeur, Sarah, résultats clients et tarifs\n- [Le journal](${SITE_URL}/blog) : guides sourcés pour artisans du BTP\n- [Tarifs](${SITE_URL}/#tarifs) : Starter 39 €, Pro 79 €, Expert 159 € HT/mois\n\n## Articles\n\n${articles.map(({ data }) => `- [${data.title}](${SITE_URL}/blog/${data.slug}) : ${data.description}`).join("\n")}\n\n## Vérité produit\n\nSarah prépare et propose à partir du contexte Atelier ; l'utilisateur valide les actions sensibles. Setup : 3 000 € HT sans abonnement, ou 1 500 € HT avec abonnement. Les résultats clients publiés sont des cas réels anonymisés et ne constituent pas une garantie.\n`;
+const tarifs = PRICING_TIERS.map((tier) => `${tier.name} ${tier.price} €`).join(", ");
+const llms = `# Atelier\n\n> Application de gestion et assistante IA métier pour les artisans du BTP, conçue par Orsayn.\n\n## Pages principales\n\n- [Accueil](${SITE_URL}/) : proposition de valeur, Sarah, résultats clients et tarifs\n- [Le journal](${SITE_URL}/blog) : guides sourcés pour artisans du BTP\n- [Tarifs](${SITE_URL}/#tarifs) : ${tarifs} HT/mois, ${TRIAL_DAYS} jours d'essai sans carte bancaire\n\n## Articles\n\n${articles.map(({ data }) => `- [${data.title}](${SITE_URL}/blog/${data.slug}) : ${data.description}`).join("\n")}\n\n## Vérité produit\n\nSarah prépare et propose à partir du contexte Atelier ; l'utilisateur valide les actions sensibles. Deux façons de démarrer : abonnement mensuel (${TRIAL_DAYS} jours d'essai, sans carte bancaire) ou paiement unique de ${SETUP_PRICE.toLocaleString("fr-FR")} € HT sans abonnement. Les résultats clients publiés sont des cas réels anonymisés et ne constituent pas une garantie.\n`;
 writeFileSync(join(output, "llms.txt"), llms);
 
 console.log(`SEO généré : ${routeEntries.length} URLs, ${articles.length} articles, sitemap, RSS, robots et llms.txt.`);

@@ -1,7 +1,7 @@
 import type { MetaFunction } from "react-router";
 import HomePage from "../components/HomePage";
 import { StructuredData } from "../components/StructuredData";
-import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICES, SITE_URL } from "../data/site";
+import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICE, SITE_URL } from "../data/site";
 
 export const meta: MetaFunction = () => [
   { title: "Atelier : Le logiciel de gestion des artisans du BTP" },
@@ -49,9 +49,9 @@ const schemas = [
         {
           "@type": "Offer",
           name: "Application sans abonnement",
-          price: SETUP_PRICES.withoutSubscription,
+          price: SETUP_PRICE,
           priceCurrency: "EUR",
-          description: "Setup unique donnant accès à l'application complète à vie, avec IA en veille.",
+          description: "Paiement unique donnant accès à l'application complète à vie, sans abonnement mensuel.",
         },
         ...PRICING_TIERS.map((tier) => ({
           "@type": "Offer",

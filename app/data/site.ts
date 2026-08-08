@@ -7,7 +7,7 @@ export const AUTHOR = {
 };
 
 export type PricingTier = {
-  id: "starter" | "pro" | "expert";
+  id: "pro" | "expert";
   name: string;
   price: number;
   promise: string;
@@ -18,29 +18,26 @@ export type PricingTier = {
   adoptedBy: number;
 };
 
-export const SETUP_PRICES = {
-  withoutSubscription: 3000,
-  withSubscription: 1500,
-} as const;
+export const TRIAL_DAYS = 14;
 
-/** Nombre d'artisans ayant choisi chaque modèle de setup, pour la réassurance social proof sur le pricing. */
-export const SETUP_ADOPTION = {
-  withSubscription: 14,
-  withoutSubscription: 9,
-} as const;
+/** Prix du setup one-shot, sans abonnement mensuel : app installée, pas de Sarah IA. */
+export const SETUP_PRICE = 3000;
+
+/** Nombre d'artisans ayant choisi le setup sans abonnement, pour la réassurance social proof sur le pricing. */
+export const SETUP_ADOPTION = 9;
 
 export const PRICING_TIERS: PricingTier[] = [
   {
     id: "pro",
     name: "Pro",
-    price: 79,
+    price: 69,
     promise: "Une secrétaire IA qui répond à votre place.",
     audience: "Pour l'artisan actif et les petites équipes.",
     featured: true,
     benefits: [
       "Sarah, l'assistante IA, répond sur vos clients, chantiers et planning",
       "Vous pouvez lui parler à la voix, y compris en direct au téléphone",
-      "Quotas de devis et relances nettement plus élevés qu'en Starter",
+      "Devis préparés par IA à partir d'un texte, d'un plan ou d'une photo",
     ],
     quotas: ["120 échanges avec l'assistante IA / mois", "60 analyses de devis (dont pré-métré sur plan) / mois", "60 minutes de conversation vocale en direct / mois"],
     adoptedBy: 7,
@@ -59,25 +56,11 @@ export const PRICING_TIERS: PricingTier[] = [
     quotas: ["Échanges et analyses de devis illimités", "300 minutes de conversation vocale en direct / mois", "Extraction catalogue et imports illimités"],
     adoptedBy: 2,
   },
-  {
-    id: "starter",
-    name: "Starter",
-    price: 39,
-    promise: "Les bons automatismes, sans complexité.",
-    audience: "Pour l'artisan solo qui veut souffler vite.",
-    benefits: [
-      "Devis préparés par IA à partir d'un texte, d'un plan ou d'une photo",
-      "Relances d'impayés rédigées et envoyées automatiquement",
-      "Application métier complète : chantiers, planning, factures, marge",
-    ],
-    quotas: ["20 relances automatiques / mois", "15 analyses de devis (dont pré-métré sur plan) / mois", "Pas d'assistante IA conversationnelle (Sarah)"],
-    adoptedBy: 5,
-  },
 ];
 
 export function buildWhatsAppUrl(tier?: PricingTier) {
   const details = tier
-    ? `\n\nOffre envisagée : ${tier.name}, setup ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT (app à vie) + ${tier.price} € HT/mois d'abonnement`
+    ? `\n\nOffre envisagée : ${tier.name}, ${tier.price} € HT/mois d'abonnement`
     : "";
   const message = `Bonjour Samuel, je suis intéressé par Atelier pour mon entreprise.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -85,7 +68,7 @@ export function buildWhatsAppUrl(tier?: PricingTier) {
 
 export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, hook?: string) {
   const details = tier
-    ? ` L'offre ${tier.name} m'intéresse : setup ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT (app à vie) + ${tier.price} € HT/mois d'abonnement.`
+    ? ` L'offre ${tier.name} m'intéresse : ${tier.price} € HT/mois d'abonnement.`
     : "";
   const message = hook
     ? `${hook}${details}`
@@ -191,8 +174,8 @@ export const FAQ_ITEMS = [
     answer: "Oui. Atelier fonctionne dans le navigateur sur téléphone, tablette et ordinateur, sans logiciel lourd à installer.",
   },
   {
-    question: "Le setup, c'est quoi exactement ?",
-    answer: `C'est un paiement unique qui vous donne l'application à vie. Sans abonnement, le setup est de ${SETUP_PRICES.withoutSubscription.toLocaleString("fr-FR")} € HT : l'application métier reste complète et l'IA est mise en veille. Avec abonnement, le setup est de ${SETUP_PRICES.withSubscription.toLocaleString("fr-FR")} € HT, et l'abonnement mensuel s'ajoute pour que Sarah (l'IA) travaille avec vous.`,
+    question: "Setup ou abonnement, comment choisir ?",
+    answer: `Deux façons de démarrer. Le setup à ${SETUP_PRICE.toLocaleString("fr-FR")} € HT est un paiement unique : l'application métier vous appartient, sans abonnement à payer ensuite. L'abonnement mensuel (Pro ou Expert) vous donne Sarah, l'assistante IA, dès le premier jour — avec ${TRIAL_DAYS} jours d'essai gratuit, sans carte bancaire.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",

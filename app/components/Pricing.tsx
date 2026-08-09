@@ -1,32 +1,24 @@
-import { useRef, useState } from "react";
-import { ArrowRight, Check, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { buildTradeWhatsAppUrl, buildTrialSignupUrl, buildWhatsAppUrl, PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
 
 type PricingProps = {
   /** Libellé métier ("électricien", "métallier", …) pour personnaliser le message WhatsApp. Absent sur la home. */
   tradeLabel?: string;
+  /** Angle publicitaire propre au métier, conservé jusque dans le message WhatsApp. */
+  whatsappHook?: string;
   /** Suffixe ajouté au source de tracking pour distinguer l'origine (ex: slug du métier). */
   sourceSuffix?: string;
   /** Précision métier affichée sous les formules (ex: module prix matières métal). Absent = rien d'affiché. */
   note?: string;
 };
 
-export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
-  const [model, setModel] = useState<"subscription" | null>(null);
+export function Pricing({ tradeLabel, whatsappHook, sourceSuffix, note }: PricingProps) {
   const [selected, setSelected] = useState("pro");
-  const [activeTier, setActiveTier] = useState(0);
-  const revealRef = useRef<HTMLDivElement>(null);
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
 
-  const setupUrl = tradeLabel ? buildTradeWhatsAppUrl(tradeLabel) : buildWhatsAppUrl();
-
-  const showFormulas = () => {
-    setModel("subscription");
-    requestAnimationFrame(() => revealRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
-  };
-
-  const goToTier = (direction: -1 | 1) => setActiveTier((current) => (current + direction + PRICING_TIERS.length) % PRICING_TIERS.length);
+  const setupUrl = tradeLabel ? buildTradeWhatsAppUrl(tradeLabel, undefined, whatsappHook) : buildWhatsAppUrl();
 
   return (
     <section id="tarifs" className="section section--pricing">
@@ -49,37 +41,25 @@ export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
           <p>Configuration métier, reprise du catalogue, formation de l'équipe et 30 jours d'accompagnement. Puis accès sans abonnement mensuel.</p>
           <span className="pricing-choice__action">Parler de mon entreprise <ArrowRight /></span>
         </ConversionLink>
-        <button type="button" className={`pricing-choice ${model === "subscription" ? "is-selected" : ""}`} aria-pressed={model === "subscription"} onClick={showFormulas}>
+        <ConversionLink
+          className="pricing-choice"
+          href={buildTrialSignupUrl("expert")}
+          source={`${source}-trial-direct`}
+          tier="expert"
+          preserveUtm
+        >
           <span className="pricing-choice__label">Je démarre maintenant</span>
           <div className="pricing-choice__price"><strong>{TRIAL_DAYS} jours</strong><span>d'Expert offerts, sans carte</span></div>
           <h3>Votre premier devis peut partir aujourd'hui.</h3>
           <p>Commencez sans frais de départ. Testez tout Expert, puis choisissez Pro à {PRICING_TIERS[0].price} € ou Expert à {PRICING_TIERS[1].price} € HT/mois.</p>
-          <span className="pricing-choice__action">Voir les deux formules <ArrowRight /></span>
-        </button>
+          <span className="pricing-choice__action">Commencer mes {TRIAL_DAYS} jours gratuits <ArrowRight /></span>
+        </ConversionLink>
       </div>
-      {model === "subscription" && (
-        <div className="pricing-reveal" ref={revealRef} aria-live="polite">
+      <div className="pricing-reveal">
           <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Tout Expert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Votre choix Pro ou Expert est simplement mémorisé pour vous faire gagner du temps ensuite.</p></div>
           <div className="pricing-carousel">
-            <div className="pricing-carousel__controls">
-              <button type="button" onClick={() => goToTier(-1)} aria-label="Formule précédente"><ChevronLeft /></button>
-              <div className="pricing-carousel__dots" role="tablist" aria-label="Choisir une formule">
-                {PRICING_TIERS.map((tier, index) => (
-                  <button
-                    key={tier.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={activeTier === index}
-                    aria-label={tier.name}
-                    className={activeTier === index ? "is-active" : ""}
-                    onClick={() => setActiveTier(index)}
-                  />
-                ))}
-              </div>
-              <button type="button" onClick={() => goToTier(1)} aria-label="Formule suivante"><ChevronRight /></button>
-            </div>
             <div className="pricing-carousel__viewport">
-              <div className="pricing-carousel__track" style={{ transform: `translateX(-${activeTier * 100}%)` }}>
+              <div className="pricing-carousel__track">
                 {PRICING_TIERS.map((tier) => (
                   <div className="pricing-carousel__slide" key={tier.id}>
                     <ConversionLink
@@ -114,8 +94,7 @@ export function Pricing({ tradeLabel, sourceSuffix, note }: PricingProps) {
             </div>
           </div>
           {note && <p className="pricing-note pricing-note--trade">{note}</p>}
-        </div>
-      )}
+      </div>
       <p className="pricing-note">Connexion facturation électronique (facultative) : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.</p>
     </section>
   );

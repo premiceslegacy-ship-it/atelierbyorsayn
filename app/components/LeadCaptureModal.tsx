@@ -46,14 +46,23 @@ export function LeadCaptureModal({ open, onClose, whatsappUrl, config, trackingS
 
   if (!open) return null;
 
-  const proceedToWhatsApp = () => {
+  const proceedToWhatsApp = (whatsappWindow: Window | null) => {
     // skipPixel: on envoie 'Lead' ci-dessous, pas 'Contact' — éviter de compter le même lead deux fois côté Meta.
     trackConversion({ source: trackingSource, page: window.location.pathname, tier: "none" }, { skipPixel: true });
     trackMetaEvent("Lead");
-    window.open(whatsappUrl, "_blank", "noreferrer");
+    if (whatsappWindow) {
+      whatsappWindow.location.replace(whatsappUrl);
+      return;
+    }
+    // Si le navigateur refuse la nouvelle fenêtre, le contact reste garanti dans l'onglet courant.
+    window.location.assign(whatsappUrl);
   };
 
   const handleSubmit = async (submission: LeadSubmission) => {
+    // L'ouverture doit avoir lieu pendant le geste utilisateur. Après le `await`, Safari et
+    // certains bloqueurs considèrent window.open comme une popup non sollicitée.
+    const whatsappWindow = window.open("about:blank", "_blank");
+    if (whatsappWindow) whatsappWindow.opener = null;
     setSubmitting(true);
     try {
       await submitLead(submission);
@@ -63,7 +72,7 @@ export function LeadCaptureModal({ open, onClose, whatsappUrl, config, trackingS
       setStatus("error");
     } finally {
       setSubmitting(false);
-      proceedToWhatsApp();
+      proceedToWhatsApp(whatsappWindow);
     }
   };
 

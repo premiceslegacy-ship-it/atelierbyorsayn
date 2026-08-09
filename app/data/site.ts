@@ -66,7 +66,7 @@ export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, ho
     ? ` L'offre ${tier.name} m'intéresse : ${tier.price} € HT/mois d'abonnement.`
     : "";
   const message = hook
-    ? `${hook}${details}`
+    ? `${hook}\n\nMétier : ${tradeLabel}.${details}`
     : `Bonjour Samuel, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }

@@ -60,7 +60,7 @@ test("meta pixel: no critical request, PageView after interaction/nav, Contact o
   // 3. Click a WhatsApp CTA -> expect a Contact event
   const [popup] = await Promise.all([
     page.context().waitForEvent("page").catch(() => null),
-    page.getByRole("link", { name: /parler à samuel|récupérer du temps|rejoindre ces artisans|changer ce quotidien/i }).first().click(),
+    page.locator('a[href*="wa.me"]').first().click(),
   ]);
   await expect.poll(() => fbEvents.some((e) => e.event === "Contact")).toBe(true);
   await popup?.close();

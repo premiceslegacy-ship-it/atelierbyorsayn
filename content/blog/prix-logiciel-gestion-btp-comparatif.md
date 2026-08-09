@@ -3,6 +3,7 @@ title: "Prix des logiciels de gestion BTP en 2026 : comparatif"
 slug: "prix-logiciel-gestion-btp-comparatif"
 description: "Batigest, Obat, Batappli, Sellsy, Atelier : ce que ces logiciels coûtent vraiment et ce qui compte pour un maçon ou un métallier."
 publishedAt: "2026-07-18"
+updatedAt: "2026-08-09"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Choisir son logiciel"
@@ -27,7 +28,7 @@ Un logiciel de gestion BTP peut coûter de 0 € (Excel) à plus de 300 €/mois
 Les logiciels de gestion BTP se rangent dans deux familles de prix.
 
 - Les outils **facturés au mois**, sans engagement fort : Obat, Batappli, Sellsy. Le prix d'entrée est bas, mais il grimpe avec les modules et les utilisateurs.
-- Les outils **avec un coût d'installation** (setup, paramétrage, parfois formation) suivis d'un abonnement plus léger, ou d'aucun abonnement du tout si l'IA n'est pas utilisée.
+- Les offres **clé en main**, où un professionnel reprend les données, adapte l'outil au métier et forme l'équipe avant de laisser l'entreprise avancer seule.
 
 > **Le bon calcul n'est pas le prix mensuel seul.** C'est le prix mensuel, plus le temps que le logiciel fait gagner ou perdre sur vos devis, vos relances et votre suivi de marge.
 
@@ -40,8 +41,8 @@ Les logiciels de gestion BTP se rangent dans deux familles de prix.
 | Batappli | 79 à 199 €/mois | Abonnement mensuel, sans setup | Non |
 | Sellsy | 99 à 199 €/mois | Abonnement mensuel, CRM généraliste | Non |
 | Batigest | 150 à 300 €/mois | Abonnement + déploiement ERP | Non |
-| Atelier, sans abonnement | 3 000 € HT en une fois, puis 0 €/mois | Paiement unique, application complète, IA en veille | Activable à l'usage |
-| Atelier, avec abonnement | 69 à 169 € HT/mois, sans frais de setup | Abonnement mensuel, 14 jours d'essai sans carte bancaire | Oui, incluse dès le palier Pro |
+| Atelier, clé en main | 3 000 € HT en une fois, puis 0 €/mois | Configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement | Adaptée avec l'équipe Orsayn |
+| Atelier, démarrage autonome | Pro 69 € ou Expert 169 € HT/mois, sans frais de départ | Expert offert 14 jours, sans carte et sans prélèvement automatique à la fin | Oui |
 
 Les prix des concurrents varient selon le nombre d'utilisateurs et les modules activés : ce sont des fourchettes publiques, à vérifier au moment du devis. Les prix Atelier sont ceux publiés sur cette page.
 
@@ -49,10 +50,10 @@ Les prix des concurrents varient selon le nombre d'utilisateurs et les modules a
 
 Deux profils d'artisans se dessinent, et le bon choix dépend de votre rythme, pas d'une règle générale.
 
-- **Sans abonnement** convient à une entreprise qui veut une application complète (devis, factures, chantiers, planning, équipe) sans mensualité fixe, et qui active l'IA seulement par moments : un pic de devis, une période de relances à rattraper.
-- **Avec abonnement** convient à une entreprise qui veut que la préparation des devis, les relances et le suivi de marge tournent en continu, sans y repenser chaque fois.
+- **On s'occupe de tout** convient à l'entreprise qui préfère déléguer la configuration, la reprise du catalogue et la formation. Elle paie 3 000 € HT une fois, bénéficie de 30 jours d'accompagnement, puis garde son accès sans abonnement mensuel.
+- **Je démarre maintenant** convient à l'entreprise qui veut ouvrir son espace elle-même, sans frais de départ. Elle essaie Expert pendant 14 jours, puis choisit volontairement Pro à 69 € ou Expert à 169 € HT/mois.
 
-> **À retenir :** l'abonnement ne débloque pas plus de fonctionnalités de gestion. Il débloque un usage régulier de l'IA métier. L'application de base est la même dans les deux cas.
+> **À retenir :** la différence n'est pas seulement le mode de paiement. L'offre à 3 000 € achète surtout du temps humain au démarrage ; l'abonnement permet de commencer seul et de garder Sarah active chaque mois.
 
 ## Ce qui compte vraiment pour un maçon en rénovation
 
@@ -96,9 +97,9 @@ Un logiciel sans IA peut suffire à une petite structure qui a le temps de tout 
 
 Non. Un outil gratuit ou à bas prix qui ne calcule pas la marge réelle d'un chantier peut coûter plus cher en oublis et en erreurs de chiffrage qu'un abonnement mensuel plus élevé. Comparez le prix au temps et à l'argent réellement récupérés, pas seulement au tarif affiché.
 
-### Faut-il un abonnement pour utiliser l'IA métier ?
+### Que se passe-t-il après les 14 jours gratuits ?
 
-Chez Atelier, l'application complète (devis, factures, chantiers, planning) est disponible avec ou sans abonnement. L'IA reste accessible en veille sans abonnement, activable à l'usage, et devient continue à partir de l'abonnement avec Sarah incluse dès le palier Pro à 69 € HT/mois.
+Rien n'est prélevé automatiquement, car aucune carte n'est demandée pour l'essai. L'espace se met en pause : vous pouvez choisir Pro à 69 € HT/mois, Expert à 169 € HT/mois ou exporter vos données. Votre travail n'est pas effacé à l'expiration.
 
 ### Un maçon et un métallier ont-ils besoin du même logiciel ?
 
@@ -112,4 +113,4 @@ Oui, en partie. À partir du 1er septembre 2026, toute entreprise concernée doi
 
 Listez d'abord ce qui vous fait perdre du temps ou de l'argent aujourd'hui : devis lents, relances oubliées, marge inconnue avant la fin du chantier. Ensuite seulement, comparez les logiciels sur ces points précis, pas sur la liste complète des fonctionnalités.
 
-[Décrivez votre métier et votre volume de devis à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20compare%20les%20logiciels%20de%20gestion%20BTP%20et%20je%20veux%20un%20avis%20sur%20mon%20cas.) : il vous dira franchement si Atelier correspond à votre chantier type, ou pas.
+Vous voulez déléguer le démarrage ? [Décrivez votre métier et votre volume de devis à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20compare%20les%20logiciels%20de%20gestion%20BTP%20et%20je%20veux%20un%20avis%20sur%20mon%20cas.). Vous préférez avancer seul ? [Essayez Expert gratuitement pendant 14 jours](https://app.atelier-btp.fr/login?mode=signup&intent=trial&preferred=expert&source=atelier-blog), sans carte bancaire.

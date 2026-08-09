@@ -48,10 +48,10 @@ const schemas = [
       itemListElement: [
         {
           "@type": "Offer",
-          name: "Application sans abonnement",
+          name: "Atelier — On s'occupe de tout",
           price: SETUP_PRICE,
           priceCurrency: "EUR",
-          description: "Paiement unique donnant accès à l'application complète à vie, sans abonnement mensuel.",
+          description: "Configuration métier, reprise du catalogue, formation, 30 jours d'accompagnement et accès sans abonnement mensuel.",
         },
         ...PRICING_TIERS.map((tier) => ({
           "@type": "Offer",
@@ -59,6 +59,7 @@ const schemas = [
           price: tier.price,
           priceCurrency: "EUR",
           priceSpecification: { "@type": "UnitPriceSpecification", price: tier.price, priceCurrency: "EUR", unitText: "mois" },
+          description: "Sans frais de départ. Essai Expert de 14 jours sans carte bancaire et sans prélèvement automatique à l'expiration.",
         })),
       ],
     },

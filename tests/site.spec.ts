@@ -12,7 +12,7 @@ for (const viewport of [
   test(`accueil ${viewport.name}`, async ({ page }) => {
     await page.setViewportSize(viewport);
     await page.goto("/");
-    await expect(page.locator("h1")).toContainText("Une secrétaire métier");
+    await expect(page.locator("h1")).toContainText("Retrouvez 10h");
     await expect(page.locator("#demo")).toBeVisible();
     await page.screenshot({ path: `${screenshots}/accueil-${viewport.name}.png`, fullPage: true });
   });
@@ -20,21 +20,31 @@ for (const viewport of [
 
 test("navigation mobile, WhatsApp, démo et pricing", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/?utm_source=google&utm_medium=cpc&utm_campaign=devis");
   const menu = page.getByRole("button", { name: "Menu" });
   await menu.click();
   await expect(page.getByRole("link", { name: "Le journal" }).last()).toBeVisible();
-  const whatsapp = page.getByRole("link", { name: "Récupérer du temps" }).first();
-  await expect(whatsapp).toHaveAttribute("href", /wa\.me\/33651664068/);
+  await expect(page.getByRole("button", { name: "Récupérer du temps" }).first()).toBeVisible();
   await page.locator("#demo").scrollIntoViewIfNeeded();
-  await page.getByRole("tab", { name: /Vous décidez/ }).click();
+  await page.getByRole("tab", { name: /Vous validez/ }).click();
   await expect(page.getByText("Valider l'envoi")).toBeVisible();
   await page.locator("#tarifs").scrollIntoViewIfNeeded();
-  await expect(page.locator("#tarifs")).toContainText(/1.500 €/);
   await expect(page.locator("#tarifs")).toContainText(/3.000 €/);
-  await expect(page.getByRole("link", { name: "Choisir Pro" })).toHaveCount(0);
-  await page.getByRole("button", { name: /Avec abonnement/ }).click();
-  await expect(page.getByRole("link", { name: "Choisir Pro" })).toHaveAttribute("href", /79/);
+  await expect(page.getByRole("link", { name: /Essayer Expert gratuitement/ })).toHaveCount(0);
+  await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
+  const trialLinks = page.getByRole("link", { name: /Essayer Expert gratuitement/ });
+  await expect(trialLinks).toHaveCount(2);
+  await expect(trialLinks.nth(0)).toHaveAttribute("href", /preferred=pro/);
+  await expect(trialLinks.nth(1)).toHaveAttribute("href", /preferred=expert/);
+  await expect(page.locator("#tarifs")).toContainText(/69 €/);
+  await expect(page.locator("#tarifs")).toContainText(/169 €/);
+  const preservedHref = await trialLinks.nth(0).evaluate((element) => {
+    element.addEventListener("click", (event) => event.preventDefault(), { once: true });
+    (element as HTMLAnchorElement).click();
+    return (element as HTMLAnchorElement).href;
+  });
+  expect(preservedHref).toContain("utm_source=google");
+  expect(preservedHref).toContain("utm_campaign=devis");
 });
 
 test("navigation clavier du carrousel et réduction des animations", async ({ browser }) => {

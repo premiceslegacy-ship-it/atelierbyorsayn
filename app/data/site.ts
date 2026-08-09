@@ -1,4 +1,5 @@
 export const SITE_URL = "https://www.atelier-btp.fr";
+export const APP_URL = "https://app.atelier-btp.fr";
 export const WHATSAPP_NUMBER = "33651664068";
 export const META_PIXEL_ID = "1032268456078970";
 export const AUTHOR = {
@@ -15,16 +16,12 @@ export type PricingTier = {
   featured?: boolean;
   benefits: string[];
   quotas: string[];
-  adoptedBy: number;
 };
 
 export const TRIAL_DAYS = 14;
 
-/** Prix du setup one-shot, sans abonnement mensuel : app installée, pas de Sarah IA. */
+/** Offre clé en main : configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement. */
 export const SETUP_PRICE = 3000;
-
-/** Nombre d'artisans ayant choisi le setup sans abonnement, pour la réassurance social proof sur le pricing. */
-export const SETUP_ADOPTION = 9;
 
 export const PRICING_TIERS: PricingTier[] = [
   {
@@ -40,7 +37,6 @@ export const PRICING_TIERS: PricingTier[] = [
       "Devis préparés par IA à partir d'un texte, d'un plan ou d'une photo",
     ],
     quotas: ["120 échanges avec l'assistante IA / mois", "60 analyses de devis (dont pré-métré sur plan) / mois", "60 minutes de conversation vocale en direct / mois"],
-    adoptedBy: 7,
   },
   {
     id: "expert",
@@ -54,7 +50,6 @@ export const PRICING_TIERS: PricingTier[] = [
       "Pensé pour une équipe qui utilise l'IA tous les jours, sans surveiller un compteur",
     ],
     quotas: ["Échanges et analyses de devis illimités", "300 minutes de conversation vocale en direct / mois", "Extraction catalogue et imports illimités"],
-    adoptedBy: 2,
   },
 ];
 
@@ -74,6 +69,11 @@ export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, ho
     ? `${hook}${details}`
     : `Bonjour Samuel, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+export function buildTrialSignupUrl(tier: PricingTier["id"]) {
+  const params = new URLSearchParams({ mode: "signup", intent: "trial", preferred: tier, source: "atelier-lp" });
+  return `${APP_URL}/login?${params.toString()}`;
 }
 
 export type CaseStudy = {
@@ -167,7 +167,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Combien de temps faut-il pour démarrer ?",
-    answer: "Comptez en moyenne 48 heures après l'appel de démarrage. Votre environnement, votre catalogue et vos premiers automatismes sont configurés avec vous.",
+    answer: "Avec l'essai, vous pouvez créer votre espace immédiatement et avancer à votre rythme. Avec l'offre clé en main, nous configurons votre métier, reprenons votre catalogue, formons l'équipe et restons à vos côtés pendant 30 jours.",
   },
   {
     question: "Atelier fonctionne-t-il sur téléphone ?",
@@ -175,7 +175,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Setup ou abonnement, comment choisir ?",
-    answer: `Deux façons de démarrer. Le setup à ${SETUP_PRICE.toLocaleString("fr-FR")} € HT est un paiement unique : l'application métier vous appartient, sans abonnement à payer ensuite. L'abonnement mensuel (Pro ou Expert) vous donne Sarah, l'assistante IA, dès le premier jour — avec ${TRIAL_DAYS} jours d'essai gratuit, sans carte bancaire.`,
+    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement, avec un accès sans abonnement mensuel. Pro à 69 € HT/mois et Expert à 169 € HT/mois vous permettent de démarrer vous-même, avec ${TRIAL_DAYS} jours d'Expert offerts sans carte bancaire et aucun prélèvement automatique à la fin.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",

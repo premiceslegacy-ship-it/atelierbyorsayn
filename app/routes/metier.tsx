@@ -141,13 +141,13 @@ export default function MetierRoute() {
         </section>
 
         <section className="section trade-features">
-          <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, réglés sur votre métier pendant le setup.<br />Pas une liste de fonctionnalités.</p></div>
+          <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, adaptés à votre métier dès votre démarrage.<br />Pas une liste de fonctionnalités.</p></div>
           <div className="feature-list">{metier.features.items.map((item, index) => {
             const Icon = featureIcons[index] ?? Sparkles;
             return <article key={item.titre}><div><Icon /></div><h3>{item.titre}</h3><p>{item.description}</p></article>;
           })}</div>
           <div className="section-cta">
-            <p><strong>C'est exactement ce que fait Atelier pour {metier.metier.toLowerCase()}.</strong><br />Configuré sur votre catalogue et vos prix pendant le setup.</p>
+            <p><strong>C'est exactement ce que fait Atelier pour {metier.metier.toLowerCase()}.</strong><br />Votre catalogue et vos prix restent au cœur de chaque proposition.</p>
             <div>
               <Link className="button button--dark" to="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>
             </div>

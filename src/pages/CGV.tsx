@@ -10,7 +10,7 @@ export default function CGV() {
         <h1 className="font-display text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">
           Conditions Générales de Vente
         </h1>
-        <p className="text-xs text-text-secondary mb-1">Version 1.0 - mai 2026</p>
+        <p className="text-xs text-text-secondary mb-1">Version 1.1 - 9 août 2026</p>
         <p className="text-xs text-text-secondary/60 mb-10">
           Ces CGV s'appliquent à toutes les prestations réalisées par Orsayn (Samuel Mbeboura, entrepreneur individuel, SIRET 98920815200011) au bénéfice de ses clients professionnels. Elles prévalent sur tout document d'achat du client, sauf accord écrit contraire.
         </p>
@@ -21,7 +21,7 @@ export default function CGV() {
             <p>Les présentes CGV régissent :</p>
             <ul className="list-disc list-inside mt-2 space-y-1 text-neutral-400">
               <li>Les prestations de déploiement one-shot du logiciel Atelier (setup).</li>
-              <li>Les abonnements mensuels aux modules IA (MRR).</li>
+              <li>Les abonnements mensuels Pro et Expert à la plateforme partagée Atelier.</li>
               <li>Les prestations annexes : facturation électronique B2Brouter, migration de données, formation, accompagnement.</li>
             </ul>
             <p className="mt-3">
@@ -43,18 +43,23 @@ export default function CGV() {
           </Section>
 
           <Section title="Article 3 - Description des prestations">
-            <SubSection title="3.1 Setup one-shot">
+            <SubSection title="3.1 Offre clé en main - environnement dédié">
               <p>
                 Prestation de déploiement de l'application Atelier incluant : création et configuration de l'instance Supabase (base de données, authentification, stockage), déploiement sur Cloudflare Workers, configuration du domaine et des emails transactionnels, exécution des migrations SQL, initialisation du profil entreprise et du catalogue, onboarding du compte propriétaire, tests de mise en service, et 30 jours de support au démarrage.
               </p>
               <p className="mt-2">Le setup est une prestation de service unique, non un transfert de propriété du code source.</p>
             </SubSection>
-            <SubSection title="3.2 Abonnement MRR - modules IA">
+            <SubSection title="3.2 Abonnements Pro et Expert - plateforme partagée">
               <p>
-                Abonnement mensuel donnant accès aux modules d'intelligence artificielle de l'application selon le tier souscrit (Pro 69 € HT/mois, Expert 169 € HT/mois). Les fonctionnalités non-IA de l'application (devis, factures, chantiers, catalogue, exports, signatures) fonctionnent sans abonnement MRR, avec l'IA en veille.
+                Abonnement mensuel donnant accès à la plateforme Atelier selon la formule souscrite : Pro à 69 € HT/mois ou Expert à 169 € HT/mois. Le prix est établi par organisation, sans supplément par utilisateur. Les droits et limites propres à chaque formule sont présentés avant la souscription.
               </p>
             </SubSection>
-            <SubSection title="3.3 Prestations annexes">
+            <SubSection title="3.3 Essai Expert de 14 jours">
+              <p>
+                Après vérification de l'email, renseignement du SIRET et fin de l'onboarding, une organisation éligible bénéficie une seule fois de 14 jours d'Expert gratuits. Aucune carte bancaire n'est demandée. À l'expiration, aucun abonnement et aucun prélèvement ne sont déclenchés automatiquement. L'accès opérationnel est verrouillé jusqu'au choix volontaire d'une formule ; l'export des données et les pages légales restent accessibles.
+              </p>
+            </SubSection>
+            <SubSection title="3.4 Prestations annexes">
               <ul className="list-disc list-inside space-y-1 text-neutral-400">
                 <li>Conformité facturation électronique (connexion au réseau légal via partenaire PDP) : 450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon le volume d'activité.</li>
                 <li>Migration depuis un ancien logiciel : sur devis, 150 € HT/heure.</li>
@@ -77,10 +82,10 @@ export default function CGV() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {[
-                    ["Setup - app seule", "3 000 € HT"],
-                    ["Setup - app + conformité facturation électronique", "3 450 € HT"],
-                    ["MRR IA Pro", "69 € HT/mois"],
-                    ["MRR IA Expert", "169 € HT/mois"],
+                    ["On s'occupe de tout - environnement dédié", "3 000 € HT"],
+                    ["Clé en main + conformité facturation électronique", "3 450 € HT"],
+                    ["Atelier Pro", "69 € HT/mois par organisation"],
+                    ["Atelier Expert", "169 € HT/mois par organisation"],
                     ["Conformité facturation électronique (PDP partenaire)", "450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon volume"],
                     ["Migration données", "150 € HT/heure"],
                     ["Formation / accompagnement", "150 € HT/heure - forfait 3h : 350 € HT"],
@@ -103,7 +108,7 @@ export default function CGV() {
               <p>Paiement intégral à la commande, avant le début du déploiement, par virement bancaire ou tout autre moyen convenu par écrit.</p>
             </SubSection>
             <SubSection title="5.2 Abonnement MRR">
-              <p>Facturation mensuelle à terme échu. Le premier mois est facturé au prorata de la date d'activation. Le paiement est dû dans un délai de <strong className="text-white">15 jours</strong> à compter de la date de facture.</p>
+              <p>Le paiement est réalisé par carte via Stripe au début de chaque période mensuelle. La facturation ne commence qu'après une souscription volontaire ; l'essai sans carte ne se transforme jamais automatiquement en abonnement. Un passage à une formule supérieure est appliqué immédiatement avec prorata. Un passage à une formule inférieure prend effet à l'échéance suivante.</p>
             </SubSection>
             <SubSection title="5.3 Pénalités de retard">
               <p className="mb-2">Conformément à l'article L.441-10 du Code de commerce, tout retard de paiement entraîne de plein droit, sans mise en demeure préalable :</p>
@@ -113,7 +118,7 @@ export default function CGV() {
               </ul>
             </SubSection>
             <SubSection title="5.4 Défaut de paiement">
-              <p>En cas de non-paiement à l'échéance, Orsayn se réserve le droit de suspendre l'accès à l'application après mise en demeure restée sans effet pendant 8 jours, sans que cette suspension ne constitue une rupture du contrat.</p>
+              <p>En cas d'échec de paiement, l'accès est maintenu pendant les tentatives de récupération gérées par Stripe. Il est verrouillé si l'abonnement devient impayé ou prend effectivement fin. La régularisation du paiement rétablit l'accès selon l'état transmis par Stripe.</p>
             </SubSection>
           </Section>
 
@@ -122,7 +127,7 @@ export default function CGV() {
               <p>La prestation de setup est conclue pour une durée déterminée prenant fin à la livraison confirmée et à l'expiration des 30 jours de support au démarrage. Elle ne comporte pas d'engagement de durée postérieur.</p>
             </SubSection>
             <SubSection title="6.2 Abonnement MRR">
-              <p>L'abonnement est conclu pour une durée indéterminée à compter de la date d'activation. Chaque partie peut y mettre fin à tout moment avec un préavis de <strong className="text-white">30 jours calendaires</strong> notifié par email.</p>
+              <p>L'abonnement est conclu pour une durée indéterminée à compter de la date d'activation. Le Client peut demander sa résiliation depuis Atelier en indiquant un motif. La fin est programmée exactement <strong className="text-white">30 jours calendaires</strong> après la demande ; l'accès reste ouvert jusque-là et Stripe calcule la dernière période au prorata.</p>
             </SubSection>
             <SubSection title="6.3 Résiliation pour manquement">
               <p>En cas de manquement grave de l'une des parties à ses obligations contractuelles (notamment non-paiement répété, usage contraire aux conditions d'utilisation, atteinte à la sécurité du service), l'autre partie peut résilier le contrat de plein droit après mise en demeure restée sans effet pendant <strong className="text-white">15 jours</strong>.</p>
@@ -131,7 +136,7 @@ export default function CGV() {
               <ul className="list-disc list-inside space-y-1 text-neutral-400">
                 <li>L'abonnement MRR est arrêté à la fin de la période de préavis. Aucun remboursement du setup one-shot n'est dû.</li>
                 <li>Orsayn met à disposition un export complet des données du client dans les 30 jours suivant la résiliation effective, conformément à l'Annexe RGPD / DPA.</li>
-                <li>Passé ce délai d'export, l'instance est supprimée, sous réserve des durées légales de conservation.</li>
+                <li>Pour l'offre dédiée, l'environnement peut ensuite être supprimé. Pour la plateforme partagée, les données de l'organisation sont supprimées ou anonymisées selon le même calendrier, sous réserve des durées légales de conservation.</li>
               </ul>
             </SubSection>
           </Section>
@@ -231,7 +236,7 @@ export default function CGV() {
           </Section>
 
           <p className="text-[10px] text-text-secondary/40 border-t border-white/5 pt-6">
-            CGV Orsayn - Version 1.0 - mai 2026 · Samuel Mbeboura EI - SIRET 98920815200011
+            CGV Orsayn - Version 1.1 - 9 août 2026 · Samuel Mbeboura EI - SIRET 98920815200011
           </p>
 
         </div>

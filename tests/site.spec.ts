@@ -30,8 +30,7 @@ test("navigation mobile, WhatsApp, démo et pricing", async ({ page }) => {
   await expect(page.getByText("Valider l'envoi")).toBeVisible();
   await page.locator("#tarifs").scrollIntoViewIfNeeded();
   await expect(page.locator("#tarifs")).toContainText(/3.000 €/);
-  const directTrialLink = page.getByRole("link", { name: /Je démarre maintenant/ });
-  await expect(directTrialLink).toHaveAttribute("href", /preferred=expert/);
+  await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
   const trialLinks = page.getByRole("link", { name: /Essayer Expert gratuitement/ });
   await expect(trialLinks).toHaveCount(2);
   await expect(trialLinks.nth(0)).toBeVisible();

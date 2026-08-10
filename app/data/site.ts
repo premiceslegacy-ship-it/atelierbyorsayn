@@ -53,21 +53,45 @@ export const PRICING_TIERS: PricingTier[] = [
   },
 ];
 
-export function buildWhatsAppUrl(tier?: PricingTier) {
+/** Accroche par section du site, injectée dans le message WhatsApp pour qualifier l'origine du contact. */
+const SECTION_CONTEXT: Record<string, string> = {
+  navbar: "je regardais votre site",
+  "mobile-sticky": "je regardais votre site",
+  hero: "je viens de voir votre page d'accueil",
+  demo: "je viens de voir la démo de Sarah sur votre site",
+  benefits: "je viens de voir ce qu'Atelier change au quotidien",
+  "proof-band": "je viens de voir les résultats d'autres artisans sur votre site",
+  cases: "je viens de voir les témoignages d'artisans qui utilisent Atelier",
+  faq: "j'avais une question après avoir lu votre FAQ",
+  closing: "je regardais votre site",
+};
+
+function sectionHook(source: string, tradeLabel?: string, articleTitle?: string) {
+  if (source.startsWith("article-")) return articleTitle ? `je viens de lire votre article "${articleTitle}"` : "je viens de lire votre article de blog";
+  if (source.endsWith("-done-for-you")) return "je regardais votre offre clé en main";
+  if (source.startsWith("pricing")) return "je regardais vos tarifs";
+  if (source.startsWith("metier-problems-")) return `je me reconnais dans le quotidien d'un ${tradeLabel ?? "artisan"} que vous décrivez`;
+  if (source.startsWith("metier-cases-")) return "je viens de voir les témoignages d'artisans qui utilisent Atelier";
+  if (source.startsWith("metier-closing-")) return "je regardais votre page";
+  if (source.startsWith("metier-")) return "je viens de voir votre page";
+  return SECTION_CONTEXT[source] ?? "je regardais votre site";
+}
+
+export function buildWhatsAppUrl(tier?: PricingTier, source = "site", articleTitle?: string) {
   const details = tier
     ? `\n\nOffre envisagée : ${tier.name}, ${tier.price} € HT/mois d'abonnement`
     : "";
-  const message = `Bonjour Samuel, je suis intéressé par Atelier pour mon entreprise.${details}\n\nOn peut en parler ?`;
+  const message = `Bonjour Samuel, ${sectionHook(source, undefined, articleTitle)}, je suis intéressé par Atelier pour mon entreprise.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, hook?: string) {
+export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, hook?: string, source = "metier") {
   const details = tier
     ? ` L'offre ${tier.name} m'intéresse : ${tier.price} € HT/mois d'abonnement.`
     : "";
   const message = hook
     ? `${hook}\n\nMétier : ${tradeLabel}.${details}`
-    : `Bonjour Samuel, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
+    : `Bonjour Samuel, ${sectionHook(source, tradeLabel)}, je suis ${tradeLabel} et je suis intéressé par ce qu'Atelier peut m'apporter.${details}\n\nOn peut en parler ?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { useContext, useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import {
   ArrowRight,
@@ -18,16 +18,14 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getArticles } from "../lib/articles";
+import { OpenLeadModalContext } from "../lib/leadModal";
 import { buildWhatsAppUrl, FAQ_ITEMS } from "../data/site";
 import { CaseCarousel } from "./CaseCarousel";
 import { ProofStrip } from "./ProofStrip";
 import { Pricing } from "./Pricing";
 import { SiteShell } from "./Shell";
 import { LeadCaptureModal } from "./LeadCaptureModal";
-import { HOME_LEAD_CONFIG } from "../data/leadForms";
-
-/** Déclenche l'ouverture de la modale de capture depuis n'importe quel CTA WhatsApp de la home. */
-const OpenLeadModalContext = createContext<(source: string) => void>(() => {});
+import { HOME_LEAD_CONFIG, SETUP_LEAD_CONFIG } from "../data/leadForms";
 
 /** Bouton CTA WhatsApp de la home : ouvre la modale de capture au lieu d'un lien direct. */
 function WhatsAppCta({ className, source, children }: { className: string; source: string; children: ReactNode }) {
@@ -262,7 +260,8 @@ function Demo() {
 export default function HomePage({ structuredData }: { structuredData?: ReactNode }) {
   const articles = getArticles().slice(0, 3);
   const [leadModalSource, setLeadModalSource] = useState<string | null>(null);
-  const whatsappUrl = buildWhatsAppUrl();
+  const isSetupLead = leadModalSource?.endsWith("-done-for-you") ?? false;
+  const whatsappUrl = buildWhatsAppUrl(undefined, leadModalSource ?? "site");
 
   return (
     <OpenLeadModalContext.Provider value={setLeadModalSource}>
@@ -273,7 +272,7 @@ export default function HomePage({ structuredData }: { structuredData?: ReactNod
           open={leadModalSource !== null}
           onClose={() => setLeadModalSource(null)}
           whatsappUrl={whatsappUrl}
-          config={HOME_LEAD_CONFIG}
+          config={isSetupLead ? SETUP_LEAD_CONFIG : HOME_LEAD_CONFIG}
           trackingSource={leadModalSource ? `home-${leadModalSource}` : ""}
         />
       </SiteShell>

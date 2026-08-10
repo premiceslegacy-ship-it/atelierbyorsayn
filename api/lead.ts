@@ -53,7 +53,7 @@ const LEAD_TARGETS: Record<string, LeadTarget> = {
   },
   general: {
     dataSourceId: "2c20f5e8-cb6d-41eb-8931-1ee90dba6aeb",
-    sources: ["Organique", "Home", "Autre"],
+    sources: ["Organique", "Home", "Clé en main", "Autre"],
     fields: {
       metier: { type: "select", options: new Set(SITE_METIERS) },
       douleurs: { type: "multi_select", options: new Set(BTP_DOULEURS) },
@@ -64,6 +64,7 @@ const LEAD_TARGETS: Record<string, LeadTarget> = {
 type LeadPayload = {
   key?: unknown;
   prenom?: unknown;
+  entreprise?: unknown;
   telephone?: unknown;
   source?: unknown;
   metier?: unknown;
@@ -111,11 +112,17 @@ export default async function handler(request: Request): Promise<Response> {
     return new Response(JSON.stringify({ error: "Missing or invalid required fields" }), { status: 400 });
   }
 
+  const entreprise = sanitizeText(payload.entreprise, 200);
+
   const properties: Record<string, unknown> = {
     "Prénom": { title: [{ text: { content: prenom } }] },
     "Téléphone": { phone_number: telephone },
     "Source": { select: { name: source } },
   };
+
+  if (entreprise) {
+    properties["Entreprise"] = { rich_text: [{ text: { content: entreprise } }] };
+  }
 
   if (target.fields.metier) {
     const metier = sanitizeText(payload.metier, 60);

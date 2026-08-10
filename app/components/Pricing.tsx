@@ -1,24 +1,29 @@
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
-import { buildTradeWhatsAppUrl, buildTrialSignupUrl, buildWhatsAppUrl, PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS } from "../data/site";
+import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS, buildTrialSignupUrl } from "../data/site";
+import { OpenLeadModalContext } from "../lib/leadModal";
 import { ConversionLink } from "./ConversionLink";
 
 type PricingProps = {
-  /** Libellé métier ("électricien", "métallier", …) pour personnaliser le message WhatsApp. Absent sur la home. */
-  tradeLabel?: string;
-  /** Angle publicitaire propre au métier, conservé jusque dans le message WhatsApp. */
-  whatsappHook?: string;
   /** Suffixe ajouté au source de tracking pour distinguer l'origine (ex: slug du métier). */
   sourceSuffix?: string;
   /** Précision métier affichée sous les formules (ex: module prix matières métal). Absent = rien d'affiché. */
   note?: string;
 };
 
-export function Pricing({ tradeLabel, whatsappHook, sourceSuffix, note }: PricingProps) {
+export function Pricing({ sourceSuffix, note }: PricingProps) {
   const [selected, setSelected] = useState("pro");
+  const [showTrialTiers, setShowTrialTiers] = useState(false);
+  const revealRef = useRef<HTMLDivElement>(null);
+  const openLeadModal = useContext(OpenLeadModalContext);
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
 
-  const setupUrl = tradeLabel ? buildTradeWhatsAppUrl(tradeLabel, undefined, whatsappHook) : buildWhatsAppUrl();
+  const setupSource = `${source}-done-for-you`;
+
+  const revealTiers = () => {
+    setShowTrialTiers(true);
+    requestAnimationFrame(() => revealRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
 
   return (
     <section id="tarifs" className="section section--pricing">
@@ -27,36 +32,9 @@ export function Pricing({ tradeLabel, whatsappHook, sourceSuffix, note }: Pricin
         <h2>Récupérez vos soirées.<br />Choisissez simplement qui démarre.</h2>
         <p>Vous voulez que l'on prépare tout avec vous, ou commencer aujourd'hui sans frais de départ ?</p>
       </div>
-      <div className="pricing-choice-grid" aria-label="Choisir un modèle tarifaire">
-        <ConversionLink
-          className="pricing-choice"
-          href={setupUrl}
-          source={`${source}-done-for-you`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span className="pricing-choice__label">On s'occupe de tout</span>
-          <div className="pricing-choice__price"><strong>{SETUP_PRICE.toLocaleString("fr-FR")} €</strong><span>HT, une seule fois</span></div>
-          <h3>Votre entreprise est prête, sans soirée sacrifiée.</h3>
-          <p>Configuration métier, reprise du catalogue, formation de l'équipe et 30 jours d'accompagnement. Puis accès sans abonnement mensuel.</p>
-          <span className="pricing-choice__action">Parler de mon entreprise <ArrowRight /></span>
-        </ConversionLink>
-        <ConversionLink
-          className="pricing-choice"
-          href={buildTrialSignupUrl("expert")}
-          source={`${source}-trial-direct`}
-          tier="expert"
-          preserveUtm
-        >
-          <span className="pricing-choice__label">Je démarre maintenant</span>
-          <div className="pricing-choice__price"><strong>{TRIAL_DAYS} jours</strong><span>d'Expert offerts, sans carte</span></div>
-          <h3>Votre premier devis peut partir aujourd'hui.</h3>
-          <p>Commencez sans frais de départ. Testez tout Expert, puis choisissez Pro à {PRICING_TIERS[0].price} € ou Expert à {PRICING_TIERS[1].price} € HT/mois.</p>
-          <span className="pricing-choice__action">Commencer mes {TRIAL_DAYS} jours gratuits <ArrowRight /></span>
-        </ConversionLink>
-      </div>
-      <div className="pricing-reveal">
-          <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Tout Expert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Votre choix Pro ou Expert est simplement mémorisé pour vous faire gagner du temps ensuite.</p></div>
+      {showTrialTiers ? (
+        <div className="pricing-reveal" ref={revealRef}>
+          <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Tout Expert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Choisissez Pro ou Expert ci-dessous pour créer votre espace.</p></div>
           <div className="pricing-carousel">
             <div className="pricing-carousel__viewport">
               <div className="pricing-carousel__track">
@@ -94,7 +72,28 @@ export function Pricing({ tradeLabel, whatsappHook, sourceSuffix, note }: Pricin
             </div>
           </div>
           {note && <p className="pricing-note pricing-note--trade">{note}</p>}
-      </div>
+          <button type="button" className="text-link pricing-reveal__back" onClick={() => setShowTrialTiers(false)}>
+            Voir l'offre clé en main
+          </button>
+        </div>
+      ) : (
+        <div className="pricing-choice-grid" aria-label="Choisir un modèle tarifaire">
+          <button type="button" className="pricing-choice" onClick={() => openLeadModal(setupSource)}>
+            <span className="pricing-choice__label">On s'occupe de tout</span>
+            <div className="pricing-choice__price"><strong>{SETUP_PRICE.toLocaleString("fr-FR")} €</strong><span>HT, une seule fois</span></div>
+            <h3>Votre entreprise est prête, sans soirée sacrifiée.</h3>
+            <p>Configuration métier, reprise du catalogue, formation de l'équipe et 30 jours d'accompagnement. Puis accès sans abonnement mensuel.</p>
+            <span className="pricing-choice__action">Parler de mon entreprise <ArrowRight /></span>
+          </button>
+          <button type="button" className="pricing-choice" onClick={revealTiers}>
+            <span className="pricing-choice__label">Je démarre maintenant</span>
+            <div className="pricing-choice__price"><strong>{TRIAL_DAYS} jours</strong><span>d'Expert offerts, sans carte</span></div>
+            <h3>Votre premier devis peut partir aujourd'hui.</h3>
+            <p>Commencez sans frais de départ. Testez tout Expert, puis choisissez Pro à {PRICING_TIERS[0].price} € ou Expert à {PRICING_TIERS[1].price} € HT/mois.</p>
+            <span className="pricing-choice__action">Voir les deux formules <ArrowRight /></span>
+          </button>
+        </div>
+      )}
       <p className="pricing-note">Connexion facturation électronique (facultative) : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.</p>
     </section>
   );

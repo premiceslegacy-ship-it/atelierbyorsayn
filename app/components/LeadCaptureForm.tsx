@@ -7,6 +7,7 @@ export const METAUX_OPTIONS = ["Aluminium", "Cuivre", "Zinc", "Inox", "Acier", "
 
 export type LeadFormValues = {
   prenom: string;
+  entreprise: string;
   telephone: string;
   metier: string;
   /** Variante métallerie uniquement. */
@@ -41,6 +42,7 @@ export function LeadCaptureForm({
 }) {
   const [values, setValues] = useState<LeadFormValues>({
     prenom: "",
+    entreprise: "",
     telephone: "",
     metier: config.defaultMetier ?? "",
     metaux: [],
@@ -80,6 +82,18 @@ export function LeadCaptureForm({
           onChange={(event) => setValues((prev) => ({ ...prev, prenom: event.target.value }))}
           placeholder="Votre prénom"
           required
+        />
+      </div>
+
+      <div className="lead-form__field">
+        <label htmlFor={`${formId}-entreprise`}>Entreprise</label>
+        <input
+          id={`${formId}-entreprise`}
+          type="text"
+          autoComplete="organization"
+          value={values.entreprise}
+          onChange={(event) => setValues((prev) => ({ ...prev, entreprise: event.target.value }))}
+          placeholder="Nom de votre entreprise"
         />
       </div>
 

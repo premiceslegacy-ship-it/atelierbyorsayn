@@ -43,7 +43,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
           ) : (
             <ConversionLink
               className="button button--primary button--small"
-              href={buildWhatsAppUrl()}
+              href={buildWhatsAppUrl(undefined, "navbar")}
               source="navbar"
               target="_blank"
               rel="noreferrer"
@@ -139,7 +139,7 @@ export function SiteShell({
       ) : (
         <ConversionLink
           className={`mobile-whatsapp ${showMobileCta ? "is-visible" : ""}`}
-          href={buildWhatsAppUrl()}
+          href={buildWhatsAppUrl(undefined, "mobile-sticky")}
           source="mobile-sticky"
           target="_blank"
           rel="noreferrer"

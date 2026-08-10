@@ -81,3 +81,18 @@ export const HOME_LEAD_CONFIG: LeadFormConfig = {
   variant: "general",
   source: "Home",
 };
+
+/** Config de capture pour l'offre clé en main (setup 3000€) : base générale, source dédiée pour isoler ces leads. */
+export const SETUP_LEAD_CONFIG: LeadFormConfig = {
+  key: "general",
+  variant: "general",
+  source: "Clé en main",
+};
+
+/** Variante de SETUP_LEAD_CONFIG avec le métier pré-sélectionné, pour une page métier. */
+export function getSetupLeadConfig(metierLabel: string): LeadFormConfig {
+  return {
+    ...SETUP_LEAD_CONFIG,
+    defaultMetier: SITE_METIERS.includes(metierLabel as (typeof SITE_METIERS)[number]) ? metierLabel : "Autre",
+  };
+}

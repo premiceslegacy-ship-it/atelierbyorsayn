@@ -113,7 +113,7 @@ export function ProofStrip({ onWhatsAppClick }: { onWhatsAppClick?: () => void }
               <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
             </button>
           ) : (
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl()} source="proof-band" target="_blank" rel="noreferrer">
+            <ConversionLink className="button button--primary" href={buildWhatsAppUrl(undefined, "proof-band")} source="proof-band" target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
             </ConversionLink>
           )}

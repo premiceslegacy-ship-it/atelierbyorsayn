@@ -1,10 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { metiers } from "../src/data/metiers";
 
-test("le CTA 14 jours ouvre réellement l'inscription et conserve les UTM", async ({ page }) => {
+test("le CTA 14 jours révèle Pro/Expert et l'inscription conserve les UTM", async ({ page }) => {
   await page.goto("/?utm_source=google&utm_medium=cpc&utm_campaign=devis");
-  const trial = page.getByRole("link", { name: /Je démarre maintenant/ });
+  await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
 
+  const trial = page.locator('a.pricing-card[href*="preferred=expert"]');
   await expect(trial).toHaveAttribute("href", /app\.atelier-btp\.fr\/login/);
   await trial.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault(), { once: true }));
   await trial.click();
@@ -24,10 +25,21 @@ for (const metier of metiers) {
     await context.route("https://wa.me/**", (route) => route.fulfill({ status: 200, contentType: "text/html", body: "<title>WhatsApp test</title>" }));
     await page.goto(`/${metier.slug}`);
 
-    const setupHref = await page.getByRole("link", { name: /On s'occupe de tout/ }).getAttribute("href");
-    expect(setupHref).toBeTruthy();
-    const setupMessage = new URL(setupHref!).searchParams.get("text") ?? "";
+    await page.locator("#tarifs").scrollIntoViewIfNeeded();
+    await page.getByRole("button", { name: /On s'occupe de tout/ }).click();
+    const setupDialog = page.getByRole("dialog");
+    await expect(setupDialog).toBeVisible();
+    await setupDialog.getByLabel("Prénom").fill("Test");
+    await setupDialog.getByLabel("Téléphone").fill("06 12 34 56 78");
+    const setupPopupPromise = page.waitForEvent("popup");
+    await setupDialog.getByRole("button", { name: /Continuer sur WhatsApp/ }).click();
+    const setupPopup = await setupPopupPromise;
+    await setupPopup.waitForURL(/wa\.me\/33651664068/);
+    const setupMessage = new URL(setupPopup.url()).searchParams.get("text") ?? "";
     expect(setupMessage.toLocaleLowerCase("fr")).toContain(metier.whatsapp.toLocaleLowerCase("fr"));
+    await setupPopup.close();
+    await setupDialog.getByRole("button", { name: "Fermer" }).click();
+    await expect(setupDialog).not.toBeVisible();
 
     await page.getByRole("button", { name: /Voir Atelier en action/ }).click();
     const dialog = page.getByRole("dialog");

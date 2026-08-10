@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("meta pixel: no critical request, PageView after interaction/nav, Contact on CTA", async ({ page }) => {
+test("meta pixel: no critical request, PageView after interaction/nav, Lead on CTA", async ({ page }) => {
   const fbEvents: { event: string; url: string }[] = [];
   let pixelScriptRequests = 0;
 
@@ -57,11 +57,17 @@ test("meta pixel: no critical request, PageView after interaction/nav, Contact o
   await expect.poll(() => fbEvents.filter((e) => e.event === "PageView").length).toBeGreaterThanOrEqual(2);
   expect(fbEvents.filter((e) => e.event === "PageView").length).toBeLessThanOrEqual(2);
 
-  // 3. Click a WhatsApp CTA -> expect a Contact event
+  // 3. Click a WhatsApp CTA -> expect a Lead event (modal flow fires Lead, not Contact, to avoid double-counting)
+  await page.route("**/api/lead", (route) => route.fulfill({ status: 200, contentType: "application/json", body: "{}" }));
+  await page.getByRole("button", { name: /Voir Atelier en action/ }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await dialog.getByLabel("Prénom").fill("Test");
+  await dialog.getByLabel("Téléphone").fill("06 12 34 56 78");
   const [popup] = await Promise.all([
     page.context().waitForEvent("page").catch(() => null),
-    page.locator('a[href*="wa.me"]').first().click(),
+    dialog.getByRole("button", { name: /Continuer sur WhatsApp/ }).click(),
   ]);
-  await expect.poll(() => fbEvents.some((e) => e.event === "Contact")).toBe(true);
+  await expect.poll(() => fbEvents.some((e) => e.event === "Lead")).toBe(true);
   await popup?.close();
 });

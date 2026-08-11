@@ -64,7 +64,7 @@ export function Pricing({ sourceSuffix, note }: PricingProps) {
                         <summary>Voir les quotas <ChevronDown /></summary>
                         <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
                       </details>
-                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>Essayer Expert gratuitement pendant {TRIAL_DAYS} jours<ArrowRight /></span>
+                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>Choisir {tier.name}, essai Expert {TRIAL_DAYS} jours<ArrowRight /></span>
                     </ConversionLink>
                   </div>
                 ))}

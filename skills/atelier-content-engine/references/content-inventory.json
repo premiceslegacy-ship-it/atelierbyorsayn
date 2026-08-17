@@ -1,7 +1,21 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-08-01",
+  "updatedAt": "2026-08-17",
   "articles": [
+    {
+      "slug": "devis-facture-erreurs-artisan-btp",
+      "pillar": "Facturation et conformité",
+      "intent": "Éviter les erreurs de devis et facture qui bloquent un paiement",
+      "primaryQuery": "erreurs devis facture artisan BTP",
+      "internalLinks": ["facturation-electronique-artisans-btp-2026-2027", "relancer-client-impaye-artisan-btp"]
+    },
+    {
+      "slug": "planning-chantier-conflits-equipe-btp",
+      "pillar": "Organisation et planning",
+      "intent": "Organiser un planning chantier sans conflit d'équipe ni temps mort",
+      "primaryQuery": "planning chantier équipe artisan BTP",
+      "internalLinks": ["calcul-marge-chantier-btp", "secretaire-ia-artisan-sarah"]
+    },
     {
       "slug": "relancer-client-impaye-artisan-btp",
       "pillar": "Trésorerie et relances",

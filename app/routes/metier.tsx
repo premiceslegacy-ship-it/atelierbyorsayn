@@ -39,7 +39,6 @@ const featureIcons = [FileText, Sparkles, TrendingUp];
 
 export default function MetierRoute() {
   const { metier } = useLoaderData<typeof loader>();
-  const { primaryMetric, highlight, latest } = metier.heroMockup;
   const generalLeadConfig = getMetierLeadConfig(metier.slug, metier.metier);
   const setupLeadConfig = getSetupLeadConfig(metier.metier);
   const [leadModalSource, setLeadModalSource] = useState<string | null>(null);
@@ -87,43 +86,19 @@ export default function MetierRoute() {
               <li><ChevronRight aria-hidden="true" /><span aria-current="page">{metier.metier}</span></li>
             </ol>
           </nav>
-          <section className="trade-hero">
+          <section className="trade-hero trade-hero--centered">
             <div className="trade-hero__copy">
               <p className="eyebrow">Logiciel de gestion & suivi de chantier · {metier.metier}</p>
               <h1>{metier.hero.headline}</h1>
               <p>{metier.hero.subheadline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
               <div className="hero__actions">
                 <Link className="button button--primary" to="#tarifs">{metier.hero.ctaPrimary} <ArrowRight /></Link>
-                {whatsAppCta(`metier-${metier.slug}`, "button button--dark", <><MessageCircle /> Voir Atelier en action</>)}
               </div>
               <div className="trade-hero__proof">
                 <div className="avatar-stack">
                   {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" />)}
                 </div>
                 <p><strong>Des artisans du bâtiment, comme vous.</strong><span>Temps, encours et marge mesurés sur le terrain.</span></p>
-              </div>
-            </div>
-            <div className="trade-visual">
-              <div className="trade-visual__glow" aria-hidden="true" />
-              <div className="trade-app">
-                <div className="trade-app__bar">
-                  <img src="/logo-atelier-blanc.png" alt="Atelier" width="706" height="80" />
-                  <span className="trade-app__status"><i /> {metier.metier}</span>
-                </div>
-                <div className="trade-app__body">
-                  <div className="trade-app__metric">
-                    <p>{primaryMetric.label} <em>{primaryMetric.status}</em></p>
-                    <strong>{primaryMetric.value}</strong>
-                    <div className="progress progress--light"><span style={{ width: primaryMetric.progress }} /></div>
-                    <div className="trade-app__meta"><small>{primaryMetric.detail}</small><small>{primaryMetric.target}</small></div>
-                  </div>
-                  <div className="trade-app__highlight"><Sparkles /><span><b>{highlight.label}</b>{highlight.detail}</span><i>{highlight.badge}</i></div>
-                </div>
-              </div>
-              <div className="trade-float">
-                <span>{latest.label} · {latest.time}</span>
-                <strong>{latest.reference} · {latest.amount}</strong>
-                <small>{latest.detail}</small>
               </div>
             </div>
           </section>

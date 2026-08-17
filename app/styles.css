@@ -450,41 +450,19 @@ button { color: inherit; }
 .related svg { width: 18px; flex: 0 0 auto; }
 
 /* Pages métier */
-.trade-hero { position: relative; width: min(1280px,calc(100% - 48px)); min-height: 720px; margin: 0 auto; padding: 90px 0; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 70px; }
-.trade-hero::before { content: ""; position: absolute; inset: 0 -10% 0; z-index: 0; opacity: .5; background-image: linear-gradient(rgba(8,8,7,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(8,8,7,.05) 1px,transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 78% 45%,black,transparent 62%); pointer-events: none; }
+.trade-hero { position: relative; width: min(1280px,calc(100% - 48px)); margin: 0 auto; padding: 90px 0; }
+.trade-hero::before { content: ""; position: absolute; inset: 0 -10% 0; z-index: 0; opacity: .5; background-image: linear-gradient(rgba(8,8,7,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(8,8,7,.05) 1px,transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 50% 45%,black,transparent 62%); pointer-events: none; }
+.trade-hero--centered { display: flex; justify-content: center; }
 .trade-hero__copy { position: relative; z-index: 1; }
+.trade-hero--centered .trade-hero__copy { max-width: 720px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .trade-hero h1 { margin: 0; font-family: "Geist",sans-serif; font-size: clamp(44px,5.4vw,74px); line-height: 1.05; letter-spacing: -.055em; text-wrap: balance; }
 .trade-hero__copy > p:not(.eyebrow) { max-width: 580px; margin: 25px 0 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.trade-hero--centered .trade-hero__copy > p:not(.eyebrow) { margin-inline: auto; }
 .trade-hero .hero__actions { margin-top: 32px; }
 .trade-hero__proof { margin-top: 40px; display: inline-flex; align-items: center; gap: 16px; padding: 12px 18px 12px 12px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(180deg,#fff,#f6f1e9); box-shadow: inset 0 1px 0 white, 0 3px 0 #d8d1c7, 0 14px 35px rgba(30,25,15,.07); }
 .trade-hero__proof .avatar-stack img { border-color: white; }
 .trade-hero__proof p { margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 11px; }
 .trade-hero__proof p span { color: var(--muted); }
-.trade-visual { position: relative; z-index: 1; padding-bottom: 60px; }
-.trade-visual__glow { position: absolute; inset: -14% -12% 2%; z-index: 0; background: radial-gradient(closest-side at 28% 22%, rgba(255,159,28,.3), transparent 70%), radial-gradient(closest-side at 80% 78%, rgba(180,244,129,.22), transparent 70%), radial-gradient(closest-side at 74% 12%, rgba(104,100,237,.14), transparent 70%); filter: blur(34px); pointer-events: none; }
-.trade-app { position: relative; z-index: 1; overflow: hidden; border: 1px solid rgba(255,255,255,.9); outline: 1px solid rgba(8,8,7,.08); border-radius: 30px; background: linear-gradient(165deg, rgba(255,255,255,.86), rgba(255,255,255,.56)); backdrop-filter: blur(24px) saturate(1.5); box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(8,8,7,.05), 0 1px 2px rgba(43,34,20,.06), 0 22px 55px rgba(43,34,20,.1), 0 55px 130px rgba(43,34,20,.12); }
-.trade-app__bar { padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(8,8,7,.07); background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.25)); }
-.trade-app__bar > img { width: 96px; height: auto; filter: brightness(0); opacity: .88; }
-.trade-app__status { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border: 1px solid rgba(8,8,7,.1); border-radius: 999px; background: linear-gradient(180deg, #fff, rgba(255,255,255,.6)); box-shadow: inset 0 1px 0 white, 0 2px 6px rgba(43,34,20,.08); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
-.trade-app__status i { width: 7px; height: 7px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #d9ffae, #8ed556); box-shadow: 0 0 0 3px rgba(180,244,129,.28); }
-.trade-app__body { padding: 26px 26px 24px; }
-.trade-app__metric > p { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 11px; font-weight: 600; }
-.trade-app__metric em { padding: 5px 9px; border: 1px solid rgba(127,174,75,.45); border-radius: 999px; color: #3d6b14; background: linear-gradient(180deg, rgba(217,255,174,.85), rgba(180,244,129,.5)); box-shadow: inset 0 1px 0 rgba(255,255,255,.7); font-size: 8px; font-style: normal; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; }
-.trade-app__metric > strong { margin: 14px 0 18px; display: block; font-family: "Geist",sans-serif; font-size: clamp(54px,5vw,74px); font-weight: 750; line-height: 1; letter-spacing: -.07em; color: var(--ink); }
-.progress { height: 8px; border-radius: 999px; background: rgba(255,255,255,.1); box-shadow: inset 0 1px 2px rgba(0,0,0,.5); overflow: hidden; }
-.progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(180deg,#d3ffa5,var(--green) 55%,#93d95c); box-shadow: inset 0 1px 0 rgba(255,255,255,.55); }
-.progress--light { background: rgba(8,8,7,.08); box-shadow: inset 0 1px 2px rgba(8,8,7,.14); }
-.trade-app__meta { margin-top: 12px; display: flex; justify-content: space-between; gap: 14px; }
-.trade-app__meta small { color: var(--muted); font-size: 9px; line-height: 1.5; }
-.trade-app__highlight { margin-top: 26px; padding: 15px 16px; display: flex; gap: 13px; align-items: center; border: 1px solid rgba(213,120,6,.38); border-radius: 18px; background: linear-gradient(170deg, rgba(255,247,234,.95), rgba(255,214,150,.55)); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(151,84,0,.08), 0 14px 34px rgba(255,137,0,.14); }
-.trade-app__highlight svg { width: 34px; height: 34px; padding: 8px; flex: 0 0 auto; color: var(--ink); border: 1px solid #d57806; border-radius: 11px; background: linear-gradient(180deg,#ffc66e,var(--orange) 55%,#ee8908); box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 3px 0 #b46200; }
-.trade-app__highlight span { display: flex; flex-direction: column; gap: 2px; color: #6b4a1d; font-size: 9px; }
-.trade-app__highlight b { color: var(--ink); font-size: 11.5px; }
-.trade-app__highlight i { margin-left: auto; align-self: flex-start; padding: 5px 9px; border-radius: 999px; background: rgba(8,8,7,.85); color: white; font-size: 7px; font-style: normal; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; box-shadow: inset 0 1px 0 rgba(255,255,255,.2); }
-.trade-float { position: absolute; right: -4px; bottom: 8px; z-index: 2; width: min(280px, 82%); padding: 16px 18px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,.9); outline: 1px solid rgba(8,8,7,.07); border-radius: 18px; background: linear-gradient(170deg, rgba(255,255,255,.94), rgba(250,244,234,.78)); backdrop-filter: blur(18px) saturate(1.4); box-shadow: inset 0 1px 0 white, 0 1px 2px rgba(38,30,18,.06), 0 24px 60px rgba(38,30,18,.16); }
-.trade-float span { color: #a85700; font-size: 8px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.trade-float strong { margin: 8px 0 4px; font-size: 12px; }
-.trade-float small { color: var(--muted); font-size: 10px; line-height: 1.5; }
 .trade-problems { padding-top: 60px; }
 .problem-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 18px; }
 .problem-grid article { min-height: 260px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: 28px; background: #fffdf9; box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 3px 0 rgba(131,116,91,.1), 0 22px 70px rgba(43,34,20,.06); }
@@ -579,7 +557,6 @@ button { color: inherit; }
   .bento-card:nth-child(n) { grid-column: auto; }
   .bento-card:nth-child(1) { grid-column: span 2; }
   .faq-section { gap: 50px; }
-  .trade-hero { gap: 45px; }
 }
 
 @media (max-width: 800px) {
@@ -665,9 +642,7 @@ button { color: inherit; }
   .related > div { display: block; }
   .related a { margin-bottom: 10px; }
   .trade-hero { width: calc(100% - 30px); min-height: 0; padding: 75px 0; display: block; }
-  .trade-hero .hero__actions { margin-inline: 0; }
   .trade-hero__proof { margin-top: 32px; }
-  .trade-visual { display: none; }
   .problem-grid, .feature-list { display: block; }
   .problem-grid article, .feature-list article { min-height: 0; margin-bottom: 14px; }
   .problem-grid p { margin-top: 45px; }

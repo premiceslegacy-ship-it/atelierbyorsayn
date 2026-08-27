@@ -35,6 +35,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Sarah, l'assistante IA, répond sur vos clients, chantiers et planning",
       "Vous pouvez lui parler à la voix, y compris en direct au téléphone",
       "Devis préparés par IA à partir d'un texte, d'un plan ou d'une photo",
+      "Facturation électronique incluse, conforme à la réforme 2026-2027",
     ],
     quotas: ["120 échanges avec l'assistante IA / mois", "60 analyses de devis (dont pré-métré sur plan) / mois", "60 minutes de conversation vocale en direct / mois"],
   },
@@ -48,6 +49,7 @@ export const PRICING_TIERS: PricingTier[] = [
       "Devis, relances et analyses par IA sans quota mensuel",
       "Conversation vocale en direct avec l'assistante : 5x plus de minutes qu'en Pro",
       "Pensé pour une équipe qui utilise l'IA tous les jours, sans surveiller un compteur",
+      "Facturation électronique incluse, conforme à la réforme 2026-2027",
     ],
     quotas: ["Échanges et analyses de devis illimités", "300 minutes de conversation vocale en direct / mois", "Extraction catalogue et imports illimités"],
   },
@@ -199,10 +201,10 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Setup ou abonnement, comment choisir ?",
-    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement, avec un accès sans abonnement mensuel. Pro à 69 € HT/mois et Expert à 169 € HT/mois vous permettent de démarrer vous-même, avec ${TRIAL_DAYS} jours d'Expert offerts sans carte bancaire et aucun prélèvement automatique à la fin.`,
+    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même, avec ${TRIAL_DAYS} jours d'Expert offerts sans carte bancaire et aucun prélèvement automatique à la fin.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",
-    answer: "Atelier prépare les formats et les flux nécessaires. La connexion réglementaire est facultative et proposée séparément, à partir de 450 € HT la première année puis 250 € HT/an, selon le volume.",
+    answer: "Oui, et c'est inclus, sans surcoût, dans les deux offres. Chaque facture est déjà générée au format réglementaire Factur-X. À partir de septembre 2026, les entreprises devront pouvoir recevoir leurs factures fournisseurs par une plateforme agréée : Atelier s'en charge. L'obligation d'émettre électroniquement, elle, n'arrive qu'en septembre 2027 pour les artisans — vous choisissez d'être prêt dès maintenant ou d'attendre l'échéance.",
   },
 ];

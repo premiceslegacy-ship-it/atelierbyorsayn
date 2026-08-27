@@ -18,13 +18,15 @@ Ne jamais présenter Sarah comme une salariée, une experte juridique, une compt
 - Expert : 169 € HT/mois ; échanges Sarah illimités ; 300 minutes de live IA.
 - L'essai ouvre Expert à tous. Il n'y a aucun prélèvement ni conversion automatique à l'expiration.
 - Pro et Expert sont facturés par organisation, sans supplément par utilisateur.
-- Connexion facturation électronique : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.
+- Connexion facturation électronique : incluse, sans surcoût, dans le setup et dans Pro/Expert.
 
 Ne jamais inventer une remise, un prix barré, une économie ou un quota.
 
 ## Conformité
 
-Atelier prépare des données et documents de facturation. Orsayn n'est pas une plateforme agréée. La transmission réglementaire passe par un partenaire agréé. Vérifier le statut et le vocabulaire officiel au moment de toute publication.
+Atelier génère systématiquement un fichier Factur-X (EN 16931) en plus du PDF, pour tous les clients. Orsayn n'est pas une plateforme agréée (PDP) mais un opérateur de dématérialisation (OD) ; la transmission réglementaire passe par Super PDP, plateforme immatriculée PDP par la DGFiP, dont la connexion est incluse dans toutes les offres. La responsabilité légale de la transmission incombe à Super PDP et au client.
+
+Calendrier réglementaire : pour les artisans, TPE et PME, la réception électronique via une plateforme agréée est obligatoire à partir du 1er septembre 2026 ; l'émission ne le devient qu'au 1er septembre 2027. Entre ces deux dates, le client choisit d'activer l'émission dès maintenant ou d'attendre l'échéance. Ne jamais présenter l'émission comme déjà obligatoire pour un artisan avant septembre 2027. Vérifier le statut et le vocabulaire officiel au moment de toute publication.
 
 ## Preuve sociale
 

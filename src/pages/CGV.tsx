@@ -22,7 +22,7 @@ export default function CGV() {
             <ul className="list-disc list-inside mt-2 space-y-1 text-neutral-400">
               <li>Les prestations de déploiement one-shot du logiciel Atelier (setup).</li>
               <li>Les abonnements mensuels Pro et Expert à la plateforme partagée Atelier.</li>
-              <li>Les prestations annexes : facturation électronique B2Brouter, migration de données, formation, accompagnement.</li>
+              <li>Les prestations annexes : migration de données, formation, accompagnement.</li>
             </ul>
             <p className="mt-3">
               Elles sont communicables à tout client professionnel sur demande, conformément à l'article L.441-1 IV du Code de commerce.
@@ -61,7 +61,6 @@ export default function CGV() {
             </SubSection>
             <SubSection title="3.4 Prestations annexes">
               <ul className="list-disc list-inside space-y-1 text-neutral-400">
-                <li>Conformité facturation électronique (connexion au réseau légal via partenaire PDP) : 450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon le volume d'activité.</li>
                 <li>Migration depuis un ancien logiciel : sur devis, 150 € HT/heure.</li>
                 <li>Formation et accompagnement : 150 € HT/heure ou forfait 3 heures à 350 € HT.</li>
               </ul>
@@ -83,10 +82,8 @@ export default function CGV() {
                 <tbody className="divide-y divide-white/5">
                   {[
                     ["On s'occupe de tout - environnement dédié", "3 000 € HT"],
-                    ["Clé en main + conformité facturation électronique", "3 450 € HT"],
                     ["Atelier Pro", "69 € HT/mois par organisation"],
                     ["Atelier Expert", "169 € HT/mois par organisation"],
-                    ["Conformité facturation électronique (PDP partenaire)", "450 € HT/an la 1ère année, puis à partir de 250 € HT/an dès la 2e année selon volume"],
                     ["Migration données", "150 € HT/heure"],
                     ["Formation / accompagnement", "150 € HT/heure - forfait 3h : 350 € HT"],
                   ].map(([label, price]) => (
@@ -198,10 +195,10 @@ export default function CGV() {
               <strong className="text-white">Orsayn est un opérateur de dématérialisation (OD) et non une plateforme de dématérialisation partenaire (PDP) au sens du Décret 2022-1299.</strong>
             </p>
             <p className="mt-3">
-              En mode <em>export_only</em> (défaut) : Atelier génère le fichier Factur-X. La transmission à une plateforme (PPF Chorus Pro ou PDP de son choix) demeure de la responsabilité exclusive du Client jusqu'à l'entrée en vigueur de l'obligation d'émission applicable à sa taille d'entreprise.
+              La connexion à Super PDP, plateforme immatriculée PDP par la DGFiP, est incluse dans les offres Setup, Pro et Expert, sans supplément. Atelier transmet alors les factures via Super PDP. La responsabilité de la conformité légale de la transmission incombe à Super PDP et au Client. Orsayn ne saurait être tenu responsable d'un manquement aux obligations de facturation électronique du Client résultant d'une indisponibilité de Super PDP ou d'une décision de la DGFiP.
             </p>
             <p className="mt-3">
-              En mode <em>B2Brouter</em> : Atelier transmet les factures via B2Brouter, plateforme immatriculée PDP par la DGFiP. La responsabilité de la conformité légale de la transmission incombe à B2Brouter et au Client. Orsayn ne saurait être tenu responsable d'un manquement aux obligations de facturation électronique du Client résultant d'une indisponibilité de B2Brouter ou d'une décision de la DGFiP.
+              Le Client conserve la possibilité de désactiver cette connexion et de transmettre lui-même ses factures à une plateforme de son choix (PPF Chorus Pro ou autre PDP) ; il en assume alors seul la responsabilité.
             </p>
           </Section>
 

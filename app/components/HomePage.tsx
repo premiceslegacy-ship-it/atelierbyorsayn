@@ -76,9 +76,9 @@ const benefits = [
     icon: ShieldCheck,
     label: "Conformité",
     title: "Préparez 2026 et 2027 sans subir la réforme.",
-    copy: "Données structurées, statuts et flux réglementaires s'intègrent à votre gestion courante.",
+    copy: "Chaque facture part déjà au format réglementaire. La connexion à une plateforme agréée est incluse, sans surcoût.",
     metric: "Factur-X",
-    metricLabel: "et connexion agréée",
+    metricLabel: "inclus, sans supplément",
     className: "bento-card--wide bento-card--indigo",
   },
 ];

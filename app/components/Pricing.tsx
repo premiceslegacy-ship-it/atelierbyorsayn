@@ -94,7 +94,7 @@ export function Pricing({ sourceSuffix, note }: PricingProps) {
           </button>
         </div>
       )}
-      <p className="pricing-note">Connexion facturation électronique (facultative) : à partir de 450 € HT la première année, puis 250 € HT/an selon le volume.</p>
+      <p className="pricing-note">Facturation électronique incluse : chaque facture est déjà au format réglementaire, et la connexion à une plateforme agréée est comprise dans les deux offres, sans surcoût.</p>
     </section>
   );
 }

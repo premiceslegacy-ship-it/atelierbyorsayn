@@ -270,8 +270,6 @@ button { color: inherit; }
 .section-cta p { max-width: 560px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
 .section-cta p strong { color: var(--ink); letter-spacing: -.01em; }
 .section-cta > div { display: flex; gap: 10px; flex-wrap: wrap; }
-.belonging-cta { padding: 0 0 120px; }
-.belonging-cta__actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .faq-section .section-cta { grid-column: 1 / -1; }
 .proof-band__actions { margin-top: 28px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .demo-sarah-strip { max-width: 900px; margin: -18px auto 48px; padding: 0; list-style: none; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
@@ -629,8 +627,8 @@ button { color: inherit; }
   .demo-sarah-strip { margin: -6px auto 36px; }
   .section-cta { justify-content: center; text-align: center; padding: 22px 18px; }
   .section-cta > div { justify-content: center; }
-  .proof-band__actions, .market-actions, .belonging-cta__actions { flex-direction: column; align-items: center; }
-  .proof-band__actions .button, .market-actions .button, .belonging-cta__actions .button { width: min(100%,320px); }
+  .proof-band__actions, .market-actions { flex-direction: column; align-items: center; }
+  .proof-band__actions .button, .market-actions .button { width: min(100%,320px); }
   .section--results { width: 100%; padding-inline: 15px; }
   .market-grid { grid-template-columns: 1fr; }
   .market-card { padding: 24px 20px; }

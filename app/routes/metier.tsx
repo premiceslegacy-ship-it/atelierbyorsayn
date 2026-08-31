@@ -136,13 +136,6 @@ export default function MetierRoute() {
 
           <Pricing sourceSuffix={metier.slug} note={metier.pricingNote} />
 
-          <div className="section belonging-cta">
-            <div className="belonging-cta__actions">
-              <Link className="button button--primary" to="#tarifs">Sécuriser ma marge <ArrowRight aria-hidden="true" /></Link>
-              {whatsAppCta(`metier-cases-${metier.slug}`, "button button--dark", <><MessageCircle aria-hidden="true" /> Rejoindre ces artisans</>)}
-            </div>
-          </div>
-
           <section className="section trade-sarah">
             <div className="trade-sarah__portrait">
               <div className="sarah-orb"><img src="/sarah-avatar.webp" alt="Sarah, assistante IA Atelier" width="512" height="512" loading="lazy" /></div>

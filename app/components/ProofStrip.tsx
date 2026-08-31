@@ -1,17 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { buildWhatsAppUrl, CASE_STUDIES } from "../data/site";
+import { buildWhatsAppUrl } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
-import { Avatar } from "./Avatar";
-
-/** "Stéphane M." -> "Stéphane" : on n'affiche que le prénom sur les proof-cards. */
-function firstName(fullName: string) {
-  return fullName.split(" ")[0];
-}
+import { ProofInvoice, ProofCalendarCheck, ProofClock, ProofSent } from "./AtelierIcons";
 
 type Stat = {
-  caseId: string;
+  id: string;
+  illustration: typeof ProofInvoice;
   label: string;
   /** Valeur numérique à compter de 0 jusqu'à cette cible. Absent = pas de count-up (ex: "45 → 12 j"). */
   countTo?: number;
@@ -19,24 +15,14 @@ type Stat = {
   suffix?: string;
   /** Valeur affichée telle quelle si countTo est absent. */
   staticValue?: string;
-  /** Variante de couleur de la carte, alignée sur la palette des bento-cards. */
-  tone: "orange" | "green" | "indigo" | "dark";
 };
 
 const stats: Stat[] = [
-  { caseId: "stephane", countTo: 12500, suffix: " €", label: "d'impayés récupérés en moins d'un mois", tone: "orange" },
-  { caseId: "marc", staticValue: "45 → 12 j", label: "de délai de paiement moyen", tone: "indigo" },
-  { caseId: "sophie", countTo: 10, suffix: " h / mois", label: "rendues à l'équipe", tone: "green" },
-  { caseId: "sebastien", staticValue: "Devis envoyé", label: "avant que le client ne compare ailleurs", tone: "dark" },
+  { id: "impayes", illustration: ProofInvoice, countTo: 12500, suffix: " €", label: "d'impayés récupérés en moins d'un mois" },
+  { id: "delai", illustration: ProofCalendarCheck, staticValue: "45 → 12 j", label: "de délai de paiement moyen" },
+  { id: "temps", illustration: ProofClock, countTo: 10, suffix: " h / mois", label: "rendues à l'équipe" },
+  { id: "devis", illustration: ProofSent, staticValue: "Devis envoyé", label: "avant que le client ne compare ailleurs" },
 ];
-
-/** Cas tôlerie/métallerie mis en avant sans portrait (pas de photo client disponible pour l'instant). */
-const SEBASTIEN = {
-  name: "Sébastien T.",
-  trade: "Tôlerie / Métallerie",
-  team: "14 salariés",
-  region: "Montval-sur-Loire",
-};
 
 function useInView<T extends HTMLElement>() {
   const ref = useRef<T>(null);
@@ -44,7 +30,8 @@ function useInView<T extends HTMLElement>() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } }, { threshold: 0.4 });
+    /** rootMargin réduit la zone de déclenchement au tiers central du viewport ; threshold exige que la moitié de la carte y soit déjà, pour que l'animation soit vue plutôt que déjà terminée. */
+    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } }, { rootMargin: "-20% 0px -20% 0px", threshold: 0.5 });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -70,22 +57,35 @@ function CountUp({ to, prefix = "", suffix = "", active }: { to: number; prefix?
   return <>{prefix}{value.toLocaleString("fr-FR")}{suffix}</>;
 }
 
+/** Comparaison avant/après pour le délai de paiement : deux barres, l'une pleine (avant), l'une réduite (après). */
+function DelaiBars({ active }: { active: boolean }) {
+  return (
+    <div className={`proof-card__bars ${active ? "is-visible" : ""}`} aria-hidden="true">
+      <div className="proof-card__bar-row">
+        <span>Avant</span>
+        <div className="proof-card__bar-track"><i className="proof-card__bar proof-card__bar--before" /></div>
+      </div>
+      <div className="proof-card__bar-row">
+        <span>Avec Atelier</span>
+        <div className="proof-card__bar-track"><i className="proof-card__bar proof-card__bar--after" /></div>
+      </div>
+    </div>
+  );
+}
+
 function ProofCard({ stat, index }: { stat: Stat; index: number }) {
   const { ref, inView } = useInView<HTMLElement>();
-  const caseStudy = stat.caseId === "sebastien" ? null : CASE_STUDIES.find((item) => item.id === stat.caseId)!;
-  const person = caseStudy ?? SEBASTIEN;
+  const Illustration = stat.illustration;
   return (
     <article
-      className={`proof-card proof-card--${stat.tone} ${inView ? "is-visible" : ""}`}
+      className={`proof-card ${inView ? "is-visible" : ""}`}
       style={{ transitionDelay: inView ? `${index * 90}ms` : "0ms" }}
       ref={ref}
     >
+      <Illustration className="proof-card__illustration" active={inView} />
       <strong>{stat.countTo !== undefined ? <CountUp to={stat.countTo} prefix={stat.prefix} suffix={stat.suffix} active={inView} /> : stat.staticValue}</strong>
       <span>{stat.label}</span>
-      <footer>
-        <b>{firstName(person.name)}</b>
-        <small>{person.trade} · {person.team}</small>
-      </footer>
+      {stat.id === "delai" && <DelaiBars active={inView} />}
     </article>
   );
 }
@@ -93,32 +93,21 @@ function ProofCard({ stat, index }: { stat: Stat; index: number }) {
 export function ProofStrip({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {}) {
   return (
     <section className="proof-band" aria-label="Résultats clients mesurés">
-      <div className="proof-band__intro">
-        <div className="avatar-stack">
-          {CASE_STUDIES.slice(0, 4).map((item) => <Avatar key={item.id} src={item.portrait} alt="" />)}
-        </div>
-        <p><strong>Mesuré chez les entreprises accompagnées.</strong></p>
-      </div>
+      <p className="eyebrow">Mesuré chez les entreprises accompagnées</p>
       <div className="proof-band__grid">
-        {stats.map((stat, index) => <ProofCard stat={stat} index={index} key={stat.caseId} />)}
+        {stats.map((stat, index) => <ProofCard stat={stat} index={index} key={stat.id} />)}
       </div>
-      <div className="proof-band__cta">
-        <p>
-          <strong>Ils ont remis le bureau à sa place.</strong>
-          <span>Des artisans comme vous, qui ont décidé de ne plus perdre leurs soirées.</span>
-        </p>
-        <div>
-          {onWhatsAppClick ? (
-            <button type="button" className="button button--primary" onClick={onWhatsAppClick}>
-              <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
-            </button>
-          ) : (
-            <ConversionLink className="button button--primary" href={buildWhatsAppUrl(undefined, "proof-band")} source="proof-band" target="_blank" rel="noreferrer">
-              <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
-            </ConversionLink>
-          )}
-          <Link className="button button--dark" to="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>
-        </div>
+      <div className="proof-band__actions">
+        <Link className="button button--primary" to="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>
+        {onWhatsAppClick ? (
+          <button type="button" className="button button--dark" onClick={onWhatsAppClick}>
+            <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+          </button>
+        ) : (
+          <ConversionLink className="button button--dark" href={buildWhatsAppUrl(undefined, "proof-band")} source="proof-band" target="_blank" rel="noreferrer">
+            <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+          </ConversionLink>
+        )}
       </div>
     </section>
   );

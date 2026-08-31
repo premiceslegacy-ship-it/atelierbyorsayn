@@ -1,26 +1,34 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Menu, MessageCircle, Play, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { metiers } from "@legacy/data/metiers";
 import { buildWhatsAppUrl } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
 
 const links = [
-  ["Ce que ça change", "/#benefices"],
-  ["Sarah", "/#sarah"],
-  ["Résultats", "/#resultats"],
-  ["Tarifs", "/#tarifs"],
-  ["Le journal", "/blog"],
+  ["Ce qui change pour vous", "/#benefices"],
+  ["Rencontrer Sarah", "/#sarah"],
+  ["Preuves chiffrées", "/#resultats"],
+  ["Reprendre le contrôle", "/#tarifs"],
+  ["Tips de chantier", "/blog"],
 ] as const;
 
 export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {}) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   useEffect(() => setOpen(false), [location.pathname, location.hash]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="site-header">
-      <nav className="capsule-nav" aria-label="Navigation principale">
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <nav className="floating-nav" aria-label="Navigation principale">
         <button className="menu-toggle" aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
           {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           <span className="sr-only">Menu</span>
@@ -35,10 +43,9 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
           {links.slice(3).map(([label, href]) => <Link key={href} to={href}>{label}</Link>)}
         </div>
         <div className="nav-actions">
-          <Link className="button button--ghost button--small" to="/#demo"><Play aria-hidden="true" /> Voir la démo</Link>
           {onWhatsAppClick ? (
             <button type="button" className="button button--primary button--small" onClick={onWhatsAppClick}>
-              <MessageCircle aria-hidden="true" /> Récupérer du temps
+              <MessageCircle aria-hidden="true" /> Mon devis en 2 min
             </button>
           ) : (
             <ConversionLink
@@ -48,7 +55,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle aria-hidden="true" /> Récupérer du temps
+              <MessageCircle aria-hidden="true" /> Mon devis en 2 min
             </ConversionLink>
           )}
         </div>
@@ -56,7 +63,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
       {open && (
         <div id="mobile-menu" className="mobile-menu">
           {links.map(([label, href]) => <Link key={href} to={href}>{label}</Link>)}
-          <Link to="/#demo">Voir la démo</Link>
+          <Link to="/#demo">Voir Sarah à l'œuvre</Link>
         </div>
       )}
     </header>
@@ -122,10 +129,12 @@ export function SiteShell({
   }, [location.pathname]);
 
   return (
-    <div className={darkHeader ? "site-shell site-shell--dark" : "site-shell"}>
+    <>
       <Navbar onWhatsAppClick={onWhatsAppClick} />
-      {children}
-      <Footer />
+      <div className={darkHeader ? "site-shell site-shell--dark" : "site-shell"}>
+        {children}
+        <Footer />
+      </div>
       {onWhatsAppClick ? (
         <button
           type="button"
@@ -149,6 +158,6 @@ export function SiteShell({
           <MessageCircle aria-hidden="true" /> Récupérer du temps
         </ConversionLink>
       )}
-    </div>
+    </>
   );
 }

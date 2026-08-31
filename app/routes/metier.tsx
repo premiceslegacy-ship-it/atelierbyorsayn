@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { data, Link, useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
-import { ArrowRight, ChevronDown, ChevronRight, FileText, MessageCircle, RefreshCw, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronRight, MessageCircle } from "lucide-react";
+import { IconDevis, IconPropose, IconApprend, IconConformite, IconMarge } from "../components/AtelierIcons";
 import { getMetierBySlug } from "@legacy/data/metiers";
 import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
-import { CaseCarousel } from "../components/CaseCarousel";
 import { ProofStrip } from "../components/ProofStrip";
 import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
 import { Pricing } from "../components/Pricing";
@@ -35,7 +35,7 @@ export const meta: MetaFunction<typeof loader> = ({ data: routeData }) => {
   ];
 };
 
-const featureIcons = [FileText, Sparkles, TrendingUp];
+const featureIcons = [IconDevis, IconPropose, IconMarge];
 
 export default function MetierRoute() {
   const { metier } = useLoaderData<typeof loader>();
@@ -123,7 +123,7 @@ export default function MetierRoute() {
           <section className="section trade-features">
             <div className="section-heading section-heading--split"><div><p className="eyebrow">Dans Atelier</p><h2>{metier.features.title}</h2></div><p>Trois automatismes concrets, adaptés à votre métier dès votre démarrage.<br />Pas une liste de fonctionnalités.</p></div>
             <div className="feature-list">{metier.features.items.map((item, index) => {
-              const Icon = featureIcons[index] ?? Sparkles;
+              const Icon = featureIcons[index] ?? IconPropose;
               return <article key={item.titre}><div><Icon /></div><h3>{item.titre}</h3><p>{item.description}</p></article>;
             })}</div>
             <div className="section-cta">
@@ -136,14 +136,10 @@ export default function MetierRoute() {
 
           <Pricing sourceSuffix={metier.slug} note={metier.pricingNote} />
 
-          <CaseCarousel title={<>Des artisans qui ont<br />retrouvé leurs soirées.</>} />
           <div className="section belonging-cta">
-            <div className="section-cta">
-              <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
-              <div>
-                {whatsAppCta(`metier-cases-${metier.slug}`, "button button--primary", <><MessageCircle aria-hidden="true" /> Rejoindre ces artisans</>)}
-                <Link className="button button--dark" to="#tarifs">Sécuriser ma marge <ArrowRight aria-hidden="true" /></Link>
-              </div>
+            <div className="belonging-cta__actions">
+              <Link className="button button--primary" to="#tarifs">Sécuriser ma marge <ArrowRight aria-hidden="true" /></Link>
+              {whatsAppCta(`metier-cases-${metier.slug}`, "button button--dark", <><MessageCircle aria-hidden="true" /> Rejoindre ces artisans</>)}
             </div>
           </div>
 
@@ -156,9 +152,9 @@ export default function MetierRoute() {
               <h2>Elle connaît vos clients, vos chantiers, vos prix.</h2>
               <p>Vous lui parlez comme à une secrétaire qui connaît la maison : elle prépare le devis, la relance ou le point chantier. Rien ne part sans votre validation.</p>
               <ul>
-                <li><Sparkles />Propose l'action et explique pourquoi.</li>
-                <li><RefreshCw />Apprend du contexte validé dans Atelier.</li>
-                <li><ShieldCheck />Attend votre accord avant les actions sensibles.</li>
+                <li><IconPropose />Propose l'action et explique pourquoi.</li>
+                <li><IconApprend />Apprend du contexte validé dans Atelier.</li>
+                <li><IconConformite />Attend votre accord avant les actions sensibles.</li>
               </ul>
               <Link className="text-link" to="/#demo">Voir Sarah préparer un devis <ArrowRight /></Link>
             </div>

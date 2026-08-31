@@ -186,6 +186,51 @@ export const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
+export type MarketStat = {
+  id: string;
+  icon: "clock" | "calendar" | "shield";
+  value: string;
+  problem: string;
+  answer: string;
+  source: string;
+  accent?: boolean;
+};
+
+export const MARKET_STATS: MarketStat[] = [
+  {
+    id: "admin",
+    icon: "clock",
+    value: "2 h",
+    problem: "perdues chaque jour sur le devis, la relance ou le pointage du soir.",
+    answer: "Sarah les prépare pendant que vous êtes encore sur le chantier.",
+    source: "Filière BTP",
+  },
+  {
+    id: "delai",
+    icon: "calendar",
+    value: "46 j",
+    problem: "de délai de paiement moyen quand personne ne relance à votre place.",
+    answer: "Atelier relance tout seul, avant que ça devienne un trou de trésorerie.",
+    source: "Filière BTP",
+  },
+  {
+    id: "facturx",
+    icon: "shield",
+    value: "1er sept. 2026",
+    problem: "le PDF envoyé par mail ne vaudra plus facture, pour tout le monde.",
+    answer: "Vos factures sont déjà au bon format. Rien à changer ce jour-là.",
+    source: "Loi de finances 2026, art. 123",
+    accent: true,
+  },
+];
+
+export const MARKET_SOURCES = [
+  { name: "Gouvernement français", logo: "/images/logos/gouvernement.svg" },
+  { name: "Insee", logo: "/images/logos/insee.svg" },
+  { name: "FFB", logo: "/images/logos/ffb.png" },
+  { name: "CAPEB", logo: "/images/logos/capeb.jpg" },
+];
+
 export const FAQ_ITEMS = [
   {
     question: "Est-ce que Sarah envoie des documents sans mon accord ?",

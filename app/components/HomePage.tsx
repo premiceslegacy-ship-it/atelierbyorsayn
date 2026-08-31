@@ -2,25 +2,29 @@ import { useContext, useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import {
   ArrowRight,
-  BarChart3,
-  CalendarDays,
   Check,
   ChevronDown,
-  FileCheck2,
-  FileText,
   MessageCircle,
   Mic,
   Play,
-  ReceiptText,
   RefreshCw,
-  ShieldCheck,
-  Sparkles,
-  WalletCards,
 } from "lucide-react";
+import {
+  IconDevis,
+  IconRelance,
+  IconPointage,
+  IconMarge,
+  IconCalendrier,
+  IconConformite,
+  IconTresorerie,
+  IconEquipe,
+  IconPropose,
+  IconApprend,
+} from "./AtelierIcons";
 import { getArticles } from "../lib/articles";
 import { OpenLeadModalContext } from "../lib/leadModal";
 import { buildWhatsAppUrl, FAQ_ITEMS } from "../data/site";
-import { CaseCarousel } from "./CaseCarousel";
+import { MarketProof } from "./MarketProof";
 import { ProofStrip } from "./ProofStrip";
 import { Pricing } from "./Pricing";
 import { SiteShell } from "./Shell";
@@ -39,7 +43,7 @@ function WhatsAppCta({ className, source, children }: { className: string; sourc
 
 const benefits = [
   {
-    icon: FileText,
+    icon: IconDevis,
     label: "Devis",
     title: "Répondez avant que le client appelle ailleurs.",
     copy: "Dictez le besoin sur place. Sarah retrouve vos prestations, prépare le document et vous laisse vérifier le prix.",
@@ -48,7 +52,7 @@ const benefits = [
     className: "bento-card--wide bento-card--orange",
   },
   {
-    icon: WalletCards,
+    icon: IconTresorerie,
     label: "Trésorerie",
     title: "Les relances partent. Pas votre énergie.",
     copy: "Les retards sont repérés, la relance est adaptée au client et l'historique reste visible.",
@@ -56,7 +60,7 @@ const benefits = [
     metricLabel: "chez Marc D.",
   },
   {
-    icon: BarChart3,
+    icon: IconMarge,
     label: "Marge",
     title: "Voyez le chantier déraper avant la fin.",
     copy: "Heures, achats et sous-traitance remontent dans une seule marge réelle.",
@@ -65,7 +69,7 @@ const benefits = [
     className: "bento-card--green",
   },
   {
-    icon: CalendarDays,
+    icon: IconCalendrier,
     label: "Planning",
     title: "Le bon compagnon, sur le bon chantier.",
     copy: "Planning, absences, urgences et informations terrain restent synchronisés.",
@@ -73,7 +77,7 @@ const benefits = [
     metricLabel: "pour toute l'équipe",
   },
   {
-    icon: ShieldCheck,
+    icon: IconConformite,
     label: "Conformité",
     title: "Préparez 2026 et 2027 sans subir la réforme.",
     copy: "Chaque facture part déjà au format réglementaire. La connexion à une plateforme agréée est incluse, sans surcoût.",
@@ -85,23 +89,25 @@ const benefits = [
 
 const demoSteps = [
   { label: "Vous parlez", note: "Depuis le chantier, sans formulaire à rallonge.", duration: 5200 },
-  { label: "Sarah retrouve", note: "Le contexte de votre entreprise, pas une réponse générique.", duration: 6200 },
-  { label: "Elle chiffre", note: "Les hypothèses restent visibles avant toute action.", duration: 7200 },
-  { label: "Vous validez", note: "Sarah travaille. Le dernier mot reste le vôtre.", duration: 6800 },
+  { label: "Sarah retrouve", note: "L'historique du client, pas une relance générique.", duration: 6200 },
+  { label: "Elle rédige", note: "Le ton reste le vôtre, ferme mais correct.", duration: 7200 },
+  { label: "Vous validez", note: "Sarah programme la suite. Le dernier mot reste le vôtre.", duration: 6800 },
 ];
 
 const demoContext = [
-  { label: "Client pro", value: "SCI du Parc", detail: "Compte client depuis 2022" },
-  { label: "Visite", value: "Ce matin", detail: "Plateau de bureaux · 260 m²" },
-  { label: "Catalogue", value: "Cloisons & finitions", detail: "Vos prix, votre TVA" },
-  { label: "Conditions", value: "Acompte 30 %", detail: "Règlement à 30 jours" },
+  { label: "Client pro", value: "Dupont Immobilier", detail: "Client depuis 2023" },
+  { label: "Facture", value: "FAC-2026-087", detail: "Échue depuis 18 jours" },
+  { label: "Montant", value: "4 250 €", detail: "Solde restant dû" },
+  { label: "Historique", value: "0 retard", detail: "Toujours réglé à temps avant" },
 ];
 
-const demoLines = [
-  { label: "Dépose & préparation des locaux", amount: "2 400 €" },
-  { label: "Cloisons & doublages · 120 m²", amount: "6 830 €" },
-  { label: "Peinture & finitions", amount: "3 870 €" },
-];
+const demoRelance = {
+  invoice: "FAC-2026-087",
+  amount: "4 250 €",
+  overdue: "18 jours de retard",
+  message: "Bonjour, votre facture FAC-2026-087 de 4 250 € est échue depuis le 12 août. Pourriez-vous programmer le règlement cette semaine ? Merci, l'équipe.",
+  followUp: "Relance automatique programmée dans 7 jours si le paiement n'arrive pas.",
+};
 
 function Demo() {
   const [started, setStarted] = useState(false);
@@ -133,12 +139,12 @@ function Demo() {
       <div className="section-heading section-heading--center">
         <p className="eyebrow">Sarah, assistante IA métier</p>
         <h2>Sarah travaille.<br />Vous décidez.</h2>
-        <p>Elle connaît vos clients, vos chantiers, vos prix.<br />Regardez-la préparer un devis en 60 secondes.</p>
+        <p>Elle connaît vos clients, vos factures, vos échéances.<br />Regardez-la relancer un impayé en 60 secondes.</p>
       </div>
       <ul className="demo-sarah-strip">
-        <li><Sparkles aria-hidden="true" />Propose l'action et explique pourquoi.</li>
-        <li><RefreshCw aria-hidden="true" />Apprend du contexte validé dans Atelier.</li>
-        <li><ShieldCheck aria-hidden="true" />Attend votre accord avant les actions sensibles.</li>
+        <li><IconPropose aria-hidden="true" />Propose l'action et explique pourquoi.</li>
+        <li><IconApprend aria-hidden="true" />Apprend du contexte validé dans Atelier.</li>
+        <li><IconConformite aria-hidden="true" />Attend votre accord avant les actions sensibles.</li>
       </ul>
       <div className="demo-shell">
         <div className="demo-sidebar" role="tablist" aria-label="Étapes de la démonstration">
@@ -161,13 +167,18 @@ function Demo() {
           <div className="demo-conversation demo-conversation--sim" key={started ? active : "idle"}>
             {!started && (
               <div className="demo-idle">
-                <div className="sarah-orb">
-                  <picture>
-                    <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
-                    <img src="/sarah-avatar-144.webp" alt="" width="144" height="144" />
-                  </picture>
+                <div className="demo-idle-scene" aria-hidden="true">
+                  <div className="demo-idle-invoice">
+                    <IconDevis aria-hidden="true" className="demo-idle-invoice__icon" />
+                    <span>FAC-2026-087</span>
+                    <b>18 j</b>
+                  </div>
+                  <div className="demo-idle-track">
+                    <i />
+                  </div>
+                  <div className="demo-idle-bell"><IconRelance className="demo-idle-bell__icon" /></div>
                 </div>
-                <p className="demo-prompt">Une vraie demande, chiffrée sous vos yeux.</p>
+                <p className="demo-prompt">Une vraie relance, prête avant que vous y pensiez.</p>
                 <p className="demo-note">60 secondes, étape par étape. Rien ne part sans votre validation.</p>
                 <button className="demo-validate" type="button" onClick={() => goTo(0)}><Play aria-hidden="true" /> Lancer la démonstration</button>
               </div>
@@ -178,7 +189,7 @@ function Demo() {
                   <div className="demo-wave" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ animationDelay: `${i * 0.08}s` }} />)}</div>
                   <span>0:06</span>
                 </div>
-                <p className="demo-prompt demo-stagger" style={{ animationDelay: "0.9s" }}>« Sarah, prépare le devis de la SCI du Parc pour les bureaux visités ce matin. »</p>
+                <p className="demo-prompt demo-stagger" style={{ animationDelay: "0.9s" }}>« Sarah, regarde si Dupont Immobilier a payé sa dernière facture. »</p>
               </>
             )}
             {started && active === 1 && (
@@ -188,7 +199,7 @@ function Demo() {
                     <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
                     <img src="/sarah-avatar-144.webp" alt="" width="144" height="144" />
                   </picture>
-                </span><p>Je retrouve le contexte de l'entreprise…</p></div>
+                </span><p>Je retrouve la facture et son historique…</p></div>
                 <div className="demo-chips">
                   {demoContext.map((chip, index) => (
                     <div className="demo-chip demo-stagger" style={{ animationDelay: `${0.7 + index * 0.7}s` }} key={chip.label}>
@@ -200,22 +211,18 @@ function Demo() {
             )}
             {started && active === 2 && (
               <div className="demo-doc demo-stagger">
-                <div className="demo-doc__head"><strong>DEV-2026-114</strong><span>Brouillon · SCI du Parc</span></div>
-                {demoLines.map((line, index) => (
-                  <div className="demo-doc__line demo-stagger" style={{ animationDelay: `${0.6 + index * 0.9}s` }} key={line.label}>
-                    <span>{line.label}</span><strong>{line.amount}</strong>
-                  </div>
-                ))}
-                <div className="demo-doc__total demo-stagger" style={{ animationDelay: "3.6s" }}>
-                  <span>Total HT</span><strong>13 100 €</strong>
+                <div className="demo-doc__head"><strong>{demoRelance.invoice}</strong><span className="demo-doc__overdue">{demoRelance.overdue}</span></div>
+                <div className="demo-doc__message demo-stagger" style={{ animationDelay: "0.6s" }}>{demoRelance.message}</div>
+                <div className="demo-doc__total demo-stagger" style={{ animationDelay: "2.8s" }}>
+                  <span>Solde dû</span><strong>{demoRelance.amount}</strong>
                 </div>
-                <div className="demo-doc__badge demo-stagger" style={{ animationDelay: "4.4s" }}>Marge cible 28 % · Acompte 30 %</div>
+                <div className="demo-doc__badge demo-stagger" style={{ animationDelay: "3.6s" }}>Ton ajusté au client, pas de mise en demeure</div>
               </div>
             )}
             {started && active === 3 && !sent && (
               <>
                 <div className="demo-doc demo-doc--compact demo-stagger">
-                  <div className="demo-doc__head"><strong>DEV-2026-114</strong><span>13 100 € HT · prêt à partir</span></div>
+                  <div className="demo-doc__head"><strong>{demoRelance.invoice}</strong><span>{demoRelance.amount} · prêt à partir</span></div>
                   <div className="demo-doc__line"><span>Relu par Sarah, rien d'envoyé</span><strong>✓</strong></div>
                 </div>
                 <button className="demo-validate demo-stagger" style={{ animationDelay: "0.8s" }} type="button" onClick={() => setSent(true)}><Check aria-hidden="true" /> Valider l'envoi</button>
@@ -224,8 +231,8 @@ function Demo() {
             {started && active === 3 && sent && (
               <div className="demo-sent">
                 <div className="demo-sent__check"><Check aria-hidden="true" /></div>
-                <p className="demo-prompt">Devis envoyé à la SCI du Parc.</p>
-                <p className="demo-note">Sarah archive le devis et suivra la réponse. Vous n'avez rien tapé.</p>
+                <p className="demo-prompt">Relance envoyée à Dupont Immobilier.</p>
+                <p className="demo-note">{demoRelance.followUp}</p>
                 <button className="demo-replay" type="button" onClick={() => goTo(0)}><RefreshCw aria-hidden="true" /> Revoir la démonstration</button>
               </div>
             )}
@@ -239,9 +246,9 @@ function Demo() {
         </div>
         <div className="demo-context">
           <p className="eyebrow">Contexte actif</p>
-          <div><FileCheck2 /> <span><strong>SCI du Parc</strong>Client pro depuis 2022</span></div>
-          <div><ReceiptText /> <span><strong>DEV-2026-114</strong>Brouillon enregistré</span></div>
-          <div><BarChart3 /> <span><strong>28 %</strong>Marge cible</span></div>
+          <div><IconEquipe /> <span><strong>Dupont Immobilier</strong>Client pro depuis 2023</span></div>
+          <div><IconDevis /> <span><strong>{demoRelance.invoice}</strong>{demoRelance.overdue}</span></div>
+          <div><IconTresorerie /> <span><strong>{demoRelance.amount}</strong>Solde restant dû</span></div>
         </div>
       </div>
       <div className="demo-cta">
@@ -284,21 +291,12 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
   return (
     <main>
       <section className="hero">
-        <picture>
-          <source srcSet="/images/hero-chantier-v2-640.avif 640w, /images/hero-chantier-v2-960.avif 960w, /images/hero-chantier-v2.avif 1600w" sizes="100vw" type="image/avif" />
-          <source srcSet="/images/hero-chantier-v2-640.webp 640w, /images/hero-chantier-v2-960.webp 960w, /images/hero-chantier-v2.webp 1600w" sizes="100vw" type="image/webp" />
-          <img className="hero__image" src="/images/hero-chantier-v2.webp" alt="Chef de chantier consultant sa tablette pendant que son équipe travaille" width="1600" height="900" fetchPriority="high" />
-        </picture>
-        <div className="hero__shade" />
         <div className="hero__content">
-          <p className="eyebrow eyebrow--light">Le logiciel de gestion des artisans du BTP</p>
+          <p className="eyebrow">Le logiciel de gestion des artisans du BTP</p>
           <h1>Retrouvez 10h et <em>18 % de marge</em> par mois.</h1>
           <p className="hero__lead">Devis, relances et suivi de marge tournent en automatique, pendant que vous êtes sur le chantier. Vous gardez la décision, plus la paperasse.</p>
           <div className="hero__actions">
-            <WhatsAppCta className="button button--primary" source="hero">
-              <MessageCircle aria-hidden="true" /> Voir ma marge gagnée
-            </WhatsAppCta>
-            <a className="button button--glass" href="#demo">Voir Atelier fonctionner <ArrowRight /></a>
+            <a className="button button--primary" href="#tarifs">Récupérer mes 10 heures <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
       </section>
@@ -341,17 +339,37 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
           <h2>Parlez comme sur le chantier.<br />Sarah comprend l'entreprise.</h2>
           <p>Elle ne part pas d'une page blanche : elle retrouve ce qui existe déjà dans Atelier. La preuve juste en dessous.</p>
         </div>
-        <div className="phrase-orbit">
-          <div className="orbit orbit--one" aria-hidden="true" />
-          <div className="orbit orbit--two" aria-hidden="true" />
-          <div className="context-chip context-chip--client"><span>Client</span>SCI du Parc</div>
-          <div className="context-chip context-chip--catalogue"><span>Catalogue</span>Cloisons & finitions</div>
-          <div className="context-chip context-chip--planning"><span>Planning</span>Démarrage · jeudi</div>
-          <div className="context-chip context-chip--margin"><span>Marge cible</span>28 %</div>
-          <div className="phrase-core">
-            <div className="mic-button"><Mic /></div>
-            <p>« Sarah, prépare le devis de la SCI du Parc pour les bureaux visités ce matin. »</p>
-            <span>Transcription terminée · 8 secondes</span>
+        <div className="flow-diagram">
+          <svg className="flow-diagram__lines" viewBox="0 0 1040 420" preserveAspectRatio="none" aria-hidden="true">
+            <path className="flow-line" d="M 220 210 H 420" />
+            <path className="flow-line flow-line--pulse flow-line--pulse-1" pathLength="100" d="M 220 210 H 420" />
+            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 192 V 133 Q 700 115 720 115 H 820" />
+            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 192 V 133 Q 700 115 720 115 H 820" />
+            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 192 V 196 Q 700 178 720 178 H 820" />
+            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 192 V 196 Q 700 178 720 178 H 820" />
+            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 228 V 224 Q 700 242 720 242 H 820" />
+            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 228 V 224 Q 700 242 720 242 H 820" />
+            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 228 V 287 Q 700 305 720 305 H 820" />
+            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 228 V 287 Q 700 305 720 305 H 820" />
+          </svg>
+          <div className="flow-diagram__grid">
+            <div className="flow-node flow-node--input">
+              <div className="mic-button"><Mic /></div>
+              <p>« Sarah, prépare le devis de la SCI du Parc pour les bureaux visités ce matin. »</p>
+              <span>Transcription terminée · 8 secondes</span>
+            </div>
+            <div className="flow-node flow-node--core">
+              <picture>
+                <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
+                <img src="/sarah-avatar-144.webp" alt="Sarah, l'assistante IA d'Atelier" width="144" height="144" />
+              </picture>
+            </div>
+            <div className="flow-node__outputs">
+              <div className="flow-node flow-node--output"><IconDevis className="flow-node__icon" /><span>Devis PDF</span></div>
+              <div className="flow-node flow-node--output"><IconRelance className="flow-node__icon" /><span>Relance</span></div>
+              <div className="flow-node flow-node--output"><IconPointage className="flow-node__icon" /><span>Pointage</span></div>
+              <div className="flow-node flow-node--output"><IconMarge className="flow-node__icon" /><span>Marge</span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -360,18 +378,16 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
 
       <Pricing />
 
-      <CaseCarousel />
-      <div className="section belonging-cta">
-        <div className="section-cta">
-          <p><strong>Eux aussi hésitaient.</strong><br />Aujourd'hui ils ont retrouvé leurs soirées.<br />Rejoignez des artisans qui se sont rendu le temps.</p>
-          <div>
-            <WhatsAppCta className="button button--primary" source="cases">
-              <MessageCircle aria-hidden="true" /> Rejoindre ces artisans
+      <MarketProof
+        actions={
+          <>
+            <a className="button button--primary" href="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></a>
+            <WhatsAppCta className="button button--dark" source="cases">
+              <MessageCircle aria-hidden="true" /> Voir Atelier en action
             </WhatsAppCta>
-            <a className="button button--dark" href="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></a>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
 
       <section className="section faq-section">
         <div className="section-heading section-heading--split">
@@ -389,10 +405,10 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
         <div className="section-cta">
           <p><strong>Une question qui n'est pas dans la liste ?</strong> Samuel répond directement, sans script ni engagement.</p>
           <div>
-            <WhatsAppCta className="button button--primary" source="faq">
+            <a className="button button--primary" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
+            <WhatsAppCta className="button button--dark" source="faq">
               <MessageCircle aria-hidden="true" /> Poser ma question
             </WhatsAppCta>
-            <a className="button button--dark" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
       </section>
@@ -418,10 +434,10 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
           <h2>Votre entreprise ne manque pas de courage.<br /><em>Elle manque d'un bureau qui suit.</em></h2>
           <p>Montrez votre quotidien à Samuel. Il vous dira franchement où Atelier peut vous rendre du temps.</p>
           <div className="hero__actions">
-            <WhatsAppCta className="button button--primary" source="closing">
+            <a className="button button--primary" href="#tarifs">Protéger ma marge <ArrowRight aria-hidden="true" /></a>
+            <WhatsAppCta className="button button--glass" source="closing">
               Récupérer mes soirées <ArrowRight />
             </WhatsAppCta>
-            <a className="button button--glass" href="#tarifs">Protéger ma marge <ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
       </section>

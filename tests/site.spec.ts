@@ -23,8 +23,8 @@ test("navigation mobile, WhatsApp, démo et pricing", async ({ page }) => {
   await page.goto("/?utm_source=google&utm_medium=cpc&utm_campaign=devis");
   const menu = page.getByRole("button", { name: "Menu" });
   await menu.click();
-  await expect(page.getByRole("link", { name: "Le journal" }).last()).toBeVisible();
-  await expect(page.getByRole("button", { name: "Récupérer du temps" }).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: "Tips de chantier" }).last()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Mon devis en 2 min" }).first()).toBeVisible();
   await page.locator("#demo").scrollIntoViewIfNeeded();
   await page.getByRole("tab", { name: /Vous validez/ }).click();
   await expect(page.getByText("Valider l'envoi")).toBeVisible();
@@ -48,16 +48,13 @@ test("navigation mobile, WhatsApp, démo et pricing", async ({ page }) => {
   expect(preservedHref).toContain("utm_campaign=devis");
 });
 
-test("navigation clavier du carrousel et réduction des animations", async ({ browser }) => {
+test("réduction des animations sur le bandeau de sources marché", async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1280, height: 900 } });
   const page = await context.newPage();
   await page.goto("/");
-  const viewport = page.locator(".case-viewport");
-  await viewport.focus();
-  await expect(viewport).toBeFocused();
-  const animation = await page.locator(".case-track").evaluate((element) => getComputedStyle(element).animationName);
+  await page.locator("#resultats").scrollIntoViewIfNeeded();
+  const animation = await page.locator(".market-sources__track").evaluate((element) => getComputedStyle(element).animationName);
   expect(animation).toBe("none");
-  await page.getByRole("button", { name: "Cas client suivant" }).click();
   await context.close();
 });
 

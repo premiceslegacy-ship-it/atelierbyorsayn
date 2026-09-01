@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { BTP_DOULEURS, SITE_METIERS, type LeadFormConfig } from "../data/leadForms";
+import { isAdsLanding } from "./ConversionLink";
 
 export const METAUX_OPTIONS = ["Aluminium", "Cuivre", "Zinc", "Inox", "Acier", "Plusieurs"] as const;
 
@@ -44,6 +45,8 @@ export function LeadCaptureForm({
     douleurs: [],
   });
   const [touched, setTouched] = useState(false);
+  // Capturé une seule fois : l'URL d'atterrissage porte le signal ads, pas forcément la page où le formulaire s'ouvre.
+  const [fromAds] = useState(isAdsLanding);
   const formId = useId();
 
   const phoneValid = isPhonePlausible(values.telephone);
@@ -63,7 +66,7 @@ export function LeadCaptureForm({
         event.preventDefault();
         setTouched(true);
         if (!canSubmit) return;
-        onSubmit({ ...values, key: config.key, source: config.source, offer: config.offer });
+        onSubmit({ ...values, key: config.key, source: fromAds ? "Ads" : config.source, offer: config.offer });
       }}
       noValidate
     >

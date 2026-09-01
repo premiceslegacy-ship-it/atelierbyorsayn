@@ -37,6 +37,21 @@ const SETUP_PROCESS = [
   },
 ];
 
+/** Chiffres tracés au trait, dans l'esprit croquis des icônes maison — pas de badge, pas de forme pleine. */
+function StepDigit({ n }: { n: 1 | 2 | 3 | 4 }) {
+  const paths: Record<1 | 2 | 3 | 4, string> = {
+    1: "M11 8 L17 4 V28 M11 28 H23",
+    2: "M9 10 C9 5.5 13 3 17 3 C21.5 3 24.5 6 24.5 9.5 C24.5 15 17 17.5 9.5 28 H25",
+    3: "M9.5 6 C11 3.8 14 2.7 17 3 C21 3.4 24 6 24 9.5 C24 12.5 21.5 14.3 18.5 14.8 C22 15.2 25 17.3 25 21.5 C25 25.8 21.5 28.7 17 28.7 C13 28.7 9.7 27 8.5 24",
+    4: "M20 28 V3 L7 20.5 H27",
+  };
+  return (
+    <svg className="setup-process__digit" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d={paths[n]} stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }: PricingProps) {
   const [selected, setSelected] = useState("pro");
   const [showTrialTiers, setShowTrialTiers] = useState(false);
@@ -127,13 +142,16 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
       )}
       {!showTrialTiers && (
         <div className="setup-process">
-          <p className="setup-process__heading">Concrètement, comment ça se passe avec « On s'occupe de tout »</p>
+          <p className="setup-process__heading">Concrètement, comment ça se passe avec<br />« On s'occupe de tout »</p>
           <ol>
             {SETUP_PROCESS.map((step, index) => (
               <li key={step.title}>
-                <span className="setup-process__index">{String(index + 1).padStart(2, "0")}</span>
-                <h4>{step.title}</h4>
-                <p>{step.copy}</p>
+                <StepDigit n={(index + 1) as 1 | 2 | 3 | 4} />
+                <div className="setup-process__body">
+                  <h4>{step.title}</h4>
+                  <p>{step.copy}</p>
+                </div>
+                {index < SETUP_PROCESS.length - 1 && <span className="setup-process__connector" aria-hidden="true" />}
               </li>
             ))}
           </ol>

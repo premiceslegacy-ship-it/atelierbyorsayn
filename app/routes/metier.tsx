@@ -134,7 +134,7 @@ export default function MetierRoute() {
             </div>
           </section>
 
-          <Pricing sourceSuffix={metier.slug} note={metier.pricingNote} />
+          <Pricing sourceSuffix={metier.slug} note={metier.pricingNote} setupOffer={metier.setupOffer} />
 
           <section className="section trade-sarah">
             <div className="trade-sarah__portrait">

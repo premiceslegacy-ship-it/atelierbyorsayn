@@ -59,6 +59,11 @@ export interface MetierData {
   };
   /** Précision affichée sous les formules d'abonnement, propre à certains métiers (ex: module prix matières métal). Absent = rien d'affiché. */
   pricingNote?: string;
+  /** Personnalise le bloc "On s'occupe de tout" (offre setup) dans le langage du métier. Absent = fallback générique dans Pricing.tsx. */
+  setupOffer?: {
+    headline: string;
+    subline: string;
+  };
 }
 
 export const metiers: MetierData[] = [
@@ -165,6 +170,10 @@ export const metiers: MetierData[] = [
       description:
         "Créez vos devis d'électricité depuis le terrain en 5 minutes, TVA rénovation automatique, relances impayés et marge chantier en temps réel. Opérationnel en 48h.",
     },
+    setupOffer: {
+      headline: "On configure votre catalogue élec. Vous, vous chiffrez.",
+      subline: "Tarifs, TVA rénovation/neuf, prestations types : tout est prêt avant votre premier appel. Formation de l'équipe et 30 jours à vos côtés inclus.",
+    },
   },
   {
     slug: "plombier",
@@ -268,6 +277,10 @@ export const metiers: MetierData[] = [
       title: "Logiciel devis plombier chauffagiste | Gestion chantier CVC - Atelier",
       description:
         "Devis dépannage en 2 minutes, contrats de maintenance PAC automatiques, marge chantier en temps réel. Conçu pour les plombiers et chauffagistes. Opérationnel en 48h.",
+    },
+    setupOffer: {
+      headline: "On configure vos contrats d'entretien. Ils se facturent seuls.",
+      subline: "Forfaits dépannage, tarifs PAC, contrats de maintenance : tout est prêt avant votre premier chantier. Formation de l'équipe et 30 jours à vos côtés inclus.",
     },
   },
   {
@@ -373,6 +386,10 @@ export const metiers: MetierData[] = [
       description:
         "Devis menuiserie avec variantes matière en 2 minutes, MaPrimeRénov automatique, suivi de pose et marge chantier en temps réel. Conçu pour les menuisiers. Opérationnel en 48h.",
     },
+    setupOffer: {
+      headline: "On configure votre catalogue essences et finitions. Vous, vous posez.",
+      subline: "Bois, quincaillerie, jalons de pose type : tout est prêt avant votre premier devis. Formation de l'équipe et 30 jours à vos côtés inclus.",
+    },
   },
   {
     slug: "peintre",
@@ -476,6 +493,10 @@ export const metiers: MetierData[] = [
       title: "Logiciel devis peintre bâtiment | Devis m², TVA auto et relances - Atelier",
       description:
         "Créez vos devis peinture au m² depuis le terrain, TVA 10% rénovation automatique, MaPrimeRénov et relances impayés. Conçu pour les peintres et plâtriers. Opérationnel en 48h.",
+    },
+    setupOffer: {
+      headline: "On configure vos prestations types. Le devis part le soir même.",
+      subline: "Tarifs au m², TVA rénovation, prestations peinture et plâtrerie pré-remplies : tout est prêt avant votre première visite. Formation de l'équipe et 30 jours à vos côtés inclus.",
     },
   },
   {
@@ -588,6 +609,10 @@ export const metiers: MetierData[] = [
         "Devis métallerie au ml et au m² calculés automatiquement, mise à jour prix acier en un clic, marge réelle par ouvrage. Conçu pour les tôliers et serruriers-métalliers. Opérationnel en 48h.",
     },
     pricingNote: "Suivi des prix matière (alu, cuivre, zinc) inclus à partir de la formule Pro.",
+    setupOffer: {
+      headline: "On configure votre catalogue au ml et au m². Vous, vous chiffrez.",
+      subline: "Tarifs matière, coefficient fournisseur, variantes de finition : tout est prêt avant votre premier devis. Formation de l'équipe et 30 jours à vos côtés inclus.",
+    },
   },
   {
     slug: "paysagiste",
@@ -691,6 +716,10 @@ export const metiers: MetierData[] = [
       title: "Logiciel devis paysagiste | Contrats entretien et gestion tournées - Atelier",
       description:
         "Factures récurrentes automatiques pour vos contrats d'entretien, planning tournées multi-sites et devis de création au m². Conçu pour les paysagistes. Opérationnel en 48h.",
+    },
+    setupOffer: {
+      headline: "On configure vos contrats d'entretien. Ils se facturent seuls.",
+      subline: "Tarifs au m²/ml, contrats récurrents, TVA entretien jardins : tout est prêt avant votre première tournée. Formation de l'équipe et 30 jours à vos côtés inclus.",
     },
   },
   {
@@ -796,6 +825,10 @@ export const metiers: MetierData[] = [
       description:
         "Facturez à l'avancement, TVA auto 5,5%/10%/20%, suivez vos dépenses terrain et calculez votre rentabilité chantier en temps réel. Conçu pour les maçons et entreprises de rénovation.",
     },
+    setupOffer: {
+      headline: "On configure vos situations de travaux. Vous, vous savez si vous gagnez.",
+      subline: "Retenue de garantie, 3 taux de TVA, prestations types : tout est prêt avant votre premier chantier. Formation de l'équipe et 30 jours à vos côtés inclus.",
+    },
   },
   {
     slug: "couvreur",
@@ -899,6 +932,10 @@ export const metiers: MetierData[] = [
       title: "Logiciel devis couvreur | Chiffrage toiture au m² et rentabilité - Atelier",
       description:
         "Créez vos devis de couverture au m² depuis le terrain, encaissez vos acomptes, relancez les impayés automatiquement et suivez la marge réelle de chaque toiture. Opérationnel en 48h.",
+    },
+    setupOffer: {
+      headline: "On configure votre catalogue toiture. Le devis part avant de redescendre.",
+      subline: "Tarifs au m², ouvrages couverture et zinguerie, acomptes à la signature : tout est prêt avant votre premier devis. Formation de l'équipe et 30 jours à vos côtés inclus.",
     },
   },
   {
@@ -1004,6 +1041,10 @@ export const metiers: MetierData[] = [
       description:
         "Chiffrez vos charpentes avec vos coefficients, facturez à l'avancement, suivez la marge atelier + pose en temps réel. Conçu pour les charpentiers bois. Opérationnel en 48h.",
     },
+    setupOffer: {
+      headline: "On configure vos coefficients matière. Vous restez à l'établi.",
+      subline: "Essences, sections, temps d'atelier, situations à l'avancement : tout est prêt avant votre premier chiffrage. Formation de l'équipe et 30 jours à vos côtés inclus.",
+    },
   },
   {
     slug: "carreleur",
@@ -1107,6 +1148,10 @@ export const metiers: MetierData[] = [
       title: "Logiciel devis carreleur | Chiffrage pose au m² et rentabilité - Atelier",
       description:
         "Créez vos devis de carrelage au m² depuis le chantier, TVA rénovation automatique, relances impayés et marge réelle fournitures comprises. Opérationnel en 48h.",
+    },
+    setupOffer: {
+      headline: "On configure votre catalogue de pose. Le devis part avant vous.",
+      subline: "Tarifs au m², préparation des supports, TVA rénovation : tout est prêt avant votre premier chantier. Formation de l'équipe et 30 jours à vos côtés inclus.",
     },
   },
 ];

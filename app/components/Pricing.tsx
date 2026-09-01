@@ -9,9 +9,16 @@ type PricingProps = {
   sourceSuffix?: string;
   /** Précision métier affichée sous les formules (ex: module prix matières métal). Absent = rien d'affiché. */
   note?: string;
+  /** Titre + sous-texte du bloc "On s'occupe de tout", personnalisés dans le langage du métier. Absent = texte générique (page d'accueil). */
+  setupOffer?: { headline: string; subline: string };
 };
 
-export function Pricing({ sourceSuffix, note }: PricingProps) {
+const DEFAULT_SETUP_OFFER = {
+  headline: "Votre entreprise est prête, sans soirée sacrifiée.",
+  subline: "Configuration métier, reprise du catalogue, formation de l'équipe et 30 jours d'accompagnement. Puis accès sans abonnement mensuel.",
+};
+
+export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }: PricingProps) {
   const [selected, setSelected] = useState("pro");
   const [showTrialTiers, setShowTrialTiers] = useState(false);
   const revealRef = useRef<HTMLDivElement>(null);
@@ -23,6 +30,11 @@ export function Pricing({ sourceSuffix, note }: PricingProps) {
   const revealTiers = () => {
     setShowTrialTiers(true);
     requestAnimationFrame(() => revealRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
+
+  const backToSetupOffer = () => {
+    setShowTrialTiers(false);
+    requestAnimationFrame(() => document.getElementById("tarifs")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
 
   return (
@@ -72,7 +84,7 @@ export function Pricing({ sourceSuffix, note }: PricingProps) {
             </div>
           </div>
           {note && <p className="pricing-note pricing-note--trade">{note}</p>}
-          <button type="button" className="text-link pricing-reveal__back" onClick={() => setShowTrialTiers(false)}>
+          <button type="button" className="text-link pricing-reveal__back" onClick={backToSetupOffer}>
             Voir l'offre clé en main
           </button>
         </div>
@@ -81,8 +93,8 @@ export function Pricing({ sourceSuffix, note }: PricingProps) {
           <button type="button" className="pricing-choice" onClick={() => openLeadModal(setupSource)}>
             <span className="pricing-choice__label">On s'occupe de tout</span>
             <div className="pricing-choice__price"><strong>{SETUP_PRICE.toLocaleString("fr-FR")} €</strong><span>HT, une seule fois</span></div>
-            <h3>Votre entreprise est prête, sans soirée sacrifiée.</h3>
-            <p>Configuration métier, reprise du catalogue, formation de l'équipe et 30 jours d'accompagnement. Puis accès sans abonnement mensuel.</p>
+            <h3>{setupOffer.headline}</h3>
+            <p>{setupOffer.subline}</p>
             <span className="pricing-choice__action">Parler de mon entreprise <ArrowRight /></span>
           </button>
           <button type="button" className="pricing-choice" onClick={revealTiers}>

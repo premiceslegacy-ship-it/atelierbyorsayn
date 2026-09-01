@@ -1,40 +1,28 @@
 /**
- * Configuration de la capture de leads par page.
- *
- * Chaque page qui capture des leads pointe vers une base Notion et une variante
- * de formulaire. Le token Notion reste côté serveur (api/lead.ts) : ici on ne
- * manipule que des identifiants de data source, pas de secret.
- *
- * Modèle d'extension : quand un métier passe en campagne Ads, on lui crée une
- * base Notion dédiée (comme "tolier-ads") et on ajoute une entrée dans
- * LEAD_FORM_CONFIGS pointant vers cette base — sans toucher au reste.
+ * Toutes les captures passent par la base Notion "Website Leads Atelier".
+ * "Source" distingue le canal (Ads, Organique, Home, Autre) ; "Offre" distingue
+ * ce qui a motivé le clic (Clé en main, abonnement, page métier, blog, home).
+ * Les deux ensemble qualifient la valeur du lead sans jamais isoler une base à part.
  */
-
-export type LeadFormVariant = "metallerie" | "general";
-
 export type LeadFormConfig = {
-  /** Identifiant logique de la config, envoyé au serveur pour router vers la bonne base. */
-  key: string;
-  /** Variante de champs affichés dans le formulaire. */
-  variant: LeadFormVariant;
-  /** Valeur écrite dans la propriété "Source" de la base Notion. */
+  /** Toujours "general" : conservé pour compat avec le payload envoyé au serveur. */
+  key: "general";
+  /** Valeur écrite dans la propriété "Source" de la base Notion (le canal). */
   source: string;
+  /** Valeur écrite dans la propriété "Offre" de la base Notion (l'intention). */
+  offer: string;
   /**
-   * Métier pré-sélectionné dans le champ "Métier" (variante general).
+   * Métier pré-sélectionné dans le champ "Métier".
    * Sur une page métier, on connaît déjà le métier ; sur la home, on laisse vide.
    */
   defaultMetier?: string;
-};
-
-/** Base "Leads Landing Métallerie" — campagne Ads tôlier, isolée du trafic organique. */
-export const TOLIER_ADS_CONFIG: LeadFormConfig = {
-  key: "tolier-ads",
-  variant: "metallerie",
-  source: "Ads Métallerie - prix matière",
+  /** Affiche le champ "Métaux travaillés" (pertinent pour tôlier/métallier). */
+  showMetaux?: boolean;
 };
 
 /**
  * Métiers du site, tels qu'affichés dans le champ "Métier" de la base générale.
+ * Inclut les sous-métiers métallerie (ex-base Ads dédiée, désormais fusionnée ici).
  * L'ordre et les libellés doivent correspondre aux options de la base Notion.
  */
 export const SITE_METIERS = [
@@ -48,6 +36,10 @@ export const SITE_METIERS = [
   "Couvreur / Zingueur",
   "Charpentier bois",
   "Carreleur / Mosaïste",
+  "Tôlerie",
+  "Chaudronnerie",
+  "Métallerie sur mesure",
+  "Serrurerie",
   "Autre",
 ] as const;
 
@@ -60,39 +52,38 @@ export const BTP_DOULEURS = [
   "Je perds du temps à tout recalculer à la main",
 ] as const;
 
-/**
- * Renvoie la config de capture pour un slug de page métier.
- * - tolier → base Ads dédiée (variante métallerie)
- * - autres métiers → base générale, métier pré-sélectionné
- */
+const resolveDefaultMetier = (metierLabel: string) =>
+  SITE_METIERS.includes(metierLabel as (typeof SITE_METIERS)[number]) ? metierLabel : "Autre";
+
+/** Config de capture pour une page métier : source Organique, Offre "Page métier", métier pré-sélectionné. */
 export function getMetierLeadConfig(slug: string, metierLabel: string): LeadFormConfig {
-  if (slug === "tolier") return TOLIER_ADS_CONFIG;
   return {
     key: "general",
-    variant: "general",
     source: "Organique",
-    defaultMetier: SITE_METIERS.includes(metierLabel as (typeof SITE_METIERS)[number]) ? metierLabel : "Autre",
+    offer: "Page métier",
+    defaultMetier: resolveDefaultMetier(metierLabel),
+    showMetaux: slug === "tolier",
   };
 }
 
-/** Config de capture pour la home : base générale, aucun métier pré-sélectionné. */
+/** Config de capture pour la home : Offre "Home", aucun métier pré-sélectionné. */
 export const HOME_LEAD_CONFIG: LeadFormConfig = {
   key: "general",
-  variant: "general",
-  source: "Home",
+  source: "Organique",
+  offer: "Home",
 };
 
-/** Config de capture pour l'offre clé en main (setup 3000€) : base générale, source dédiée pour isoler ces leads. */
+/** Config de capture pour l'offre clé en main (setup 3000€) : Offre dédiée pour isoler ces leads à forte valeur. */
 export const SETUP_LEAD_CONFIG: LeadFormConfig = {
   key: "general",
-  variant: "general",
-  source: "Clé en main",
+  source: "Organique",
+  offer: "Clé en main (3 000 €)",
 };
 
 /** Variante de SETUP_LEAD_CONFIG avec le métier pré-sélectionné, pour une page métier. */
 export function getSetupLeadConfig(metierLabel: string): LeadFormConfig {
   return {
     ...SETUP_LEAD_CONFIG,
-    defaultMetier: SITE_METIERS.includes(metierLabel as (typeof SITE_METIERS)[number]) ? metierLabel : "Autre",
+    defaultMetier: resolveDefaultMetier(metierLabel),
   };
 }

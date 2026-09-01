@@ -371,6 +371,13 @@ button { color: inherit; }
 .pricing-usage .button { flex: 0 0 auto; }
 .pricing-note { margin: 34px auto 0; text-align: center; color: rgba(255,255,255,.62); font-size: 9px; }
 .pricing-note--trade { margin: 28px auto 0; font-size: 11px; }
+.setup-process { margin-top: 46px; padding-top: 42px; border-top: 1px solid rgba(255,255,255,.1); }
+.setup-process__heading { margin: 0 0 26px; text-align: center; color: rgba(255,255,255,.55); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.setup-process ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.setup-process li { padding: 22px 20px; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; background: rgba(255,255,255,.03); }
+.setup-process__index { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 16px; border: 1px solid rgba(255,159,28,.35); border-radius: 10px; background: linear-gradient(145deg,rgba(255,159,28,.18),rgba(255,159,28,.05)); color: #ffb95d; font-size: 11px; font-weight: 800; letter-spacing: .04em; }
+.setup-process h4 { margin: 0; font-family: "Geist", sans-serif; font-size: 14px; font-weight: 650; letter-spacing: -.02em; line-height: 1.3; color: white; }
+.setup-process p { margin: 10px 0 0; color: rgba(255,255,255,.58); font-size: 12px; line-height: 1.6; }
 
 .faq-section { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
 .faq-section .section-heading { display: block; }
@@ -639,6 +646,7 @@ button { color: inherit; }
   .pricing-choice { flex: 0 0 min(86vw,360px); min-height: 370px; padding: 28px; scroll-snap-align: start; }
   .pricing-choice__price { margin-top: 34px; }
   .pricing-choice h3 { margin-top: 24px; line-height: 1.2; }
+  .setup-process ol { grid-template-columns: 1fr; }
   .pricing-reveal { margin-top: 62px; }
   .pricing-carousel { max-width: none; }
   .pricing-carousel__track { grid-template-columns: 1fr; gap: 22px; }

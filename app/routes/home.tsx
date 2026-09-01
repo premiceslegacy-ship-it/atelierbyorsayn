@@ -51,7 +51,7 @@ const schemas = [
           name: "Atelier — On s'occupe de tout",
           price: SETUP_PRICE,
           priceCurrency: "EUR",
-          description: "Configuration métier, reprise du catalogue, formation, 30 jours d'accompagnement et accès sans abonnement mensuel.",
+          description: "Configuration métier, reprise du catalogue, prise en main guidée, 14 jours de support prioritaire et accès sans abonnement mensuel.",
         },
         ...PRICING_TIERS.map((tier) => ({
           "@type": "Offer",

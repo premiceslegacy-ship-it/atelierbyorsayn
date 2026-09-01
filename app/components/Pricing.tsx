@@ -15,8 +15,27 @@ type PricingProps = {
 
 const DEFAULT_SETUP_OFFER = {
   headline: "Votre entreprise est prête, sans soirée sacrifiée.",
-  subline: "Configuration métier, reprise du catalogue, formation de l'équipe et 30 jours d'accompagnement. Puis accès sans abonnement mensuel.",
+  subline: "Configuration métier, reprise du catalogue, prise en main guidée et accès prioritaire au support pendant 14 jours. Puis accès sans abonnement mensuel.",
 };
+
+const SETUP_PROCESS = [
+  {
+    title: "On configure votre catalogue et vos prix",
+    copy: "Prestations types, tarifs, TVA applicable : votre instance Atelier reflète votre métier avant même votre premier échange avec Samuel.",
+  },
+  {
+    title: "On reprend ce que vous avez déjà",
+    copy: "Devis en cours, clients, historique : vos données existantes sont importées. Rien à ressaisir, rien à perdre.",
+  },
+  {
+    title: "Vous prenez la main, en direct",
+    copy: "Un appel avec Samuel, votre catalogue sous les yeux. Vous validez, vous ajustez, vous repartez en sachant vous en servir. Pas une formation de 30 jours : une heure utile.",
+  },
+  {
+    title: "14 jours de support prioritaire",
+    copy: "Une question, un blocage, un réglage à revoir ? Réponse directe de Samuel, en priorité, pendant les deux premières semaines. Ensuite, votre accès reste actif sans abonnement.",
+  },
+];
 
 export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }: PricingProps) {
   const [selected, setSelected] = useState("pro");
@@ -104,6 +123,20 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
             <p>Commencez sans frais de départ. Testez tout Expert, puis choisissez Pro à {PRICING_TIERS[0].price} € ou Expert à {PRICING_TIERS[1].price} € HT/mois.</p>
             <span className="pricing-choice__action">Voir les deux formules <ArrowRight /></span>
           </button>
+        </div>
+      )}
+      {!showTrialTiers && (
+        <div className="setup-process">
+          <p className="setup-process__heading">Concrètement, comment ça se passe avec « On s'occupe de tout »</p>
+          <ol>
+            {SETUP_PROCESS.map((step, index) => (
+              <li key={step.title}>
+                <span className="setup-process__index">{String(index + 1).padStart(2, "0")}</span>
+                <h4>{step.title}</h4>
+                <p>{step.copy}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       )}
       <p className="pricing-note">Facturation électronique incluse : chaque facture est déjà au format réglementaire, et la connexion à une plateforme agréée est comprise dans les deux offres, sans surcoût.</p>

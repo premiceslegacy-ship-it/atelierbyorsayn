@@ -1,8 +1,7 @@
 import { useId, useState } from "react";
 import { Loader2 } from "lucide-react";
-import { BTP_DOULEURS, SITE_METIERS, type LeadFormConfig, type LeadFormVariant } from "../data/leadForms";
+import { BTP_DOULEURS, SITE_METIERS, type LeadFormConfig } from "../data/leadForms";
 
-export const METALLERIE_METIER_OPTIONS = ["Tôlerie", "Chaudronnerie", "Métallerie sur mesure", "Serrurerie", "Autre"] as const;
 export const METAUX_OPTIONS = ["Aluminium", "Cuivre", "Zinc", "Inox", "Acier", "Plusieurs"] as const;
 
 export type LeadFormValues = {
@@ -10,14 +9,13 @@ export type LeadFormValues = {
   entreprise: string;
   telephone: string;
   metier: string;
-  /** Variante métallerie uniquement. */
+  /** Affiché uniquement quand config.showMetaux est vrai (tôlier/métallier). */
   metaux: string[];
-  /** Variante générale uniquement. */
   douleurs: string[];
 };
 
-/** Payload envoyé à /api/lead : les valeurs + la clé de routage et la source de la config. */
-export type LeadSubmission = LeadFormValues & { key: string; source: string };
+/** Payload envoyé à /api/lead : les valeurs + la clé de routage, la source et l'offre de la config. */
+export type LeadSubmission = LeadFormValues & { key: string; source: string; offer: string };
 
 /** Tolère espaces, points, tirets, indicatif +33/0033 : bloque seulement le vide ou trop court, jamais un format FR valide mais inhabituel. */
 const PHONE_MIN_DIGITS = 9;
@@ -25,9 +23,6 @@ const PHONE_MIN_DIGITS = 9;
 function isPhonePlausible(value: string) {
   return value.replace(/\D/g, "").length >= PHONE_MIN_DIGITS;
 }
-
-const metierOptionsFor = (variant: LeadFormVariant): readonly string[] =>
-  variant === "metallerie" ? METALLERIE_METIER_OPTIONS : SITE_METIERS;
 
 export function LeadCaptureForm({
   config,
@@ -68,7 +63,7 @@ export function LeadCaptureForm({
         event.preventDefault();
         setTouched(true);
         if (!canSubmit) return;
-        onSubmit({ ...values, key: config.key, source: config.source });
+        onSubmit({ ...values, key: config.key, source: config.source, offer: config.offer });
       }}
       noValidate
     >
@@ -120,13 +115,13 @@ export function LeadCaptureForm({
           onChange={(event) => setValues((prev) => ({ ...prev, metier: event.target.value }))}
         >
           <option value="">Sélectionner…</option>
-          {metierOptionsFor(config.variant).map((option) => (
+          {SITE_METIERS.map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
       </div>
 
-      {config.variant === "metallerie" && (
+      {config.showMetaux && (
         <div className="lead-form__field">
           <span className="lead-form__label">Métaux travaillés</span>
           <div className="lead-form__checks">
@@ -140,19 +135,17 @@ export function LeadCaptureForm({
         </div>
       )}
 
-      {config.variant === "general" && (
-        <div className="lead-form__field">
-          <span className="lead-form__label">Ce qui vous pèse le plus (facultatif)</span>
-          <div className="lead-form__checks lead-form__checks--stack">
-            {BTP_DOULEURS.map((douleur) => (
-              <label key={douleur} className="lead-form__check">
-                <input type="checkbox" checked={values.douleurs.includes(douleur)} onChange={() => toggleIn("douleurs", douleur)} />
-                <span>{douleur}</span>
-              </label>
-            ))}
-          </div>
+      <div className="lead-form__field">
+        <span className="lead-form__label">Ce qui vous pèse le plus (facultatif)</span>
+        <div className="lead-form__checks lead-form__checks--stack">
+          {BTP_DOULEURS.map((douleur) => (
+            <label key={douleur} className="lead-form__check">
+              <input type="checkbox" checked={values.douleurs.includes(douleur)} onChange={() => toggleIn("douleurs", douleur)} />
+              <span>{douleur}</span>
+            </label>
+          ))}
         </div>
-      )}
+      </div>
 
       <button type="submit" className="button button--primary lead-form__submit" disabled={submitting}>
         {submitting ? <Loader2 className="lead-form__spinner" aria-hidden="true" /> : null}

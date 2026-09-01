@@ -20,7 +20,7 @@ export type PricingTier = {
 
 export const TRIAL_DAYS = 14;
 
-/** Offre clé en main : configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement. */
+/** Offre clé en main : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire. */
 export const SETUP_PRICE = 3000;
 
 export const PRICING_TIERS: PricingTier[] = [
@@ -238,7 +238,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Combien de temps faut-il pour démarrer ?",
-    answer: "Avec l'essai, vous pouvez créer votre espace immédiatement et avancer à votre rythme. Avec l'offre clé en main, nous configurons votre métier, reprenons votre catalogue, formons l'équipe et restons à vos côtés pendant 30 jours.",
+    answer: "Avec l'essai, vous pouvez créer votre espace immédiatement et avancer à votre rythme. Avec l'offre clé en main, nous configurons votre métier, reprenons votre catalogue, vous montrons comment vous en servir en direct, puis restons prioritaires sur votre support pendant 14 jours.",
   },
   {
     question: "Atelier fonctionne-t-il sur téléphone ?",
@@ -246,7 +246,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Setup ou abonnement, comment choisir ?",
-    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même, avec ${TRIAL_DAYS} jours d'Expert offerts sans carte bancaire et aucun prélèvement automatique à la fin.`,
+    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même, avec ${TRIAL_DAYS} jours d'Expert offerts sans carte bancaire et aucun prélèvement automatique à la fin.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",

@@ -172,7 +172,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure votre catalogue élec. Vous, vous chiffrez.",
-      subline: "Tarifs, TVA rénovation/neuf, prestations types : tout est prêt avant votre premier appel. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Tarifs, TVA rénovation/neuf, prestations types : tout est prêt avant votre premier appel. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -280,7 +280,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure vos contrats d'entretien. Ils se facturent seuls.",
-      subline: "Forfaits dépannage, tarifs PAC, contrats de maintenance : tout est prêt avant votre premier chantier. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Forfaits dépannage, tarifs PAC, contrats de maintenance : tout est prêt avant votre premier chantier. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -388,7 +388,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure votre catalogue essences et finitions. Vous, vous posez.",
-      subline: "Bois, quincaillerie, jalons de pose type : tout est prêt avant votre premier devis. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Bois, quincaillerie, jalons de pose type : tout est prêt avant votre premier devis. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -496,7 +496,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure vos prestations types. Le devis part le soir même.",
-      subline: "Tarifs au m², TVA rénovation, prestations peinture et plâtrerie pré-remplies : tout est prêt avant votre première visite. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Tarifs au m², TVA rénovation, prestations peinture et plâtrerie pré-remplies : tout est prêt avant votre première visite. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -611,7 +611,7 @@ export const metiers: MetierData[] = [
     pricingNote: "Suivi des prix matière (alu, cuivre, zinc) inclus à partir de la formule Pro.",
     setupOffer: {
       headline: "On configure votre catalogue au ml et au m². Vous, vous chiffrez.",
-      subline: "Tarifs matière, coefficient fournisseur, variantes de finition : tout est prêt avant votre premier devis. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Tarifs matière, coefficient fournisseur, variantes de finition : tout est prêt avant votre premier devis. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -719,7 +719,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure vos contrats d'entretien. Ils se facturent seuls.",
-      subline: "Tarifs au m²/ml, contrats récurrents, TVA entretien jardins : tout est prêt avant votre première tournée. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Tarifs au m²/ml, contrats récurrents, TVA entretien jardins : tout est prêt avant votre première tournée. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -827,7 +827,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure vos situations de travaux. Vous, vous savez si vous gagnez.",
-      subline: "Retenue de garantie, 3 taux de TVA, prestations types : tout est prêt avant votre premier chantier. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Retenue de garantie, 3 taux de TVA, prestations types : tout est prêt avant votre premier chantier. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -935,7 +935,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure votre catalogue toiture. Le devis part avant de redescendre.",
-      subline: "Tarifs au m², ouvrages couverture et zinguerie, acomptes à la signature : tout est prêt avant votre premier devis. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Tarifs au m², ouvrages couverture et zinguerie, acomptes à la signature : tout est prêt avant votre premier devis. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -1043,7 +1043,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure vos coefficients matière. Vous restez à l'établi.",
-      subline: "Essences, sections, temps d'atelier, situations à l'avancement : tout est prêt avant votre premier chiffrage. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Essences, sections, temps d'atelier, situations à l'avancement : tout est prêt avant votre premier chiffrage. Support prioritaire pendant 14 jours inclus.",
     },
   },
   {
@@ -1151,7 +1151,7 @@ export const metiers: MetierData[] = [
     },
     setupOffer: {
       headline: "On configure votre catalogue de pose. Le devis part avant vous.",
-      subline: "Tarifs au m², préparation des supports, TVA rénovation : tout est prêt avant votre premier chantier. Formation de l'équipe et 30 jours à vos côtés inclus.",
+      subline: "Tarifs au m², préparation des supports, TVA rénovation : tout est prêt avant votre premier chantier. Support prioritaire pendant 14 jours inclus.",
     },
   },
 ];

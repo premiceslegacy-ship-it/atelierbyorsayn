@@ -45,7 +45,7 @@ export default function CGV() {
           <Section title="Article 3 - Description des prestations">
             <SubSection title="3.1 Offre clé en main - environnement dédié">
               <p>
-                Prestation de déploiement de l'application Atelier incluant : création et configuration de l'instance Supabase (base de données, authentification, stockage), déploiement sur Cloudflare Workers, configuration du domaine et des emails transactionnels, exécution des migrations SQL, initialisation du profil entreprise et du catalogue, onboarding du compte propriétaire, tests de mise en service, et 30 jours de support au démarrage.
+                Prestation de déploiement de l'application Atelier incluant : création et configuration de l'instance Supabase (base de données, authentification, stockage), déploiement sur Cloudflare Workers, configuration du domaine et des emails transactionnels, exécution des migrations SQL, initialisation du profil entreprise et du catalogue, onboarding du compte propriétaire, tests de mise en service, et 14 jours de support prioritaire au démarrage.
               </p>
               <p className="mt-2">Le setup est une prestation de service unique, non un transfert de propriété du code source.</p>
             </SubSection>
@@ -121,7 +121,7 @@ export default function CGV() {
 
           <Section title="Article 6 - Durée et résiliation">
             <SubSection title="6.1 Setup">
-              <p>La prestation de setup est conclue pour une durée déterminée prenant fin à la livraison confirmée et à l'expiration des 30 jours de support au démarrage. Elle ne comporte pas d'engagement de durée postérieur.</p>
+              <p>La prestation de setup est conclue pour une durée déterminée prenant fin à la livraison confirmée et à l'expiration des 14 jours de support prioritaire au démarrage. Elle ne comporte pas d'engagement de durée postérieur.</p>
             </SubSection>
             <SubSection title="6.2 Abonnement MRR">
               <p>L'abonnement est conclu pour une durée indéterminée à compter de la date d'activation. Le Client peut demander sa résiliation depuis Atelier en indiquant un motif. La fin est programmée exactement <strong className="text-white">30 jours calendaires</strong> après la demande ; l'accès reste ouvert jusque-là et Stripe calcule la dernière période au prorata.</p>

@@ -41,7 +41,7 @@ Les logiciels de gestion BTP se rangent dans deux familles de prix.
 | Batappli | 79 à 199 €/mois | Abonnement mensuel, sans setup | Non |
 | Sellsy | 99 à 199 €/mois | Abonnement mensuel, CRM généraliste | Non |
 | Batigest | 150 à 300 €/mois | Abonnement + déploiement ERP | Non |
-| Atelier, clé en main | 3 000 € HT en une fois, puis 0 €/mois | Configuration métier, reprise du catalogue, formation et 30 jours d'accompagnement | Adaptée avec l'équipe Orsayn |
+| Atelier, clé en main | 3 000 € HT en une fois, puis 0 €/mois | Configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire | Adaptée avec l'équipe Orsayn |
 | Atelier, démarrage autonome | Pro 69 € ou Expert 169 € HT/mois, sans frais de départ | Expert offert 14 jours, sans carte et sans prélèvement automatique à la fin | Oui |
 
 Les prix des concurrents varient selon le nombre d'utilisateurs et les modules activés : ce sont des fourchettes publiques, à vérifier au moment du devis. Les prix Atelier sont ceux publiés sur cette page.
@@ -50,7 +50,7 @@ Les prix des concurrents varient selon le nombre d'utilisateurs et les modules a
 
 Deux profils d'artisans se dessinent, et le bon choix dépend de votre rythme, pas d'une règle générale.
 
-- **On s'occupe de tout** convient à l'entreprise qui préfère déléguer la configuration, la reprise du catalogue et la formation. Elle paie 3 000 € HT une fois, bénéficie de 30 jours d'accompagnement, puis garde son accès sans abonnement mensuel.
+- **On s'occupe de tout** convient à l'entreprise qui préfère déléguer la configuration et la reprise du catalogue. Elle paie 3 000 € HT une fois, bénéficie d'une prise en main guidée puis de 14 jours de support prioritaire, avant de garder son accès sans abonnement mensuel.
 - **Je démarre maintenant** convient à l'entreprise qui veut ouvrir son espace elle-même, sans frais de départ. Elle essaie Expert pendant 14 jours, puis choisit volontairement Pro à 69 € ou Expert à 169 € HT/mois.
 
 > **À retenir :** la différence n'est pas seulement le mode de paiement. L'offre à 3 000 € achète surtout du temps humain au démarrage ; l'abonnement permet de commencer seul et de garder Sarah active chaque mois.

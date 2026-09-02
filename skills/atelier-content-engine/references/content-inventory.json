@@ -1,7 +1,28 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-08-17",
+  "updatedAt": "2026-09-02",
   "articles": [
+    {
+      "slug": "ia-chatgpt-claude-gemini-artisan-btp",
+      "pillar": "Sarah et l'IA métier",
+      "intent": "Comprendre l'usage de ChatGPT, Claude ou Gemini pour un artisan du bâtiment",
+      "primaryQuery": "ChatGPT Claude Gemini artisan bâtiment",
+      "internalLinks": ["secretaire-ia-artisan-sarah"]
+    },
+    {
+      "slug": "checklist-rentree-artisan-btp",
+      "pillar": "Organisation et planning",
+      "intent": "Préparer la reprise d'activité de rentrée pour un artisan du BTP",
+      "primaryQuery": "checklist rentrée artisan BTP",
+      "internalLinks": ["planning-chantier-conflits-equipe-btp", "secretaire-ia-artisan-sarah"]
+    },
+    {
+      "slug": "repondre-vite-devis-artisan-btp",
+      "pillar": "Trésorerie et relances",
+      "intent": "Comprendre pourquoi la rapidité de réponse à un devis fait gagner ou perdre un chantier",
+      "primaryQuery": "répondre vite devis artisan BTP",
+      "internalLinks": ["secretaire-ia-artisan-sarah", "relancer-client-impaye-artisan-btp"]
+    },
     {
       "slug": "devis-facture-erreurs-artisan-btp",
       "pillar": "Facturation et conformité",

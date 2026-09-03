@@ -12,7 +12,7 @@ for (const viewport of [
   test(`accueil ${viewport.name}`, async ({ page }) => {
     await page.setViewportSize(viewport);
     await page.goto("/");
-    await expect(page.locator("h1")).toContainText("Retrouvez 10h");
+    await expect(page.locator("h1")).toContainText("Je récupère 10 h");
     await expect(page.locator("#demo")).toBeVisible();
     await page.screenshot({ path: `${screenshots}/accueil-${viewport.name}.png`, fullPage: true });
   });
@@ -69,7 +69,7 @@ test("une page métier conserve son pricing et son simulateur", async ({ page })
   await page.getByRole("link", { name: /Voir combien vous économisez/ }).click();
   await expect(page).toHaveURL(/\/electricien\/?#simulateur-ia$/);
   await expect(page.locator("#simulateur-ia")).toBeInViewport();
-  await expect(page.locator("#simulateur-ia")).toContainText("matériel électrique");
+  await expect(page.locator("#simulateur-ia")).toContainText("comparé à votre matériel");
 });
 
 test("enchaîner le CTA de la hero puis celui du simulateur garde le simulateur visible", async ({ page }) => {
@@ -94,9 +94,19 @@ test("enchaîner le CTA de la hero puis celui du simulateur garde le simulateur 
   expect(simulatorPosition.top).toBeGreaterThan(-1000);
 });
 
+test("les heroes métier parlent directement à l'artisan", async ({ page }) => {
+  for (const slug of ["electricien", "plombier", "menuisier", "peintre", "tolier", "paysagiste", "macon", "couvreur", "charpentier", "carreleur"]) {
+    await page.goto(`/${slug}`);
+    await expect(page.locator(".trade-hero h1")).toHaveText(/^Je /);
+    await expect(page.locator(".trade-hero h1 em")).toBeVisible();
+    await expect(page.locator(".trade-hero h1 em")).toHaveCSS("background-image", /linear-gradient/);
+    await expect(page.locator(".trade-hero__copy > p:not(.eyebrow)")).toHaveText(/^Je /);
+  }
+});
+
 test("pages publiques clés", async ({ page }) => {
   for (const [route, heading] of [
-    ["/electricien", "Devis envoyé"],
+    ["/electricien", "Je ne perds plus"],
     ["/blog", "Des réponses de terrain"],
     ["/blog/calcul-marge-chantier-btp", "Marge chantier"],
   ]) {

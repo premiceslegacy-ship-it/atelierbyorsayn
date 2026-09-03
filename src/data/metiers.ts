@@ -7,6 +7,7 @@ export interface MetierData {
   whatsappHook?: string;
   hero: {
     headline: string;
+    headlineAccent: string;
     subheadline: string;
     /** Libellé du CTA primaire de la hero (bouton blanc), 4 mots max, orienté bénéfice concret pour ce métier. */
     ctaPrimary: string;
@@ -72,9 +73,10 @@ export const metiers: MetierData[] = [
     metier: "Électricien",
     whatsapp: "électricien",
     hero: {
-      headline: "Devis envoyé avant de quitter le client.",
+      headline: "Je ne perds plus mes soirées à refaire mes devis électricité.",
+      headlineAccent: "mes soirées",
       subheadline:
-        "TVA rénovation automatique, marge chantier en temps réel, depuis votre téléphone, sans formation. Le devis part, vous êtes déjà sur le chantier suivant.",
+        "Je chiffre mes prestations et ma TVA depuis le chantier, je relance mes impayés automatiquement et je vois ma marge avant qu'une heure ou qu'un achat ne la fasse disparaître.",
       ctaPrimary: "Devis envoyé en 5 min",
     },
     heroMockup: {
@@ -180,9 +182,10 @@ export const metiers: MetierData[] = [
     metier: "Plombier / CVC",
     whatsapp: "plombier-chauffagiste",
     hero: {
-      headline: "Devis PAC depuis le camion. Contrats facturés seuls.",
+      headline: "Je ne laisse plus un contrat d'entretien sans facture.",
+      headlineAccent: "un contrat d'entretien",
       subheadline:
-        "Devis dépannage en 2 minutes, maintenances PAC facturées automatiquement, marge chantier CVC visible en temps réel. Le contrat facture, vous n'y pensez plus.",
+        "Je chiffre un dépannage depuis mon camion, je facture mes contrats PAC automatiquement et je vois ma marge avant de repartir sur le chantier suivant.",
       ctaPrimary: "Ne plus oublier un contrat",
     },
     heroMockup: {
@@ -288,9 +291,10 @@ export const metiers: MetierData[] = [
     metier: "Menuisier",
     whatsapp: "menuisier",
     hero: {
-      headline: "Fenêtres, portes, escaliers chiffrés en 2 minutes.",
+      headline: "Je ne perds plus un chantier à cause d'un devis trop lent.",
+      headlineAccent: "un chantier",
       subheadline:
-        "Catalogue au m² avec variantes matière, MaPrimeRénov automatique, marge réelle par ouvrage. Vous savez ce que chaque chantier vous rapporte, avant la dernière pose.",
+        "Je chiffre mes fenêtres, portes et escaliers avec mes variantes, j'affiche mes aides et je sais ce que me rapporte chaque ouvrage avant la dernière pose.",
       ctaPrimary: "Ouvrage chiffré en 2 min",
     },
     heroMockup: {
@@ -396,9 +400,10 @@ export const metiers: MetierData[] = [
     metier: "Peintre / Plâtrier",
     whatsapp: "peintre en bâtiment",
     hero: {
-      headline: "Devis m² envoyé le soir de la visite.",
+      headline: "Je n'envoie plus mes devis après le concurrent.",
+      headlineAccent: "après le concurrent",
       subheadline:
-        "Surfaces calculées sur place, MaPrimeRénov affiché, relances impayées automatiques. Avant que le concurrent envoie le sien.",
+        "Je calcule mes surfaces chez le client, j'applique la bonne TVA et je relance mes devis sans y penser, pour savoir ce que me rapporte chaque chantier avant d'acheter la peinture.",
       ctaPrimary: "Devis avant le concurrent",
     },
     heroMockup: {
@@ -505,9 +510,10 @@ export const metiers: MetierData[] = [
     whatsapp: "métallier",
     whatsappHook: "Bonjour Samuel, j'ai vu votre pub sur les prix matière. On peut en parler ?",
     hero: {
-      headline: "Un devis garde-corps chiffré en 2 minutes. Pas 2 heures.",
+      headline: "Je ne perds plus de temps ni de marge sur mes devis complexes.",
+      headlineAccent: "devis complexes",
       subheadline:
-        "Plus de recalcul à la main à chaque variante de finition ou changement de prix matière.\nVous entrez les dimensions, Atelier chiffre — et la marge affichée reste juste même si l'alu a bougé entre le devis et la commande.",
+        "Je chiffre mes garde-corps en quelques minutes, je garde mes variantes et je relance mes devis sans y penser.\nJe vois ce qu'il me reste après mes heures d'atelier, mes matières et mes achats, même quand l'alu ou l'acier bouge.",
       ctaPrimary: "Chiffrer au m² en 2 min",
     },
     heroMockup: {
@@ -619,9 +625,10 @@ export const metiers: MetierData[] = [
     metier: "Paysagiste",
     whatsapp: "paysagiste",
     hero: {
-      headline: "Vos clients d'entretien facturés. Même quand vous êtes sur le terrain.",
+      headline: "Je ne rate plus une facture d'entretien quand je suis sur le terrain.",
+      headlineAccent: "une facture d'entretien",
       subheadline:
-        "Factures récurrentes automatiques, devis de création au m² depuis le terrain, planning équipe multi-sites. Le lundi matin, tout le monde sait où aller.",
+        "Je facture mes contrats automatiquement, je chiffre mes créations au m² depuis le terrain et je garde mes équipes synchronisées, sans retrouver ma paperasse le soir.",
       ctaPrimary: "Facturer sans y penser",
     },
     heroMockup: {
@@ -727,9 +734,10 @@ export const metiers: MetierData[] = [
     metier: "Maçon / Rénovation",
     whatsapp: "maçon",
     hero: {
-      headline: "Sachez si vous gagnez sur chaque chantier.",
+      headline: "Je ne découvre plus ma perte à la dernière facture.",
+      headlineAccent: "ma perte",
       subheadline:
-        "Marge visible pendant les travaux, dépenses terrain centralisées, situations de travaux générées en un clic. Vous savez si vous gagnez, sans attendre la dernière facture fournisseur.",
+        "Je vois ma marge pendant les travaux, je rattache mes dépenses terrain au bon chantier et j'envoie mes situations avant de manquer de trésorerie.",
       ctaPrimary: "Savoir si je gagne",
     },
     heroMockup: {
@@ -835,9 +843,10 @@ export const metiers: MetierData[] = [
     metier: "Couvreur / Zingueur",
     whatsapp: "couvreur-zingueur",
     hero: {
-      headline: "Le devis toiture part avant que l'échafaudage soit replié.",
+      headline: "Je ne finance plus mes chantiers à la place de mes clients.",
+      headlineAccent: "mes chantiers",
       subheadline:
-        "Surfaces, pentes, zinguerie : vos prix au m² s'appliquent tout seuls. Acomptes encaissés, relances envoyées, marge suivie chantier par chantier. Depuis le toit, sur votre téléphone.",
+        "Je chiffre ma toiture au m², j'envoie mon acompte à la signature et je relance sans y penser, même depuis le toit. Je vois enfin ce qu'il me reste après les tuiles, le zinc et l'échafaudage.",
       ctaPrimary: "Encaisser dès la signature",
     },
     heroMockup: {
@@ -943,9 +952,10 @@ export const metiers: MetierData[] = [
     metier: "Charpentier bois",
     whatsapp: "charpentier",
     hero: {
-      headline: "Du plan de charpente au devis signé, sans repasser par le bureau.",
+      headline: "Je ne repasse plus mes soirées au bureau pour chiffrer une charpente.",
+      headlineAccent: "mes soirées",
       subheadline:
-        "Débits, coefficients matière et heures d'atelier chiffrés d'un coup. Acomptes, situations et marge fabrication + pose suivis en temps réel. Vous restez à l'établi, pas derrière un tableur.",
+        "Je transforme mes débits, mon bois et mes heures d'atelier en devis, je suis mes situations et je connais ma marge avant le levage.",
       ctaPrimary: "Rester à l'établi",
     },
     heroMockup: {
@@ -1051,9 +1061,10 @@ export const metiers: MetierData[] = [
     metier: "Carreleur / Mosaïste",
     whatsapp: "carreleur",
     hero: {
-      headline: "Le devis au m² prêt avant de quitter la salle de bain.",
+      headline: "Je ne perds plus un chantier parce que mon devis attend le soir.",
+      headlineAccent: "un chantier",
       subheadline:
-        "Surfaces, formats, préparation des supports : vos prix de pose s'appliquent tout seuls. TVA rénovation automatique, relances sans y penser, marge visible pendant le chantier. Vous posez, Atelier calcule ce qu'il vous reste.",
+        "Je calcule mes surfaces et ma préparation depuis la salle de bain, j'applique ma TVA automatiquement et je vois ce qu'il me reste pendant la pose.",
       ctaPrimary: "Premier devis envoyé",
     },
     heroMockup: {

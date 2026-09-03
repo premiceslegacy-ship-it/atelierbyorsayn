@@ -6,7 +6,7 @@ import { getMetierBySlug } from "@legacy/data/metiers";
 import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
 import { ProofStrip } from "../components/ProofStrip";
-import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL, TRADE_SIMULATOR_PROFILES } from "../data/site";
+import { buildTradeWhatsAppUrl, SITE_URL, TRADE_SIMULATOR_PROFILES } from "../data/site";
 import { Pricing } from "../components/Pricing";
 import { LeadCaptureModal } from "../components/LeadCaptureModal";
 import { OpenLeadModalContext } from "../lib/leadModal";
@@ -36,6 +36,18 @@ export const meta: MetaFunction<typeof loader> = ({ data: routeData }) => {
 };
 
 const featureIcons = [IconDevis, IconPropose, IconMarge];
+
+function renderHeroHeadline(headline: string, accent: string) {
+  const accentStart = headline.indexOf(accent);
+  if (accentStart === -1) return headline;
+  return (
+    <>
+      {headline.slice(0, accentStart)}
+      <em>{accent}</em>
+      {headline.slice(accentStart + accent.length)}
+    </>
+  );
+}
 
 export default function MetierRoute() {
   const { metier } = useLoaderData<typeof loader>();
@@ -93,16 +105,10 @@ export default function MetierRoute() {
           <section className="trade-hero trade-hero--centered">
             <div className="trade-hero__copy">
               <p className="eyebrow">Logiciel de gestion & suivi de chantier · {metier.metier}</p>
-              <h1>{metier.hero.headline}</h1>
+              <h1>{renderHeroHeadline(metier.hero.headline, metier.hero.headlineAccent)}</h1>
               <p>{metier.hero.subheadline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
               <div className="hero__actions">
                 <a className="button button--primary" href={pricingHref}>{metier.hero.ctaPrimary} <ArrowRight /></a>
-              </div>
-              <div className="trade-hero__proof">
-                <div className="avatar-stack">
-                  {CASE_STUDIES.slice(0, 4).map((item) => <img key={item.id} src={item.portrait} alt="" width="48" height="48" />)}
-                </div>
-                <p><strong>Des artisans du bâtiment, comme vous.</strong><span>Temps, encours et marge mesurés sur le terrain.</span></p>
               </div>
             </div>
           </section>

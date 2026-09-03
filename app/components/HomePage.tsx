@@ -293,8 +293,8 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
       <section className="hero">
         <div className="hero__content">
           <p className="eyebrow">Le logiciel de gestion des artisans du BTP</p>
-          <h1>Retrouvez 10h et <em>18 % de marge</em> par mois.</h1>
-          <p className="hero__lead">Devis, relances et suivi de marge tournent en automatique, pendant que vous êtes sur le chantier. Vous gardez la décision, plus la paperasse.</p>
+          <h1>Je récupère 10 h et <em>18 % de marge</em> chaque mois.</h1>
+          <p className="hero__lead">Je prépare mes devis, mes relances et mon suivi de marge automatiquement pendant que je suis sur le chantier. Je garde la décision, pas les heures de paperasse le soir.</p>
           <div className="hero__actions">
             <a className="button button--primary" href="#tarifs">Récupérer mes 10 heures <ArrowRight aria-hidden="true" /></a>
           </div>

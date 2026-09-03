@@ -1,6 +1,65 @@
 // Généré depuis content/blog. Ne pas modifier à la main.
 export default [
   {
+    "title": "Checklist de rentrée pour un artisan du BTP",
+    "slug": "checklist-rentree-artisan-btp",
+    "description": "Devis en attente, planning d'automne, trésorerie : la checklist pour reprendre l'activité sur de bonnes bases après la coupure d'été.",
+    "publishedAt": "2026-09-03",
+    "author": "Samuel Mbeboura",
+    "authorUrl": "https://fr.linkedin.com/in/samuel-mbeboura-b28796293",
+    "pillar": "Organisation et planning",
+    "searchIntent": "Préparer la reprise d'activité de rentrée pour un artisan du BTP",
+    "primaryQuery": "checklist rentrée artisan BTP",
+    "tags": [
+      "rentrée",
+      "organisation",
+      "planning chantier",
+      "trésorerie",
+      "BTP"
+    ],
+    "heroImage": "/images/blog/checklist-rentree-artisan-btp.webp",
+    "sources": [
+      {
+        "title": "Crise persistante pour l'artisanat du bâtiment, CAPEB",
+        "url": "https://www.capeb.fr/actualites/crise-persistante-pour-l-artisanat-du-batiment-l-absence-de-decisions-politiques-empeche-une-reprise-de-l-activite"
+      },
+      {
+        "title": "Délais de paiement : les règles à connaître, economie.gouv.fr",
+        "url": "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/delais-de-paiement-les-regles-connaitre"
+      },
+      {
+        "title": "Référentiel produit Atelier, synthèse locale",
+        "url": "/llms.txt"
+      }
+    ],
+    "draft": false,
+    "body": "\nTrois semaines de coupure suffisent à laisser filer des devis oubliés, un planning d'automne mal calé et une trésorerie qu'on n'a pas regardée depuis juillet. **La rentrée n'est pas qu'une reprise de chantiers, c'est le seul moment de l'année où on peut remettre l'entreprise à plat avant que le rythme reparte.**\n\n## Reprendre la main sur les devis en attente\n\nUn devis envoyé fin juin ou début juillet, resté sans réponse pendant la coupure du client, n'est pas mort : il est juste froid. Avant de courir après de nouveaux prospects, la rentrée est le bon moment pour relancer ce qui existe déjà.\n\n- **Listez tous les devis envoyés depuis juin** encore sans réponse écrite du client.\n- **Rappelez en priorité ceux de moins de deux mois** : le projet est encore probablement d'actualité pour le client.\n- **Posez une question directe** plutôt qu'une relance vague : le devis correspond-il toujours au budget, le projet est-il toujours prévu cette année ?\n\n> **À retenir :** un client qui ne répond pas n'a pas forcément dit non. Il a souvent juste remis la décision à la rentrée, comme vous avez remis la relance.\n\n## Recaler le planning avant que l'automne ne se remplisse\n\nSeptembre et octobre concentrent souvent les chantiers reportés de l'été et les nouveaux projets de rentrée. Un planning qui se remplit chantier par chantier, sans vue d'ensemble, produit vite des semaines surchargées suivies de trous.\n\n1. **Listez les chantiers signés et non encore planifiés** avant de prendre de nouveaux engagements.\n2. **Vérifiez la disponibilité réelle de l'équipe**, congés posés en septembre compris, avant de confirmer une date à un client.\n3. **Identifiez les chantiers qui dépendent d'une livraison de matériaux**, pour ne pas caler une équipe sur un site qui ne sera pas prêt.\n\nUn [planning tenu à jour et partagé avec l'équipe](/blog/planning-chantier-conflits-equipe-btp) évite qu'un automne chargé se transforme en semaines où deux chantiers se disputent la même équipe.\n\n## Vérifier la trésorerie avant les gros chantiers d'automne\n\nL'été laisse souvent des factures en sommeil : client parti en vacances sans payer, ou dirigeant qui n'a pas relancé pendant sa propre coupure. Avant d'engager les achats de matériaux des chantiers d'automne, mieux vaut savoir précisément ce qui est réellement encaissé.\n\n- **Faites le point sur les factures impayées de l'été**, en particulier celles arrivées à échéance pendant la coupure.\n- **Relancez sans attendre les plus anciennes** : le délai de paiement entre professionnels ne peut légalement pas dépasser 60 jours nets à compter de la date de facture.\n- **Anticipez les achats de matériaux des prochains chantiers** en fonction de la trésorerie réelle, pas de la trésorerie espérée.\n\n> **Le contexte 2026 :** la CAPEB signale un attentisme persistant chez les ménages, en partie lié à l'instabilité des aides publiques comme MaPrimeRénov'. Un carnet de commandes qui se remplit plus lentement rend le suivi de trésorerie encore plus décisif à la rentrée.\n\n## Trois chantiers administratifs à ne pas reporter encore\n\nCertaines tâches se reportent facilement d'un mois sur l'autre, jusqu'à devenir urgentes toutes en même temps.\n\n- **Les devis en attente de relance**, avant qu'ils ne deviennent trop froids pour être rappelés naturellement.\n- **Les factures en retard de règlement**, avant que le délai légal de paiement ne soit largement dépassé.\n- **La marge réelle des chantiers d'été**, pour savoir si les prix pratiqués restent adaptés à l'automne qui arrive.\n\nFaire ces trois vérifications en une seule session, plutôt que les traiter au fil de l'eau, évite de les redécouvrir une par une en pleine saison chargée.\n\n## Une rentrée plus légère avec une IA qui suit à votre place\n\nReprendre à la main la liste des devis, du planning et des factures en retard prend une soirée entière, parfois plus si l'été a été chargé. [Sarah, l'assistante IA intégrée à Atelier](/blog/secretaire-ia-artisan-sarah), peut préparer ce point de rentrée : devis sans réponse, factures en retard avec le montant exact dû, chantiers non encore planifiés. Vous vérifiez et vous décidez, elle prépare le travail de rassemblement.\n\n[Décrivez votre rentrée à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20faire%20le%20point%20de%20rentr%C3%A9e%20sur%20mes%20devis%2C%20mon%20planning%20et%20ma%20tr%C3%A9sorerie.) : il vous aide à identifier ce qui mérite d'être traité en priorité avant que l'automne ne se remplisse.\n",
+    "html": "<p>Trois semaines de coupure suffisent à laisser filer des devis oubliés, un planning d&#39;automne mal calé et une trésorerie qu&#39;on n&#39;a pas regardée depuis juillet. <strong>La rentrée n&#39;est pas qu&#39;une reprise de chantiers, c&#39;est le seul moment de l&#39;année où on peut remettre l&#39;entreprise à plat avant que le rythme reparte.</strong></p>\n<h2 id=\"reprendre-la-main-sur-les-devis-en-attente\">Reprendre la main sur les devis en attente</h2>\n<p>Un devis envoyé fin juin ou début juillet, resté sans réponse pendant la coupure du client, n&#39;est pas mort : il est juste froid. Avant de courir après de nouveaux prospects, la rentrée est le bon moment pour relancer ce qui existe déjà.</p>\n<ul>\n<li><strong>Listez tous les devis envoyés depuis juin</strong> encore sans réponse écrite du client.</li>\n<li><strong>Rappelez en priorité ceux de moins de deux mois</strong> : le projet est encore probablement d&#39;actualité pour le client.</li>\n<li><strong>Posez une question directe</strong> plutôt qu&#39;une relance vague : le devis correspond-il toujours au budget, le projet est-il toujours prévu cette année ?</li>\n</ul>\n<blockquote>\n<p><strong>À retenir :</strong> un client qui ne répond pas n&#39;a pas forcément dit non. Il a souvent juste remis la décision à la rentrée, comme vous avez remis la relance.</p>\n</blockquote>\n<h2 id=\"recaler-le-planning-avant-que-l-automne-ne-se-remplisse\">Recaler le planning avant que l&#39;automne ne se remplisse</h2>\n<p>Septembre et octobre concentrent souvent les chantiers reportés de l&#39;été et les nouveaux projets de rentrée. Un planning qui se remplit chantier par chantier, sans vue d&#39;ensemble, produit vite des semaines surchargées suivies de trous.</p>\n<ol>\n<li><strong>Listez les chantiers signés et non encore planifiés</strong> avant de prendre de nouveaux engagements.</li>\n<li><strong>Vérifiez la disponibilité réelle de l&#39;équipe</strong>, congés posés en septembre compris, avant de confirmer une date à un client.</li>\n<li><strong>Identifiez les chantiers qui dépendent d&#39;une livraison de matériaux</strong>, pour ne pas caler une équipe sur un site qui ne sera pas prêt.</li>\n</ol>\n<p>Un <a href=\"/blog/planning-chantier-conflits-equipe-btp\">planning tenu à jour et partagé avec l&#39;équipe</a> évite qu&#39;un automne chargé se transforme en semaines où deux chantiers se disputent la même équipe.</p>\n<h2 id=\"verifier-la-tresorerie-avant-les-gros-chantiers-d-automne\">Vérifier la trésorerie avant les gros chantiers d&#39;automne</h2>\n<p>L&#39;été laisse souvent des factures en sommeil : client parti en vacances sans payer, ou dirigeant qui n&#39;a pas relancé pendant sa propre coupure. Avant d&#39;engager les achats de matériaux des chantiers d&#39;automne, mieux vaut savoir précisément ce qui est réellement encaissé.</p>\n<ul>\n<li><strong>Faites le point sur les factures impayées de l&#39;été</strong>, en particulier celles arrivées à échéance pendant la coupure.</li>\n<li><strong>Relancez sans attendre les plus anciennes</strong> : le délai de paiement entre professionnels ne peut légalement pas dépasser 60 jours nets à compter de la date de facture.</li>\n<li><strong>Anticipez les achats de matériaux des prochains chantiers</strong> en fonction de la trésorerie réelle, pas de la trésorerie espérée.</li>\n</ul>\n<blockquote>\n<p><strong>Le contexte 2026 :</strong> la CAPEB signale un attentisme persistant chez les ménages, en partie lié à l&#39;instabilité des aides publiques comme MaPrimeRénov&#39;. Un carnet de commandes qui se remplit plus lentement rend le suivi de trésorerie encore plus décisif à la rentrée.</p>\n</blockquote>\n<h2 id=\"trois-chantiers-administratifs-a-ne-pas-reporter-encore\">Trois chantiers administratifs à ne pas reporter encore</h2>\n<p>Certaines tâches se reportent facilement d&#39;un mois sur l&#39;autre, jusqu&#39;à devenir urgentes toutes en même temps.</p>\n<ul>\n<li><strong>Les devis en attente de relance</strong>, avant qu&#39;ils ne deviennent trop froids pour être rappelés naturellement.</li>\n<li><strong>Les factures en retard de règlement</strong>, avant que le délai légal de paiement ne soit largement dépassé.</li>\n<li><strong>La marge réelle des chantiers d&#39;été</strong>, pour savoir si les prix pratiqués restent adaptés à l&#39;automne qui arrive.</li>\n</ul>\n<p>Faire ces trois vérifications en une seule session, plutôt que les traiter au fil de l&#39;eau, évite de les redécouvrir une par une en pleine saison chargée.</p>\n<h2 id=\"une-rentree-plus-legere-avec-une-ia-qui-suit-a-votre-place\">Une rentrée plus légère avec une IA qui suit à votre place</h2>\n<p>Reprendre à la main la liste des devis, du planning et des factures en retard prend une soirée entière, parfois plus si l&#39;été a été chargé. <a href=\"/blog/secretaire-ia-artisan-sarah\">Sarah, l&#39;assistante IA intégrée à Atelier</a>, peut préparer ce point de rentrée : devis sans réponse, factures en retard avec le montant exact dû, chantiers non encore planifiés. Vous vérifiez et vous décidez, elle prépare le travail de rassemblement.</p>\n<p><a href=\"https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20faire%20le%20point%20de%20rentr%C3%A9e%20sur%20mes%20devis%2C%20mon%20planning%20et%20ma%20tr%C3%A9sorerie.\">Décrivez votre rentrée à Samuel</a> : il vous aide à identifier ce qui mérite d&#39;être traité en priorité avant que l&#39;automne ne se remplisse.</p>\n",
+    "headings": [
+      {
+        "text": "Reprendre la main sur les devis en attente",
+        "id": "reprendre-la-main-sur-les-devis-en-attente"
+      },
+      {
+        "text": "Recaler le planning avant que l'automne ne se remplisse",
+        "id": "recaler-le-planning-avant-que-l-automne-ne-se-remplisse"
+      },
+      {
+        "text": "Vérifier la trésorerie avant les gros chantiers d'automne",
+        "id": "verifier-la-tresorerie-avant-les-gros-chantiers-d-automne"
+      },
+      {
+        "text": "Trois chantiers administratifs à ne pas reporter encore",
+        "id": "trois-chantiers-administratifs-a-ne-pas-reporter-encore"
+      },
+      {
+        "text": "Une rentrée plus légère avec une IA qui suit à votre place",
+        "id": "une-rentree-plus-legere-avec-une-ia-qui-suit-a-votre-place"
+      }
+    ],
+    "readingMinutes": 4
+  },
+  {
     "title": "ChatGPT, Claude, Gemini : ce que l'IA change pour un artisan BTP",
     "slug": "ia-chatgpt-claude-gemini-artisan-btp",
     "description": "Comment les artisans utilisent déjà ChatGPT, Claude ou Gemini, ce que ces IA ne voient pas de votre activité, et ce que change une IA connectée au métier.",

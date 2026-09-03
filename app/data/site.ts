@@ -69,7 +69,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   electricien: {
     title: "Le coût d'un mois d'IA, comparé à votre matériel électrique.",
     lead: "Réglez votre volume de devis et de relances pour voir ce que vous auriez pu garder pour votre prochain chantier électricité.",
-    equivalentLabel: "Ce que cette différence représente en électricité",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "drill", price: 750, label: "une sertisseuse électrique professionnelle" },
       { id: "saw", price: 450, label: "un coffret de mesure et de repérage" },
@@ -79,7 +79,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   plombier: {
     title: "Le coût d'un mois d'IA, comparé à votre matériel CVC.",
     lead: "Modifiez vos volumes pour mesurer ce que la différence représente face à vos achats de dépannage, de plomberie et de chauffage.",
-    equivalentLabel: "Ce que cette différence représente en plomberie / CVC",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "compressor", price: 900, label: "une sertisseuse multicouche professionnelle" },
       { id: "drill", price: 500, label: "un détecteur de fuite ou caméra d'inspection" },
@@ -89,7 +89,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   menuisier: {
     title: "Le coût d'un mois d'IA, comparé à votre outillage bois.",
     lead: "Ajustez vos volumes de devis et de suivi pour voir l'équivalent d'un achat que vous pourriez garder pour l'atelier.",
-    equivalentLabel: "Ce que cette différence représente en menuiserie",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "saw", price: 850, label: "une défonceuse ou scie à onglet professionnelle" },
       { id: "drill", price: 500, label: "un lot de quincaillerie pour vos prochains ouvrages" },
@@ -99,7 +99,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   peintre: {
     title: "Le coût d'un mois d'IA, comparé à votre matériel de finition.",
     lead: "Voyez ce que votre volume administratif représente face à l'outillage et aux fournitures d'un chantier de peinture.",
-    equivalentLabel: "Ce que cette différence représente en peinture / plâtrerie",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "compressor", price: 800, label: "un pistolet airless professionnel" },
       { id: "scaffold", price: 650, label: "un échafaudage roulant" },
@@ -109,7 +109,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   tolier: {
     title: "Le coût d'un mois d'IA, comparé à vos achats d'atelier.",
     lead: "Calculez l'écart sur vos devis, relances et suivis pour le remettre en regard de vos matières et de votre outillage métal.",
-    equivalentLabel: "Ce que cette différence représente en tôlerie / métallerie",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "saw", price: 900, label: "une meuleuse professionnelle" },
       { id: "compressor", price: 700, label: "une bouteille de gaz et un jeu de consommables" },
@@ -119,7 +119,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   paysagiste: {
     title: "Le coût d'un mois d'IA, comparé à votre matériel de terrain.",
     lead: "Ajustez vos contrats, devis et comptes rendus pour voir ce que la différence représente sur votre prochaine tournée paysage.",
-    equivalentLabel: "Ce que cette différence représente en paysage",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "trailer", price: 900, label: "une remorque de chantier équipée" },
       { id: "saw", price: 700, label: "une débroussailleuse professionnelle" },
@@ -129,7 +129,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   macon: {
     title: "Le coût d'un mois d'IA, comparé à vos dépenses de chantier.",
     lead: "Mesurez ce que vos volumes administratifs représentent face à une location de matériel ou à une livraison de matériaux.",
-    equivalentLabel: "Ce que cette différence représente en maçonnerie",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "excavator", price: 900, label: "une journée de location de mini-pelle" },
       { id: "scaffold", price: 650, label: "un échafaudage roulant de chantier" },
@@ -139,7 +139,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   couvreur: {
     title: "Le coût d'un mois d'IA, comparé à vos dépenses de toiture.",
     lead: "Calculez l'écart sur vos devis, acomptes et relances pour le comparer à vos fournitures et locations de chantier.",
-    equivalentLabel: "Ce que cette différence représente en couverture",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "scaffold", price: 900, label: "une journée de location d'échafaudage" },
       { id: "tiles", price: 750, label: "une palette de tuiles" },
@@ -149,7 +149,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   charpentier: {
     title: "Le coût d'un mois d'IA, comparé à vos achats bois.",
     lead: "Ajustez vos volumes de chiffrage et de suivi pour voir l'équivalent d'une dépense que vous pourriez garder pour l'atelier.",
-    equivalentLabel: "Ce que cette différence représente en charpente bois",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "saw", price: 900, label: "une scie à onglet professionnelle" },
       { id: "trailer", price: 800, label: "une livraison de bois de structure" },
@@ -159,7 +159,7 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   carreleur: {
     title: "Le coût d'un mois d'IA, comparé à vos fournitures de pose.",
     lead: "Modifiez vos volumes de devis et de relances pour voir ce que la différence représente sur votre prochain chantier de pose.",
-    equivalentLabel: "Ce que cette différence représente en carrelage",
+    equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "tiles", price: 900, label: "un lot de carrelage pour une salle de bain" },
       { id: "saw", price: 600, label: "une carrelette électrique professionnelle" },

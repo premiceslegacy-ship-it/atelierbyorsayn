@@ -72,6 +72,28 @@ test("une page métier conserve son pricing et son simulateur", async ({ page })
   await expect(page.locator("#simulateur-ia")).toContainText("matériel électrique");
 });
 
+test("enchaîner le CTA de la hero puis celui du simulateur garde le simulateur visible", async ({ page }) => {
+  await page.goto("/peintre");
+
+  await page.getByRole("link", { name: "Devis avant le concurrent" }).click();
+  await expect(page).toHaveURL(/\/peintre\/?#tarifs$/);
+  await expect(page.locator("#tarifs")).toBeInViewport();
+
+  await page.getByRole("link", { name: /Voir combien vous économisez/ }).click();
+  await expect(page).toHaveURL(/\/peintre\/?#simulateur-ia$/);
+  await expect(page.locator("#simulateur-ia")).toBeInViewport();
+  await expect(page.locator("#simulateur-ia")).toContainText("Ce que j'ai perdu");
+  await page.waitForTimeout(1_200);
+
+  const simulatorPosition = await page.locator("#simulateur-ia").evaluate((element) => ({
+    top: element.getBoundingClientRect().top,
+    scrollY: window.scrollY,
+  }));
+  expect(simulatorPosition.scrollY).toBeGreaterThan(0);
+  expect(simulatorPosition.top).toBeLessThan(page.viewportSize()!.height);
+  expect(simulatorPosition.top).toBeGreaterThan(-1000);
+});
+
 test("pages publiques clés", async ({ page }) => {
   for (const [route, heading] of [
     ["/electricien", "Devis envoyé"],

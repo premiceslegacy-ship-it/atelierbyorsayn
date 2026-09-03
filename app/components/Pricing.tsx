@@ -12,8 +12,6 @@ type PricingProps = {
   note?: string;
   /** Titre + sous-texte du bloc "On s'occupe de tout", personnalisés dans le langage du métier. Absent = texte générique (page d'accueil). */
   setupOffer?: { headline: string; subline: string };
-  /** Chemin de la page courante, pour conserver les ancres sur une page métier. */
-  routePath?: string;
   /** Repères de coûts et d'outillage propres au métier affiché dans le simulateur. */
   simulatorProfile?: TradeSimulatorProfile;
 };
@@ -57,13 +55,15 @@ function StepDigit({ n }: { n: 1 | 2 | 3 | 4 }) {
   );
 }
 
-export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, routePath, simulatorProfile }: PricingProps) {
+export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, simulatorProfile }: PricingProps) {
   const [selected, setSelected] = useState("pro");
   const [showTrialTiers, setShowTrialTiers] = useState(false);
   const revealRef = useRef<HTMLDivElement>(null);
   const openLeadModal = useContext(OpenLeadModalContext);
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
-  const simulatorHref = routePath ? `${routePath}#simulateur-ia` : "#simulateur-ia";
+  // Le simulateur est rendu dans ce même bloc : une ancre locale évite de
+  // recharger la page métier et de laisser ScrollRestoration revenir en haut.
+  const simulatorHref = "#simulateur-ia";
 
   const setupSource = `${source}-done-for-you`;
   const simulatorSource = `${source}-simulator`;

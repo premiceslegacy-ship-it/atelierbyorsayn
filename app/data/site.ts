@@ -67,8 +67,8 @@ export type TradeSimulatorProfile = {
 /** Repères de dépenses propres à chaque métier, affichés dans le simulateur de la page métier. */
 export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
   electricien: {
-    title: "Le coût d'un mois d'IA, comparé à votre matériel électrique.",
-    lead: "Réglez votre volume de devis et de relances pour voir ce que vous auriez pu garder pour votre prochain chantier électricité.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "drill", price: 750, label: "une sertisseuse électrique professionnelle" },
@@ -77,8 +77,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   plombier: {
-    title: "Le coût d'un mois d'IA, comparé à votre matériel CVC.",
-    lead: "Modifiez vos volumes pour mesurer ce que la différence représente face à vos achats de dépannage, de plomberie et de chauffage.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "compressor", price: 900, label: "une sertisseuse multicouche professionnelle" },
@@ -87,8 +87,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   menuisier: {
-    title: "Le coût d'un mois d'IA, comparé à votre outillage bois.",
-    lead: "Ajustez vos volumes de devis et de suivi pour voir l'équivalent d'un achat que vous pourriez garder pour l'atelier.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "saw", price: 850, label: "une défonceuse ou scie à onglet professionnelle" },
@@ -97,8 +97,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   peintre: {
-    title: "Le coût d'un mois d'IA, comparé à votre matériel de finition.",
-    lead: "Voyez ce que votre volume administratif représente face à l'outillage et aux fournitures d'un chantier de peinture.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "compressor", price: 800, label: "un pistolet airless professionnel" },
@@ -107,8 +107,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   tolier: {
-    title: "Le coût d'un mois d'IA, comparé à vos achats d'atelier.",
-    lead: "Calculez l'écart sur vos devis, relances et suivis pour le remettre en regard de vos matières et de votre outillage métal.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "saw", price: 900, label: "une meuleuse professionnelle" },
@@ -117,8 +117,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   paysagiste: {
-    title: "Le coût d'un mois d'IA, comparé à votre matériel de terrain.",
-    lead: "Ajustez vos contrats, devis et comptes rendus pour voir ce que la différence représente sur votre prochaine tournée paysage.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "trailer", price: 900, label: "une remorque de chantier équipée" },
@@ -127,8 +127,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   macon: {
-    title: "Le coût d'un mois d'IA, comparé à vos dépenses de chantier.",
-    lead: "Mesurez ce que vos volumes administratifs représentent face à une location de matériel ou à une livraison de matériaux.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "excavator", price: 900, label: "une journée de location de mini-pelle" },
@@ -137,8 +137,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   couvreur: {
-    title: "Le coût d'un mois d'IA, comparé à vos dépenses de toiture.",
-    lead: "Calculez l'écart sur vos devis, acomptes et relances pour le comparer à vos fournitures et locations de chantier.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "scaffold", price: 900, label: "une journée de location d'échafaudage" },
@@ -147,8 +147,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   charpentier: {
-    title: "Le coût d'un mois d'IA, comparé à vos achats bois.",
-    lead: "Ajustez vos volumes de chiffrage et de suivi pour voir l'équivalent d'une dépense que vous pourriez garder pour l'atelier.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "saw", price: 900, label: "une scie à onglet professionnelle" },
@@ -157,8 +157,8 @@ export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
     ],
   },
   carreleur: {
-    title: "Le coût d'un mois d'IA, comparé à vos fournitures de pose.",
-    lead: "Modifiez vos volumes de devis et de relances pour voir ce que la différence représente sur votre prochain chantier de pose.",
+    title: "Le coût d'un mois d'IA, comparé à votre matériel.",
+    lead: "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.",
     equivalentLabel: "Ce que j'ai perdu",
     materialEquivalents: [
       { id: "tiles", price: 900, label: "un lot de carrelage pour une salle de bain" },

@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { SETUP_PRICE, PRICING_TIERS } from "../data/site";
+import { SETUP_PRICE, PRICING_TIERS, type MaterialId, type TradeSimulatorProfile } from "../data/site";
 
 type AiCostSimulatorProps = {
   onOpenLeadModal: (source: string) => void;
   source: string;
+  profile?: TradeSimulatorProfile;
 };
 
 type UsageItem = {
@@ -17,6 +18,8 @@ type UsageItem = {
   costPerUnit: number;
   minutesSavedPerUnit: number;
 };
+
+type MaterialEquivalent = TradeSimulatorProfile["materialEquivalents"][number];
 
 /**
  * Coûts par appel en euros, dérivés du coût réel OpenRouter (provider_cost, usage_logs) mesuré
@@ -36,10 +39,8 @@ const EUR_FORMAT = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, ma
 const MONTHLY_REFERENCE = PRICING_TIERS[1].price;
 const YEAR_OPTIONS = [2, 3, 5] as const;
 
-type MaterialId = "fuel" | "drill" | "generator" | "saw" | "scaffold" | "tiles" | "compressor" | "trailer" | "excavator" | "van";
-
 /** Repères prix matériel/outillage BTP, ordre décroissant, pour situer un montant perdu sans jargon financier. */
-const MATERIAL_EQUIVALENTS: { id: MaterialId; price: number; label: string }[] = [
+const MATERIAL_EQUIVALENTS: MaterialEquivalent[] = [
   { id: "van", price: 15000, label: "un utilitaire d'occasion" },
   { id: "excavator", price: 9000, label: "un mini-pelle de location à l'année" },
   { id: "trailer", price: 6000, label: "une remorque de chantier équipée" },
@@ -53,18 +54,18 @@ const MATERIAL_EQUIVALENTS: { id: MaterialId; price: number; label: string }[] =
 ];
 
 /** Sélection gloutonne : les postes les plus gros d'abord, jusqu'à 3 repères, pour rester lisible. */
-function getMaterialEquivalents(amount: number): { id: MaterialId; label: string }[] {
+function getMaterialEquivalents(amount: number, entries: MaterialEquivalent[]): { id: MaterialId; label: string }[] {
   if (amount <= 0) return [];
   const picks: { id: MaterialId; label: string }[] = [];
   let remaining = amount;
-  for (const entry of MATERIAL_EQUIVALENTS) {
+  for (const entry of entries) {
     if (picks.length >= 3) break;
     if (entry.price <= remaining) {
       picks.push(entry);
       remaining -= entry.price;
     }
   }
-  if (picks.length === 0) picks.push(MATERIAL_EQUIVALENTS[MATERIAL_EQUIVALENTS.length - 1]);
+  if (picks.length === 0) picks.push(entries[entries.length - 1]);
   return picks;
 }
 
@@ -93,7 +94,7 @@ function useCountUp(target: number, active: boolean, duration = 700) {
   return value;
 }
 
-export function AiCostSimulator({ onOpenLeadModal, source }: AiCostSimulatorProps) {
+export function AiCostSimulator({ onOpenLeadModal, source, profile }: AiCostSimulatorProps) {
   const [quantities, setQuantities] = useState<Record<string, number>>(() =>
     Object.fromEntries(USAGE_ITEMS.map((item) => [item.id, item.defaultQuantity]))
   );
@@ -140,20 +141,21 @@ export function AiCostSimulator({ onOpenLeadModal, source }: AiCostSimulatorProp
   const subscriptionCost = MONTHLY_REFERENCE * months;
   const ownCost = SETUP_PRICE + monthlyCost * months;
   const savings = Math.max(0, subscriptionCost - ownCost);
+  const materialOptions = profile?.materialEquivalents ?? MATERIAL_EQUIVALENTS;
 
   const animatedCost = useCountUp(monthlyCost, mounted);
   const animatedWeek = useCountUp(hoursPerWeek, mounted, 800);
   const animatedMonth = useCountUp(hoursPerMonth, mounted, 900);
   const animatedYear = useCountUp(hoursPerYear, mounted, 1000);
   const animatedSavings = useCountUp(savings, mounted, 1100);
-  const materialEquivalents = useMemo(() => getMaterialEquivalents(savings), [savings]);
+  const materialEquivalents = useMemo(() => getMaterialEquivalents(savings, materialOptions), [materialOptions, savings]);
 
   return (
     <div id="simulateur-ia" className="ai-simulator" role="region" aria-label="Simulateur d'économies">
       <p className="ai-simulator__eyebrow">Vos économies, en détail</p>
-      <h3>Vos propres accès IA. Vous payez le fournisseur, à la source.</h3>
+      <h3>{profile?.title ?? "Le coût d'un mois d'IA, comparé à votre matériel."}</h3>
       <p className="ai-simulator__lead">
-        Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend.
+        {profile?.lead ?? "Réglez votre volume pour voir ce que ça coûte vraiment, et le temps que ça vous rend."}
       </p>
 
       <ul className="ai-simulator__usage">
@@ -223,7 +225,7 @@ export function AiCostSimulator({ onOpenLeadModal, source }: AiCostSimulatorProp
             <span className="ai-simulator__figure-note">sur {years} ans, une fois le setup de {SETUP_PRICE.toLocaleString("fr-FR")} € payé</span>
           </div>
           <div className="ai-simulator__savings-col">
-            <span className="ai-simulator__figure-label">Ce que j'aurais perdu</span>
+            <span className="ai-simulator__figure-label">{profile?.equivalentLabel ?? "Ce que j'aurais perdu"}</span>
             <strong className="ai-simulator__savings-value ai-simulator__savings-value--loss">{Math.round(animatedSavings).toLocaleString("fr-FR")} €</strong>
             <span className="ai-simulator__figure-note">en restant sur un abonnement, sur {years} ans</span>
             <ul className="ai-simulator__equivalents">

@@ -58,6 +58,20 @@ test("réduction des animations sur le bandeau de sources marché", async ({ bro
   await context.close();
 });
 
+test("une page métier conserve son pricing et son simulateur", async ({ page }) => {
+  await page.goto("/electricien");
+
+  await expect(page.getByRole("link", { name: "Reprendre le contrôle" })).toHaveAttribute("href", /\/electricien\/?#tarifs$/);
+  await page.getByRole("link", { name: /Devis envoyé en 5 min/ }).click();
+  await expect(page).toHaveURL(/\/electricien\/?#tarifs$/);
+  await expect(page.locator("#tarifs")).toBeInViewport();
+
+  await page.getByRole("link", { name: /Voir combien vous économisez/ }).click();
+  await expect(page).toHaveURL(/\/electricien\/?#simulateur-ia$/);
+  await expect(page.locator("#simulateur-ia")).toBeInViewport();
+  await expect(page.locator("#simulateur-ia")).toContainText("matériel électrique");
+});
+
 test("pages publiques clés", async ({ page }) => {
   for (const [route, heading] of [
     ["/electricien", "Devis envoyé"],

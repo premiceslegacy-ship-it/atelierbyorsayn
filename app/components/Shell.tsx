@@ -17,6 +17,8 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const pricingHref = location.pathname === "/" ? "/#tarifs" : `${location.pathname}#tarifs`;
+  const resolveHref = (label: string, href: string) => label === "Reprendre le contrôle" ? pricingHref : href;
   useEffect(() => setOpen(false), [location.pathname, location.hash]);
 
   useEffect(() => {
@@ -34,13 +36,13 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
           <span className="sr-only">Menu</span>
         </button>
         <div className="nav-links nav-links--left">
-          {links.slice(0, 3).map(([label, href]) => <Link key={href} to={href}>{label}</Link>)}
+          {links.slice(0, 3).map(([label, href]) => <Link key={href} to={resolveHref(label, href)}>{label}</Link>)}
         </div>
         <Link className="wordmark wordmark--nav" to="/" aria-label="Atelier, accueil">
           <img src="/logo-atelier-blanc.png" alt="" width="706" height="80" />
         </Link>
         <div className="nav-links nav-links--right">
-          {links.slice(3).map(([label, href]) => <Link key={href} to={href}>{label}</Link>)}
+          {links.slice(3).map(([label, href]) => <Link key={href} to={resolveHref(label, href)}>{label}</Link>)}
         </div>
         <div className="nav-actions">
           {onWhatsAppClick ? (
@@ -62,7 +64,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
       </nav>
       {open && (
         <div id="mobile-menu" className="mobile-menu">
-          {links.map(([label, href]) => <Link key={href} to={href}>{label}</Link>)}
+          {links.map(([label, href]) => <Link key={href} to={resolveHref(label, href)}>{label}</Link>)}
           <Link to="/#demo">Voir Sarah à l'œuvre</Link>
         </div>
       )}
@@ -71,6 +73,9 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
 }
 
 export function Footer() {
+  const location = useLocation();
+  const pricingHref = location.pathname === "/" ? "/#tarifs" : `${location.pathname}#tarifs`;
+
   return (
     <footer id="footer" className="footer">
       <div className="footer-grid">
@@ -83,7 +88,7 @@ export function Footer() {
         <div>
           <p className="footer-label">Découvrir</p>
           <Link to="/#benefices">Ce que ça change</Link>
-          <Link to="/#tarifs">Tarifs</Link>
+          <Link to={pricingHref}>Tarifs</Link>
           <Link to="/blog">Le journal</Link>
         </div>
         <div>

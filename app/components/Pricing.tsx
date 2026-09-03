@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
-import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS, buildTrialSignupUrl } from "../data/site";
+import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS, buildTrialSignupUrl, type TradeSimulatorProfile } from "../data/site";
 import { OpenLeadModalContext } from "../lib/leadModal";
 import { ConversionLink } from "./ConversionLink";
 import { AiCostSimulator } from "./AiCostSimulator";
@@ -12,6 +12,10 @@ type PricingProps = {
   note?: string;
   /** Titre + sous-texte du bloc "On s'occupe de tout", personnalisés dans le langage du métier. Absent = texte générique (page d'accueil). */
   setupOffer?: { headline: string; subline: string };
+  /** Chemin de la page courante, pour conserver les ancres sur une page métier. */
+  routePath?: string;
+  /** Repères de coûts et d'outillage propres au métier affiché dans le simulateur. */
+  simulatorProfile?: TradeSimulatorProfile;
 };
 
 const DEFAULT_SETUP_OFFER = {
@@ -53,12 +57,13 @@ function StepDigit({ n }: { n: 1 | 2 | 3 | 4 }) {
   );
 }
 
-export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }: PricingProps) {
+export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, routePath, simulatorProfile }: PricingProps) {
   const [selected, setSelected] = useState("pro");
   const [showTrialTiers, setShowTrialTiers] = useState(false);
   const revealRef = useRef<HTMLDivElement>(null);
   const openLeadModal = useContext(OpenLeadModalContext);
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
+  const simulatorHref = routePath ? `${routePath}#simulateur-ia` : "#simulateur-ia";
 
   const setupSource = `${source}-done-for-you`;
   const simulatorSource = `${source}-simulator`;
@@ -144,7 +149,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
       )}
       {!showTrialTiers && (
         <div className="pricing-simulator-link-wrap">
-          <a href="#simulateur-ia" className="pricing-simulator-link">
+          <a href={simulatorHref} className="pricing-simulator-link">
             Voir combien vous économisez, sans abonnement
           </a>
         </div>
@@ -166,7 +171,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
           </ol>
         </div>
       )}
-      {!showTrialTiers && <AiCostSimulator onOpenLeadModal={openLeadModal} source={simulatorSource} />}
+      {!showTrialTiers && <AiCostSimulator onOpenLeadModal={openLeadModal} source={simulatorSource} profile={simulatorProfile} />}
       <p className="pricing-note">Facturation électronique incluse : chaque facture est déjà au format réglementaire, et la connexion à une plateforme agréée est comprise dans les deux offres, sans surcoût.</p>
     </section>
   );

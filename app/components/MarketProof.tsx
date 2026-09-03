@@ -34,8 +34,10 @@ export function MarketProof({ title, actions }: { title?: React.ReactNode; actio
                   key={source.name}
                   className={`market-sources__logo ${source.variant ? `market-sources__logo--${source.variant}` : ""}`}
                   src={source.logo}
+                  width={source.width}
+                  height={source.height}
                   alt={set === 0 ? source.name : ""}
-                  loading={set === 0 ? "lazy" : undefined}
+                  decoding="async"
                 />
               ))}
             </div>

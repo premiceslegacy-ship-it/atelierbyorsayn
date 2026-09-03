@@ -6,7 +6,7 @@ import { getMetierBySlug } from "@legacy/data/metiers";
 import { SiteShell } from "../components/Shell";
 import { StructuredData } from "../components/StructuredData";
 import { ProofStrip } from "../components/ProofStrip";
-import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL } from "../data/site";
+import { buildTradeWhatsAppUrl, CASE_STUDIES, SITE_URL, TRADE_SIMULATOR_PROFILES } from "../data/site";
 import { Pricing } from "../components/Pricing";
 import { LeadCaptureModal } from "../components/LeadCaptureModal";
 import { OpenLeadModalContext } from "../lib/leadModal";
@@ -45,6 +45,7 @@ export default function MetierRoute() {
   const isSetupLead = leadModalSource?.endsWith("-done-for-you") ?? false;
   const leadConfig = isSetupLead ? setupLeadConfig : generalLeadConfig;
   const whatsappUrl = buildTradeWhatsAppUrl(metier.whatsapp, undefined, metier.whatsappHook, leadModalSource ?? "metier");
+  const pricingHref = `/${metier.slug}#tarifs`;
 
   const whatsAppCta = (source: string, className: string, children: React.ReactNode) => (
     <button type="button" className={className} onClick={() => setLeadModalSource(source)}>
@@ -92,7 +93,7 @@ export default function MetierRoute() {
               <h1>{metier.hero.headline}</h1>
               <p>{metier.hero.subheadline.split("\n").map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
               <div className="hero__actions">
-                <Link className="button button--primary" to="#tarifs">{metier.hero.ctaPrimary} <ArrowRight /></Link>
+                <Link className="button button--primary" to={pricingHref}>{metier.hero.ctaPrimary} <ArrowRight /></Link>
               </div>
               <div className="trade-hero__proof">
                 <div className="avatar-stack">
@@ -114,7 +115,7 @@ export default function MetierRoute() {
             <div className="section-cta">
               <p><strong>Ce quotidien n'est pas une fatalité.</strong> Dans un mois, vos soirées peuvent ressembler à autre chose : des devis qui partent le jour même, des relances qui tournent sans vous.</p>
               <div>
-                <Link className="button button--primary" to="#tarifs">Arrêter les recalculs <ArrowRight aria-hidden="true" /></Link>
+                <Link className="button button--primary" to={pricingHref}>Arrêter les recalculs <ArrowRight aria-hidden="true" /></Link>
                 {whatsAppCta(`metier-problems-${metier.slug}`, "button button--dark", <><MessageCircle aria-hidden="true" /> Changer ce quotidien</>)}
               </div>
             </div>
@@ -129,12 +130,18 @@ export default function MetierRoute() {
             <div className="section-cta">
               <p><strong>C'est exactement ce que fait Atelier pour {metier.metier.toLowerCase()}.</strong><br />Votre catalogue et vos prix restent au cœur de chaque proposition.</p>
               <div>
-                <Link className="button button--dark" to="#tarifs">Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>
+                <Link className="button button--dark" to={pricingHref}>Retrouver mes soirées <ArrowRight aria-hidden="true" /></Link>
               </div>
             </div>
           </section>
 
-          <Pricing sourceSuffix={metier.slug} note={metier.pricingNote} setupOffer={metier.setupOffer} />
+          <Pricing
+            sourceSuffix={metier.slug}
+            note={metier.pricingNote}
+            setupOffer={metier.setupOffer}
+            routePath={`/${metier.slug}`}
+            simulatorProfile={TRADE_SIMULATOR_PROFILES[metier.slug]}
+          />
 
           <section className="section trade-sarah">
             <div className="trade-sarah__portrait">

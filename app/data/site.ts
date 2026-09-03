@@ -55,6 +55,119 @@ export const PRICING_TIERS: PricingTier[] = [
   },
 ];
 
+export type MaterialId = "fuel" | "drill" | "generator" | "saw" | "scaffold" | "tiles" | "compressor" | "trailer" | "excavator" | "van";
+
+export type TradeSimulatorProfile = {
+  title: string;
+  lead: string;
+  equivalentLabel: string;
+  materialEquivalents: { id: MaterialId; price: number; label: string }[];
+};
+
+/** Repères de dépenses propres à chaque métier, affichés dans le simulateur de la page métier. */
+export const TRADE_SIMULATOR_PROFILES: Record<string, TradeSimulatorProfile> = {
+  electricien: {
+    title: "Le coût d'un mois d'IA, comparé à votre matériel électrique.",
+    lead: "Réglez votre volume de devis et de relances pour voir ce que vous auriez pu garder pour votre prochain chantier électricité.",
+    equivalentLabel: "Ce que cette différence représente en électricité",
+    materialEquivalents: [
+      { id: "drill", price: 750, label: "une sertisseuse électrique professionnelle" },
+      { id: "saw", price: 450, label: "un coffret de mesure et de repérage" },
+      { id: "fuel", price: 150, label: "un plein de camionnette pour vos chantiers" },
+    ],
+  },
+  plombier: {
+    title: "Le coût d'un mois d'IA, comparé à votre matériel CVC.",
+    lead: "Modifiez vos volumes pour mesurer ce que la différence représente face à vos achats de dépannage, de plomberie et de chauffage.",
+    equivalentLabel: "Ce que cette différence représente en plomberie / CVC",
+    materialEquivalents: [
+      { id: "compressor", price: 900, label: "une sertisseuse multicouche professionnelle" },
+      { id: "drill", price: 500, label: "un détecteur de fuite ou caméra d'inspection" },
+      { id: "fuel", price: 150, label: "un plein de camionnette d'intervention" },
+    ],
+  },
+  menuisier: {
+    title: "Le coût d'un mois d'IA, comparé à votre outillage bois.",
+    lead: "Ajustez vos volumes de devis et de suivi pour voir l'équivalent d'un achat que vous pourriez garder pour l'atelier.",
+    equivalentLabel: "Ce que cette différence représente en menuiserie",
+    materialEquivalents: [
+      { id: "saw", price: 850, label: "une défonceuse ou scie à onglet professionnelle" },
+      { id: "drill", price: 500, label: "un lot de quincaillerie pour vos prochains ouvrages" },
+      { id: "fuel", price: 150, label: "un plein pour vos livraisons et prises de cotes" },
+    ],
+  },
+  peintre: {
+    title: "Le coût d'un mois d'IA, comparé à votre matériel de finition.",
+    lead: "Voyez ce que votre volume administratif représente face à l'outillage et aux fournitures d'un chantier de peinture.",
+    equivalentLabel: "Ce que cette différence représente en peinture / plâtrerie",
+    materialEquivalents: [
+      { id: "compressor", price: 800, label: "un pistolet airless professionnel" },
+      { id: "scaffold", price: 650, label: "un échafaudage roulant" },
+      { id: "fuel", price: 150, label: "un plein pour vos tournées de chantier" },
+    ],
+  },
+  tolier: {
+    title: "Le coût d'un mois d'IA, comparé à vos achats d'atelier.",
+    lead: "Calculez l'écart sur vos devis, relances et suivis pour le remettre en regard de vos matières et de votre outillage métal.",
+    equivalentLabel: "Ce que cette différence représente en tôlerie / métallerie",
+    materialEquivalents: [
+      { id: "saw", price: 900, label: "une meuleuse professionnelle" },
+      { id: "compressor", price: 700, label: "une bouteille de gaz et un jeu de consommables" },
+      { id: "drill", price: 350, label: "un coffret de perçage métal" },
+    ],
+  },
+  paysagiste: {
+    title: "Le coût d'un mois d'IA, comparé à votre matériel de terrain.",
+    lead: "Ajustez vos contrats, devis et comptes rendus pour voir ce que la différence représente sur votre prochaine tournée paysage.",
+    equivalentLabel: "Ce que cette différence représente en paysage",
+    materialEquivalents: [
+      { id: "trailer", price: 900, label: "une remorque de chantier équipée" },
+      { id: "saw", price: 700, label: "une débroussailleuse professionnelle" },
+      { id: "fuel", price: 150, label: "un plein pour vos tournées multi-sites" },
+    ],
+  },
+  macon: {
+    title: "Le coût d'un mois d'IA, comparé à vos dépenses de chantier.",
+    lead: "Mesurez ce que vos volumes administratifs représentent face à une location de matériel ou à une livraison de matériaux.",
+    equivalentLabel: "Ce que cette différence représente en maçonnerie",
+    materialEquivalents: [
+      { id: "excavator", price: 900, label: "une journée de location de mini-pelle" },
+      { id: "scaffold", price: 650, label: "un échafaudage roulant de chantier" },
+      { id: "fuel", price: 150, label: "un plein pour l'utilitaire et les livraisons" },
+    ],
+  },
+  couvreur: {
+    title: "Le coût d'un mois d'IA, comparé à vos dépenses de toiture.",
+    lead: "Calculez l'écart sur vos devis, acomptes et relances pour le comparer à vos fournitures et locations de chantier.",
+    equivalentLabel: "Ce que cette différence représente en couverture",
+    materialEquivalents: [
+      { id: "scaffold", price: 900, label: "une journée de location d'échafaudage" },
+      { id: "tiles", price: 750, label: "une palette de tuiles" },
+      { id: "fuel", price: 150, label: "un plein pour vos déplacements de chantier" },
+    ],
+  },
+  charpentier: {
+    title: "Le coût d'un mois d'IA, comparé à vos achats bois.",
+    lead: "Ajustez vos volumes de chiffrage et de suivi pour voir l'équivalent d'une dépense que vous pourriez garder pour l'atelier.",
+    equivalentLabel: "Ce que cette différence représente en charpente bois",
+    materialEquivalents: [
+      { id: "saw", price: 900, label: "une scie à onglet professionnelle" },
+      { id: "trailer", price: 800, label: "une livraison de bois de structure" },
+      { id: "drill", price: 450, label: "un coffret de perçage et de levage" },
+    ],
+  },
+  carreleur: {
+    title: "Le coût d'un mois d'IA, comparé à vos fournitures de pose.",
+    lead: "Modifiez vos volumes de devis et de relances pour voir ce que la différence représente sur votre prochain chantier de pose.",
+    equivalentLabel: "Ce que cette différence représente en carrelage",
+    materialEquivalents: [
+      { id: "tiles", price: 900, label: "un lot de carrelage pour une salle de bain" },
+      { id: "saw", price: 600, label: "une carrelette électrique professionnelle" },
+      { id: "drill", price: 250, label: "un kit de préparation et de nivellement" },
+    ],
+  },
+};
+
 /** Accroche par section du site, injectée dans le message WhatsApp pour qualifier l'origine du contact. */
 const SECTION_CONTEXT: Record<string, string> = {
   navbar: "je regardais votre site",
@@ -227,17 +340,19 @@ export const MARKET_STATS: MarketStat[] = [
 type MarketSource = {
   name: string;
   logo: string;
+  width: number;
+  height: number;
   variant?: string;
 };
 
 export const MARKET_SOURCES: MarketSource[] = [
-  { name: "Gouvernement français", logo: "/images/logos/gouvernement.svg" },
-  { name: "Insee", logo: "/images/logos/insee.svg" },
-  { name: "FFB", logo: "/images/logos/ffb.png" },
-  { name: "CAPEB", logo: "/images/logos/capeb.jpg" },
-  { name: "Bpifrance", logo: "/images/logos/bpifrance.webp", variant: "bpifrance" },
-  { name: "Qualibat", logo: "/images/logos/qualibat.jpg", variant: "qualibat" },
-  { name: "PRO BTP", logo: "/images/logos/pro-btp.png", variant: "pro-btp" },
+  { name: "Gouvernement français", logo: "/images/logos/gouvernement.svg", width: 895, height: 455 },
+  { name: "Insee", logo: "/images/logos/insee.svg", width: 253, height: 85 },
+  { name: "FFB", logo: "/images/logos/ffb.png", width: 240, height: 196 },
+  { name: "CAPEB", logo: "/images/logos/capeb.jpg", width: 200, height: 83 },
+  { name: "Bpifrance", logo: "/images/logos/bpifrance.webp", width: 2000, height: 588, variant: "bpifrance" },
+  { name: "Qualibat", logo: "/images/logos/qualibat.jpg", width: 380, height: 285, variant: "qualibat" },
+  { name: "PRO BTP", logo: "/images/logos/pro-btp.png", width: 1385, height: 355, variant: "pro-btp" },
 ];
 
 export const FAQ_ITEMS = [

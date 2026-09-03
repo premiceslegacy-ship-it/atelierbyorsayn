@@ -306,8 +306,8 @@ button { color: inherit; }
 .market-card__answer { margin: 10px 0 0; color: var(--ink); font-size: 13px; font-weight: 650; line-height: 1.5; letter-spacing: -.01em; }
 .market-card footer { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 .market-sources { margin-top: 56px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent); }
-.market-sources__track { --market-gap: 64px; width: max-content; display: flex; align-items: center; will-change: transform; animation: market-marquee 24s linear infinite; }
-.market-sources__group { display: flex; align-items: center; gap: var(--market-gap); padding-right: var(--market-gap); }
+.market-sources__track { --market-gap: 64px; width: max-content; display: flex; align-items: center; transform: translate3d(0,0,0); will-change: transform; animation: market-marquee 24s linear infinite; }
+.market-sources__group { flex: 0 0 auto; display: flex; align-items: center; gap: var(--market-gap); padding-right: var(--market-gap); }
 .market-sources__track img { flex: 0 0 auto; opacity: .55; filter: grayscale(1); transition: opacity .2s ease, filter .2s ease; }
 .market-sources__track img { height: 34px; width: auto; }
 .market-sources__logo--qualibat { height: 52px !important; margin-block: -9px; }
@@ -657,7 +657,7 @@ button { color: inherit; }
 @keyframes flow-pulse { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 @keyframes clock-tick { to { transform: rotate(360deg); } }
 @keyframes proof-plane-send { 0% { opacity: 0; transform: translate(-6px,6px) scale(.7); } 30% { opacity: 1; transform: translate(0,0) scale(1); } 55% { opacity: 1; transform: translate(0,0) scale(1); } 78% { opacity: 0; transform: translate(2px,-2px) scale(.85); } 100% { opacity: 0; } }
-@keyframes market-marquee { to { transform: translateX(-50%); } }
+@keyframes market-marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
 @keyframes demo-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes demo-wave { from { transform: scaleY(.45); } to { transform: scaleY(1); } }
 @keyframes demo-idle-travel { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 85% { opacity: 1; } 100% { left: calc(100% - 8px); opacity: 0; } }

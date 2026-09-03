@@ -1,5 +1,7 @@
 export const SITE_URL = "https://www.atelier-btp.fr";
 export const APP_URL = "https://app.atelier-btp.fr";
+/** Payment Link public Stripe utilisé par l'application pour l'abonnement Expert. */
+export const EXPERT_CHECKOUT_URL = "https://buy.stripe.com/4gM4gaf8aeK54gYdCo5AQ07";
 export const WHATSAPP_NUMBER = "33651664068";
 export const META_PIXEL_ID = "1032268456078970";
 export const AUTHOR = {
@@ -14,6 +16,8 @@ export type PricingTier = {
   promise: string;
   audience: string;
   featured?: boolean;
+  badge?: string;
+  trial?: boolean;
   benefits: string[];
   quotas: string[];
 };
@@ -30,7 +34,7 @@ export const PRICING_TIERS: PricingTier[] = [
     price: 69,
     promise: "Une secrétaire IA qui répond à votre place.",
     audience: "Pour l'artisan actif et les petites équipes.",
-    featured: true,
+    trial: true,
     benefits: [
       "Sarah, l'assistante IA, répond sur vos clients, chantiers et planning",
       "Vous pouvez lui parler à la voix, y compris en direct au téléphone",
@@ -45,6 +49,8 @@ export const PRICING_TIERS: PricingTier[] = [
     price: 169,
     promise: "Plus aucune limite sur l'IA, à mesure que vous grandissez.",
     audience: "Pour les équipes qui veulent piloter sans angle mort.",
+    featured: true,
+    badge: "Le choix des équipes qui grandissent",
     benefits: [
       "Devis, relances et analyses par IA sans quota mensuel",
       "Conversation vocale en direct avec l'assistante : 5x plus de minutes qu'en Pro",
@@ -211,7 +217,8 @@ export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, ho
 }
 
 export function buildTrialSignupUrl(tier: PricingTier["id"]) {
-  const params = new URLSearchParams({ mode: "signup", intent: "trial", preferred: tier, source: "atelier-lp" });
+  if (tier === "expert") return EXPERT_CHECKOUT_URL;
+  const params = new URLSearchParams({ mode: "signup", intent: "trial", preferred: "pro", source: "atelier-lp" });
   return `${APP_URL}/login?${params.toString()}`;
 }
 
@@ -370,7 +377,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Setup ou abonnement, comment choisir ?",
-    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même, avec ${TRIAL_DAYS} jours d'Expert offerts sans carte bancaire et aucun prélèvement automatique à la fin.`,
+    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même. Pro est offert pendant ${TRIAL_DAYS} jours sans carte bancaire ; Expert passe directement par un paiement sécurisé Stripe.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",

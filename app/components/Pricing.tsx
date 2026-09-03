@@ -87,7 +87,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
       </div>
       {showTrialTiers ? (
         <div className="pricing-reveal" ref={revealRef}>
-          <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Tout Expert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Choisissez Pro ou Expert ci-dessous pour créer votre espace.</p></div>
+          <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Pro offert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Testez Pro gratuitement ou choisissez Expert et passez au paiement sécurisé Stripe.</p></div>
           <div className="pricing-carousel">
             <div className="pricing-carousel__viewport">
               <div className="pricing-carousel__track">
@@ -100,11 +100,11 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
                       tier={tier.id}
                       preserveUtm
                     >
-                      {tier.featured && <span className="pricing-badge">Le plus choisi</span>}
+                      {tier.badge && <span className="pricing-badge">{tier.badge}</span>}
                       <div className="pricing-card__top">
                         <p>{tier.name}</p>
                         <div><strong>{tier.price} €</strong><span>HT / mois</span></div>
-                        <p className="pricing-card__trial">Expert offert {TRIAL_DAYS} jours · aucune carte demandée</p>
+                        <p className="pricing-card__trial">{tier.trial ? `Pro offert ${TRIAL_DAYS} jours · aucune carte demandée` : "Paiement sécurisé via Stripe · abonnement Expert"}</p>
                         <h3>{tier.promise}</h3>
                         <p>{tier.audience}</p>
                       </div>
@@ -117,7 +117,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
                         <summary>Voir les quotas <ChevronDown /></summary>
                         <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
                       </details>
-                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>Choisir {tier.name}<ArrowRight /></span>
+                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>{tier.trial ? `Essayer Pro gratuitement ${TRIAL_DAYS} jours` : "Passer au checkout Stripe"}<ArrowRight /></span>
                     </ConversionLink>
                   </div>
                 ))}
@@ -140,9 +140,9 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
           </button>
           <button type="button" className="pricing-choice" onClick={revealTiers}>
             <span className="pricing-choice__label">Je démarre maintenant</span>
-            <div className="pricing-choice__price"><strong>{TRIAL_DAYS} jours</strong><span>d'Expert offerts, sans carte</span></div>
+            <div className="pricing-choice__price"><strong>{TRIAL_DAYS} jours</strong><span>de Pro offerts, sans carte</span></div>
             <h3>Votre premier devis peut partir aujourd'hui.</h3>
-            <p>Commencez sans frais de départ. Testez tout Expert, puis choisissez Pro à {PRICING_TIERS[0].price} € ou Expert à {PRICING_TIERS[1].price} € HT/mois.</p>
+            <p>Commencez sans frais de départ. Testez Pro gratuitement pendant {TRIAL_DAYS} jours, puis gardez Pro à {PRICING_TIERS[0].price} € ou passez à Expert à {PRICING_TIERS[1].price} € HT/mois via Stripe.</p>
             <span className="pricing-choice__action">Voir les deux formules <ArrowRight /></span>
           </button>
         </div>

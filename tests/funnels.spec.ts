@@ -1,11 +1,11 @@
 import { expect, test } from "@playwright/test";
 import { metiers } from "../src/data/metiers";
 
-test("le CTA 14 jours révèle Pro/Expert et l'inscription conserve les UTM", async ({ page }) => {
+test("le CTA 14 jours révèle Pro et conserve les UTM", async ({ page }) => {
   await page.goto("/?utm_source=google&utm_medium=cpc&utm_campaign=devis");
   await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
 
-  const trial = page.locator('a.pricing-card[href*="preferred=expert"]');
+  const trial = page.locator('a.pricing-card[href*="preferred=pro"]');
   await expect(trial).toHaveAttribute("href", /app\.atelier-btp\.fr\/login/);
   await trial.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault(), { once: true }));
   await trial.click();
@@ -13,10 +13,20 @@ test("le CTA 14 jours révèle Pro/Expert et l'inscription conserve les UTM", as
   const destination = new URL(await trial.getAttribute("href") ?? "");
   expect(destination.searchParams.get("mode")).toBe("signup");
   expect(destination.searchParams.get("intent")).toBe("trial");
-  expect(destination.searchParams.get("preferred")).toBe("expert");
+  expect(destination.searchParams.get("preferred")).toBe("pro");
   expect(destination.searchParams.get("utm_source")).toBe("google");
   expect(destination.searchParams.get("utm_medium")).toBe("cpc");
   expect(destination.searchParams.get("utm_campaign")).toBe("devis");
+});
+
+test("la card Expert ouvre le checkout Stripe", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
+
+  const expert = page.locator('a.pricing-card[href*="buy.stripe.com"]');
+  await expect(expert).toHaveAttribute("href", "https://buy.stripe.com/4gM4gaf8aeK54gYdCo5AQ07");
+  await expect(expert).toContainText("Paiement sécurisé via Stripe");
+  await expect(expert).toContainText("Le choix des équipes qui grandissent");
 });
 
 for (const metier of metiers) {

@@ -26,16 +26,20 @@ export function MarketProof({ title, actions }: { title?: React.ReactNode; actio
         })}
       </div>
       <div className="market-sources">
-        <div className="market-sources__track">
-          {Array.from({ length: 6 }, (_, set) => MARKET_SOURCES.map((source, index) => (
-            <img
-              key={`${source.name}-${set}-${index}`}
-              src={source.logo}
-              alt={set === 0 ? source.name : ""}
-              aria-hidden={set !== 0}
-              loading="lazy"
-            />
-          ))).flat()}
+        <div className="market-sources__track" aria-label="Organismes de référence">
+          {[0, 1].map((set) => (
+            <div className="market-sources__group" key={set} aria-hidden={set === 1}>
+              {MARKET_SOURCES.map((source) => (
+                <img
+                  key={source.name}
+                  className={`market-sources__logo ${source.variant ? `market-sources__logo--${source.variant}` : ""}`}
+                  src={source.logo}
+                  alt={set === 0 ? source.name : ""}
+                  loading={set === 0 ? "lazy" : undefined}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
       {actions && <div className="market-actions">{actions}</div>}

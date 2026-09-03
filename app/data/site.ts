@@ -224,11 +224,20 @@ export const MARKET_STATS: MarketStat[] = [
   },
 ];
 
-export const MARKET_SOURCES = [
+type MarketSource = {
+  name: string;
+  logo: string;
+  variant?: string;
+};
+
+export const MARKET_SOURCES: MarketSource[] = [
   { name: "Gouvernement français", logo: "/images/logos/gouvernement.svg" },
   { name: "Insee", logo: "/images/logos/insee.svg" },
   { name: "FFB", logo: "/images/logos/ffb.png" },
   { name: "CAPEB", logo: "/images/logos/capeb.jpg" },
+  { name: "Bpifrance", logo: "/images/logos/bpifrance.webp", variant: "bpifrance" },
+  { name: "Qualibat", logo: "/images/logos/qualibat.jpg", variant: "qualibat" },
+  { name: "PRO BTP", logo: "/images/logos/pro-btp.png", variant: "pro-btp" },
 ];
 
 export const FAQ_ITEMS = [

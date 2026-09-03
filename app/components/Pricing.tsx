@@ -3,6 +3,7 @@ import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS, buildTrialSignupUrl } from "../data/site";
 import { OpenLeadModalContext } from "../lib/leadModal";
 import { ConversionLink } from "./ConversionLink";
+import { AiCostSimulator } from "./AiCostSimulator";
 
 type PricingProps = {
   /** Suffixe ajouté au source de tracking pour distinguer l'origine (ex: slug du métier). */
@@ -60,6 +61,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
   const source = sourceSuffix ? `pricing-${sourceSuffix}` : "pricing";
 
   const setupSource = `${source}-done-for-you`;
+  const simulatorSource = `${source}-simulator`;
 
   const revealTiers = () => {
     setShowTrialTiers(true);
@@ -141,6 +143,13 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
         </div>
       )}
       {!showTrialTiers && (
+        <div className="pricing-simulator-link-wrap">
+          <a href="#simulateur-ia" className="pricing-simulator-link">
+            Voir combien vous économisez, sans abonnement
+          </a>
+        </div>
+      )}
+      {!showTrialTiers && (
         <div className="setup-process">
           <p className="setup-process__heading">Concrètement, comment ça se passe avec<br />« On s'occupe de tout »</p>
           <ol>
@@ -157,6 +166,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER }
           </ol>
         </div>
       )}
+      {!showTrialTiers && <AiCostSimulator onOpenLeadModal={openLeadModal} source={simulatorSource} />}
       <p className="pricing-note">Facturation électronique incluse : chaque facture est déjà au format réglementaire, et la connexion à une plateforme agréée est comprise dans les deux offres, sans surcoût.</p>
     </section>
   );

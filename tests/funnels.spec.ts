@@ -19,13 +19,23 @@ test("le CTA 14 jours révèle Pro et conserve les UTM", async ({ page }) => {
   expect(destination.searchParams.get("utm_campaign")).toBe("devis");
 });
 
-test("la card Expert ouvre le checkout Stripe", async ({ page }) => {
-  await page.goto("/");
+test("la card Expert ouvre l'onboarding avec le bon niveau", async ({ page }) => {
+  await page.goto("/?utm_source=google&utm_medium=cpc&utm_campaign=devis");
   await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
 
-  const expert = page.locator('a.pricing-card[href*="buy.stripe.com"]');
-  await expect(expert).toHaveAttribute("href", "https://buy.stripe.com/4gM4gaf8aeK54gYdCo5AQ07");
-  await expect(expert).toContainText("Paiement sécurisé via Stripe");
+  const expert = page.locator('a.pricing-card[href*="preferred=expert"]');
+  await expect(expert).toHaveAttribute("href", "https://app.atelier-btp.fr/login?mode=signup&intent=none&preferred=expert&source=atelier-lp");
+  await expert.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault(), { once: true }));
+  await expert.click();
+
+  const destination = new URL(await expert.getAttribute("href") ?? "");
+  expect(destination.searchParams.get("mode")).toBe("signup");
+  expect(destination.searchParams.get("intent")).toBe("none");
+  expect(destination.searchParams.get("preferred")).toBe("expert");
+  expect(destination.searchParams.get("utm_source")).toBe("google");
+  expect(destination.searchParams.get("utm_medium")).toBe("cpc");
+  expect(destination.searchParams.get("utm_campaign")).toBe("devis");
+  await expect(expert).toContainText("Checkout Stripe après l'onboarding");
   await expect(expert).toContainText("Le choix des équipes qui grandissent");
 });
 

@@ -1,7 +1,5 @@
 export const SITE_URL = "https://www.atelier-btp.fr";
 export const APP_URL = "https://app.atelier-btp.fr";
-/** Payment Link public Stripe utilisé par l'application pour l'abonnement Expert. */
-export const EXPERT_CHECKOUT_URL = "https://buy.stripe.com/4gM4gaf8aeK54gYdCo5AQ07";
 export const WHATSAPP_NUMBER = "33651664068";
 export const META_PIXEL_ID = "1032268456078970";
 export const AUTHOR = {
@@ -216,9 +214,8 @@ export function buildTradeWhatsAppUrl(tradeLabel: string, tier?: PricingTier, ho
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export function buildTrialSignupUrl(tier: PricingTier["id"]) {
-  if (tier === "expert") return EXPERT_CHECKOUT_URL;
-  const params = new URLSearchParams({ mode: "signup", intent: "trial", preferred: "pro", source: "atelier-lp" });
+export function buildPricingSignupUrl(tier: PricingTier["id"]) {
+  const params = new URLSearchParams({ mode: "signup", intent: tier === "pro" ? "trial" : "none", preferred: tier, source: "atelier-lp" });
   return `${APP_URL}/login?${params.toString()}`;
 }
 
@@ -377,7 +374,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Setup ou abonnement, comment choisir ?",
-    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même. Pro est offert pendant ${TRIAL_DAYS} jours sans carte bancaire ; Expert passe directement par un paiement sécurisé Stripe.`,
+    answer: `Deux façons de démarrer. À ${SETUP_PRICE.toLocaleString("fr-FR")} € HT, on s'occupe de tout : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire, avec un accès sans abonnement mensuel. Pro à ${PRICING_TIERS[0].price} € HT/mois et Expert à ${PRICING_TIERS[1].price} € HT/mois vous permettent de démarrer vous-même. Pro est offert pendant ${TRIAL_DAYS} jours sans carte bancaire ; pour Expert, le checkout Stripe est généré après votre onboarding.`,
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",

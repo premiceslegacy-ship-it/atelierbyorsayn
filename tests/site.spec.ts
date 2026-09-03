@@ -36,9 +36,9 @@ test("navigation mobile, WhatsApp, démo et pricing", async ({ page }) => {
   await expect(trialLinks.nth(0)).toBeVisible();
   await expect(trialLinks.nth(1)).toBeVisible();
   await expect(trialLinks.nth(0)).toHaveAttribute("href", /preferred=pro/);
-  await expect(trialLinks.nth(1)).toHaveAttribute("href", "https://buy.stripe.com/4gM4gaf8aeK54gYdCo5AQ07");
+  await expect(trialLinks.nth(1)).toHaveAttribute("href", "https://app.atelier-btp.fr/login?mode=signup&intent=none&preferred=expert&source=atelier-lp");
   await expect(page.locator("#tarifs")).toContainText("Pro offert 14 jours");
-  await expect(page.locator("#tarifs")).toContainText("Paiement sécurisé via Stripe");
+  await expect(page.locator("#tarifs")).toContainText("Checkout Stripe après l'onboarding");
   await expect(page.getByText("Le choix des équipes qui grandissent")).toBeVisible();
   await expect(page.locator("#tarifs")).toContainText(/69 €/);
   await expect(page.locator("#tarifs")).toContainText(/169 €/);

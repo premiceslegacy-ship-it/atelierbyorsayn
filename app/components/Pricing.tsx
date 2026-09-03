@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
-import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS, buildTrialSignupUrl, type TradeSimulatorProfile } from "../data/site";
+import { PRICING_TIERS, SETUP_PRICE, TRIAL_DAYS, buildPricingSignupUrl, type TradeSimulatorProfile } from "../data/site";
 import { OpenLeadModalContext } from "../lib/leadModal";
 import { ConversionLink } from "./ConversionLink";
 import { AiCostSimulator } from "./AiCostSimulator";
@@ -87,7 +87,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
       </div>
       {showTrialTiers ? (
         <div className="pricing-reveal" ref={revealRef}>
-          <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Pro offert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Testez Pro gratuitement ou choisissez Expert et passez au paiement sécurisé Stripe.</p></div>
+          <div className="pricing-reveal__heading"><p className="eyebrow">Commencez sans risque</p><h3>Pro offert pendant {TRIAL_DAYS} jours.</h3><p>Sans carte bancaire. Sans prélèvement automatique à la fin. Testez Pro gratuitement ou choisissez Expert : le checkout Stripe sera généré après votre onboarding.</p></div>
           <div className="pricing-carousel">
             <div className="pricing-carousel__viewport">
               <div className="pricing-carousel__track">
@@ -95,7 +95,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
                   <div className="pricing-carousel__slide" key={tier.id}>
                     <ConversionLink
                       className={`pricing-card ${tier.featured ? "pricing-card--featured" : ""}`}
-                      href={buildTrialSignupUrl(tier.id)}
+                      href={buildPricingSignupUrl(tier.id)}
                       source={source}
                       tier={tier.id}
                       preserveUtm
@@ -104,7 +104,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
                       <div className="pricing-card__top">
                         <p>{tier.name}</p>
                         <div><strong>{tier.price} €</strong><span>HT / mois</span></div>
-                        <p className="pricing-card__trial">{tier.trial ? `Pro offert ${TRIAL_DAYS} jours · aucune carte demandée` : "Paiement sécurisé via Stripe · abonnement Expert"}</p>
+                        <p className="pricing-card__trial">{tier.trial ? `Pro offert ${TRIAL_DAYS} jours · aucune carte demandée` : "Checkout Stripe après l'onboarding · abonnement Expert"}</p>
                         <h3>{tier.promise}</h3>
                         <p>{tier.audience}</p>
                       </div>
@@ -117,7 +117,7 @@ export function Pricing({ sourceSuffix, note, setupOffer = DEFAULT_SETUP_OFFER, 
                         <summary>Voir les quotas <ChevronDown /></summary>
                         <ul>{tier.quotas.map((quota) => <li key={quota}>{quota}</li>)}</ul>
                       </details>
-                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>{tier.trial ? `Essayer Pro gratuitement ${TRIAL_DAYS} jours` : "Passer au checkout Stripe"}<ArrowRight /></span>
+                      <span className={`button ${tier.featured ? "button--primary" : "button--dark"}`}>{tier.trial ? `Essayer Pro gratuitement ${TRIAL_DAYS} jours` : "Choisir Expert"}<ArrowRight /></span>
                     </ConversionLink>
                   </div>
                 ))}

@@ -241,7 +241,7 @@ export function AiCostSimulator({ onOpenLeadModal, source, profile }: AiCostSimu
       </div>
 
       <button type="button" className="button button--primary ai-simulator__cta" onClick={() => onOpenLeadModal(source)}>
-        Parler de mon volume avec Samuel <ArrowRight />
+        Récupérer ces {Math.round(animatedSavings).toLocaleString("fr-FR")} € <ArrowRight />
       </button>
     </div>
   );

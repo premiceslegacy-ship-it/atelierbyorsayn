@@ -2,7 +2,7 @@
 title: "Répondre vite à un devis : pourquoi ça décide tout, BTP"
 slug: "repondre-vite-devis-artisan-btp"
 description: "Un client qui demande un devis compare presque toujours plusieurs artisans. La rapidité et le suivi de la réponse pèsent autant que le prix final."
-publishedAt: "2026-09-02"
+publishedAt: "2026-09-05"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Trésorerie et relances"
@@ -17,7 +17,7 @@ sources:
     url: "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/delais-de-paiement-les-regles-connaitre"
   - title: "Référentiel produit Atelier, synthèse locale"
     url: "/llms.txt"
-draft: true
+draft: false
 ---
 
 Un client qui demande un devis à un artisan en demande presque toujours un deuxième, parfois un troisième, avant de trancher. **Ce n'est pas seulement le prix qui décide, c'est souvent qui répond le premier, et qui recontacte au bon moment.**

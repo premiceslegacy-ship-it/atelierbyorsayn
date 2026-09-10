@@ -1,7 +1,21 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-09-02",
+  "updatedAt": "2026-09-10",
   "articles": [
+    {
+      "slug": "setup-vs-abonnement-logiciel-btp-economie",
+      "pillar": "Choisir son logiciel",
+      "intent": "Comprendre ce que coûte de retarder l'achat d'un logiciel de gestion BTP et comparer l'offre clé en main sans abonnement",
+      "primaryQuery": "logiciel gestion BTP sans abonnement",
+      "internalLinks": ["secretaire-ia-artisan-sarah", "calcul-marge-chantier-btp"]
+    },
+    {
+      "slug": "abonnement-logiciel-gestion-btp-sarah-ia",
+      "pillar": "Choisir son logiciel",
+      "intent": "Comprendre ce qu'apporte un abonnement mensuel de logiciel de gestion BTP avec IA intégrée",
+      "primaryQuery": "abonnement logiciel gestion BTP",
+      "internalLinks": ["secretaire-ia-artisan-sarah", "repondre-vite-devis-artisan-btp"]
+    },
     {
       "slug": "ia-chatgpt-claude-gemini-artisan-btp",
       "pillar": "Sarah et l'IA métier",

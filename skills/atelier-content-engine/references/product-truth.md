@@ -12,10 +12,11 @@ Ne jamais présenter Sarah comme une salariée, une experte juridique, une compt
 
 ## Prix publics
 
-- Offre clé en main : 3 000 € HT en une fois ; environnement dédié ; configuration métier ; reprise du catalogue ; formation ; 30 jours d'accompagnement ; accès sans abonnement mensuel. Le logiciel reste la propriété d'Orsayn.
+- Offre clé en main : 3 000 € HT en une fois ; environnement dédié ; configuration métier ; reprise du catalogue ; formation ; 30 jours d'accompagnement ; accès sans abonnement mensuel. Le logiciel reste la propriété d'Orsayn. Sarah est incluse (texte : devis, relances, alertes marge), mais sans le live IA vocal ElevenLabs, réservé aux abonnements.
 - Application avec abonnement : aucun frais de setup ; 14 jours d'essai sans carte bancaire.
-- Pro : 69 € HT/mois ; Sarah ; 120 échanges ; 60 minutes de live IA.
-- Expert : 169 € HT/mois ; échanges Sarah illimités ; 300 minutes de live IA.
+- Pro : 69 € HT/mois ; Sarah ; 120 échanges ; 60 minutes de live IA (voix ElevenLabs).
+- Expert : 169 € HT/mois ; échanges Sarah illimités ; 300 minutes de live IA (voix ElevenLabs).
+- Le live IA (conversation vocale avec Sarah via ElevenLabs) est une fonctionnalité exclusive à Pro et Expert, absente du setup seul.
 - L'essai ouvre Expert à tous. Il n'y a aucun prélèvement ni conversion automatique à l'expiration.
 - Pro et Expert sont facturés par organisation, sans supplément par utilisateur.
 - Connexion facturation électronique : incluse, sans surcoût, dans le setup et dans Pro/Expert.

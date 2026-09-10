@@ -32,20 +32,20 @@ Pour une entreprise en croissance, dont les besoins de mois en mois ne sont pas 
 
 ## Pro ou Expert : deux abonnements, aucun frais de départ
 
-Atelier propose deux abonnements mensuels, sans frais de setup et avec **14 jours d'essai sans carte bancaire** sur la formule Expert.
+Atelier propose deux abonnements mensuels, sans frais de setup et avec **14 jours d'essai sans carte bancaire** sur la formule Pro.
 
 | Formule | Prix | Échanges Sarah | Live IA (voix) |
 |---|---|---|---|
-| Pro | 69 € HT/mois | 120 échanges | 60 minutes |
-| Expert | 169 € HT/mois | Illimités | 300 minutes |
+| Pro | 69 € HT/mois | 120 échanges/mois | 60 minutes/mois |
+| Expert | 169 € HT/mois | Illimités | 300 minutes/mois |
 
-Les deux formules sont facturées par organisation, sans supplément par utilisateur ajouté. La connexion à la facturation électronique est incluse dans les deux, sans surcoût. L'essai ouvre la formule Expert à tous, et rien n'est prélevé ni reconduit automatiquement à son expiration.
+Les deux formules sont facturées par organisation, sans supplément par utilisateur ajouté. La connexion à la facturation électronique est incluse dans les deux, sans surcoût. L'essai gratuit ouvre la formule Pro, sans carte bancaire et sans prélèvement automatique à son expiration. Pour passer à Expert, l'entreprise suit un onboarding puis règle par un checkout Stripe.
 
-> **À retenir :** aucune carte bancaire n'est demandée pour l'essai. Passé les 14 jours, l'entreprise choisit elle-même Pro, Expert, ou met son espace en pause.
+> **À retenir :** aucune carte bancaire n'est demandée pour l'essai Pro. Passé les 14 jours, l'entreprise choisit elle-même de continuer en Pro, de passer à Expert, ou de mettre son espace en pause.
 
-## Sarah, incluse partout, la voix en plus dans l'abonnement
+## Sarah, incluse partout, la voix dès la formule Pro
 
-Sarah, l'assistante IA métier intégrée à Atelier, est présente dans le setup comme dans l'abonnement : ce n'est pas un module réservé à l'abonnement. Ce que Pro et Expert ajoutent, c'est le volume d'échanges avec Sarah et le **live IA**, la conversation vocale avec Sarah via ElevenLabs, absente du setup seul. Chaque mois, Sarah continue de :
+Sarah, l'assistante IA métier intégrée à Atelier, est présente dans le setup comme dans l'abonnement : ce n'est pas un module réservé à l'abonnement. La conversation vocale en direct avec Sarah, elle, est réservée aux abonnements : elle est incluse dès Pro (60 minutes par mois), et Expert ne fait qu'élargir le volume, sans plafond sur les échanges texte ni les analyses de devis. Chaque mois, Sarah continue de :
 
 - **Préparer un devis** à partir d'une phrase dictée ou d'un document déposé, en s'appuyant sur le catalogue de prix réel de l'entreprise.
 - **Relancer les impayés** avec un message adapté au client, au bon moment plutôt que trois semaines trop tard.
@@ -57,12 +57,12 @@ Cette continuité change concrètement la façon de répondre à un client. [Ré
 
 ## Ce qui différencie Pro et Expert au quotidien
 
-Le choix entre Pro et Expert dépend surtout du volume d'échanges avec Sarah et du besoin de live IA pendant les moments de forte activité.
+Le choix entre Pro et Expert dépend surtout du volume d'échanges avec Sarah et du besoin de conversation vocale pendant les moments de forte activité.
 
-- **Pro** convient à une entreprise avec un volume de devis et de relances modéré, où 120 échanges mensuels couvrent le rythme habituel.
+- **Pro** convient à une entreprise avec un volume de devis et de relances modéré, où 120 échanges et 60 minutes de vocal par mois couvrent le rythme habituel.
 - **Expert** convient à une entreprise avec un flux de devis plus soutenu, plusieurs chantiers en parallèle, ou qui veut garder une marge de manœuvre sans compter les échanges.
 
-Rien n'empêche de commencer par l'essai Expert, de mesurer l'usage réel pendant 14 jours, puis de choisir la formule qui correspond au volume constaté plutôt qu'à une estimation de départ.
+Rien n'empêche de commencer par l'essai Pro, de mesurer l'usage réel pendant 14 jours, puis de passer à Expert si le volume constaté dépasse ce que Pro couvre.
 
 ## Ce qu'un abonnement ne doit jamais devenir
 
@@ -74,7 +74,7 @@ Un abonnement n'a de sens que s'il continue d'apporter une valeur supérieure à
 
 ### Peut-on changer de formule en cours d'abonnement ?
 
-L'entreprise choisit la formule qui correspond à son usage réel après l'essai. Le passage d'une formule à l'autre suit le rythme de son volume d'échanges avec Sarah et de ses besoins en live IA.
+L'entreprise choisit la formule qui correspond à son usage réel après l'essai. Le passage de Pro à Expert suit le rythme de son volume d'échanges avec Sarah et de ses besoins en conversation vocale.
 
 ### Que se passe-t-il si l'entreprise arrête son abonnement ?
 
@@ -84,12 +84,12 @@ Aucun engagement ne bloque l'arrêt de l'abonnement. Contrairement à l'offre cl
 
 Oui. La connexion à la facturation électronique est incluse dans Pro comme dans Expert, sans surcoût, avec un fichier Factur-X généré pour chaque facture en plus du PDF.
 
-### Faut-il une carte bancaire pour tester Expert pendant 14 jours ?
+### Faut-il une carte bancaire pour tester l'abonnement pendant 14 jours ?
 
-Non. L'essai de 14 jours ouvre la formule Expert sans carte bancaire et sans prélèvement automatique à son expiration. L'espace se met en pause si aucune formule n'est choisie ensuite.
+Non. L'essai de 14 jours ouvre la formule Pro sans carte bancaire et sans prélèvement automatique à son expiration. L'espace se met en pause si aucune formule n'est choisie ensuite. Passer à Expert se fait ensuite via un onboarding et un checkout Stripe.
 
 ### Sarah est-elle réservée aux abonnements ?
 
-Non, Sarah est incluse à l'écrit dans toutes les offres Atelier, y compris l'offre clé en main sans abonnement. Ce que Pro et Expert ajoutent, c'est le volume d'échanges et le live IA, la conversation vocale avec Sarah via ElevenLabs.
+Non, Sarah est incluse à l'écrit dans toutes les offres Atelier, y compris l'offre clé en main sans abonnement. Ce que Pro et Expert ajoutent, c'est le volume d'échanges et la conversation vocale en direct avec Sarah.
 
 [Décrivez à Samuel votre volume mensuel de devis et de relances](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20un%20avis%20sur%20l%27abonnement%20Atelier%20le%20plus%20adapt%C3%A9%20%C3%A0%20mon%20activit%C3%A9.) : il vous dira si Pro ou Expert correspond mieux à votre rythme.

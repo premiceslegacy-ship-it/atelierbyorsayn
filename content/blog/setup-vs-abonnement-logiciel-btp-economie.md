@@ -3,6 +3,7 @@ title: "Setup ou abonnement logiciel BTP : ce que coûte d'attendre"
 slug: "setup-vs-abonnement-logiciel-btp-economie"
 description: "Chaque mois sans vrai logiciel de gestion BTP coûte en oublis de facturation et en marge non suivie. Comparer le setup clé en main et l'abonnement."
 publishedAt: "2026-09-10"
+updatedAt: "2026-09-10"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Choisir son logiciel"
@@ -32,13 +33,13 @@ Le calcul qui compte n'est pas "combien coûte le logiciel", c'est "combien coû
 
 ## L'offre clé en main : un coût, puis plus rien à payer chaque mois
 
-Atelier propose une offre clé en main à **3 000 € HT en une fois** : un environnement dédié, une configuration adaptée au métier, la reprise du catalogue de prix existant, une formation de l'équipe et 30 jours d'accompagnement. Passé ce délai, l'accès reste actif **sans abonnement mensuel**.
+Atelier propose une offre clé en main à **3 000 € HT en une fois** : une configuration adaptée au métier, la reprise du catalogue de prix existant, une prise en main guidée en direct, puis 14 jours de support prioritaire. Passé ce délai, l'accès reste actif **sans abonnement mensuel**.
 
 Ce modèle convient à l'entreprise qui préfère un coût fixe et connu d'avance plutôt qu'une ligne récurrente sur douze mois. Elle paie une fois, quelqu'un reprend son catalogue et configure l'outil à sa place, et elle avance ensuite sans facture logicielle qui revient chaque mois.
 
 - **Un coût unique et prévisible**, sans surprise sur les mois suivants.
 - **La reprise du catalogue existant**, sans ressaisir des centaines de lignes de prix à la main.
-- **Une formation et 30 jours d'accompagnement**, pour que l'équipe soit autonome avant la fin du suivi.
+- **Une prise en main guidée puis 14 jours de support prioritaire**, pour que l'équipe soit autonome avant la fin du suivi.
 - **Aucun engagement mensuel après le déploiement**, l'accès reste actif tel quel.
 
 > **Point de vigilance :** le logiciel reste la propriété d'Orsayn. L'offre clé en main achète un déploiement et un accompagnement, pas une licence transférable.
@@ -61,7 +62,7 @@ Sans cet accompagnement, la mise en place d'un logiciel prend souvent plusieurs 
 
 Une fois le catalogue repris et l'équipe formée, l'outil reste actif sans dépendre d'un renouvellement mensuel. Sarah, l'assistante IA métier intégrée à Atelier, est incluse dans l'offre clé en main : elle continue de préparer les devis à partir d'une phrase dictée, de relancer les impayés au bon moment et de signaler les écarts de marge pendant le chantier, pas seulement à la facture finale.
 
-[Sarah travaille. Vous décidez.](/blog/secretaire-ia-artisan-sarah) Aucune action sensible ne part sans validation humaine : elle prépare, l'artisan vérifie. Seule la conversation vocale avec Sarah (le live IA) reste réservée aux abonnements Pro et Expert : le setup couvre Sarah à l'écrit, pas la voix.
+[Sarah travaille. Vous décidez.](/blog/secretaire-ia-artisan-sarah) Aucune action sensible ne part sans validation humaine : elle prépare, l'artisan vérifie. Seule la conversation vocale en direct avec Sarah reste réservée aux abonnements Pro et Expert : le setup couvre Sarah à l'écrit, pas la voix.
 
 Le suivi de marge par chantier, décrit en détail dans [le calcul de marge chantier BTP](/blog/calcul-marge-chantier-btp), fonctionne dès le déploiement initial : chaque dépense terrain rattachée au bon chantier, chaque devis chiffré à partir du même catalogue de prix.
 
@@ -69,22 +70,22 @@ Le suivi de marge par chantier, décrit en détail dans [le calcul de marge chan
 
 ### Le prix de 3 000 € HT couvre-t-il vraiment tout, ou faut-il payer autre chose ensuite ?
 
-Le prix couvre l'environnement dédié, la configuration métier, la reprise du catalogue, la formation et 30 jours d'accompagnement. Sarah est incluse pour préparer les devis et les relances à l'écrit. Passé ce délai, l'accès reste actif sans abonnement mensuel. La connexion à la facturation électronique est incluse, sans surcoût.
+Le prix couvre la configuration métier, la reprise du catalogue, une prise en main guidée en direct, puis 14 jours de support prioritaire. Sarah est incluse pour préparer les devis et les relances à l'écrit. Passé ce délai, l'accès reste actif sans abonnement mensuel. La connexion à la facturation électronique est incluse, sans surcoût.
 
 ### Le setup inclut-il la conversation vocale avec Sarah ?
 
-Non. Sarah est disponible à l'écrit dans l'offre clé en main. Le live IA, la conversation vocale via ElevenLabs, reste une fonctionnalité réservée aux abonnements Pro et Expert.
+Non. Sarah est disponible à l'écrit dans l'offre clé en main. La conversation vocale en direct avec Sarah reste une fonctionnalité réservée aux abonnements Pro et Expert.
 
-### Que se passe-t-il si l'entreprise a besoin d'aide après les 30 jours d'accompagnement ?
+### Que se passe-t-il si l'entreprise a besoin d'aide après les 14 jours de support prioritaire ?
 
-L'accompagnement dédié dure 30 jours, le temps de rendre l'équipe autonome sur l'outil. Passé ce délai, l'accès au logiciel reste actif normalement, sans changement de fonctionnement.
+Le support prioritaire dure 14 jours après la prise en main guidée, le temps de rendre l'équipe autonome sur l'outil. Passé ce délai, l'accès au logiciel reste actif normalement, sans changement de fonctionnement.
 
 ### Cette offre convient-elle à une petite structure qui débute ?
 
-Elle convient surtout à une entreprise qui préfère déléguer la mise en place plutôt que la faire elle-même, quelle que soit sa taille. Une structure qui préfère commencer seule, sans frais de départ, peut essayer Expert gratuitement pendant 14 jours avant de choisir un abonnement mensuel.
+Elle convient surtout à une entreprise qui préfère déléguer la mise en place plutôt que la faire elle-même, quelle que soit sa taille. Une structure qui préfère commencer seule, sans frais de départ, peut essayer Pro gratuitement pendant 14 jours sans carte bancaire avant de choisir un abonnement mensuel.
 
 ### Qui reste propriétaire du logiciel après le paiement du setup ?
 
 Le logiciel reste la propriété d'Orsayn dans les deux modèles, setup ou abonnement. Le paiement de 3 000 € HT achète le déploiement, la configuration et l'accompagnement, pas une licence transférable.
 
-[Décrivez à Samuel votre catalogue de prix actuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20un%20avis%20sur%20l%27offre%20cl%C3%A9%20en%20main%20Atelier%20pour%20mon%20entreprise.) : il vous dira si la reprise de vos données tient dans les 30 jours d'accompagnement.
+[Décrivez à Samuel votre catalogue de prix actuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20un%20avis%20sur%20l%27offre%20cl%C3%A9%20en%20main%20Atelier%20pour%20mon%20entreprise.) : il vous dira si la reprise de vos données tient dans les 14 jours de support prioritaire.

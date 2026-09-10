@@ -1,6 +1,6 @@
 # Vérité produit Atelier
 
-Synchronisé le 9 août 2026 depuis les documents produit et commerciaux Atelier fournis par Orsayn.
+Synchronisé le 10 septembre 2026 depuis `app/data/site.ts` (source de vérité produit/prix du code) et les documents produit et commerciaux Atelier fournis par Orsayn.
 
 ## Positionnement
 
@@ -12,13 +12,11 @@ Ne jamais présenter Sarah comme une salariée, une experte juridique, une compt
 
 ## Prix publics
 
-- Offre clé en main : 3 000 € HT en une fois ; environnement dédié ; configuration métier ; reprise du catalogue ; formation ; 30 jours d'accompagnement ; accès sans abonnement mensuel. Le logiciel reste la propriété d'Orsayn. Sarah est incluse (texte : devis, relances, alertes marge), mais sans le live IA vocal ElevenLabs, réservé aux abonnements.
-- Application avec abonnement : aucun frais de setup ; 14 jours d'essai sans carte bancaire.
-- Pro : 69 € HT/mois ; Sarah ; 120 échanges ; 60 minutes de live IA (voix ElevenLabs).
-- Expert : 169 € HT/mois ; échanges Sarah illimités ; 300 minutes de live IA (voix ElevenLabs).
-- Le live IA (conversation vocale avec Sarah via ElevenLabs) est une fonctionnalité exclusive à Pro et Expert, absente du setup seul.
-- L'essai ouvre Expert à tous. Il n'y a aucun prélèvement ni conversion automatique à l'expiration.
-- Pro et Expert sont facturés par organisation, sans supplément par utilisateur.
+- Offre clé en main : 3 000 € HT en une fois ; configuration métier ; reprise du catalogue ; prise en main guidée en direct ; puis 14 jours de support prioritaire ; accès sans abonnement mensuel ensuite. Le logiciel reste la propriété d'Orsayn. Sarah est incluse (texte : devis, relances, alertes marge), mais sans le live IA vocal (conversation en direct), réservé aux abonnements Pro/Expert.
+- Application avec abonnement : aucun frais de setup.
+- Pro : 69 € HT/mois ; Sarah (texte et voix) ; 120 échanges IA/mois ; 60 analyses de devis (dont pré-métré sur plan)/mois ; 60 minutes de conversation vocale en direct/mois. **C'est Pro, pas Expert, qui est offert 14 jours sans carte bancaire.**
+- Expert : 169 € HT/mois ; échanges et analyses de devis illimités ; 300 minutes de conversation vocale en direct/mois ; extraction catalogue et imports illimités. Pas d'essai gratuit automatique : le checkout Stripe est généré après l'onboarding.
+- Ne jamais écrire que l'essai gratuit ouvre Expert : c'est Pro qui est offert 14 jours sans carte bancaire (voir `TRIAL_DAYS` et `trial: true` sur le tier Pro dans `app/data/site.ts`).
 - Connexion facturation électronique : incluse, sans surcoût, dans le setup et dans Pro/Expert.
 
 Ne jamais inventer une remise, un prix barré, une économie ou un quota.

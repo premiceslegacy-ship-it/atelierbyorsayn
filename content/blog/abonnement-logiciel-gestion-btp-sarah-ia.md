@@ -17,7 +17,7 @@ sources:
     url: "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises"
   - title: "Référentiel produit Atelier, synthèse locale"
     url: "/llms.txt"
-draft: true
+draft: false
 ---
 
 Un logiciel de gestion BTP payé chaque mois n'est pas un outil qu'on installe une fois et qu'on oublie. **C'est un service qui continue de travailler pour l'entreprise, devis après devis, chantier après chantier.**

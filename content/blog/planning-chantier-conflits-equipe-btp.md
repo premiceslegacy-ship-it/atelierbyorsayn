@@ -3,6 +3,7 @@ title: "Planning chantier : éviter les conflits d'équipe et les trous"
 slug: "planning-chantier-conflits-equipe-btp"
 description: "Double réservation, compagnon sans chantier, matériel oublié : comment un planning chantier bien tenu évite les conflits d'équipe et les temps morts."
 publishedAt: "2026-08-17"
+updatedAt: "2026-09-12"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Organisation et planning"
@@ -53,6 +54,8 @@ Cette anticipation rejoint ce que l'OPPBTP appelle la préparation de chantier :
 Un planning utile est un planning que chaque compagnon peut voir depuis son téléphone, la veille ou le matin même, sans dépendre d'un appel. Cela suppose qu'il reste à jour : lorsqu'un chantier prend du retard, l'impact sur les suivants doit être visible immédiatement, plutôt que de rester masqué dans un ancien tableau.
 
 Atelier centralise le planning de chantier, les équipes et les pointages. [Sarah, l'assistante IA métier](/blog/secretaire-ia-artisan-sarah), peut aussi aider à repérer un chantier incomplet ou une action urgente avant que le problème ne se déplace sur le terrain.
+
+Quand une période chargée approche, la [checklist de rentrée pour artisan](/blog/checklist-rentree-artisan-btp) transforme ce planning en revue concrète des devis, équipes, factures et priorités.
 
 [Décrivez votre organisation actuelle à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20mieux%20organiser%20le%20planning%20de%20mes%20chantiers%20et%20de%20mon%20%C3%A9quipe.) : il vous dira rapidement où se situent vos points de friction.
 

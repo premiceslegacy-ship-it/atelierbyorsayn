@@ -3,6 +3,7 @@ title: "Facturation électronique : ce qui change pour les artisans BTP"
 slug: "facturation-electronique-artisans-btp-2026-2027"
 description: "Réception en 2026, émission en 2027, plateforme agréée : le calendrier utile et les actions concrètes pour un artisan du BTP."
 publishedAt: "2026-07-17"
+updatedAt: "2026-09-12"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Facturation et conformité"
@@ -60,5 +61,7 @@ La réforme est surtout l'occasion de corriger une chaîne déjà coûteuse : de
 ## Ce qu'Atelier prépare
 
 Atelier centralise les clients, les devis, les factures, les relances et les dépenses chantier. Sarah peut préparer une facture ou signaler une incohérence, mais la validation reste humaine. L'objectif n'est pas de vous ajouter un tableau de bord : c'est de faire circuler l'information sans ressaisie.
+
+Avant la réforme, vérifiez déjà [les erreurs de devis et de facture qui bloquent un paiement](/blog/devis-facture-erreurs-artisan-btp). Si vous comparez plusieurs outils pour vous mettre en conformité, replacez cette exigence dans [le prix réel d'un logiciel de gestion BTP](/blog/prix-logiciel-gestion-btp-comparatif).
 
 Si vous voulez vérifier votre calendrier et votre flux actuel, [parlez directement à Samuel sur WhatsApp](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20pr%C3%A9parer%20la%20facturation%20%C3%A9lectronique%20de%20mon%20entreprise%20BTP.).

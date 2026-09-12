@@ -1,97 +1,260 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-09-10",
+  "updatedAt": "2026-09-12",
   "articles": [
     {
       "slug": "setup-vs-abonnement-logiciel-btp-economie",
       "pillar": "Choisir son logiciel",
       "intent": "Comprendre ce que coûte de retarder l'achat d'un logiciel de gestion BTP et comparer l'offre clé en main sans abonnement",
       "primaryQuery": "logiciel gestion BTP sans abonnement",
-      "internalLinks": ["secretaire-ia-artisan-sarah", "calcul-marge-chantier-btp"]
+      "internalLinks": [
+        "calcul-marge-chantier-btp",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "prix-logiciel-gestion-btp-comparatif",
+      "incomingLinks": [
+        "calcul-marge-chantier-btp"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "abonnement-logiciel-gestion-btp-sarah-ia",
+        "prix-logiciel-gestion-btp-comparatif"
+      ]
     },
     {
       "slug": "abonnement-logiciel-gestion-btp-sarah-ia",
       "pillar": "Choisir son logiciel",
       "intent": "Comprendre ce qu'apporte un abonnement mensuel de logiciel de gestion BTP avec IA intégrée",
       "primaryQuery": "abonnement logiciel gestion BTP",
-      "internalLinks": ["secretaire-ia-artisan-sarah", "repondre-vite-devis-artisan-btp"]
+      "internalLinks": [
+        "repondre-vite-devis-artisan-btp",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "prix-logiciel-gestion-btp-comparatif",
+      "incomingLinks": [
+        "secretaire-ia-artisan-sarah"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "ia-chatgpt-claude-gemini-artisan-btp",
+        "setup-vs-abonnement-logiciel-btp-economie"
+      ]
     },
     {
       "slug": "ia-chatgpt-claude-gemini-artisan-btp",
       "pillar": "Sarah et l'IA métier",
       "intent": "Comprendre l'usage de ChatGPT, Claude ou Gemini pour un artisan du bâtiment",
       "primaryQuery": "ChatGPT Claude Gemini artisan bâtiment",
-      "internalLinks": ["secretaire-ia-artisan-sarah"]
+      "internalLinks": [
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "secretaire-ia-artisan-sarah",
+      "incomingLinks": [
+        "secretaire-ia-artisan-sarah"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "abonnement-logiciel-gestion-btp-sarah-ia"
+      ]
     },
     {
       "slug": "checklist-rentree-artisan-btp",
       "pillar": "Organisation et planning",
       "intent": "Préparer la reprise d'activité de rentrée pour un artisan du BTP",
       "primaryQuery": "checklist rentrée artisan BTP",
-      "internalLinks": ["planning-chantier-conflits-equipe-btp", "secretaire-ia-artisan-sarah"]
+      "internalLinks": [
+        "planning-chantier-conflits-equipe-btp",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "planning-chantier-conflits-equipe-btp",
+      "incomingLinks": [
+        "planning-chantier-conflits-equipe-btp"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "relancer-client-impaye-artisan-btp"
+      ]
     },
     {
       "slug": "repondre-vite-devis-artisan-btp",
       "pillar": "Trésorerie et relances",
       "intent": "Comprendre pourquoi la rapidité de réponse à un devis fait gagner ou perdre un chantier",
       "primaryQuery": "répondre vite devis artisan BTP",
-      "internalLinks": ["secretaire-ia-artisan-sarah", "relancer-client-impaye-artisan-btp"]
+      "internalLinks": [
+        "relancer-client-impaye-artisan-btp",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "abonnement-logiciel-gestion-btp-sarah-ia"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "devis-facture-erreurs-artisan-btp",
+        "pre-metre-plan-ia-artisan-btp"
+      ]
     },
     {
       "slug": "devis-facture-erreurs-artisan-btp",
       "pillar": "Facturation et conformité",
       "intent": "Éviter les erreurs de devis et facture qui bloquent un paiement",
       "primaryQuery": "erreurs devis facture artisan BTP",
-      "internalLinks": ["facturation-electronique-artisans-btp-2026-2027", "relancer-client-impaye-artisan-btp"]
+      "internalLinks": [
+        "facturation-electronique-artisans-btp-2026-2027",
+        "relancer-client-impaye-artisan-btp"
+      ],
+      "parent": "facturation-electronique-artisans-btp-2026-2027",
+      "incomingLinks": [
+        "facturation-electronique-artisans-btp-2026-2027"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "pre-metre-plan-ia-artisan-btp",
+        "repondre-vite-devis-artisan-btp"
+      ]
     },
     {
       "slug": "planning-chantier-conflits-equipe-btp",
       "pillar": "Organisation et planning",
       "intent": "Organiser un planning chantier sans conflit d'équipe ni temps mort",
       "primaryQuery": "planning chantier équipe artisan BTP",
-      "internalLinks": ["calcul-marge-chantier-btp", "secretaire-ia-artisan-sarah"]
+      "internalLinks": [
+        "calcul-marge-chantier-btp",
+        "checklist-rentree-artisan-btp",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "checklist-rentree-artisan-btp"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "repondre-vite-devis-artisan-btp"
+      ]
     },
     {
       "slug": "relancer-client-impaye-artisan-btp",
       "pillar": "Trésorerie et relances",
       "intent": "Relancer un client qui ne paie pas sa facture BTP",
       "primaryQuery": "relancer client impayé artisan BTP",
-      "internalLinks": ["calcul-marge-chantier-btp", "secretaire-ia-artisan-sarah"]
+      "internalLinks": [
+        "calcul-marge-chantier-btp",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "repondre-vite-devis-artisan-btp",
+      "incomingLinks": [
+        "devis-facture-erreurs-artisan-btp",
+        "repondre-vite-devis-artisan-btp"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "checklist-rentree-artisan-btp",
+        "repondre-vite-devis-artisan-btp"
+      ]
     },
     {
       "slug": "pre-metre-plan-ia-artisan-btp",
       "pillar": "Rentabilité chantier",
       "intent": "Accélérer et fiabiliser le pré-métré avant un devis",
       "primaryQuery": "pré-métré plan artisan BTP",
-      "internalLinks": ["calcul-marge-chantier-btp"]
+      "internalLinks": [
+        "calcul-marge-chantier-btp"
+      ],
+      "parent": "calcul-marge-chantier-btp",
+      "incomingLinks": [
+        "calcul-marge-chantier-btp"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "devis-facture-erreurs-artisan-btp",
+        "repondre-vite-devis-artisan-btp"
+      ]
     },
     {
       "slug": "prix-logiciel-gestion-btp-comparatif",
       "pillar": "Choisir son logiciel",
       "intent": "Comparer le prix des logiciels de gestion BTP avant de choisir",
       "primaryQuery": "prix logiciel gestion BTP",
-      "internalLinks": ["calcul-marge-chantier-btp", "secretaire-ia-artisan-sarah", "facturation-electronique-artisans-btp-2026-2027"]
+      "internalLinks": [
+        "calcul-marge-chantier-btp",
+        "facturation-electronique-artisans-btp-2026-2027",
+        "secretaire-ia-artisan-sarah"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "calcul-marge-chantier-btp",
+        "facturation-electronique-artisans-btp-2026-2027"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "abonnement-logiciel-gestion-btp-sarah-ia",
+        "setup-vs-abonnement-logiciel-btp-economie"
+      ]
     },
     {
       "slug": "facturation-electronique-artisans-btp-2026-2027",
       "pillar": "Facturation et conformité",
       "intent": "Comprendre la réforme et préparer son entreprise",
       "primaryQuery": "facturation électronique artisan BTP 2026",
-      "internalLinks": ["calcul-marge-chantier-btp"]
+      "internalLinks": [
+        "devis-facture-erreurs-artisan-btp",
+        "prix-logiciel-gestion-btp-comparatif"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "devis-facture-erreurs-artisan-btp",
+        "prix-logiciel-gestion-btp-comparatif"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "checklist-rentree-artisan-btp"
+      ]
     },
     {
       "slug": "calcul-marge-chantier-btp",
       "pillar": "Rentabilité chantier",
       "intent": "Calculer et suivre la marge réelle d'un chantier",
       "primaryQuery": "calcul marge chantier BTP",
-      "internalLinks": ["secretaire-ia-artisan-sarah"]
+      "internalLinks": [
+        "pre-metre-plan-ia-artisan-btp",
+        "prix-logiciel-gestion-btp-comparatif",
+        "setup-vs-abonnement-logiciel-btp-economie"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "planning-chantier-conflits-equipe-btp",
+        "pre-metre-plan-ia-artisan-btp",
+        "prix-logiciel-gestion-btp-comparatif",
+        "relancer-client-impaye-artisan-btp",
+        "setup-vs-abonnement-logiciel-btp-economie"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "repondre-vite-devis-artisan-btp"
+      ]
     },
     {
       "slug": "secretaire-ia-artisan-sarah",
       "pillar": "Sarah et l'IA métier",
       "intent": "Comprendre l'usage concret d'une secrétaire IA pour artisan",
       "primaryQuery": "secrétaire IA artisan",
-      "internalLinks": ["calcul-marge-chantier-btp"]
+      "internalLinks": [
+        "abonnement-logiciel-gestion-btp-sarah-ia",
+        "ia-chatgpt-claude-gemini-artisan-btp"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "abonnement-logiciel-gestion-btp-sarah-ia",
+        "checklist-rentree-artisan-btp",
+        "ia-chatgpt-claude-gemini-artisan-btp",
+        "planning-chantier-conflits-equipe-btp",
+        "prix-logiciel-gestion-btp-comparatif",
+        "relancer-client-impaye-artisan-btp",
+        "repondre-vite-devis-artisan-btp",
+        "setup-vs-abonnement-logiciel-btp-economie"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": []
     }
   ]
 }

@@ -20,6 +20,14 @@ description: Produire, vérifier et publier les articles du journal Atelier pour
 4. Vérifier toute information instable sur le web le jour de la rédaction.
 5. Ne citer une personnalité que depuis une publication vérifiable. Ne jamais suggérer un partenariat ou une approbation inexistante.
 
+## Construire le cocon sémantique et le maillage
+
+Avant de rédiger, situer le sujet dans un cocon sémantique précis : une famille de pages organisées autour d'une décision réelle d'artisan, et non une collection de mots-clés. Chaque sujet doit avoir un pilier, une intention unique, une page parent, des contenus frères utiles, une preuve Atelier ou métier disponible et une destination commerciale cohérente.
+
+Pour chaque nouvelle URL, consigner dans `references/content-inventory.json` son pilier, son intention, sa requête principale, ses liens éditoriaux sortants, les articles associés injectés par le gabarit, les pages existantes qui devront créer un lien entrant et la page offre ou produit qu'elle aide à comprendre. Les champs `internalLinks`, `relatedLinks`, `incomingLinks` et `commercialTarget` doivent décrire le rendu attendu. Si une page existante répond déjà à la même intention, l'enrichir, la fusionner ou la rediriger plutôt que créer une page concurrente.
+
+Le maillage suit le parcours du lecteur. Un article renvoie vers son pilier lorsque cela l'oriente, vers des articles frères lorsqu'ils répondent à la question suivante, vers une preuve lorsqu'elle crédibilise la réponse et vers la page commerciale seulement lorsque cette suite est logique. Les ancres décrivent naturellement la destination. Refuser les pages orphelines, les ancres exactes répétées mécaniquement et les liens ajoutés pour atteindre un quota.
+
 ## Rédiger
 
 1. Créer le Markdown dans `content/blog/` avec le frontmatter défini dans `references/editorial-policy.md`.
@@ -28,7 +36,7 @@ description: Produire, vérifier et publier les articles du journal Atelier pour
 4. Écrire en français concret, phrasé, avec une idée par paragraphe et des intertitres qui répondent à une question.
 5. Donner la réponse principale tôt, puis détailler limites, méthode, exemples et action suivante.
 6. Distinguer clairement fait sourcé, expérience produit et recommandation.
-7. Ajouter des liens internes seulement lorsqu'ils aident la lecture, et les déclarer dans `content-inventory.json`.
+7. Ajouter les liens internes prévus par le cocon seulement lorsqu'ils aident la lecture, puis déclarer dans `content-inventory.json` les liens sortants et les liens entrants à créer depuis l'existant.
 8. Ajouter un tableau comparatif uniquement s'il tranche une vraie comparaison (prix, seuils, avant/après), et une FAQ visible seulement à partir de 3 questions concrètes distinctes. Voir « Tableaux comparatifs et données chiffrées » et « FAQ visible » dans `references/editorial-policy.md`.
 9. Respecter la hiérarchie des titres : un seul H1 (généré par le gabarit), H2 pour les sections, H3 pour les sous-points et les questions de FAQ.
 10. Terminer par un CTA WhatsApp cohérent avec le sujet.
@@ -39,9 +47,11 @@ description: Produire, vérifier et publier les articles du journal Atelier pour
 2. Vérifier chaque claim, chaque date, chaque prix et chaque citation dans sa source.
 3. Vérifier l'absence de requête primaire en double et de date future.
 4. Vérifier que l'image héro a été générée par `generate-hero.mjs` (pas de photo de stock), fait 1200x750, et que le `.webp` ET le `.avif` existent tous les deux et sont à jour (le gabarit `<picture>` sert l'AVIF en priorité).
-5. Construire le site et contrôler l'article pré-rendu, son canonical et son JSON-LD.
+5. Construire le site puis exécuter `npm run test:static` pour contrôler les articles pré-rendus, leurs canonical, leur JSON-LD, leur destination commerciale et l'égalité entre les liens article réellement rendus et l'inventaire.
 6. Vérifier que le fil d'Ariane visuel (`<nav aria-label="Fil d'Ariane">`) est présent dans le HTML pré-rendu et correspond exactement au `BreadcrumbList` JSON-LD.
 7. Si un tableau ou une FAQ ont été ajoutés, relire qu'ils respectent `references/editorial-policy.md` et que tout chiffre cité est sourcé.
+8. Vérifier dans le rendu final chaque lien interne sortant, puis confirmer qu'au moins une page pertinente du site pointe vers le nouvel article. Une URL sans lien entrant utile reste un brouillon.
+9. Vérifier que l'article ne concurrence pas une autre page Atelier sur la même intention et que son CTA mène à l'étape logique du lecteur.
 
 ## Publier
 
@@ -57,6 +67,6 @@ Cadence initiale : `1 article/jour`. La cadence est une limite de planification,
 
 ## Indexation après publication
 
-Le push sur `main` déclenche automatiquement le workflow `.github/workflows/indexnow.yml` : il attend que le déploiement Vercel du commit soit `READY`, rebuild pour régénérer `sitemap.xml` avec la nouvelle URL, puis soumet toutes les URLs du sitemap à l'API IndexNow (`scripts/submit-indexnow.ts`), ce qui notifie Bing et les moteurs partenaires du protocole. Aucune action manuelle n'est requise après un `git push` sur `main` — ne pas relancer `npm run submit:indexnow` à la main sauf si le workflow a échoué (voir onglet Actions du repo GitHub).
+Le push sur `main` déclenche automatiquement le workflow `.github/workflows/indexnow.yml` : il attend que le déploiement Vercel du commit soit `READY`, rebuild pour régénérer `sitemap.xml` avec la nouvelle URL, puis soumet toutes les URLs du sitemap à l'API IndexNow (`scripts/submit-indexnow.ts`), ce qui notifie Bing et les moteurs partenaires du protocole. Aucune action manuelle n'est requise après un `git push` sur `main` : ne pas relancer `npm run submit:indexnow` à la main sauf si le workflow a échoué (voir onglet Actions du repo GitHub).
 
 Ne couvre pas Google (IndexNow n'y est pas adopté) : l'indexation Google reste soumise au crawl normal via le sitemap déclaré dans `robots.txt` et Google Search Console.

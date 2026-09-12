@@ -3,6 +3,7 @@ title: "Secrétaire IA pour artisan : ce que Sarah prépare vraiment"
 slug: "secretaire-ia-artisan-sarah"
 description: "Devis, relances, planning et suivi : découvrez ce que Sarah prépare pour un artisan et pourquoi la décision reste toujours humaine."
 publishedAt: "2026-07-15"
+updatedAt: "2026-09-12"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Sarah et l'IA métier"
@@ -52,5 +53,7 @@ Une secrétaire, une conjointe qui gère le bureau ou un conducteur de travaux c
 Un bon déploiement commence par des droits d'accès clairs, des données propres et une liste d'actions qui exigent une validation. Il faut aussi expliquer aux équipes ce que l'outil fait, ce qu'il journalise et comment corriger une proposition.
 
 L'IA devient utile quand elle reste à sa place : près du travail réel, avec un contexte fiable et une décision humaine visible.
+
+Pour situer cette différence, voyez [ce que changent ChatGPT, Claude et Gemini pour un artisan](/blog/ia-chatgpt-claude-gemini-artisan-btp). Si le besoin est déjà clair, [le fonctionnement de l'abonnement Atelier avec Sarah](/blog/abonnement-logiciel-gestion-btp-sarah-ia) explique ce qui reste disponible dans la durée.
 
 [Décrivez à Samuel la tâche qui vous prend le plus de temps](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20voir%20ce%20que%20Sarah%20peut%20pr%C3%A9parer%20dans%20mon%20entreprise.). Vous verrez rapidement si Sarah peut l'alléger ou si elle doit rester entièrement manuelle.

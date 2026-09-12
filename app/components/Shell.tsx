@@ -17,7 +17,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const pricingHref = location.pathname === "/" ? "/#tarifs" : `${location.pathname}#tarifs`;
+  const pricingHref = "/#tarifs";
   const resolveHref = (label: string, href: string) => label === "Reprendre le contrôle" ? pricingHref : href;
   useEffect(() => setOpen(false), [location.pathname, location.hash]);
 
@@ -74,7 +74,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
 
 export function Footer() {
   const location = useLocation();
-  const pricingHref = location.pathname === "/" ? "/#tarifs" : `${location.pathname}#tarifs`;
+  const pricingHref = "/#tarifs";
 
   return (
     <footer id="footer" className="footer">

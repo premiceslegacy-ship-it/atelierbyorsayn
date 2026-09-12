@@ -9,6 +9,10 @@ const articleRoutes = readdirSync(join(process.cwd(), "content/blog"))
   .map((file) => matter(readFileSync(join(process.cwd(), "content/blog", file), "utf8")).data)
   .filter((meta) => meta.draft !== true)
   .map((meta) => `blog/${meta.slug}`);
+const inventory = JSON.parse(
+  readFileSync(join(process.cwd(), "skills/atelier-content-engine/references/content-inventory.json"), "utf8")
+) as { articles: Array<{ slug: string; internalLinks: string[]; relatedLinks: string[]; commercialTarget: string }> };
+const inventoryBySlug = new Map(inventory.articles.map((article) => [article.slug, article]));
 const failures: string[] = [];
 
 for (const route of [...fixed, ...articleRoutes]) {
@@ -20,6 +24,19 @@ for (const route of [...fixed, ...articleRoutes]) {
   if (!/<link[^>]+rel="canonical"/i.test(html)) failures.push(`${route || "/"}: canonical absent`);
   if (!/<title>[^<]+<\/title>/i.test(html)) failures.push(`${route || "/"}: title absent`);
   if (!/<script[^>]+application\/ld\+json/i.test(html) && !["mentions-legales", "confidentialite", "cgv"].includes(route)) failures.push(`${route || "/"}: JSON-LD absent`);
+  if (route.startsWith("blog/")) {
+    const slug = route.slice("blog/".length);
+    const entry = inventoryBySlug.get(slug);
+    if (!entry) {
+      failures.push(`${route}: absent de l'inventaire`);
+      continue;
+    }
+    if (!html.includes(`href="${entry.commercialTarget}"`)) failures.push(`${route}: destination commerciale absente du rendu`);
+    if (html.includes(`href="/blog/${slug}/#tarifs"`) || html.includes(`href="/blog/${slug}#tarifs"`)) failures.push(`${route}: ancre tarifs locale invalide`);
+    const renderedArticleLinks = [...new Set([...html.matchAll(/href="\/blog\/([a-z0-9-]+)"/g)].map((match) => match[1]))].sort();
+    const expectedArticleLinks = [...new Set([...entry.internalLinks, ...entry.relatedLinks])].sort();
+    if (JSON.stringify(renderedArticleLinks) !== JSON.stringify(expectedArticleLinks)) failures.push(`${route}: liens article rendus différents de l'inventaire`);
+  }
 }
 
 for (const file of ["sitemap.xml", "rss.xml", "robots.txt", "llms.txt"]) {

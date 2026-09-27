@@ -829,9 +829,9 @@ export const metiers: MetierData[] = [
       subline: "Un appel de démarrage, on configure votre instance. Vous prenez la main.",
     },
     seo: {
-      title: "Logiciel gestion chantier maçon | Situations de travaux et rentabilité - Atelier",
+      title: "Logiciel pour maçon et entreprise de rénovation | Atelier",
       description:
-        "Facturez à l'avancement, TVA auto 5,5%/10%/20%, suivez vos dépenses terrain et calculez votre rentabilité chantier en temps réel. Conçu pour les maçons et entreprises de rénovation.",
+        "Logiciel de gestion pour maçon et entreprise de rénovation : situations de travaux, TVA 5,5%/10%/20%, dépenses terrain et marge chantier.",
     },
     setupOffer: {
       headline: "On configure vos situations de travaux. Vous, vous savez si vous gagnez.",

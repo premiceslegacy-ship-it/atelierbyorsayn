@@ -1,7 +1,7 @@
 import type { MetaFunction } from "react-router";
 import HomePage from "../components/HomePage";
 import { StructuredData } from "../components/StructuredData";
-import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICE, SITE_URL } from "../data/site";
+import { FAQ_ITEMS, PRICING_TIERS, SETUP_PRICE, SITE_URL, TRIAL_DAYS } from "../data/site";
 
 export const meta: MetaFunction = () => [
   { title: "Atelier : Le logiciel de gestion des artisans du BTP" },
@@ -48,7 +48,7 @@ const schemas = [
       itemListElement: [
         {
           "@type": "Offer",
-          name: "Atelier — On s'occupe de tout",
+          name: "Atelier - On s'occupe de tout",
           price: SETUP_PRICE,
           priceCurrency: "EUR",
           description: "Configuration métier, reprise du catalogue, prise en main guidée, 14 jours de support prioritaire et accès sans abonnement mensuel.",
@@ -59,7 +59,9 @@ const schemas = [
           price: tier.price,
           priceCurrency: "EUR",
           priceSpecification: { "@type": "UnitPriceSpecification", price: tier.price, priceCurrency: "EUR", unitText: "mois" },
-          description: "Sans frais de départ. Essai Expert de 14 jours sans carte bancaire et sans prélèvement automatique à l'expiration.",
+          description: tier.trial
+            ? `Sans frais de départ. Pro offert pendant ${TRIAL_DAYS} jours sans carte bancaire et sans prélèvement automatique à l'expiration.`
+            : "Sans frais de départ. Pas d'essai gratuit automatique ; le checkout Stripe est généré après l'onboarding.",
         })),
       ],
     },

@@ -54,9 +54,9 @@ export default function CGV() {
                 Abonnement mensuel donnant accès à la plateforme Atelier selon la formule souscrite : Pro à 69 € HT/mois ou Expert à 169 € HT/mois. Le prix est établi par organisation, sans supplément par utilisateur. Les droits et limites propres à chaque formule sont présentés avant la souscription.
               </p>
             </SubSection>
-            <SubSection title="3.3 Essai Expert de 14 jours">
+            <SubSection title="3.3 Essai Pro de 14 jours">
               <p>
-                Après vérification de l'email, renseignement du SIRET et fin de l'onboarding, une organisation éligible bénéficie une seule fois de 14 jours d'Expert gratuits. Aucune carte bancaire n'est demandée. À l'expiration, aucun abonnement et aucun prélèvement ne sont déclenchés automatiquement. L'accès opérationnel est verrouillé jusqu'au choix volontaire d'une formule ; l'export des données et les pages légales restent accessibles.
+                Après vérification de l'email, renseignement du SIRET et fin de l'onboarding, une organisation éligible bénéficie une seule fois de 14 jours de Pro gratuits. Aucune carte bancaire n'est demandée. À l'expiration, aucun abonnement et aucun prélèvement ne sont déclenchés automatiquement. L'accès opérationnel est verrouillé jusqu'au choix volontaire d'une formule ; l'export des données et les pages légales restent accessibles. L'offre Expert ne bénéficie pas d'un essai gratuit automatique : son checkout Stripe est généré après l'onboarding.
               </p>
             </SubSection>
             <SubSection title="3.4 Prestations annexes">

@@ -378,6 +378,6 @@ export const FAQ_ITEMS = [
   },
   {
     question: "La facturation électronique est-elle prise en compte ?",
-    answer: "Oui, et c'est inclus, sans surcoût, dans les deux offres. Chaque facture est déjà générée au format réglementaire Factur-X. À partir de septembre 2026, les entreprises devront pouvoir recevoir leurs factures fournisseurs par une plateforme agréée : Atelier s'en charge. L'obligation d'émettre électroniquement, elle, n'arrive qu'en septembre 2027 pour les artisans — vous choisissez d'être prêt dès maintenant ou d'attendre l'échéance.",
+    answer: "Oui, et c'est inclus, sans surcoût, dans les deux offres. Chaque facture est déjà générée au format réglementaire Factur-X. À partir de septembre 2026, les entreprises devront pouvoir recevoir leurs factures fournisseurs par une plateforme agréée : Atelier s'en charge. L'obligation d'émettre électroniquement, elle, n'arrive qu'en septembre 2027 pour les artisans. Vous choisissez d'être prêt dès maintenant ou d'attendre l'échéance.",
   },
 ];

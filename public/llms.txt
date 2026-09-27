@@ -1,37 +1,32 @@
 # Atelier
 
-> Logiciel de gestion pour artisans du bâtiment : devis, facturation, suivi de chantier et relances automatiques depuis le téléphone.
+> Application de gestion et assistante IA métier pour les artisans du BTP, conçue par Orsayn.
 
-Atelier est un outil SaaS conçu pour les artisans du bâtiment (électriciens, plombiers, menuisiers, peintres, maçons, paysagistes, tôliers) qui veulent gérer leur entreprise depuis le terrain sans formation ni comptable.
+Atelier centralise les clients, devis, factures, relances, chantiers, planning, équipe, dépenses et marge. Sarah prépare, résume, alerte et propose à partir du contexte présent dans Atelier. L'artisan valide les actions sensibles.
 
-## Ce qu'Atelier permet
+## Démarrer
 
-- Créer et envoyer un devis en moins de 5 minutes depuis un smartphone, avant de quitter le client
-- Appliquer automatiquement les bons taux de TVA (5,5%, 10%, 20%) selon le type de travaux
-- Relancer automatiquement les devis sans réponse et les factures impayées
-- Suivre la marge réelle d'un chantier en temps réel (heures, matériel, déplacements)
-- Permettre aux ouvriers de pointer leurs heures depuis le chantier sans application à installer
-- Générer des factures conformes et des avoirs en quelques secondes
+- Offre clé en main : 3 000 € HT une seule fois pour préparer Atelier avec les données existantes, reprendre le catalogue, ouvrir les accès nécessaires au nom de l'entreprise, guider la prise en main et assurer 14 jours de support prioritaire. Aucun abonnement Atelier mensuel obligatoire ensuite ; le paiement se fait selon l'usage.
+- Pro : 69 € HT/mois, avec essai de 14 jours sans carte bancaire.
+- Expert : 169 € HT/mois, sans essai gratuit automatique ; le checkout est généré après l'onboarding.
 
-## Pour qui
+## Sujets couverts
 
-Artisans indépendants et petites entreprises du bâtiment : électriciens, plombiers, menuisiers, peintres, maçons, paysagistes, tôliers. Idéal pour ceux qui travaillent seuls ou avec une petite équipe et qui veulent éviter les tâches administratives chronophages.
+- Devis, factures, relances et suivi des paiements
+- Suivi de chantier, heures, dépenses et marge
+- Planning, équipe et informations terrain
+- Factur-X et connexion à une plateforme agréée selon l'offre et les conditions publiées
 
-## Problèmes résolus
+## Pages principales
 
-- Devis envoyés trop tard (le client signe ailleurs)
-- Factures impayées non relancées
-- Calcul de TVA incorrect sur les devis de rénovation
-- Impossibilité de savoir si un chantier est rentable avant la facture de solde
-- Pointage des heures difficile à suivre sur plusieurs chantiers simultanés
+- https://www.atelier-btp.fr/ : accueil, fonctionnement, preuves et tarifs
+- https://www.atelier-btp.fr/blog : guides sourcés pour artisans du BTP
+- https://www.atelier-btp.fr/electricien : Atelier pour électriciens
+- https://www.atelier-btp.fr/plombier : Atelier pour plombiers et chauffagistes
+- https://www.atelier-btp.fr/menuisier : Atelier pour menuisiers
+- https://www.atelier-btp.fr/peintre : Atelier pour peintres et plâtriers
+- https://www.atelier-btp.fr/macon : Atelier pour maçons et entreprises de rénovation
+- https://www.atelier-btp.fr/paysagiste : Atelier pour paysagistes
+- https://www.atelier-btp.fr/tolier : Atelier pour tôliers et métalliers
 
-## Pages disponibles
-
-- https://www.atelier-btp.fr/ — Page d'accueil
-- https://www.atelier-btp.fr/electricien — Atelier pour électriciens
-- https://www.atelier-btp.fr/plombier — Atelier pour plombiers
-- https://www.atelier-btp.fr/menuisier — Atelier pour menuisiers
-- https://www.atelier-btp.fr/peintre — Atelier pour peintres
-- https://www.atelier-btp.fr/macon — Atelier pour maçons
-- https://www.atelier-btp.fr/paysagiste — Atelier pour paysagistes
-- https://www.atelier-btp.fr/tolier — Atelier pour tôliers
+Les résultats clients publiés sont des cas réels anonymisés et ne constituent pas une garantie de résultat.

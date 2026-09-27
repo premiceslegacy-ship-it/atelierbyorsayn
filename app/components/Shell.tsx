@@ -17,7 +17,7 @@ export function Navbar({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const pricingHref = "/#tarifs";
+  const pricingHref = location.pathname === "/" || location.pathname.startsWith("/blog") ? "/#tarifs" : `${location.pathname}#tarifs`;
   const resolveHref = (label: string, href: string) => label === "Reprendre le contrôle" ? pricingHref : href;
   useEffect(() => setOpen(false), [location.pathname, location.hash]);
 

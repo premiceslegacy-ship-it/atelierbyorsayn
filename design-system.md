@@ -77,6 +77,24 @@ Une seule famille pour tout : **Geist Variable** (`/fonts/geist-variable.woff2`,
 
 Règle : plus l'élément est grand (H1, closing), plus le tracking est négatif et le line-height serré. Plus il est petit (eyebrow, bouton, unité), plus le tracking devient positif et le poids monte. Le corps de texte ne descend jamais sous 12px pour la lecture continue (les légendes techniques à 8–10px restent réservées aux unités et labels courts).
 
+### Mot en dégradé (`em`)
+
+Le mot d'accroche de chaque gros titre (`hero h1 em`, `trade-hero h1 em`, `closing-section h2 em`, `blog-hero h1 em`) est traité en dégradé de texte plutôt qu'en couleur pleine :
+
+```css
+.hero h1 em {
+  display: inline-block;
+  padding-right: .06em;   /* obligatoire : évite que le tracking négatif ne coupe le dernier glyphe (ex. le "e" de "marge") */
+  background: linear-gradient(110deg, #ffc36f 0%, #ff9f1c 48%, #e86f05 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+}
+```
+
+Le `padding-right: .06em` est une correction fonctionnelle, pas un espacement cosmétique : sans lui, le `letter-spacing` très négatif des gros titres tronque visuellement le dernier caractère d'un mot en dégradé. À reproduire sur tout nouveau titre utilisant ce traitement.
+
 ---
 
 ## 4. Densité, spacing et formes
@@ -243,7 +261,28 @@ Variante `.is-accent` : bordure et ombre-socle orange, dégradé chaud très lé
 }
 ```
 
-### 6.4 Demo shell (mockup produit — la preuve dans le hero sombre)
+### 6.4 Étapes « On s'occupe de tout » (setup DFY)
+
+Bloc sous les cards pricing (`.setup-process`, composant `Pricing.tsx`, partagé home + pages métier), qui détaille les 4 étapes du forfait clé en main : configuration catalogue, reprise des données, prise en main guidée, 14 jours de support prioritaire.
+
+- Séquence verticale reliée par un connecteur (`.setup-process__connector`, dégradé orange → transparent), pas une grille — cohérent avec un enchaînement chronologique.
+- Numéro d'étape **tracé au trait** (`<StepDigit>`, `viewBox 0 0 32 32`, `stroke-width 2.4`, couleur `#ffb95d`) plutôt qu'un badge plein — même esprit « croquis » que les icônes maison (§8.2), mais dans le registre chiffre.
+- `.setup-process__heading` : label éditorial centré au-dessus (`11px`, `700`, uppercase, `rgba(255,255,255,.55)`), sur fond sombre (section pricing).
+- Titre d'étape (`h4`, `16px/650`) + description (`13px`, `rgba(255,255,255,.58)`), sans card ni bordure — texte nu sur le fond `--ink`/`#0B0B0A` de la section pricing.
+
+### 6.5 Simulateur d'économies IA
+
+Module produit (`AiCostSimulator.tsx`, ancre `#simulateur-ia`, accessible sous les deux offres pricing), qui calcule en direct le coût réel d'usage IA face au temps gagné et au coût d'un abonnement classique.
+
+- Conteneur `.ai-simulator` : seule surface du système à garder le radius carré `4px` (cf. §4) — signale un module « outil de calcul », volontairement distinct des cards de contenu.
+- Stepper de quantité par poste d'usage (devis chiffrés, échanges Sarah, relances, comptes rendus, suggestions, imports catalogue) : `.ai-simulator__stepper`, boutons `26×26px`, radius `3px`, valeur en `tabular-nums`.
+- Bloc coût (`.ai-simulator__cost`) : fond `#fbf7ef`, chiffre en `Geist` `26–34px/750`.
+- Grille temps gagné (`.ai-simulator__time-grid`) : 3 colonnes séparées par un filet `--line`, icône horloge animée (`stroke-dashoffset`, boucle `clock-tick`).
+- Bloc économies (`.ai-simulator__savings`) : deux colonnes (coût réel vs coût abonnement classique), valeur positive en vert sourd `#2f6e2f`, perte en rouge sourd `#b23b2f` (`--savings-value--loss`) — les deux seules couleurs sémantiques de gain/perte hors palette `--green`/`--orange` du reste du système, réservées à ce module.
+- Équivalents matériel BTP (utilitaire, mini-pelle, compresseur…) pour situer un montant sans jargon financier — même logique de preuve concrète que les métriques bento (§6.2).
+- Toggle mensuel/annuel : `.ai-simulator__toggle`, pilule à deux états, actif = fond `--ink`.
+
+### 6.6 Demo shell (mockup produit — la preuve dans le hero sombre)
 
 C'est l'équivalent Atelier du « Documentation Product Card » de la référence Mintlify : le produit réel mis en scène dans une section sombre, pas une abstraction.
 
@@ -253,13 +292,13 @@ C'est l'équivalent Atelier du « Documentation Product Card » de la référenc
 - `.demo-doc`, `.demo-chip` : mini-cards internes (facture, contexte client) avec leur propre double-liseré à `inset: 4-5px`.
 - `.demo-context` (colonne droite, glass sur fond sombre) : chaque item a son double-liseré en blanc à 10 % d'opacité.
 
-### 6.5 Eyebrow
+### 6.7 Eyebrow
 
 - Rôle : angle ou catégorie, jamais un titre.
 - `10–11px`, `800`, uppercase, `letter-spacing: .14–.18em`, couleur `#8F4600` sur fond clair / `--orange` ou `#FFB95D` sur fond sombre.
 - Toujours suivi d'un titre plus grand — jamais seul.
 
-### 6.6 Formulaire (lead capture)
+### 6.8 Formulaire (lead capture)
 
 - Champs : `min-height: 46px`, radius `14px`, bordure `--line`, focus → bordure orange + halo `0 0 0 3px rgba(255,159,28,.18)`.
 - Checks/pills de choix (`.lead-form__check`) : pilule, état coché → bordure et fond orange doux.
@@ -357,7 +396,7 @@ Deux registres très séparés, comme la thèse le prescrit.
 
 ## 10. Layout et rythme de page
 
-- Hero : navigation flottante transparente puis blanche/floutée au scroll (`.site-header.is-scrolled`), headline centrée, CTA sous le message principal, grille de fond en pointillés très légère (`opacity: .5`, mask radiale).
+- Hero et trade-hero : navigation flottante transparente puis blanche/floutée au scroll (`.site-header.is-scrolled`), headline centrée, CTA sous le message principal, grillage de fond (`rgba(8,8,7,.08)`, grille 48×48px) à `opacity: .8` sur le conteneur, adouci par une `mask-image` radiale centrée — volontairement plus marqué que la première version du système pour rester perceptible.
 - Container central `1280px` sous le hero, marge mini `24px`.
 - Sections « habillées » (dark, pricing, closing) : pleine largeur avec `border-radius: 28px`, comme des cartes géantes plutôt que des bandeaux plats.
 - Grille bento : 12 colonnes, rythme `7/5` puis `4/4/4` — jamais uniforme.

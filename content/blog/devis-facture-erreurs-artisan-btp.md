@@ -3,6 +3,7 @@ title: "Devis et facture BTP : les erreurs qui coûtent le plus cher"
 slug: "devis-facture-erreurs-artisan-btp"
 description: "Mention oubliée, mauvais taux de TVA, devis non signé : les erreurs les plus fréquentes sur un devis ou une facture BTP, et comment les éviter."
 publishedAt: "2026-08-17"
+updatedAt: "2026-09-27"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Facturation et conformité"
@@ -23,6 +24,8 @@ draft: false
 ---
 
 Un devis mal rédigé ou une facture incomplète ne sont pas de simples détails administratifs. **Ils retardent un paiement, invalident une pénalité de retard ou exposent à une amende**, souvent pour un oubli qui prend deux minutes à corriger.
+
+> **Réponse courte :** pour éviter les erreurs de recopie, partez du devis accepté, conservez une version unique du catalogue et rattachez chaque avenant, dépense et facture au même chantier. La vérification finale reste humaine.
 
 ## Le devis obligatoire, et ce qu'il doit contenir
 
@@ -59,6 +62,8 @@ Une facture incomplète n'est pas nulle, mais elle expose à une amende et compl
 Un chantier bouge rarement exactement comme prévu au devis. Un supplément de plâtre, une prise ajoutée, un accès plus compliqué que prévu : sans avenant écrit et chiffré, ce travail supplémentaire se discute après coup, au moment le moins favorable pour l'entreprise.
 
 > **À retenir :** tout écart au devis initial se formalise par un avenant signé avant l'exécution, même bref. C'est le document qui protège la marge et évite la contestation en fin de chantier.
+
+Une fois l'avenant accepté, vérifiez que le montant, les heures prévues et les achats attendus remontent bien dans le suivi du chantier. Cette continuité entre devis, travaux et facture est aussi ce qui permet de repérer une marge qui dérive avant la réception. Voir [comment calculer la marge réelle d'un chantier](/blog/calcul-marge-chantier-btp).
 
 ## Le bon réflexe : générer plutôt que ressaisir
 

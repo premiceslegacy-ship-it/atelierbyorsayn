@@ -3,6 +3,7 @@ title: "Pré-métré depuis un plan : chiffrer un devis sans tout mesurer"
 slug: "pre-metre-plan-ia-artisan-btp"
 description: "Comment un artisan gagne du temps sur le chiffrage en envoyant directement le plan client, plutôt qu'en mesurant les quantités à la main."
 publishedAt: "2026-08-01"
+updatedAt: "2026-09-27"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Rentabilité chantier"
@@ -27,6 +28,8 @@ L'OPPBTP le rappelle pour la sécurité, et le constat vaut aussi pour le chiffr
 Une cloison mal comptée, une surface de doublage arrondie trop vite, un linéaire de plinthe oublié : chacune de ces approximations se répercute sur la quantité de matière commandée, puis sur la marge finale. Le risque n'est pas de mal vendre, c'est de **mal compter avant de vendre**.
 
 > **À retenir :** un devis n'est jamais plus précis que le métré qui l'a nourri. Fiabiliser le métré, c'est fiabiliser toute la chaîne qui suit : commande matière, planning, et au bout, [la marge réelle du chantier](/blog/calcul-marge-chantier-btp).
+
+Une fois les quantités préparées, il faut encore transformer ces données en coûts, heures et prix de vente. [Voir ce qu'un logiciel d'étude de prix BTP doit vraiment calculer](/blog/logiciel-etude-prix-btp-artisan) avant de choisir un outil.
 
 ## Ce que change un pré-métré assisté par IA
 

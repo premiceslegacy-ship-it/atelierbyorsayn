@@ -1,6 +1,6 @@
 {
   "cadence": "1 article/jour",
-  "updatedAt": "2026-09-12",
+  "updatedAt": "2026-09-27",
   "articles": [
     {
       "slug": "setup-vs-abonnement-logiciel-btp-economie",
@@ -86,12 +86,13 @@
       ],
       "parent": "/blog",
       "incomingLinks": [
-        "abonnement-logiciel-gestion-btp-sarah-ia"
+        "abonnement-logiciel-gestion-btp-sarah-ia",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
         "devis-facture-erreurs-artisan-btp",
-        "pre-metre-plan-ia-artisan-btp"
+        "logiciel-etude-prix-btp-artisan"
       ]
     },
     {
@@ -101,15 +102,17 @@
       "primaryQuery": "erreurs devis facture artisan BTP",
       "internalLinks": [
         "facturation-electronique-artisans-btp-2026-2027",
-        "relancer-client-impaye-artisan-btp"
+        "relancer-client-impaye-artisan-btp",
+        "calcul-marge-chantier-btp"
       ],
       "parent": "facturation-electronique-artisans-btp-2026-2027",
       "incomingLinks": [
-        "facturation-electronique-artisans-btp-2026-2027"
+        "facturation-electronique-artisans-btp-2026-2027",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "pre-metre-plan-ia-artisan-btp",
+        "logiciel-etude-prix-btp-artisan",
         "repondre-vite-devis-artisan-btp"
       ]
     },
@@ -129,7 +132,7 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "repondre-vite-devis-artisan-btp"
+        "logiciel-etude-prix-btp-artisan"
       ]
     },
     {
@@ -158,15 +161,16 @@
       "intent": "Accélérer et fiabiliser le pré-métré avant un devis",
       "primaryQuery": "pré-métré plan artisan BTP",
       "internalLinks": [
-        "calcul-marge-chantier-btp"
+        "calcul-marge-chantier-btp",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "parent": "calcul-marge-chantier-btp",
       "incomingLinks": [
-        "calcul-marge-chantier-btp"
+        "calcul-marge-chantier-btp",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "devis-facture-erreurs-artisan-btp",
         "repondre-vite-devis-artisan-btp"
       ]
     },
@@ -178,18 +182,40 @@
       "internalLinks": [
         "calcul-marge-chantier-btp",
         "facturation-electronique-artisans-btp-2026-2027",
-        "secretaire-ia-artisan-sarah"
+        "secretaire-ia-artisan-sarah",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "parent": "/blog",
       "incomingLinks": [
         "calcul-marge-chantier-btp",
-        "facturation-electronique-artisans-btp-2026-2027"
+        "facturation-electronique-artisans-btp-2026-2027",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
         "abonnement-logiciel-gestion-btp-sarah-ia",
         "setup-vs-abonnement-logiciel-btp-economie"
       ]
+    },
+    {
+      "slug": "logiciel-etude-prix-btp-artisan",
+      "pillar": "Devis et chiffrage",
+      "intent": "Choisir un logiciel d'étude de prix BTP qui relie quantités, tarifs et marge",
+      "primaryQuery": "logiciel étude de prix BTP",
+      "internalLinks": [
+        "pre-metre-plan-ia-artisan-btp",
+        "calcul-marge-chantier-btp",
+        "prix-logiciel-gestion-btp-comparatif",
+        "devis-facture-erreurs-artisan-btp",
+        "repondre-vite-devis-artisan-btp"
+      ],
+      "parent": "prix-logiciel-gestion-btp-comparatif",
+      "incomingLinks": [
+        "pre-metre-plan-ia-artisan-btp",
+        "prix-logiciel-gestion-btp-comparatif"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": []
     },
     {
       "slug": "facturation-electronique-artisans-btp-2026-2027",
@@ -226,11 +252,13 @@
         "pre-metre-plan-ia-artisan-btp",
         "prix-logiciel-gestion-btp-comparatif",
         "relancer-client-impaye-artisan-btp",
-        "setup-vs-abonnement-logiciel-btp-economie"
+        "setup-vs-abonnement-logiciel-btp-economie",
+        "devis-facture-erreurs-artisan-btp",
+        "logiciel-etude-prix-btp-artisan"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "repondre-vite-devis-artisan-btp"
+        "logiciel-etude-prix-btp-artisan"
       ]
     },
     {

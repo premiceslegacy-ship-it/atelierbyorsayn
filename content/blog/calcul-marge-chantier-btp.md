@@ -3,7 +3,7 @@ title: "Marge chantier : le calcul qui évite de travailler à perte"
 slug: "calcul-marge-chantier-btp"
 description: "Une méthode simple pour calculer la marge réelle d'un chantier, suivre les écarts pendant les travaux et corriger avant la fin."
 publishedAt: "2026-07-16"
-updatedAt: "2026-09-12"
+updatedAt: "2026-09-27"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Rentabilité chantier"
@@ -32,6 +32,8 @@ La formule la plus utile est courte.
 
 Les coûts directs comprennent au minimum les matériaux, les heures réellement passées, la sous-traitance, les locations et les dépenses affectées au chantier.
 
+**Réponse courte :** si un chantier est facturé 20 000 € et que ses coûts directs atteignent 14 000 €, sa marge est de 6 000 €, soit 30 % du chiffre d'affaires. Le calcul n'est utile que si les heures, achats et dépenses sont rattachés au bon chantier au fur et à mesure.
+
 Exemple concret : pour **20 000 € facturés** et **14 000 € de coûts directs**, la marge est de 6 000 €, soit **30 %** du chiffre d'affaires.
 
 ## Le coût oublié : votre propre temps
@@ -55,6 +57,10 @@ Trois alertes méritent une réaction immédiate.
 ## Ne confondez pas marge et trésorerie
 
 Un chantier rentable peut créer un trou de trésorerie si l'acompte est trop faible, les situations partent tard ou le client paie à 45 jours. Suivez donc deux lignes en parallèle : ce que le chantier rapporte et ce qu'il a réellement encaissé.
+
+### Quelle différence entre marge brute et marge nette ?
+
+La marge brute compare le chiffre d'affaires aux coûts directement rattachés au chantier. La marge nette va plus loin : elle tient aussi compte des charges nécessaires au fonctionnement de l'entreprise selon la méthode retenue. Pour éviter une fausse précision, annoncez toujours quels coûts sont inclus dans votre calcul.
 
 ## Le rituel de quinze minutes
 

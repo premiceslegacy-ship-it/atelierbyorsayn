@@ -3,6 +3,7 @@ title: "Répondre vite à un devis : pourquoi ça décide tout, BTP"
 slug: "repondre-vite-devis-artisan-btp"
 description: "Un client qui demande un devis compare presque toujours plusieurs artisans. La rapidité et le suivi de la réponse pèsent autant que le prix final."
 publishedAt: "2026-09-05"
+updatedAt: "2026-09-27"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Trésorerie et relances"
@@ -39,6 +40,8 @@ Le retard n'est presque jamais un manque de sérieux. Il vient de trois causes q
 - **La relance après envoi est oubliée**, noyée dans les devis en cours et les chantiers à suivre, alors que c'est souvent elle qui fait pencher la décision.
 
 Un artisan seul ne manque pas de compétence sur ces trois points, il manque de temps pour les tenir tous en même temps.
+
+**Réponse courte :** répondez vite en partant d'un catalogue de prix déjà structuré, puis vérifiez le chiffrage avant l'envoi. La rapidité ne remplace pas la précision : elle évite surtout que le client prenne sa décision sans vous.
 
 ## La méthode de relance qui fonctionne après l'envoi
 

@@ -1,6 +1,6 @@
 {
-  "cadence": "1 article/jour",
-  "updatedAt": "2026-09-27",
+  "cadence": "2 articles tous les 2 jours",
+  "updatedAt": "2026-09-28",
   "articles": [
     {
       "slug": "setup-vs-abonnement-logiciel-btp-economie",
@@ -108,7 +108,8 @@
       "parent": "facturation-electronique-artisans-btp-2026-2027",
       "incomingLinks": [
         "facturation-electronique-artisans-btp-2026-2027",
-        "logiciel-etude-prix-btp-artisan"
+        "logiciel-etude-prix-btp-artisan",
+        "achats-chantier-btp-materiaux-marge"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
@@ -183,13 +184,15 @@
         "calcul-marge-chantier-btp",
         "facturation-electronique-artisans-btp-2026-2027",
         "secretaire-ia-artisan-sarah",
-        "logiciel-etude-prix-btp-artisan"
+        "logiciel-etude-prix-btp-artisan",
+        "achats-chantier-btp-materiaux-marge"
       ],
       "parent": "/blog",
       "incomingLinks": [
         "calcul-marge-chantier-btp",
         "facturation-electronique-artisans-btp-2026-2027",
-        "logiciel-etude-prix-btp-artisan"
+        "logiciel-etude-prix-btp-artisan",
+        "achats-chantier-btp-materiaux-marge"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
@@ -212,10 +215,32 @@
       "parent": "prix-logiciel-gestion-btp-comparatif",
       "incomingLinks": [
         "pre-metre-plan-ia-artisan-btp",
-        "prix-logiciel-gestion-btp-comparatif"
+        "prix-logiciel-gestion-btp-comparatif",
+        "achats-chantier-btp-materiaux-marge"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": []
+    },
+    {
+      "slug": "achats-chantier-btp-materiaux-marge",
+      "pillar": "Rentabilité chantier",
+      "intent": "Comprendre comment suivre les achats de matériaux et leur effet sur la marge d'un chantier BTP",
+      "primaryQuery": "logiciel gestion achats BTP",
+      "internalLinks": [
+        "logiciel-etude-prix-btp-artisan",
+        "calcul-marge-chantier-btp",
+        "prix-logiciel-gestion-btp-comparatif",
+        "devis-facture-erreurs-artisan-btp"
+      ],
+      "parent": "calcul-marge-chantier-btp",
+      "incomingLinks": [
+        "calcul-marge-chantier-btp",
+        "prix-logiciel-gestion-btp-comparatif"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "setup-vs-abonnement-logiciel-btp-economie"
+      ]
     },
     {
       "slug": "facturation-electronique-artisans-btp-2026-2027",
@@ -244,7 +269,8 @@
       "internalLinks": [
         "pre-metre-plan-ia-artisan-btp",
         "prix-logiciel-gestion-btp-comparatif",
-        "setup-vs-abonnement-logiciel-btp-economie"
+        "setup-vs-abonnement-logiciel-btp-economie",
+        "achats-chantier-btp-materiaux-marge"
       ],
       "parent": "/blog",
       "incomingLinks": [
@@ -254,12 +280,11 @@
         "relancer-client-impaye-artisan-btp",
         "setup-vs-abonnement-logiciel-btp-economie",
         "devis-facture-erreurs-artisan-btp",
-        "logiciel-etude-prix-btp-artisan"
+        "logiciel-etude-prix-btp-artisan",
+        "achats-chantier-btp-materiaux-marge"
       ],
       "commercialTarget": "/#tarifs",
-      "relatedLinks": [
-        "logiciel-etude-prix-btp-artisan"
-      ]
+      "relatedLinks": []
     },
     {
       "slug": "secretaire-ia-artisan-sarah",

@@ -67,6 +67,8 @@ Trois points à vérifier avant de choisir un logiciel quand on fait de la réno
 - Le suivi de la **marge réelle par chantier**, matières et main-d'œuvre comprises, pas seulement le chiffre d'affaires facturé.
 - La facilité à **rattacher une dépense terrain** (achat matériaux, location d'engin) au bon chantier depuis un téléphone, pas depuis un bureau le soir.
 
+Pour aller plus loin sur ce point, lisez [comment relier les achats de matériaux à la marge d'un chantier](/blog/achats-chantier-btp-materiaux-marge).
+
 Un logiciel qui ne fait que des devis et des factures laisse ce suivi de marge à votre charge, en tête ou sur un tableur à part.
 
 ## Ce qui compte vraiment pour un métallier ou tôlier

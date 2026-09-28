@@ -68,6 +68,6 @@ Une fois par semaine, ouvrez les chantiers actifs. Vérifiez le temps, les achat
 
 Atelier rassemble ces informations au même endroit. Les équipes pointent, les dépenses sont affectées et Sarah signale les écarts. Vous décidez ensuite de recadrer, chiffrer un avenant ou accélérer une situation de travaux.
 
-Le calcul commence avant le chantier : [un pré-métré plus fiable](/blog/pre-metre-plan-ia-artisan-btp) limite les écarts de matière dès le devis. Pour choisir l'outil qui suivra ensuite ces données, comparez [le prix des logiciels de gestion BTP](/blog/prix-logiciel-gestion-btp-comparatif) et le coût réel d'[un démarrage sans abonnement](/blog/setup-vs-abonnement-logiciel-btp-economie).
+Le calcul commence avant le chantier : [un pré-métré plus fiable](/blog/pre-metre-plan-ia-artisan-btp) limite les écarts de matière dès le devis. Pour suivre ce qui est réellement acheté, consultez aussi [la méthode pour relier les achats de matériaux à la marge](/blog/achats-chantier-btp-materiaux-marge). Pour choisir l'outil qui suivra ensuite ces données, comparez [le prix des logiciels de gestion BTP](/blog/prix-logiciel-gestion-btp-comparatif) et le coût réel d'[un démarrage sans abonnement](/blog/setup-vs-abonnement-logiciel-btp-economie).
 
 [Montrez votre méthode actuelle à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20veux%20mieux%20suivre%20la%20marge%20de%20mes%20chantiers.) : en quelques minutes, vous saurez quelles données manquent vraiment.

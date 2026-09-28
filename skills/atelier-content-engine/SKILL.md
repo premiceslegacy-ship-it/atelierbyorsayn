@@ -20,6 +20,19 @@ description: Produire, vérifier et publier les articles du journal Atelier pour
 4. Vérifier toute information instable sur le web le jour de la rédaction.
 5. Ne citer une personnalité que depuis une publication vérifiable. Ne jamais suggérer un partenariat ou une approbation inexistante.
 
+## Recherche avant rédaction
+
+Chaque sujet commence par une recherche datée, jamais par un mot-clé isolé :
+
+1. Interroger Google Search Console pour `sc-domain:atelier-btp.fr` sur les 28 derniers jours et, si le signal est faible, sur les 90 derniers jours. Exécuter les deux vues `query + page` et `query` seule.
+2. Relever la requête exacte, la page déjà visible, les impressions, clics, CTR, position moyenne, l'intention et le risque de cannibalisation. Une requête observée indique une demande, pas une capacité produit.
+3. Chercher les formulations publiques de la niche dans les SERP, les pages concurrentes visibles et le corpus local `Social Growth/Atelier` et `Social Growth/Concurrents`. Les concurrents servent à comprendre le vocabulaire et les angles, jamais à fabriquer une preuve ou à copier une promesse.
+4. Utiliser Google Ads, Analytics ou une source Trends uniquement si l'identité Atelier Marketing possède réellement la connexion autorisée et que la réponse fournit la donnée. Sinon écrire « donnée absente » et ne jamais inventer de volume, tendance, difficulté ou intention.
+5. Si le site web Oracle est requis, consulter le skill local `/Users/useersm/Desktop/Business Orsyan/ORSAYN AI/skills/oracle-site-web.md` comme cadre de site contenu et SEO/GEO, puis utiliser ses règles avec la vérité produit Atelier. Ce fichier est un skill externe au dépôt Atelier, pas un skill `orsayn` à charger via le profil. Il ne remplace ni Search Console, ni la vérité produit, ni une source officielle. Si son chemin n'est pas accessible, le noter dans le journal de recherche et continuer sans inventer ce qui y serait publié.
+6. Décider entre renforcer une page existante, fusionner, créer une page sœur ou ne rien publier. Chaque article doit avoir un rôle unique dans le cocon, une page parent, des frères utiles, une preuve, une limite et un prochain geste.
+
+Conserver ces éléments dans le rapport de recherche ou le manifeste de lot : propriété, période, sources, état des données, requêtes observées, décision, hypothèses, preuves manquantes et date de révision. Les tendances et les volumes externes non vérifiés restent explicitement hors périmètre.
+
 ## Construire le cocon sémantique et le maillage
 
 Avant de rédiger, situer le sujet dans un cocon sémantique précis : une famille de pages organisées autour d'une décision réelle d'artisan, et non une collection de mots-clés. Chaque sujet doit avoir un pilier, une intention unique, une page parent, des contenus frères utiles, une preuve Atelier ou métier disponible et une destination commerciale cohérente.
@@ -63,7 +76,13 @@ Ne passer `draft` à `false` que si l'utilisateur demande explicitement de publi
 4. Relancer validation, build et contrôle statique.
 5. Ne jamais automatiser la mise en ligne quotidienne sans autorisation distincte.
 
-Cadence initiale : `1 article/jour`. La cadence est une limite de planification, pas une autorisation de publication autonome.
+Cadence de planification : `2 articles tous les 2 jours` peut servir de cible de préparation lorsque la recherche montre deux intentions distinctes. Cette cadence n'autorise pas la publication autonome. Par défaut, chaque lot crée deux brouillons `draft: true`, met à jour l'inventaire et livre un rapport de décision. Le passage en `draft: false`, le commit, le push, le déploiement et la soumission Search Console nécessitent une autorisation séparée.
+
+## Cadence cron SEO/GEO
+
+Le job récurrent de préparation suit ce protocole : recherche Search Console, contrôle public du site, comparaison avec le corpus niche et les concurrents visibles, choix de deux intentions non concurrentes, rédaction de deux brouillons, génération des deux héros, mise à jour de l'inventaire, build et validation. Il doit produire un résumé avec les requêtes observées, les pages touchées, les sources, les limites, les liens entrants attendus et la décision recommandée.
+
+Le job ne doit pas pousser de commit, publier, modifier une fiche, demander une indexation, contacter un prospect, dépenser un budget ou utiliser une connexion Treg hors périmètre. Il peut écrire dans le dépôt de travail prévu, mais laisse les articles en `draft: true` tant qu'un humain n'a pas validé le lot. Si une recherche ne révèle pas deux opportunités distinctes, le job produit un article et un rapport « second sujet à surveiller » plutôt que de remplir artificiellement le calendrier.
 
 ## Indexation après publication
 

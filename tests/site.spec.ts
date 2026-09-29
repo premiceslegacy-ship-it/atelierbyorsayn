@@ -26,8 +26,8 @@ test("navigation mobile, WhatsApp, démo et pricing", async ({ page }) => {
   await expect(page.getByRole("link", { name: "Tips de chantier" }).last()).toBeVisible();
   await expect(page.getByRole("button", { name: "Mon devis en 2 min" }).first()).toBeVisible();
   await page.locator("#demo").scrollIntoViewIfNeeded();
-  await page.getByRole("tab", { name: /Vous validez/ }).click();
-  await expect(page.getByText("Valider l'envoi")).toBeVisible();
+  await page.getByRole("tab", { name: /Vous vérifiez/ }).click();
+  await expect(page.locator("#demo").getByRole("button", { name: /Envoyer le devis/ })).toBeVisible();
   await page.locator("#tarifs").scrollIntoViewIfNeeded();
   await expect(page.locator("#tarifs")).toContainText(/3.000 €/);
   await page.getByRole("button", { name: /Je démarre maintenant/ }).click();

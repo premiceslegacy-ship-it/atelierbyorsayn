@@ -1,27 +1,34 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, MousePointerClick } from "lucide-react";
 import { buildWhatsAppUrl } from "../data/site";
 import { ConversionLink } from "./ConversionLink";
-import { ProofInvoice, ProofCalendarCheck, ProofClock, ProofSent } from "./AtelierIcons";
+import { ProofInvoicesVisual } from "./proof/ProofInvoicesVisual";
+import { ProofCalendarVisual } from "./proof/ProofCalendarVisual";
+import { ProofTimeVisual } from "./proof/ProofTimeVisual";
+import { ProofQuoteVisual } from "./proof/ProofQuoteVisual";
 
 type Stat = {
   id: string;
-  illustration: typeof ProofInvoice;
+  visual: (props: { active: boolean }) => ReactNode;
+  /** Valeur mise en avant (grand chiffre). */
   label: string;
+  description: string;
   /** Valeur numérique à compter de 0 jusqu'à cette cible. Absent = pas de count-up (ex: "45 → 12 j"). */
   countTo?: number;
-  prefix?: string;
   suffix?: string;
   /** Valeur affichée telle quelle si countTo est absent. */
   staticValue?: string;
+  featured?: boolean;
+  /** Invitation à interagir, affichée sous le visuel. */
+  hint: string;
 };
 
 const stats: Stat[] = [
-  { id: "impayes", illustration: ProofInvoice, countTo: 12500, suffix: " €", label: "d'impayés récupérés en moins d'un mois" },
-  { id: "delai", illustration: ProofCalendarCheck, staticValue: "45 → 12 j", label: "de délai de paiement moyen" },
-  { id: "temps", illustration: ProofClock, countTo: 10, suffix: " h / mois", label: "rendues à l'équipe" },
-  { id: "devis", illustration: ProofSent, staticValue: "Devis envoyé", label: "avant que le client ne compare ailleurs" },
+  { id: "impayes", visual: ProofInvoicesVisual, countTo: 12500, suffix: " €", featured: true, hint: "Touchez une facture pour la marquer payée", label: "d'impayés récupérés en moins d'un mois", description: "Sarah relance à J+3 puis J+7, sur le bon ton. Vous validez, l'argent rentre." },
+  { id: "delai", visual: ProofCalendarVisual, staticValue: "45 → 12 j", hint: "Touchez un événement, ou masquez un scénario", label: "de délai de paiement moyen", description: "Facture envoyée le jour J, relancée sans y penser, payée en 12 jours au lieu de 45." },
+  { id: "temps", visual: ProofTimeVisual, countTo: 10, suffix: " h / mois", hint: "Touchez une tâche pour comparer le temps", label: "rendues à l'équipe", description: "Devis, relances, acomptes : préparés pendant que vous êtes sur le chantier." },
+  { id: "devis", visual: ProofQuoteVisual, staticValue: "Devis envoyé", hint: "Envoyez le devis, puis signez-le comme le client", label: "avant que le client ne compare ailleurs", description: "Le devis part le soir même, en PDF conforme, signable en ligne." },
 ];
 
 function useInView<T extends HTMLElement>() {
@@ -30,8 +37,8 @@ function useInView<T extends HTMLElement>() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    /** rootMargin réduit la zone de déclenchement au tiers central du viewport ; threshold exige que la moitié de la carte y soit déjà, pour que l'animation soit vue plutôt que déjà terminée. */
-    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } }, { rootMargin: "-20% 0px -20% 0px", threshold: 0.5 });
+    /** rootMargin réduit la zone de déclenchement au tiers central du viewport ; threshold exige que 30 % de la carte y soit déjà, pour que l'animation soit vue plutôt que déjà terminée. */
+    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } }, { rootMargin: "-20% 0px -20% 0px", threshold: 0.3 });
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -57,35 +64,24 @@ function CountUp({ to, prefix = "", suffix = "", active }: { to: number; prefix?
   return <>{prefix}{value.toLocaleString("fr-FR")}{suffix}</>;
 }
 
-/** Comparaison avant/après pour le délai de paiement : deux barres, l'une pleine (avant), l'une réduite (après). */
-function DelaiBars({ active }: { active: boolean }) {
-  return (
-    <div className={`proof-card__bars ${active ? "is-visible" : ""}`} aria-hidden="true">
-      <div className="proof-card__bar-row">
-        <span>Avant</span>
-        <div className="proof-card__bar-track"><i className="proof-card__bar proof-card__bar--before" /></div>
-      </div>
-      <div className="proof-card__bar-row">
-        <span>Avec Atelier</span>
-        <div className="proof-card__bar-track"><i className="proof-card__bar proof-card__bar--after" /></div>
-      </div>
-    </div>
-  );
-}
-
 function ProofCard({ stat, index }: { stat: Stat; index: number }) {
   const { ref, inView } = useInView<HTMLElement>();
-  const Illustration = stat.illustration;
+  const Visual = stat.visual;
   return (
     <article
-      className={`proof-card ${inView ? "is-visible" : ""}`}
+      className={`proof-card ${stat.featured ? "proof-card--featured" : ""} ${inView ? "is-visible" : ""}`}
       style={{ transitionDelay: inView ? `${index * 90}ms` : "0ms" }}
       ref={ref}
     >
-      <Illustration className="proof-card__illustration" active={inView} />
-      <strong>{stat.countTo !== undefined ? <CountUp to={stat.countTo} prefix={stat.prefix} suffix={stat.suffix} active={inView} /> : stat.staticValue}</strong>
-      <span>{stat.label}</span>
-      {stat.id === "delai" && <DelaiBars active={inView} />}
+      <div className="proof-card__visual">
+        <Visual active={inView} />
+        <p className="pf-hint"><MousePointerClick aria-hidden="true" />{stat.hint}</p>
+      </div>
+      <div className="proof-card__body">
+        <strong>{stat.countTo !== undefined ? <CountUp to={stat.countTo} suffix={stat.suffix} active={inView} /> : stat.staticValue}</strong>
+        <span className="proof-card__label">{stat.label}</span>
+        <p>{stat.description}</p>
+      </div>
     </article>
   );
 }
@@ -93,7 +89,11 @@ function ProofCard({ stat, index }: { stat: Stat; index: number }) {
 export function ProofStrip({ onWhatsAppClick }: { onWhatsAppClick?: () => void } = {}) {
   return (
     <section className="proof-band" aria-label="Résultats clients mesurés">
-      <p className="eyebrow">Mesuré chez les entreprises accompagnées</p>
+      <div className="proof-band__heading">
+        <p className="eyebrow">Mesuré chez les entreprises accompagnées</p>
+        <h2>Ce qui change dès le premier mois.</h2>
+        <p>Des factures payées plus vite, des devis envoyés plus tôt, des soirées rendues à l'équipe. Voici à quoi ça ressemble dans Atelier.</p>
+      </div>
       <div className="proof-band__grid">
         {stats.map((stat, index) => <ProofCard stat={stat} index={index} key={stat.id} />)}
       </div>

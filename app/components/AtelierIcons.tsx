@@ -150,53 +150,6 @@ export function ProofClock({ className, active }: { className?: string; active?:
   );
 }
 
-/** Facture qui passe du rouge (impayée) au vert (encaissée) une fois la carte visible. */
-export function ProofInvoice({ className, active }: { className?: string; active?: boolean }) {
-  return (
-    <svg className={`${className ?? ""} proof-illu ${active ? "is-active" : ""}`} viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <path d="M18 8 h20 l8 8 v36 a2 2 0 0 1 -2 2 h-26 a2 2 0 0 1 -2 -2 v-42 a2 2 0 0 1 2 -2 Z" stroke={STROKE} strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M38 8 v8 h8" stroke={STROKE} strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M23 30 h18" stroke={STROKE} strokeWidth="1.3" strokeLinecap="round" />
-      <path d="M23 36 h18" stroke={STROKE} strokeWidth="1.3" strokeLinecap="round" />
-      <circle className="proof-illu__badge" cx="46" cy="44" r="11" fill="#ffd9d9" />
-      <path className="proof-illu__cross" d="M42 40 L50 48 M50 40 L42 48" stroke="#a01212" strokeWidth="2.3" strokeLinecap="round" />
-      <path className="proof-illu__check" d="M41.5 44.3 L44.8 47.6 L51 41" stroke="#2f6b12" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-/** Case du calendrier qui se coche, pour appuyer le raccourcissement du délai de paiement. */
-export function ProofCalendarCheck({ className, active }: { className?: string; active?: boolean }) {
-  return (
-    <svg className={`${className ?? ""} proof-illu ${active ? "is-active" : ""}`} viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <rect x="10" y="14" width="44" height="38" rx="5" stroke={STROKE} strokeWidth="1.6" />
-      <path d="M10 24 h44" stroke={STROKE} strokeWidth="1.6" />
-      <path d="M20 9 v9" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M44 9 v9" stroke={STROKE} strokeWidth="1.6" strokeLinecap="round" />
-      <rect x="17" y="30" width="9" height="9" rx="2" stroke="#c9c2b3" strokeWidth="1.4" />
-      <rect className="proof-illu__cell" x="30" y="30" width="9" height="9" rx="2" fill={ACCENT} />
-      <path className="proof-illu__cell-check" d="M32 34.5 L34 36.5 L37.5 32.5" stroke="#161613" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="17" y="41" width="9" height="9" rx="2" stroke="#c9c2b3" strokeWidth="1.4" />
-    </svg>
-  );
-}
-
-/** Devis façon Telegram : un avion en papier glisse hors du badge puis cède la place à une coche d'envoi confirmé. */
-export function ProofSent({ className, active }: { className?: string; active?: boolean }) {
-  return (
-    <svg className={`${className ?? ""} proof-illu ${active ? "is-active" : ""}`} viewBox="0 0 64 64" fill="none" aria-hidden="true">
-      <path d="M10 10 h16 l6 6 v30 a2 2 0 0 1 -2 2 h-20 a2 2 0 0 1 -2 -2 v-34 a2 2 0 0 1 2 -2 Z" stroke={STROKE} strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M26 10 v6 h6" stroke={STROKE} strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M15 28 h13" stroke={STROKE} strokeWidth="1.3" strokeLinecap="round" />
-      <path d="M15 34 h13" stroke={STROKE} strokeWidth="1.3" strokeLinecap="round" />
-      <circle className="proof-illu__send-badge" cx="46" cy="44" r="11" fill={ACCENT} />
-      <path className="proof-illu__plane" d="M39.5 44.5 L53 38.5 L45.7 52 L44.3 46.2 Z" fill="#161613" />
-      <path className="proof-illu__plane" d="M44.3 46.2 L53 38.5 L42.5 46.5 Z" fill="#161613" fillOpacity=".55" />
-      <path className="proof-illu__send-check" d="M41.5 44.3 L44.8 47.6 L51 41" stroke="#161613" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 export function IconEquipe({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true">

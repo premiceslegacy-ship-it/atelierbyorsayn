@@ -11,8 +11,6 @@ import {
 } from "lucide-react";
 import {
   IconDevis,
-  IconRelance,
-  IconPointage,
   IconMarge,
   IconCalendrier,
   IconConformite,
@@ -88,25 +86,36 @@ const benefits = [
 ];
 
 const demoSteps = [
-  { label: "Vous parlez", note: "Depuis le chantier, sans formulaire à rallonge.", duration: 5200 },
-  { label: "Sarah retrouve", note: "L'historique du client, pas une relance générique.", duration: 6200 },
-  { label: "Elle rédige", note: "Le ton reste le vôtre, ferme mais correct.", duration: 7200 },
-  { label: "Vous validez", note: "Sarah programme la suite. Le dernier mot reste le vôtre.", duration: 6800 },
+  { label: "Vous dictez", note: "Après la visite, en une minute. Pas de formulaire à remplir le soir.", duration: 6800 },
+  { label: "Sarah passe le relais", note: "Elle retrouve la cliente et transmet le brief à Chloé.", duration: 6200 },
+  { label: "Chloé chiffre", note: "Chaque ligne indique d'où vient son prix. Les estimations sont signalées.", duration: 8600 },
+  { label: "Vous vérifiez", note: "Vous relisez, vous corrigez, et c'est vous qui envoyez.", duration: 6800 },
 ];
+
+const demoDictation = "Chez Mme Lefèvre à Villeurbanne, salle de bain de 6 m². Je dépose la baignoire et l'ancien carrelage, je pose une douche italienne 90 par 120, carrelage 60 par 60 au sol, faïence sur 14 m², un meuble vasque, un sèche-serviettes, la mise aux normes de l'électricité et la peinture du plafond.";
 
 const demoContext = [
-  { label: "Client pro", value: "Dupont Immobilier", detail: "Client depuis 2023" },
-  { label: "Facture", value: "FAC-2026-087", detail: "Échue depuis 18 jours" },
-  { label: "Montant", value: "4 250 €", detail: "Solde restant dû" },
-  { label: "Historique", value: "0 retard", detail: "Toujours réglé à temps avant" },
+  { label: "Cliente", value: "Mme Lefèvre", detail: "Cliente depuis 2024" },
+  { label: "Chantier", value: "Salle de bain, 6 m²", detail: "Villeurbanne, logement de plus de 2 ans" },
+  { label: "Prix", value: "Catalogue + anciens devis", detail: "Les sources de Chloé" },
+  { label: "TVA", value: "10 % proposée", detail: "Rénovation, à vérifier à l'écran" },
 ];
 
-const demoRelance = {
-  invoice: "FAC-2026-087",
-  amount: "4 250 €",
-  overdue: "18 jours de retard",
-  message: "Bonjour, votre facture FAC-2026-087 de 4 250 € est échue depuis le 12 août. Pourriez-vous programmer le règlement cette semaine ? Merci, l'équipe.",
-  followUp: "Relance automatique programmée dans 7 jours si le paiement n'arrive pas.",
+/** Postes du devis (total HT 6 064 €, TVA 10 % soit 6 670,40 € TTC). Les étiquettes reprennent les sources réelles de Chloé : catalogue, devis précédents, estimation. */
+const demoQuote = {
+  reference: "Salle de bain Lefèvre",
+  lines: [
+    { label: "Dépose baignoire, carrelage, évacuation", amount: "780 €", source: "Devis précédent", tone: "ok" },
+    { label: "Douche italienne 90 × 120", amount: "1 450 €", source: "Catalogue", tone: "ok" },
+    { label: "Meuble vasque et sèche-serviettes", amount: "1 200 €", source: "Catalogue", tone: "ok" },
+    { label: "Carrelage sol, faïence 14 m², étanchéité", amount: "1 862 €", source: "Catalogue", tone: "ok" },
+    { label: "Mise aux normes électricité", amount: "640 €", source: "Estimé, à vérifier", tone: "warn" },
+    { label: "Peinture du plafond", amount: "132 €", source: "Devis précédent", tone: "ok" },
+  ],
+  totalHt: "6 064 € HT",
+  totalTtc: "6 670,40 € TTC",
+  warning: "1 prix estimé, signalé pour relecture",
+  followUp: "Vous êtes prévenu dès qu'elle signe, depuis son téléphone.",
 };
 
 function Demo() {
@@ -137,9 +146,9 @@ function Demo() {
   return (
     <section id="demo" className="section section--dark demo-section">
       <div className="section-heading section-heading--center">
-        <p className="eyebrow">Sarah, assistante IA métier</p>
+        <p className="eyebrow">Sarah et Chloé, assistantes IA métier</p>
         <h2>Sarah travaille.<br />Vous décidez.</h2>
-        <p>Elle connaît vos clients, vos factures, vos échéances.<br />Regardez-la relancer un impayé en 60 secondes.</p>
+        <p>Un devis détaillé, c'est une heure de bureau après le chantier.<br />Regardez Sarah et Chloé le préparer pendant que vous rentrez.</p>
       </div>
       <ul className="demo-sarah-strip">
         <li><IconPropose aria-hidden="true" />Propose l'action et explique pourquoi.</li>
@@ -169,17 +178,17 @@ function Demo() {
               <div className="demo-idle">
                 <div className="demo-idle-scene" aria-hidden="true">
                   <div className="demo-idle-invoice">
-                    <IconDevis aria-hidden="true" className="demo-idle-invoice__icon" />
-                    <span>FAC-2026-087</span>
-                    <b>18 j</b>
+                    <Mic aria-hidden="true" className="demo-idle-invoice__icon" />
+                    <span>Visite dictée</span>
+                    <b>0:24</b>
                   </div>
                   <div className="demo-idle-track">
                     <i />
                   </div>
-                  <div className="demo-idle-bell"><IconRelance className="demo-idle-bell__icon" /></div>
+                  <div className="demo-idle-bell"><IconDevis className="demo-idle-bell__icon" /></div>
                 </div>
-                <p className="demo-prompt">Une vraie relance, prête avant que vous y pensiez.</p>
-                <p className="demo-note">60 secondes, étape par étape. Rien ne part sans votre validation.</p>
+                <p className="demo-prompt">Une visite dictée, un devis détaillé prêt à relire.</p>
+                <p className="demo-note">30 secondes, étape par étape. Rien ne part sans votre validation.</p>
                 <button className="demo-validate" type="button" onClick={() => goTo(0)}><Play aria-hidden="true" /> Lancer la démonstration</button>
               </div>
             )}
@@ -187,9 +196,9 @@ function Demo() {
               <>
                 <div className="demo-bubble demo-bubble--user demo-stagger" style={{ animationDelay: "0.2s" }}>
                   <div className="demo-wave" aria-hidden="true">{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ animationDelay: `${i * 0.08}s` }} />)}</div>
-                  <span>0:06</span>
+                  <span>0:24</span>
                 </div>
-                <p className="demo-prompt demo-stagger" style={{ animationDelay: "0.9s" }}>« Sarah, regarde si Dupont Immobilier a payé sa dernière facture. »</p>
+                <p className="demo-transcript demo-stagger" style={{ animationDelay: "0.9s" }}>« {demoDictation} »</p>
               </>
             )}
             {started && active === 1 && (
@@ -199,10 +208,10 @@ function Demo() {
                     <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
                     <img src="/sarah-avatar-144.webp" alt="" width="144" height="144" />
                   </picture>
-                </span><p>Je retrouve la facture et son historique…</p></div>
+                </span><p>Mme Lefèvre est dans vos clients. Je transmets le brief à Chloé.</p></div>
                 <div className="demo-chips">
                   {demoContext.map((chip, index) => (
-                    <div className="demo-chip demo-stagger" style={{ animationDelay: `${0.7 + index * 0.7}s` }} key={chip.label}>
+                    <div className="demo-chip demo-stagger" style={{ animationDelay: `${0.7 + index * 0.6}s` }} key={chip.label}>
                       <span>{chip.label}</span><strong>{chip.value}</strong><small>{chip.detail}</small>
                     </div>
                   ))}
@@ -210,29 +219,40 @@ function Demo() {
               </>
             )}
             {started && active === 2 && (
-              <div className="demo-doc demo-stagger">
-                <div className="demo-doc__head"><strong>{demoRelance.invoice}</strong><span className="demo-doc__overdue">{demoRelance.overdue}</span></div>
-                <div className="demo-doc__message demo-stagger" style={{ animationDelay: "0.6s" }}>{demoRelance.message}</div>
-                <div className="demo-doc__total demo-stagger" style={{ animationDelay: "2.8s" }}>
-                  <span>Solde dû</span><strong>{demoRelance.amount}</strong>
+              <>
+                <div className="demo-sarah-line demo-stagger"><span className="sarah-orb sarah-orb--mini">
+                  <img src="/chloe-avatar-144.webp" alt="" width="144" height="144" />
+                </span><p>Chloé prépare les lignes à partir de votre catalogue et de vos anciens devis.</p></div>
+                <div className="demo-doc demo-doc--quote demo-stagger" style={{ animationDelay: "0.5s" }}>
+                  <div className="demo-doc__head"><strong>{demoQuote.reference}</strong><span>9 lignes</span></div>
+                  {demoQuote.lines.map((line, index) => (
+                    <div className="demo-doc__line demo-doc__line--quote demo-stagger" style={{ animationDelay: `${1.1 + index * 0.55}s` }} key={line.label}>
+                      <span>{line.label}<em className={`demo-source demo-source--${line.tone}`}>{line.source}</em></span>
+                      <strong>{line.amount}</strong>
+                    </div>
+                  ))}
+                  <div className="demo-doc__total demo-stagger" style={{ animationDelay: "4.6s" }}>
+                    <span>Total</span><strong>{demoQuote.totalHt}</strong>
+                  </div>
+                  <div className="demo-doc__badge demo-doc__badge--warn demo-stagger" style={{ animationDelay: "5.4s" }}>{demoQuote.warning}</div>
                 </div>
-                <div className="demo-doc__badge demo-stagger" style={{ animationDelay: "3.6s" }}>Ton ajusté au client, pas de mise en demeure</div>
-              </div>
+              </>
             )}
             {started && active === 3 && !sent && (
               <>
                 <div className="demo-doc demo-doc--compact demo-stagger">
-                  <div className="demo-doc__head"><strong>{demoRelance.invoice}</strong><span>{demoRelance.amount} · prêt à partir</span></div>
-                  <div className="demo-doc__line"><span>Relu par Sarah, rien d'envoyé</span><strong>✓</strong></div>
+                  <div className="demo-doc__head"><strong>{demoQuote.reference}</strong><span>{demoQuote.totalTtc} · prêt à partir</span></div>
+                  <div className="demo-doc__line"><span>Lignes et sources relues</span><strong>✓</strong></div>
+                  <div className="demo-doc__line"><span>Prix estimé confirmé par vous</span><strong>✓</strong></div>
                 </div>
-                <button className="demo-validate demo-stagger" style={{ animationDelay: "0.8s" }} type="button" onClick={() => setSent(true)}><Check aria-hidden="true" /> Valider l'envoi</button>
+                <button className="demo-validate demo-stagger" style={{ animationDelay: "0.8s" }} type="button" onClick={() => setSent(true)}><Check aria-hidden="true" /> Envoyer le devis</button>
               </>
             )}
             {started && active === 3 && sent && (
               <div className="demo-sent">
                 <div className="demo-sent__check"><Check aria-hidden="true" /></div>
-                <p className="demo-prompt">Relance envoyée à Dupont Immobilier.</p>
-                <p className="demo-note">{demoRelance.followUp}</p>
+                <p className="demo-prompt">Devis envoyé à Mme Lefèvre.</p>
+                <p className="demo-note">PDF et lien de signature en ligne. {demoQuote.followUp}</p>
                 <button className="demo-replay" type="button" onClick={() => goTo(0)}><RefreshCw aria-hidden="true" /> Revoir la démonstration</button>
               </div>
             )}
@@ -246,13 +266,13 @@ function Demo() {
         </div>
         <div className="demo-context">
           <p className="eyebrow">Contexte actif</p>
-          <div><IconEquipe /> <span><strong>Dupont Immobilier</strong>Client pro depuis 2023</span></div>
-          <div><IconDevis /> <span><strong>{demoRelance.invoice}</strong>{demoRelance.overdue}</span></div>
-          <div><IconTresorerie /> <span><strong>{demoRelance.amount}</strong>Solde restant dû</span></div>
+          <div><IconEquipe /> <span><strong>Mme Lefèvre</strong>Cliente depuis 2024</span></div>
+          <div><IconDevis /> <span><strong>Salle de bain, 6 m²</strong>Villeurbanne, logement de plus de 2 ans</span></div>
+          <div><IconApprend /> <span><strong>Vos anciens devis</strong>Chloé y retrouve vos prix</span></div>
         </div>
       </div>
       <div className="demo-cta">
-        <p>Sarah est prête. Il ne manque que votre entreprise.</p>
+        <p>Sarah et Chloé sont prêtes. Il ne manque que votre entreprise.</p>
         <div>
           <a className="button button--primary" href="#tarifs">Gagner du temps <ArrowRight aria-hidden="true" /></a>
           <WhatsAppCta className="button button--glass" source="demo">
@@ -329,47 +349,6 @@ function HomeContent({ articles }: { articles: ReturnType<typeof getArticles> })
             <WhatsAppCta className="button button--dark" source="benefits">
               <MessageCircle aria-hidden="true" /> Gagner du temps
             </WhatsAppCta>
-          </div>
-        </div>
-      </section>
-
-      <section id="sarah" className="section phrase-section">
-        <div className="section-heading section-heading--center">
-          <p className="eyebrow">Ça commence par une phrase</p>
-          <h2>Parlez comme sur le chantier.<br />Sarah comprend l'entreprise.</h2>
-          <p>Elle ne part pas d'une page blanche : elle retrouve ce qui existe déjà dans Atelier. La preuve juste en dessous.</p>
-        </div>
-        <div className="flow-diagram">
-          <svg className="flow-diagram__lines" viewBox="0 0 1040 420" preserveAspectRatio="none" aria-hidden="true">
-            <path className="flow-line" d="M 220 210 H 420" />
-            <path className="flow-line flow-line--pulse flow-line--pulse-1" pathLength="100" d="M 220 210 H 420" />
-            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 192 V 133 Q 700 115 720 115 H 820" />
-            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 192 V 133 Q 700 115 720 115 H 820" />
-            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 192 V 196 Q 700 178 720 178 H 820" />
-            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 192 V 196 Q 700 178 720 178 H 820" />
-            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 228 V 224 Q 700 242 720 242 H 820" />
-            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 228 V 224 Q 700 242 720 242 H 820" />
-            <path className="flow-line" d="M 620 210 H 680 Q 700 210 700 228 V 287 Q 700 305 720 305 H 820" />
-            <path className="flow-line flow-line--pulse flow-line--pulse-2" pathLength="100" d="M 620 210 H 680 Q 700 210 700 228 V 287 Q 700 305 720 305 H 820" />
-          </svg>
-          <div className="flow-diagram__grid">
-            <div className="flow-node flow-node--input">
-              <div className="mic-button"><Mic /></div>
-              <p>« Sarah, prépare le devis de la SCI du Parc pour les bureaux visités ce matin. »</p>
-              <span>Transcription terminée · 8 secondes</span>
-            </div>
-            <div className="flow-node flow-node--core">
-              <picture>
-                <source srcSet="/sarah-avatar-144.avif" type="image/avif" />
-                <img src="/sarah-avatar-144.webp" alt="Sarah, l'assistante IA d'Atelier" width="144" height="144" />
-              </picture>
-            </div>
-            <div className="flow-node__outputs">
-              <div className="flow-node flow-node--output"><IconDevis className="flow-node__icon" /><span>Devis PDF</span></div>
-              <div className="flow-node flow-node--output"><IconRelance className="flow-node__icon" /><span>Relance</span></div>
-              <div className="flow-node flow-node--output"><IconPointage className="flow-node__icon" /><span>Pointage</span></div>
-              <div className="flow-node flow-node--output"><IconMarge className="flow-node__icon" /><span>Marge</span></div>
-            </div>
           </div>
         </div>
       </section>

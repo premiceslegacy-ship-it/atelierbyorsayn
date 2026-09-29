@@ -7,7 +7,7 @@ import { ConversionLink } from "./ConversionLink";
 
 const links = [
   ["Ce qui change pour vous", "/#benefices"],
-  ["Rencontrer Sarah", "/#sarah"],
+  ["Rencontrer Sarah", "/#demo"],
   ["Preuves chiffrées", "/#resultats"],
   ["Reprendre le contrôle", "/#tarifs"],
   ["Tips de chantier", "/blog"],

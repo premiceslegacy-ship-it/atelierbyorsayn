@@ -7,7 +7,7 @@ Atelier centralise les clients, devis, factures, relances, chantiers, planning, 
 ## Démarrer
 
 - Offre clé en main : 3 000 € HT une seule fois pour préparer Atelier avec les données existantes, reprendre le catalogue, ouvrir les accès nécessaires au nom de l'entreprise, guider la prise en main et assurer 14 jours de support prioritaire. Aucun abonnement Atelier mensuel obligatoire ensuite ; le paiement se fait selon l'usage.
-- Pro : 69 € HT/mois, avec essai de 14 jours sans carte bancaire.
+- Pro : 69 € HT/mois, avec essai de 7 jours sans carte bancaire.
 - Expert : 169 € HT/mois, sans essai gratuit automatique ; le checkout est généré après l'onboarding.
 
 ## Sujets couverts

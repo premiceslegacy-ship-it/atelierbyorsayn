@@ -32,7 +32,7 @@ Pour une entreprise en croissance, dont les besoins de mois en mois ne sont pas 
 
 ## Pro ou Expert : deux abonnements, aucun frais de départ
 
-Atelier propose deux abonnements mensuels, sans frais de setup et avec **14 jours d'essai sans carte bancaire** sur la formule Pro.
+Atelier propose deux abonnements mensuels, sans frais de setup et avec **7 jours d'essai sans carte bancaire** sur la formule Pro.
 
 | Formule | Prix | Échanges Sarah | Live IA (voix) |
 |---|---|---|---|
@@ -41,7 +41,7 @@ Atelier propose deux abonnements mensuels, sans frais de setup et avec **14 jour
 
 Les deux formules sont facturées par organisation, sans supplément par utilisateur ajouté. La connexion à la facturation électronique est incluse dans les deux, sans surcoût. L'essai gratuit ouvre la formule Pro, sans carte bancaire et sans prélèvement automatique à son expiration. Pour passer à Expert, l'entreprise suit un onboarding puis règle par un checkout Stripe.
 
-> **À retenir :** aucune carte bancaire n'est demandée pour l'essai Pro. Passé les 14 jours, l'entreprise choisit elle-même de continuer en Pro, de passer à Expert, ou de mettre son espace en pause.
+> **À retenir :** aucune carte bancaire n'est demandée pour l'essai Pro. Passé les 7 jours, l'entreprise choisit elle-même de continuer en Pro, de passer à Expert, ou de mettre son espace en pause.
 
 ## Sarah, incluse partout, la voix dès la formule Pro
 
@@ -62,7 +62,7 @@ Le choix entre Pro et Expert dépend surtout du volume d'échanges avec Sarah et
 - **Pro** convient à une entreprise avec un volume de devis et de relances modéré, où 120 échanges et 60 minutes de vocal par mois couvrent le rythme habituel.
 - **Expert** convient à une entreprise avec un flux de devis plus soutenu, plusieurs chantiers en parallèle, ou qui veut garder une marge de manœuvre sans compter les échanges.
 
-Rien n'empêche de commencer par l'essai Pro, de mesurer l'usage réel pendant 14 jours, puis de passer à Expert si le volume constaté dépasse ce que Pro couvre.
+Rien n'empêche de commencer par l'essai Pro, de mesurer l'usage réel pendant 7 jours, puis de passer à Expert si le volume constaté dépasse ce que Pro couvre.
 
 ## Ce qu'un abonnement ne doit jamais devenir
 
@@ -84,9 +84,9 @@ Aucun engagement ne bloque l'arrêt de l'abonnement. Contrairement à l'offre cl
 
 Oui. La connexion à la facturation électronique est incluse dans Pro comme dans Expert, sans surcoût, avec un fichier Factur-X généré pour chaque facture en plus du PDF.
 
-### Faut-il une carte bancaire pour tester l'abonnement pendant 14 jours ?
+### Faut-il une carte bancaire pour tester l'abonnement pendant 7 jours ?
 
-Non. L'essai de 14 jours ouvre la formule Pro sans carte bancaire et sans prélèvement automatique à son expiration. L'espace se met en pause si aucune formule n'est choisie ensuite. Passer à Expert se fait ensuite via un onboarding et un checkout Stripe.
+Non. L'essai de 7 jours ouvre la formule Pro sans carte bancaire et sans prélèvement automatique à son expiration. L'espace se met en pause si aucune formule n'est choisie ensuite. Passer à Expert se fait ensuite via un onboarding et un checkout Stripe.
 
 ### Sarah est-elle réservée aux abonnements ?
 

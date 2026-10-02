@@ -20,7 +20,7 @@ export type PricingTier = {
   quotas: string[];
 };
 
-export const TRIAL_DAYS = 14;
+export const TRIAL_DAYS = 7;
 
 /** Offre clé en main : configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire. */
 export const SETUP_PRICE = 3000;

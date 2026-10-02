@@ -16,7 +16,7 @@ Ne jamais présenter Sarah comme une salariée, une experte juridique, une compt
 - Application avec abonnement : aucun frais de setup.
 - Pro : 69 € HT/mois ; Sarah (texte et voix) ; 120 échanges IA/mois ; 60 analyses de devis (dont pré-métré sur plan)/mois ; 60 minutes de conversation vocale en direct/mois. **C'est Pro, pas Expert, qui est offert 14 jours sans carte bancaire.**
 - Expert : 169 € HT/mois ; échanges et analyses de devis illimités ; 300 minutes de conversation vocale en direct/mois ; extraction catalogue et imports illimités. Pas d'essai gratuit automatique : le checkout Stripe est généré après l'onboarding.
-- Ne jamais écrire que l'essai gratuit ouvre Expert : c'est Pro qui est offert 14 jours sans carte bancaire (voir `TRIAL_DAYS` et `trial: true` sur le tier Pro dans `app/data/site.ts`).
+- Ne jamais écrire que l'essai gratuit ouvre Expert : c'est Pro qui est offert 7 jours sans carte bancaire (voir `TRIAL_DAYS` et `trial: true` sur le tier Pro dans `app/data/site.ts`).
 - Connexion facturation électronique : incluse, sans surcoût, dans le setup et dans Pro/Expert.
 
 Ne jamais inventer une remise, un prix barré, une économie ou un quota.

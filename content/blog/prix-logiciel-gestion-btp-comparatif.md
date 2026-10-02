@@ -44,7 +44,7 @@ Les logiciels de gestion BTP se rangent dans deux familles de prix.
 | Sellsy | 99 à 199 €/mois | Abonnement mensuel, CRM généraliste | Non |
 | Batigest | 150 à 300 €/mois | Abonnement + déploiement ERP | Non |
 | Atelier, clé en main | 3 000 € HT en une fois, puis 0 €/mois | Configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire | Adaptée avec l'équipe Orsayn |
-| Atelier, démarrage autonome | Pro 69 € ou Expert 169 € HT/mois, sans frais de départ | Pro offert 14 jours sans carte ; Expert sans essai gratuit automatique | Oui |
+| Atelier, démarrage autonome | Pro 69 € ou Expert 169 € HT/mois, sans frais de départ | Pro offert 7 jours sans carte ; Expert sans essai gratuit automatique | Oui |
 
 Les prix des concurrents varient selon le nombre d'utilisateurs et les modules activés : ce sont des fourchettes publiques, à vérifier au moment du devis. Les prix Atelier sont ceux publiés sur cette page.
 
@@ -53,7 +53,7 @@ Les prix des concurrents varient selon le nombre d'utilisateurs et les modules a
 Deux profils d'artisans se dessinent, et le bon choix dépend de votre rythme, pas d'une règle générale.
 
 - **On s'occupe de tout** convient à l'entreprise qui préfère déléguer la configuration et la reprise du catalogue. Elle paie 3 000 € HT une fois, bénéficie d'une prise en main guidée puis de 14 jours de support prioritaire, avant de garder son accès sans abonnement mensuel.
-- **Je démarre maintenant** convient à l'entreprise qui veut ouvrir son espace elle-même, sans frais de départ. Elle essaie Pro pendant 14 jours sans carte bancaire, puis choisit volontairement Pro à 69 € ou Expert à 169 € HT/mois. Le checkout Expert est généré après l'onboarding, sans essai gratuit automatique.
+- **Je démarre maintenant** convient à l'entreprise qui veut ouvrir son espace elle-même, sans frais de départ. Elle essaie Pro pendant 7 jours sans carte bancaire, puis choisit volontairement Pro à 69 € ou Expert à 169 € HT/mois. Le checkout Expert est généré après l'onboarding, sans essai gratuit automatique.
 
 > **À retenir :** la différence n'est pas seulement le mode de paiement. L'offre à 3 000 € achète surtout du temps humain au démarrage ; l'abonnement permet de commencer seul et de garder Sarah active chaque mois.
 
@@ -101,7 +101,7 @@ Un logiciel sans IA peut suffire à une petite structure qui a le temps de tout 
 
 Non. Un outil gratuit ou à bas prix qui ne calcule pas la marge réelle d'un chantier peut coûter plus cher en oublis et en erreurs de chiffrage qu'un abonnement mensuel plus élevé. Comparez le prix au temps et à l'argent réellement récupérés, pas seulement au tarif affiché.
 
-### Que se passe-t-il après les 14 jours gratuits de Pro ?
+### Que se passe-t-il après les 7 jours gratuits de Pro ?
 
 Rien n'est prélevé automatiquement, car aucune carte n'est demandée pour l'essai Pro. L'espace se met en pause : vous pouvez choisir Pro à 69 € HT/mois, Expert à 169 € HT/mois ou exporter vos données. Votre travail n'est pas effacé à l'expiration. Expert est accessible après son onboarding, mais ne bénéficie pas d'un essai gratuit automatique.
 
@@ -119,4 +119,4 @@ Listez d'abord ce qui vous fait perdre du temps ou de l'argent aujourd'hui : dev
 
 Pour vérifier les promesses d'un éditeur, partez d'un besoin mesurable comme [le calcul de la marge réelle d'un chantier](/blog/calcul-marge-chantier-btp), puis regardez [ce qu'une secrétaire IA peut réellement préparer](/blog/secretaire-ia-artisan-sarah). Si la conformité pèse dans le choix, consultez aussi [le calendrier de la facturation électronique](/blog/facturation-electronique-artisans-btp-2026-2027).
 
-Vous voulez déléguer le démarrage ? [Décrivez votre métier et votre volume de devis à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20compare%20les%20logiciels%20de%20gestion%20BTP%20et%20je%20veux%20un%20avis%20sur%20mon%20cas.). Vous préférez avancer seul ? [Essayez Pro gratuitement pendant 14 jours](https://app.atelier-btp.fr/login?mode=signup&intent=trial&preferred=pro&source=atelier-blog), sans carte bancaire.
+Vous voulez déléguer le démarrage ? [Décrivez votre métier et votre volume de devis à Samuel](https://wa.me/33651664068?text=Bonjour%20Samuel%2C%20je%20compare%20les%20logiciels%20de%20gestion%20BTP%20et%20je%20veux%20un%20avis%20sur%20mon%20cas.). Vous préférez avancer seul ? [Essayez Pro gratuitement pendant 7 jours](https://app.atelier-btp.fr/login?mode=signup&intent=trial&preferred=pro&source=atelier-blog), sans carte bancaire.

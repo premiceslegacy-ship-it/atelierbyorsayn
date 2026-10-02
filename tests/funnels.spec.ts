@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { metiers } from "../src/data/metiers";
 
-test("le CTA 14 jours révèle Pro et conserve les UTM", async ({ page }) => {
+test("le CTA 7 jours révèle Pro et conserve les UTM", async ({ page }) => {
   await page.goto("/?utm_source=google&utm_medium=cpc&utm_campaign=devis");
   await page.getByRole("button", { name: /Je démarre maintenant/ }).click();
 

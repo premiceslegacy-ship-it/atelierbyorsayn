@@ -1,6 +1,6 @@
 {
   "cadence": "2 articles tous les 2 jours",
-  "updatedAt": "2026-09-28",
+  "updatedAt": "2026-09-30",
   "articles": [
     {
       "slug": "setup-vs-abonnement-logiciel-btp-economie",
@@ -72,7 +72,7 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "relancer-client-impaye-artisan-btp"
+        "logiciel-suivi-chantier-macon"
       ]
     },
     {
@@ -125,16 +125,15 @@
       "internalLinks": [
         "calcul-marge-chantier-btp",
         "checklist-rentree-artisan-btp",
-        "secretaire-ia-artisan-sarah"
+        "secretaire-ia-artisan-sarah",
+        "logiciel-suivi-chantier-macon"
       ],
       "parent": "/blog",
       "incomingLinks": [
         "checklist-rentree-artisan-btp"
       ],
       "commercialTarget": "/#tarifs",
-      "relatedLinks": [
-        "logiciel-etude-prix-btp-artisan"
-      ]
+      "relatedLinks": []
     },
     {
       "slug": "relancer-client-impaye-artisan-btp",
@@ -216,10 +215,13 @@
       "incomingLinks": [
         "pre-metre-plan-ia-artisan-btp",
         "prix-logiciel-gestion-btp-comparatif",
-        "achats-chantier-btp-materiaux-marge"
+        "achats-chantier-btp-materiaux-marge",
+        "logiciel-suivi-chantier-macon"
       ],
       "commercialTarget": "/#tarifs",
-      "relatedLinks": []
+      "relatedLinks": [
+        "logiciel-suivi-chantier-macon"
+      ]
     },
     {
       "slug": "achats-chantier-btp-materiaux-marge",
@@ -239,7 +241,7 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "setup-vs-abonnement-logiciel-btp-economie"
+        "logiciel-suivi-chantier-macon"
       ]
     },
     {
@@ -281,10 +283,13 @@
         "setup-vs-abonnement-logiciel-btp-economie",
         "devis-facture-erreurs-artisan-btp",
         "logiciel-etude-prix-btp-artisan",
-        "achats-chantier-btp-materiaux-marge"
+        "achats-chantier-btp-materiaux-marge",
+        "logiciel-suivi-chantier-macon"
       ],
       "commercialTarget": "/#tarifs",
-      "relatedLinks": []
+      "relatedLinks": [
+        "logiciel-suivi-chantier-macon"
+      ]
     },
     {
       "slug": "secretaire-ia-artisan-sarah",
@@ -308,6 +313,24 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": []
+    },
+    {
+      "slug": "logiciel-suivi-chantier-macon",
+      "pillar": "Organisation et planning",
+      "intent": "Choisir un logiciel de suivi de chantier pour une entreprise de maçonnerie sans perdre le lien avec les coûts et la marge",
+      "primaryQuery": "logiciel suivi chantier maçon",
+      "internalLinks": [
+        "logiciel-etude-prix-btp-artisan",
+        "calcul-marge-chantier-btp"
+      ],
+      "parent": "planning-chantier-conflits-equipe-btp",
+      "incomingLinks": [
+        "planning-chantier-conflits-equipe-btp"
+      ],
+      "commercialTarget": "/macon",
+      "relatedLinks": [
+        "checklist-rentree-artisan-btp"
+      ]
     }
   ]
 }

@@ -53,7 +53,7 @@ Cette anticipation rejoint ce que l'OPPBTP appelle la préparation de chantier :
 
 Un planning utile est un planning que chaque compagnon peut voir depuis son téléphone, la veille ou le matin même, sans dépendre d'un appel. Cela suppose qu'il reste à jour : lorsqu'un chantier prend du retard, l'impact sur les suivants doit être visible immédiatement, plutôt que de rester masqué dans un ancien tableau.
 
-Atelier centralise le planning de chantier, les équipes et les pointages. [Sarah, l'assistante IA métier](/blog/secretaire-ia-artisan-sarah), peut aussi aider à repérer un chantier incomplet ou une action urgente avant que le problème ne se déplace sur le terrain.
+Atelier centralise le planning de chantier, les équipes et les pointages. [Sarah, l'assistante IA métier](/blog/secretaire-ia-artisan-sarah), peut aussi aider à repérer un chantier incomplet ou une action urgente avant que le problème ne se déplace sur le terrain. Pour une entreprise de maçonnerie, voyez aussi [les points à vérifier dans un logiciel de suivi de chantier](/blog/logiciel-suivi-chantier-macon).
 
 Quand une période chargée approche, la [checklist de rentrée pour artisan](/blog/checklist-rentree-artisan-btp) transforme ce planning en revue concrète des devis, équipes, factures et priorités.
 

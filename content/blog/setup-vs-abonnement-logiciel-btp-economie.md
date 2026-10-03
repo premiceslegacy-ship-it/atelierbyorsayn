@@ -82,7 +82,7 @@ Le support prioritaire dure 14 jours après la prise en main guidée, le temps d
 
 ### Cette offre convient-elle à une petite structure qui débute ?
 
-Elle convient surtout à une entreprise qui préfère déléguer la mise en place plutôt que la faire elle-même, quelle que soit sa taille. Une structure qui préfère commencer seule, sans frais de départ, peut essayer Pro gratuitement pendant 14 jours sans carte bancaire avant de choisir un abonnement mensuel.
+Elle convient surtout à une entreprise qui préfère déléguer la mise en place plutôt que la faire elle-même, quelle que soit sa taille. Une structure qui préfère commencer seule, sans frais de départ, peut essayer Pro gratuitement pendant 7 jours sans carte bancaire avant de choisir un abonnement mensuel.
 
 ### Qui reste propriétaire du logiciel après le paiement du setup ?
 

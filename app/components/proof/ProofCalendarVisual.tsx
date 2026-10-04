@@ -15,11 +15,11 @@ const SENT_DAY = 4;
 const PAID_DAY = 16;
 
 type Tone = "sent" | "reminder" | "paid";
-const events: Record<number, { label: string; tone: Tone; title: string; when: string; detail: string }> = {
-  4: { label: "Envoyée", tone: "sent", title: "Facture FAC-2026-034 envoyée", when: "Vendredi 4 septembre", detail: "Dupont Industrie · 3 680 € TTC · échéance à 30 jours." },
-  7: { label: "J+3", tone: "reminder", title: "Relance automatique n°1", when: "Lundi 7 septembre · J+3", detail: "Email cordial envoyé à Dupont Industrie, sans que vous ayez à y penser." },
-  11: { label: "J+7", tone: "reminder", title: "Relance automatique n°2", when: "Vendredi 11 septembre · J+7", detail: "Ton un peu plus ferme, avec le rappel du délai de paiement légal." },
-  16: { label: "Payée", tone: "paid", title: "Facture FAC-2026-034 payée", when: "Mercredi 16 septembre · J+12", detail: "3 680 € encaissés, contre 45 jours en moyenne avant Atelier." },
+const events: Record<number, { label: string; short: string; tone: Tone; title: string; when: string; detail: string }> = {
+  4: { label: "Envoyée", short: "Env.", tone: "sent", title: "Facture FAC-2026-034 envoyée", when: "Vendredi 4 septembre", detail: "Dupont Industrie · 3 680 € TTC · échéance à 30 jours." },
+  7: { label: "J+3", short: "J+3", tone: "reminder", title: "Relance automatique n°1", when: "Lundi 7 septembre · J+3", detail: "Email cordial envoyé à Dupont Industrie, sans que vous ayez à y penser." },
+  11: { label: "J+7", short: "J+7", tone: "reminder", title: "Relance automatique n°2", when: "Vendredi 11 septembre · J+7", detail: "Ton un peu plus ferme, avec le rappel du délai de paiement légal." },
+  16: { label: "Payée", short: "Payée", tone: "paid", title: "Facture FAC-2026-034 payée", when: "Mercredi 16 septembre · J+12", detail: "3 680 € encaissés, contre 45 jours en moyenne avant Atelier." },
 };
 
 /** Calendrier au style Google Agenda : la facture est payée à J+12 au lieu de J+45. Événements cliquables, scénarios activables. */
@@ -80,7 +80,7 @@ export function ProofCalendarVisual({ active }: { active: boolean }) {
                   tabIndex={hidden ? -1 : 0}
                   onClick={() => setSelected(selected === cell.day ? null : cell.day)}
                 >
-                  {event.label}
+                  <span className="pf-long">{event.label}</span><span className="pf-short" aria-hidden="true">{event.short}</span>
                 </button>
               )}
               {withAtelier && <i className="pf-cal__bar-after" />}

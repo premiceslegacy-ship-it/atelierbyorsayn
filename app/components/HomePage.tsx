@@ -148,7 +148,7 @@ function Demo() {
       <div className="section-heading section-heading--center">
         <p className="eyebrow">Sarah et Chloé, assistantes IA métier</p>
         <h2>Sarah travaille.<br />Vous décidez.</h2>
-        <p>Un devis détaillé, c'est une heure de bureau après le chantier.<br />Regardez Sarah et Chloé le préparer pendant que vous rentrez.</p>
+        <p>Le devis détaillé se rédige souvent le soir, après le chantier.<br />Voici comment Sarah et Chloé le préparent à votre place.</p>
       </div>
       <ul className="demo-sarah-strip">
         <li><IconPropose aria-hidden="true" />Propose l'action et explique pourquoi.</li>
@@ -188,7 +188,7 @@ function Demo() {
                   <div className="demo-idle-bell"><IconDevis className="demo-idle-bell__icon" /></div>
                 </div>
                 <p className="demo-prompt">Une visite dictée, un devis détaillé prêt à relire.</p>
-                <p className="demo-note">30 secondes, étape par étape. Rien ne part sans votre validation.</p>
+                <p className="demo-note">Quatre étapes. Rien ne part sans votre validation.</p>
                 <button className="demo-validate" type="button" onClick={() => goTo(0)}><Play aria-hidden="true" /> Lancer la démonstration</button>
               </div>
             )}

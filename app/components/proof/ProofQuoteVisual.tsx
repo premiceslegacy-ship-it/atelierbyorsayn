@@ -23,7 +23,7 @@ export function ProofQuoteVisual({ active }: { active: boolean }) {
   const go = (next: Stage) => { setTouched(true); setStage(next); };
 
   return (
-    <div className="pf-quote" role="group" aria-label="Aperçu interactif d'un devis à envoyer puis à signer">
+    <div className="pf-quote" data-stage={stage} role="group" aria-label="Aperçu interactif d'un devis à envoyer puis à signer">
       <button type="button" className="pf-replay pf-quote__replay" onClick={() => go("draft")} aria-label="Rejouer l'animation"><RotateCcw /></button>
       <div className="pf-paper-frame">
         <div className="pf-paper">

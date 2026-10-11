@@ -56,7 +56,7 @@ Pour comprendre le lien entre quantité, tarif et prix de vente, voyez aussi [ce
 
 Un matériau plus cher n'est pas le seul écart qui abîme une marge. Une livraison manquée, une reprise ou une attente peut ajouter des heures sans modifier le montant facturé.
 
-Le rapprochement utile est donc : achats réels, heures passées, sous-traitance, dépenses directement liées et montant du devis. C'est cette continuité qui rend [la marge réelle d'un chantier](/blog/calcul-marge-chantier-btp) lisible avant la facture de solde.
+Le rapprochement utile est donc : achats réels, heures passées, sous-traitance, dépenses directement liées et montant du devis. C'est cette continuité qui rend [la marge réelle d'un chantier](/blog/calcul-marge-chantier-btp) lisible avant la facture de solde. Pour isoler le suivi d'un prestataire, voir aussi [les contrôles d'une sous-traitance BTP](/blog/sous-traitance-btp-suivi-chantier-marge).
 
 ### 5. La décision qui reste à prendre
 

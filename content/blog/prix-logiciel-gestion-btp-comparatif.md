@@ -3,7 +3,7 @@ title: "Prix des logiciels de gestion BTP en 2026 : comparatif"
 slug: "prix-logiciel-gestion-btp-comparatif"
 description: "Batigest, Obat, Batappli, Sellsy, Atelier : ce que ces logiciels coûtent vraiment et ce qui compte pour un maçon ou un métallier."
 publishedAt: "2026-07-18"
-updatedAt: "2026-09-27"
+updatedAt: "2026-10-10"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Choisir son logiciel"
@@ -21,7 +21,7 @@ sources:
 draft: false
 ---
 
-Un logiciel de gestion BTP peut coûter de 0 € (Excel) à plus de 300 €/mois. Le prix affiché ne dit presque rien tant qu'on n'a pas répondu à trois questions : **avec ou sans abonnement, avec ou sans IA, et adapté à quel métier.** Un maçon en rénovation et un métallier n'ont pas les mêmes devis, pas les mêmes marges à surveiller, et pas le même besoin de temps gagné.
+Un logiciel de gestion BTP peut coûter de 0 € (Excel) à plusieurs centaines d'euros par mois. Le prix affiché ne dit presque rien tant qu'on n'a pas répondu à trois questions : **avec ou sans abonnement, avec ou sans IA, et adapté à quel métier.** Un maçon en rénovation et un métallier n'ont pas les mêmes devis, pas les mêmes marges à surveiller, et pas le même besoin de temps gagné.
 
 Si votre besoin commence avant le devis, comparez aussi [ce qu'un logiciel d'étude de prix BTP doit vraiment calculer](/blog/logiciel-etude-prix-btp-artisan) : quantités, coûts, heures, variantes et marge attendue.
 
@@ -29,7 +29,7 @@ Si votre besoin commence avant le devis, comparez aussi [ce qu'un logiciel d'ét
 
 Les logiciels de gestion BTP se rangent dans deux familles de prix.
 
-- Les outils **facturés au mois**, sans engagement fort : Obat, Batappli, Sellsy. Le prix d'entrée est bas, mais il grimpe avec les modules et les utilisateurs.
+- Certaines offres du marché sont **facturées au mois**. Le prix, les modules, le nombre d'utilisateurs et les conditions d'engagement doivent être vérifiés pour chaque éditeur.
 - Les offres **clé en main**, où un professionnel reprend les données, adapte l'outil au métier et forme l'équipe avant de laisser l'entreprise avancer seule.
 
 > **Le bon calcul n'est pas le prix mensuel seul.** C'est le prix mensuel, plus le temps que le logiciel fait gagner ou perdre sur vos devis, vos relances et votre suivi de marge.
@@ -39,23 +39,23 @@ Les logiciels de gestion BTP se rangent dans deux familles de prix.
 | Logiciel | Prix indicatif | Modèle | IA métier intégrée |
 |---|---|---|---|
 | Excel / Word | 0 € | Aucun abonnement, aucun automatisme | Non |
-| Obat | 59 à 149 €/mois | Abonnement mensuel, sans setup | Non |
-| Batappli | 79 à 199 €/mois | Abonnement mensuel, sans setup | Non |
-| Sellsy | 99 à 199 €/mois | Abonnement mensuel, CRM généraliste | Non |
-| Batigest | 150 à 300 €/mois | Abonnement + déploiement ERP | Non |
-| Atelier, clé en main | 3 000 € HT en une fois, puis 0 €/mois | Configuration métier, reprise du catalogue, prise en main guidée et 14 jours de support prioritaire | Adaptée avec l'équipe Orsayn |
+| Obat | Variable selon l'offre et les utilisateurs | Abonnement mensuel, conditions à vérifier | Non vérifié dans ce lot |
+| Batappli | Variable selon l'offre et les utilisateurs | Abonnement mensuel, conditions à vérifier | Non vérifié dans ce lot |
+| Sellsy | Variable selon l'offre et les utilisateurs | Abonnement mensuel, CRM généraliste | Non vérifié dans ce lot |
+| Batigest | Variable selon l'offre et le déploiement | Abonnement et déploiement à vérifier | Non vérifié dans ce lot |
+| Atelier, clé en main | 3 000 € HT une seule fois, puis paiement selon l'usage | On reprend vos clients, tarifs et anciens documents, on prépare Atelier, on ouvre les accès nécessaires à votre nom, puis 14 jours de support prioritaire | Sarah prépare, résume, alerte et propose ; vous validez les actions sensibles |
 | Atelier, démarrage autonome | Pro 69 € ou Expert 169 € HT/mois, sans frais de départ | Pro offert 7 jours sans carte ; Expert sans essai gratuit automatique | Oui |
 
-Les prix des concurrents varient selon le nombre d'utilisateurs et les modules activés : ce sont des fourchettes publiques, à vérifier au moment du devis. Les prix Atelier sont ceux publiés sur cette page.
+Les conditions des autres logiciels varient selon l'offre, les utilisateurs, les modules et le déploiement. Elles ne sont pas auditées dans ce lot : vérifiez le tarif et le périmètre directement auprès de chaque éditeur avant de comparer. Les prix Atelier sont ceux publiés sur cette page au **11 octobre 2026**. Pour l'offre clé en main, le paiement selon l'usage reste distinct du prix de préparation.
 
 ### Avec abonnement ou sans abonnement : comment trancher
 
 Deux profils d'artisans se dessinent, et le bon choix dépend de votre rythme, pas d'une règle générale.
 
-- **On s'occupe de tout** convient à l'entreprise qui préfère déléguer la configuration et la reprise du catalogue. Elle paie 3 000 € HT une fois, bénéficie d'une prise en main guidée puis de 14 jours de support prioritaire, avant de garder son accès sans abonnement mensuel.
+- **On s'occupe de la préparation avec vous** convient à l'entreprise qui préfère faire reprendre ses clients, ses tarifs et ses anciens documents. Elle paie 3 000 € HT une fois, bénéficie d'une prise en main guidée puis de 14 jours de support prioritaire, puis garde la main sans abonnement Atelier mensuel obligatoire. L'usage reste facturé selon l'usage.
 - **Je démarre maintenant** convient à l'entreprise qui veut ouvrir son espace elle-même, sans frais de départ. Elle essaie Pro pendant 7 jours sans carte bancaire, puis choisit volontairement Pro à 69 € ou Expert à 169 € HT/mois. Le checkout Expert est généré après l'onboarding, sans essai gratuit automatique.
 
-> **À retenir :** la différence n'est pas seulement le mode de paiement. L'offre à 3 000 € achète surtout du temps humain au démarrage ; l'abonnement permet de commencer seul et de garder Sarah active chaque mois.
+> **À retenir :** la différence n'est pas seulement le mode de paiement. L'offre à 3 000 € couvre la préparation d'Atelier avec vos éléments existants et l'ouverture des accès nécessaires à votre nom. L'abonnement permet de commencer seul avec ses propres conditions d'usage.
 
 ## Ce qui compte vraiment pour un maçon en rénovation
 
@@ -88,8 +88,8 @@ C'est un métier où le temps gagné sur le chiffrage compte autant que la relan
 Un logiciel sans IA reste un formulaire : vous remplissez, vous calculez, vous envoyez. Une secrétaire IA métier comme Sarah, intégrée à Atelier, change trois choses.
 
 - Elle **prépare un devis** à partir d'une phrase dictée ou d'un document déposé, en s'appuyant sur votre catalogue et vos prix, pas sur un modèle générique.
-- Elle **relance les impayés** automatiquement, avec un message adapté au client, sans que vous ayez à vous souvenir de qui doit encore payer.
-- Elle **signale les écarts de marge** pendant le chantier, pas seulement une fois la facture finale émise.
+- Elle **prépare ou propose une relance** à partir du contexte présent dans Atelier, avec un message à vérifier avant l'envoi.
+- Elle **alerte et propose une lecture des écarts de marge** pendant le chantier, sans décider à votre place.
 
 > **Sarah prépare. Vous vérifiez. Vous décidez.** Aucune action sensible ne part sans validation humaine.
 
@@ -99,7 +99,7 @@ Un logiciel sans IA peut suffire à une petite structure qui a le temps de tout 
 
 ### Le prix le plus bas est-il toujours le meilleur choix ?
 
-Non. Un outil gratuit ou à bas prix qui ne calcule pas la marge réelle d'un chantier peut coûter plus cher en oublis et en erreurs de chiffrage qu'un abonnement mensuel plus élevé. Comparez le prix au temps et à l'argent réellement récupérés, pas seulement au tarif affiché.
+Non. Un outil gratuit ou à bas prix peut laisser des informations séparées entre devis, achats, heures et chantier. Comparez les données que vous pouvez réellement reprendre, vérifier et relier, pas seulement le tarif affiché. Cette page ne promet pas une économie pour chaque entreprise.
 
 ### Que se passe-t-il après les 7 jours gratuits de Pro ?
 
@@ -107,7 +107,7 @@ Rien n'est prélevé automatiquement, car aucune carte n'est demandée pour l'es
 
 ### Un maçon et un métallier ont-ils besoin du même logiciel ?
 
-Les deux ont besoin de devis fiables, d'un suivi de marge par chantier et de relances automatiques. La différence se joue sur le détail : le maçon a besoin de gérer des avenants et des lots multiples, le métallier a besoin d'une tarification dimensionnelle précise et d'un historique des prix matières.
+Les deux peuvent avoir besoin de devis fiables, d'un suivi de marge par chantier et de relances préparées dans le bon contexte. La différence se joue sur le détail : le maçon a besoin de gérer des avenants et des lots multiples, le métallier a besoin d'une tarification dimensionnelle précise et d'un historique des prix matières.
 
 ### La facturation électronique change-t-elle le choix du logiciel ?
 

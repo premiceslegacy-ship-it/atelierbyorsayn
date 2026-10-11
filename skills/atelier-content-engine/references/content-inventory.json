@@ -1,6 +1,6 @@
 {
   "cadence": "2 articles tous les 2 jours",
-  "updatedAt": "2026-09-30",
+  "updatedAt": "2026-10-06",
   "articles": [
     {
       "slug": "setup-vs-abonnement-logiciel-btp-economie",
@@ -126,11 +126,13 @@
         "calcul-marge-chantier-btp",
         "checklist-rentree-artisan-btp",
         "secretaire-ia-artisan-sarah",
-        "logiciel-suivi-chantier-macon"
+        "logiciel-suivi-chantier-macon",
+        "suivi-heures-chantier-marge-btp"
       ],
       "parent": "/blog",
       "incomingLinks": [
-        "checklist-rentree-artisan-btp"
+        "checklist-rentree-artisan-btp",
+        "suivi-heures-chantier-marge-btp"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": []
@@ -171,7 +173,7 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "repondre-vite-devis-artisan-btp"
+        "sous-traitance-btp-suivi-chantier-marge"
       ]
     },
     {
@@ -220,7 +222,7 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "logiciel-suivi-chantier-macon"
+        "sous-traitance-btp-suivi-chantier-marge"
       ]
     },
     {
@@ -232,16 +234,19 @@
         "logiciel-etude-prix-btp-artisan",
         "calcul-marge-chantier-btp",
         "prix-logiciel-gestion-btp-comparatif",
-        "devis-facture-erreurs-artisan-btp"
+        "devis-facture-erreurs-artisan-btp",
+        "sous-traitance-btp-suivi-chantier-marge"
       ],
       "parent": "calcul-marge-chantier-btp",
       "incomingLinks": [
         "calcul-marge-chantier-btp",
-        "prix-logiciel-gestion-btp-comparatif"
+        "prix-logiciel-gestion-btp-comparatif",
+        "sous-traitance-btp-suivi-chantier-marge",
+        "suivi-heures-chantier-marge-btp"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "logiciel-suivi-chantier-macon"
+        "suivi-heures-chantier-marge-btp"
       ]
     },
     {
@@ -272,7 +277,8 @@
         "pre-metre-plan-ia-artisan-btp",
         "prix-logiciel-gestion-btp-comparatif",
         "setup-vs-abonnement-logiciel-btp-economie",
-        "achats-chantier-btp-materiaux-marge"
+        "achats-chantier-btp-materiaux-marge",
+        "suivi-heures-chantier-marge-btp"
       ],
       "parent": "/blog",
       "incomingLinks": [
@@ -284,11 +290,12 @@
         "devis-facture-erreurs-artisan-btp",
         "logiciel-etude-prix-btp-artisan",
         "achats-chantier-btp-materiaux-marge",
-        "logiciel-suivi-chantier-macon"
+        "logiciel-suivi-chantier-macon",
+        "suivi-heures-chantier-marge-btp"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "logiciel-suivi-chantier-macon"
+        "sous-traitance-btp-suivi-chantier-marge"
       ]
     },
     {
@@ -329,7 +336,47 @@
       ],
       "commercialTarget": "/macon",
       "relatedLinks": [
-        "checklist-rentree-artisan-btp"
+        "sous-traitance-btp-suivi-chantier-marge",
+        "suivi-heures-chantier-marge-btp"
+      ]
+    },
+    {
+      "slug": "suivi-heures-chantier-marge-btp",
+      "pillar": "Rentabilité chantier",
+      "intent": "Relier les heures passées sur un chantier au coût réel et à la marge",
+      "primaryQuery": "logiciel suivi heures chantier",
+      "internalLinks": [
+        "calcul-marge-chantier-btp",
+        "achats-chantier-btp-materiaux-marge",
+        "planning-chantier-conflits-equipe-btp"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "calcul-marge-chantier-btp",
+        "planning-chantier-conflits-equipe-btp"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "logiciel-suivi-chantier-macon",
+        "sous-traitance-btp-suivi-chantier-marge"
+      ]
+    },
+    {
+      "slug": "sous-traitance-btp-suivi-chantier-marge",
+      "pillar": "Rentabilité chantier",
+      "intent": "Suivre les coûts, délais, pièces et validations d'une sous-traitance BTP sans perdre la marge du chantier",
+      "primaryQuery": "logiciel de sous traitance BTP",
+      "internalLinks": [
+        "achats-chantier-btp-materiaux-marge"
+      ],
+      "parent": "/blog",
+      "incomingLinks": [
+        "achats-chantier-btp-materiaux-marge"
+      ],
+      "commercialTarget": "/#tarifs",
+      "relatedLinks": [
+        "logiciel-suivi-chantier-macon",
+        "suivi-heures-chantier-marge-btp"
       ]
     }
   ]

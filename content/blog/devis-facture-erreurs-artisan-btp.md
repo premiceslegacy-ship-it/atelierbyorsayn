@@ -3,7 +3,7 @@ title: "Devis et facture BTP : les erreurs qui coûtent le plus cher"
 slug: "devis-facture-erreurs-artisan-btp"
 description: "Mention oubliée, mauvais taux de TVA, devis non signé : les erreurs les plus fréquentes sur un devis ou une facture BTP, et comment les éviter."
 publishedAt: "2026-08-17"
-updatedAt: "2026-09-27"
+updatedAt: "2026-10-08"
 author: "Samuel Mbeboura"
 authorUrl: "https://fr.linkedin.com/in/samuel-mbeboura-b28796293"
 pillar: "Facturation et conformité"
@@ -26,6 +26,20 @@ draft: false
 Un devis mal rédigé ou une facture incomplète ne sont pas de simples détails administratifs. **Ils retardent un paiement, invalident une pénalité de retard ou exposent à une amende**, souvent pour un oubli qui prend deux minutes à corriger.
 
 > **Réponse courte :** pour éviter les erreurs de recopie, partez du devis accepté, conservez une version unique du catalogue et rattachez chaque avenant, dépense et facture au même chantier. La vérification finale reste humaine.
+
+## Comment éviter les erreurs de recopie entre le devis accepté et la facture finale ?
+
+Le contrôle le plus sûr consiste à ne pas reconstruire la facture depuis la mémoire ou un ancien fichier. Reprenez le devis accepté comme document de référence, puis vérifiez séparément les travaux réellement exécutés, les avenants signés, les acomptes déjà reçus, les taux de TVA et le chantier concerné.
+
+Avant l'envoi, contrôlez ces cinq points :
+
+- Le numéro et la version du devis accepté correspondent au chantier facturé.
+- Les lignes modifiées sont rattachées à un avenant ou à une consigne validée.
+- Les quantités, prix unitaires, heures et frais correspondent à ce qui a réellement été exécuté.
+- Les acomptes, avoirs et montants déjà facturés sont déduits une seule fois.
+- La facture finale est relue par une personne qui peut encore corriger ou refuser l'envoi.
+
+Atelier peut centraliser le devis, le chantier, les factures, les dépenses et les relances présents dans l'application. Sarah peut préparer un résumé ou signaler un écart, mais elle ne valide pas seule une facture sensible.
 
 ## Le devis obligatoire, et ce qu'il doit contenir
 

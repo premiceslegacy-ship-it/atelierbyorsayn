@@ -22,7 +22,7 @@ Un chantier de maçonnerie ne se perd pas seulement sur le terrain. Il se perd a
 
 ## Que doit suivre un logiciel de chantier pour maçon ?
 
-Il doit relier le devis accepté au chantier en cours, puis permettre de retrouver les personnes, les tâches, les dépenses et les écarts qui changent la décision. Un écran de planning isolé ne suffit pas si les achats et les heures restent dans un carnet ou dans des messages séparés.
+Il doit relier le devis accepté au chantier en cours, puis permettre de retrouver les personnes, les tâches, les dépenses et les écarts qui changent la décision. Un écran de planning isolé ne suffit pas si les achats et les heures restent dans un carnet ou dans des messages séparés. Pour préparer le chiffrage en amont, voyez aussi [les points à vérifier dans un logiciel d'étude de prix BTP](/blog/logiciel-etude-prix-btp-artisan).
 
 Pour une entreprise de maçonnerie, vérifiez au minimum six liens :
 

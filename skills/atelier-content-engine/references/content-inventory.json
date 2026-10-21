@@ -127,12 +127,14 @@
         "checklist-rentree-artisan-btp",
         "secretaire-ia-artisan-sarah",
         "logiciel-suivi-chantier-macon",
-        "suivi-heures-chantier-marge-btp"
+        "suivi-heures-chantier-marge-btp",
+        "gestion-chantier-plombier-chauffagiste"
       ],
       "parent": "/blog",
       "incomingLinks": [
         "checklist-rentree-artisan-btp",
-        "suivi-heures-chantier-marge-btp"
+        "suivi-heures-chantier-marge-btp",
+        "gestion-chantier-plombier-chauffagiste"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": []
@@ -215,10 +217,10 @@
       ],
       "parent": "prix-logiciel-gestion-btp-comparatif",
       "incomingLinks": [
-        "pre-metre-plan-ia-artisan-btp",
-        "prix-logiciel-gestion-btp-comparatif",
         "achats-chantier-btp-materiaux-marge",
-        "logiciel-suivi-chantier-macon"
+        "logiciel-suivi-chantier-macon",
+        "pre-metre-plan-ia-artisan-btp",
+        "prix-logiciel-gestion-btp-comparatif"
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
@@ -240,6 +242,7 @@
       "parent": "calcul-marge-chantier-btp",
       "incomingLinks": [
         "calcul-marge-chantier-btp",
+        "gestion-chantier-plombier-chauffagiste",
         "prix-logiciel-gestion-btp-comparatif",
         "sous-traitance-btp-suivi-chantier-marge",
         "suivi-heures-chantier-marge-btp"
@@ -282,15 +285,15 @@
       ],
       "parent": "/blog",
       "incomingLinks": [
+        "achats-chantier-btp-materiaux-marge",
+        "devis-facture-erreurs-artisan-btp",
+        "logiciel-etude-prix-btp-artisan",
+        "logiciel-suivi-chantier-macon",
         "planning-chantier-conflits-equipe-btp",
         "pre-metre-plan-ia-artisan-btp",
         "prix-logiciel-gestion-btp-comparatif",
         "relancer-client-impaye-artisan-btp",
         "setup-vs-abonnement-logiciel-btp-economie",
-        "devis-facture-erreurs-artisan-btp",
-        "logiciel-etude-prix-btp-artisan",
-        "achats-chantier-btp-materiaux-marge",
-        "logiciel-suivi-chantier-macon",
         "suivi-heures-chantier-marge-btp"
       ],
       "commercialTarget": "/#tarifs",
@@ -336,8 +339,8 @@
       ],
       "commercialTarget": "/macon",
       "relatedLinks": [
-        "sous-traitance-btp-suivi-chantier-marge",
-        "suivi-heures-chantier-marge-btp"
+        "gestion-chantier-plombier-chauffagiste",
+        "sous-traitance-btp-suivi-chantier-marge"
       ]
     },
     {
@@ -375,8 +378,27 @@
       ],
       "commercialTarget": "/#tarifs",
       "relatedLinks": [
-        "logiciel-suivi-chantier-macon",
+        "gestion-chantier-plombier-chauffagiste",
         "suivi-heures-chantier-marge-btp"
+      ]
+    },
+    {
+      "slug": "gestion-chantier-plombier-chauffagiste",
+      "pillar": "Organisation et planning",
+      "intent": "Comprendre quoi suivre pour gérer des chantiers de plomberie et de chauffage",
+      "primaryQuery": "gestion chantiers plombiers chauffagistes",
+      "internalLinks": [
+        "planning-chantier-conflits-equipe-btp",
+        "achats-chantier-btp-materiaux-marge"
+      ],
+      "parent": "planning-chantier-conflits-equipe-btp",
+      "incomingLinks": [
+        "planning-chantier-conflits-equipe-btp"
+      ],
+      "commercialTarget": "/plombier",
+      "relatedLinks": [
+        "logiciel-suivi-chantier-macon",
+        "sous-traitance-btp-suivi-chantier-marge"
       ]
     }
   ]
